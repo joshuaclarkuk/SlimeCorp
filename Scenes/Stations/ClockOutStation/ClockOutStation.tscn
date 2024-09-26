@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://da6jju4cgm5ua"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_2uuoq"]
-[ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation.cs" id="2_5adtr"]
+[ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation/ClockOutStation.cs" id="2_5adtr"]
 
 [node name="ClockOutStation" instance=ExtResource("1_2uuoq")]
 script = ExtResource("2_5adtr")

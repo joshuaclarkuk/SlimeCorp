@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djvvokkxgg21y"]
 
-[ext_resource type="Script" path="res://Scripts/UI/NewsPage/ArticleContainer.cs" id="1_1ulwd"]
-[ext_resource type="Script" path="res://Scripts/UI/AnimatedTextComponent.cs" id="2_wea21"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/NewsPage/ArticleContainer.cs" id="1_1ulwd"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/AnimatedTextComponent.cs" id="2_wea21"]
 
 [node name="ArticleContainer" type="VBoxContainer" node_paths=PackedStringArray("headerLabel", "bodyLabel")]
 anchors_preset = 15

@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://co5cjrv45f6al" path="res://Materials/PrototypeOrange.tres" id="1_jgb0e"]
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_l2scn"]
-[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation.cs" id="2_0tb71"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/ComputerStation.cs" id="2_0tb71"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/ComputerScreen.tscn" id="2_1xe00"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qspvi"]
