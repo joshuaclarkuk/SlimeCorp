@@ -9,4 +9,5 @@ MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 20
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
+ProgressBar/colors/font_color = Color(0, 0.905882, 0, 1)
 VBoxContainer/constants/separation = 20

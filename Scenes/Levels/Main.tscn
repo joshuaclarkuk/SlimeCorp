@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=18 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
+[ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="2_asnck"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
 [ext_resource type="Script" path="res://Scripts/ControlStates/ControlStates.cs" id="2_uxk6c"]
 [ext_resource type="Script" path="res://Scripts/ControlStates/FeedingControlState.cs" id="3_qmg4l"]
+[ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
 [ext_resource type="Script" path="res://Scripts/ControlStates/CleaningControlState.cs" id="4_lm8pv"]
 [ext_resource type="Script" path="res://Scripts/ControlStates/ComputerControlState.cs" id="4_ov7h8"]
@@ -25,8 +27,14 @@ sky = SubResource("Sky_mocvi")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("controlStatesHeaderNode", "stationsHeaderNode")]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kw8h5"]
+viewport_path = NodePath("CreatureNeeds/CreatureNeedsViewport")
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "controlStatesHeaderNode", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
+creatureNeeds = NodePath("CreatureNeeds")
+articleResources = Array[Resource]([null, null, null, null, null])
+emailResources = Array[Resource]([null, null, null, null, null])
 controlStatesHeaderNode = NodePath("ControlStates")
 stationsHeaderNode = NodePath("Stations")
 
@@ -36,6 +44,22 @@ environment = SubResource("Environment_1qi3x")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+
+[node name="CreatureNeeds" type="Node3D" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "needsDisplayUpdateTimerNode")]
+script = ExtResource("2_asnck")
+creatureNeedsDisplayNode = NodePath("CreatureNeedsViewport/CreatureNeedsDisplay")
+needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
+
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="CreatureNeeds"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.2, 3.2, -7.98191)
+texture = SubResource("ViewportTexture_kw8h5")
+
+[node name="CreatureNeedsViewport" type="SubViewport" parent="CreatureNeeds"]
+size = Vector2i(1024, 1024)
+
+[node name="CreatureNeedsDisplay" parent="CreatureNeeds/CreatureNeedsViewport" instance=ExtResource("3_qt08h")]
+
+[node name="UpdateDisplayTimer" type="Timer" parent="CreatureNeeds"]
 
 [node name="ControlStates" type="Node3D" parent="."]
 script = ExtResource("2_uxk6c")

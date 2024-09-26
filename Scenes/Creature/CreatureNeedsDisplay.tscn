@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://car5kk3p3s32x"]
+
+[ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_a8527"]
+[ext_resource type="Script" path="res://Scripts/Creature/CreatureNeedsDisplay.cs" id="2_lmnia"]
+
+[node name="CreatureNeedsDisplay" type="Control" node_paths=PackedStringArray("hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "timeLeftText")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a8527")
+script = ExtResource("2_lmnia")
+hungerProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/HungerProgress")
+happinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/HappinessProgress")
+cleanlinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/CleanlinessProgress")
+timeLeftText = NodePath("MarginContainer/VBoxContainer/GridContainer/TimeLeftInDayValue")
+
+[node name="BackgroundColour" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0338533, 0.0338533, 0.0338533, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="HungerLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Hunger"
+
+[node name="HungerProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HappinessLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Happiness"
+
+[node name="HappinessProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CleanlinessLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Cleanliness"
+
+[node name="CleanlinessProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TimeLeftInDayLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Time Until Sleep"
+
+[node name="TimeLeftInDayValue" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "24:00"
+horizontal_alignment = 1
+vertical_alignment = 1

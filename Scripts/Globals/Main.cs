@@ -3,13 +3,16 @@ using System;
 
 public partial class Main : Node3D
 {
+    [ExportCategory("Creature")]
+    [Export] private CreatureNeeds creatureNeeds = null;
+
     [ExportCategory("Resources")]
     [Export] private ArticleResource[] articleResources;
     [Export] private EmailResource[] emailResources;
 
     [ExportCategory("Stations")]
-    [Export] private Node3D controlStatesHeaderNode;
-    [Export] private Node3D stationsHeaderNode;
+    [Export] private Node3D controlStatesHeaderNode = null;
+    [Export] private Node3D stationsHeaderNode = null;
 
     // Signals
     private GlobalSignals globalSignals;
@@ -36,6 +39,9 @@ public partial class Main : Node3D
 
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
+
+        // DELETE THIS WHEN CLOCKING IN SYSTEM IS UP AND RUNNING
+        globalSignals.RaisePlayerClockedIn();
     }
 
     public override void _ExitTree()
@@ -82,6 +88,7 @@ public partial class Main : Node3D
     private void ResetAllCreatureNeeds()
     {
         // Reset all creature needs
+        // Set number of minutes in day
     }
 
     private void AddNewsArticleToComputer(int articleIndex)
