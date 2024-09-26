@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://djvvokkxgg21y"]
+
+[ext_resource type="Script" path="res://Scripts/UI/NewsPage/ArticleContainer.cs" id="1_1ulwd"]
+[ext_resource type="Script" path="res://Scripts/UI/AnimatedTextComponent.cs" id="2_wea21"]
+
+[node name="ArticleContainer" type="VBoxContainer" node_paths=PackedStringArray("headerLabel", "bodyLabel")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ulwd")
+headerLabel = NodePath("Header")
+bodyLabel = NodePath("Body")
+
+[node name="Header" type="Label" parent="."]
+layout_mode = 2
+text = "Test Title"
+script = ExtResource("2_wea21")
+
+[node name="Body" type="Label" parent="."]
+layout_mode = 2
+text = "This is test a test a test hello hello hello.
+
+We are doomed.
+
+The creature will kill us all."
+script = ExtResource("2_wea21")

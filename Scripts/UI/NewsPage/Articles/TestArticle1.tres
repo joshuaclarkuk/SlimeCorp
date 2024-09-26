@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://puk2p5yerxsw"]
+
+[ext_resource type="Script" path="res://Scripts/UI/NewsPage/ArticleResource.cs" id="1_fr7lp"]
+
+[resource]
+script = ExtResource("1_fr7lp")
+articleTitle = "Test Header 1"
+articleDescription = "Test Body 1
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t
+t"
