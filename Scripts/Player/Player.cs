@@ -25,8 +25,8 @@ public partial class Player : CharacterBody3D
     // Mouse motion vector
     private Vector2 mouseMotion = Vector2.Zero;
 
-    // Lock controls if player is interacting with something
-    private bool isInteractingWithStation = false;
+    // Station-specific variables
+    private E_StationType activeStationCollider = E_StationType.NONE;
 
     public override void _Ready()
     {
@@ -37,9 +37,17 @@ public partial class Player : CharacterBody3D
 
         // Get GlobalSignals autoload and assign signals
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+        globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
+        globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
 
         // Capture mouse cursor on start
         Input.MouseMode = Input.MouseModeEnum.Captured;
+    }
+
+    public override void _ExitTree()
+    {
+        globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
+        globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -101,6 +109,14 @@ public partial class Player : CharacterBody3D
             }
         }
 
+        // INTERACT WITH STATION
+        if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
+        {
+            if (activeStationCollider == E_StationType.NONE) { return; }
+
+            globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+        }
+
         // SHOW CURSOR
         if (Input.IsActionJustPressed("ui_cancel"))
         {
@@ -131,5 +147,23 @@ public partial class Player : CharacterBody3D
 
         // Reset mouseMotion to prevent infinite movement
         mouseMotion = Vector2.Zero;
+    }
+
+    private void HandlePlayerEnterStationCollider(E_StationType stationType)
+    {
+        if (activeStationCollider != stationType)
+        {
+            activeStationCollider = stationType;
+            GD.Print($"{Name} active station collider: {activeStationCollider.ToString()}");
+        }        
+    }
+
+    private void HandlePlayerExitStationCollider(E_StationType stationType)
+    {
+        if (activeStationCollider == stationType)
+        {
+            activeStationCollider = E_StationType.NONE;
+            GD.Print($"{Name} active station collider: {activeStationCollider.ToString()}");
+        }
     }
 }

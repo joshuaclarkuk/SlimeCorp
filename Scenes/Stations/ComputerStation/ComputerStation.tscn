@@ -1,32 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cybc87n6dyyoi"]
+[gd_scene load_steps=6 format=3 uid="uid://cl66tnesuy5xc"]
 
 [ext_resource type="Material" uid="uid://co5cjrv45f6al" path="res://Materials/PrototypeOrange.tres" id="1_jgb0e"]
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_l2scn"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation.cs" id="2_0tb71"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/ComputerScreen.tscn" id="2_1xe00"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ofa0d"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qspvi"]
 viewport_path = NodePath("ComputerSubviewport")
 
-[node name="ComputerStation" type="Node3D"]
+[node name="ComputerStation" instance=ExtResource("1_l2scn")]
+script = ExtResource("2_0tb71")
+stationType = 1
 
-[node name="CameraLocation" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
-
-[node name="Desk" type="CSGBox3D" parent="."]
+[node name="Desk" type="CSGBox3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 size = Vector3(3, 1, 1)
 material = ExtResource("1_jgb0e")
 
-[node name="Monitor" type="CSGBox3D" parent="."]
+[node name="Monitor" type="CSGBox3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 size = Vector3(0.5, 0.5, 0.6)
 material = ExtResource("1_jgb0e")
 
-[node name="ComputerScreen" type="Sprite3D" parent="."]
+[node name="ComputerScreen" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.5, 0.305585)
-texture = SubResource("ViewportTexture_ofa0d")
+texture = SubResource("ViewportTexture_qspvi")
 
-[node name="ComputerSubviewport" type="SubViewport" parent="."]
+[node name="ComputerSubviewport" type="SubViewport" parent="." index="5"]
 handle_input_locally = false
 render_target_update_mode = 4
 
-[node name="ComputerScreen" parent="ComputerSubviewport" instance=ExtResource("2_1xe00")]
+[node name="ComputerScreen" parent="ComputerSubviewport" index="0" instance=ExtResource("2_1xe00")]

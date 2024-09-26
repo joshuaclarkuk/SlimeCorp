@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7nk6uprev8nf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2ag0"]
+size = Vector3(1.7, 2, 1)
+
+[node name="Station" type="Node3D"]
+
+[node name="CameraLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1)
+
+[node name="InteractCollider" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractCollider"]
+shape = SubResource("BoxShape3D_x2ag0")

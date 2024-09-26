@@ -7,6 +7,10 @@ public partial class Main : Node3D
     [Export] private ArticleResource[] articleResources;
     [Export] private EmailResource[] emailResources;
 
+    [ExportCategory("Stations")]
+    [Export] private Node3D controlStatesHeaderNode;
+    [Export] private Node3D stationsHeaderNode;
+
     // Signals
     private GlobalSignals globalSignals;
 
@@ -16,10 +20,14 @@ public partial class Main : Node3D
 
     public override void _Ready()
     {
-        // Connect signals
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+
+        // Connect timeline signals
         globalSignals.OnStartNewDay += HandleOnStartNewDay;
         globalSignals.OnEndDay += HandleOnEndDay;
+        // Connect station-based signals
+        globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
+
 
         // Resource debug error checks
         if (articleResources.Length < maxDays) { GD.PrintErr("Not all article resources present!"); }
@@ -82,8 +90,13 @@ public partial class Main : Node3D
         // Set slime collected back to zero
     }
 
+    private void HandlePlayerInteractWithStation(E_StationType type)
+    {
+        
+    }
+
     private void EndGame()
     {
-
+        // Initiate final sequence
     }
 }
