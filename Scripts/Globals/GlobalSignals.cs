@@ -12,6 +12,7 @@ public partial class GlobalSignals : Node
     public event Action<E_StationType> OnPlayerEnterStationCollider;
     public event Action<E_StationType> OnPlayerExitStationCollider;
     public event Action<E_StationType> OnPlayerInteractWithStation;
+    public event Action<E_StationType> OnPlayerExitStation;
 
     public void RaiseStartNewDay(int day) { OnStartNewDay?.Invoke(day); }
     public void RaiseEndDay() { OnEndDay?.Invoke(); }
@@ -22,4 +23,5 @@ public partial class GlobalSignals : Node
     public void RaisePlayerEnterStationCollider(E_StationType stationType) { OnPlayerEnterStationCollider?.Invoke(stationType); }
     public void RaisePlayerExitStationCollider(E_StationType stationType) { OnPlayerExitStationCollider?.Invoke(stationType); }
     public void RaisePlayerInteractWithStation(E_StationType stationType) { OnPlayerInteractWithStation?.Invoke(stationType); }
+    public void RaisePlayerExitStation(E_StationType stationType) { OnPlayerExitStation?.Invoke(stationType); }
 }

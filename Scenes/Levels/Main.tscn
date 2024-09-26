@@ -1,9 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=17 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
+[ext_resource type="Script" path="res://Scripts/ControlStates/ControlStates.cs" id="2_uxk6c"]
+[ext_resource type="Script" path="res://Scripts/ControlStates/FeedingControlState.cs" id="3_qmg4l"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
+[ext_resource type="Script" path="res://Scripts/ControlStates/CleaningControlState.cs" id="4_lm8pv"]
+[ext_resource type="Script" path="res://Scripts/ControlStates/ComputerControlState.cs" id="4_ov7h8"]
+[ext_resource type="Script" path="res://Scripts/ControlStates/SlimeCollectionControlState.cs" id="6_5n72x"]
+[ext_resource type="Script" path="res://Scripts/ControlStates/ClockOutControlState.cs" id="7_hqo51"]
+[ext_resource type="Script" path="res://Scripts/Stations/CleaningStation.cs" id="10_j8hjr"]
+[ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation.cs" id="11_o1grt"]
+[ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation.cs" id="12_oot0i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,10 +27,12 @@ sky = SubResource("Sky_mocvi")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("controlStatesHeaderNode", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
 articleResources = Array[Resource]([])
 emailResources = Array[Resource]([])
+controlStatesHeaderNode = NodePath("ControlStates")
+stationsHeaderNode = NodePath("Stations")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1qi3x")
@@ -31,14 +42,27 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="ControlStates" type="Node3D" parent="."]
+script = ExtResource("2_uxk6c")
 
 [node name="FeedingControls" type="Node3D" parent="ControlStates"]
+script = ExtResource("3_qmg4l")
+stationType = 2
 
 [node name="CleaningControls" type="Node3D" parent="ControlStates"]
+script = ExtResource("4_lm8pv")
+stationType = 3
 
 [node name="ComputerControls" type="Node3D" parent="ControlStates"]
+script = ExtResource("4_ov7h8")
+stationType = 1
 
 [node name="SlimeCollectionControls" type="Node3D" parent="ControlStates"]
+script = ExtResource("6_5n72x")
+stationType = 4
+
+[node name="ClockOutControls" type="Node3D" parent="ControlStates"]
+script = ExtResource("7_hqo51")
+stationType = 5
 
 [node name="Stations" type="Node3D" parent="."]
 
@@ -48,10 +72,16 @@ shadow_enabled = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 0, -4)
 
 [node name="CleaningStation" type="Node3D" parent="Stations"]
+script = ExtResource("10_j8hjr")
+stationType = 3
 
 [node name="SlimeCollectionStation" type="Node3D" parent="Stations"]
+script = ExtResource("11_o1grt")
+stationType = 4
 
 [node name="ClockOutStation" type="Node3D" parent="Stations"]
+script = ExtResource("12_oot0i")
+stationType = 5
 
 [node name="Environment" type="Node3D" parent="."]
 

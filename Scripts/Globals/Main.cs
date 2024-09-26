@@ -27,6 +27,7 @@ public partial class Main : Node3D
         globalSignals.OnEndDay += HandleOnEndDay;
         // Connect station-based signals
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
+        globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
 
 
         // Resource debug error checks
@@ -35,6 +36,16 @@ public partial class Main : Node3D
 
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
+    }
+
+    public override void _ExitTree()
+    {
+        // Disconnect timeline signals
+        globalSignals.OnStartNewDay -= HandleOnStartNewDay;
+        globalSignals.OnEndDay -= HandleOnEndDay;
+        // Disconnect station-based signals
+        globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
+        globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
     }
 
     private void HandleOnStartNewDay(int dayIndex)
@@ -91,6 +102,11 @@ public partial class Main : Node3D
     }
 
     private void HandlePlayerInteractWithStation(E_StationType type)
+    {
+        
+    }
+
+    private void HandlePlayerExitStation(E_StationType type)
     {
         
     }

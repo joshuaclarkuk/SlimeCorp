@@ -27,6 +27,7 @@ public partial class Player : CharacterBody3D
 
     // Station-specific variables
     private E_StationType activeStationCollider = E_StationType.NONE;
+    private bool isInteractingWithStation = false;
 
     public override void _Ready()
     {
@@ -114,7 +115,16 @@ public partial class Player : CharacterBody3D
         {
             if (activeStationCollider == E_StationType.NONE) { return; }
 
-            globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+            if (!isInteractingWithStation)
+            {
+                globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+                isInteractingWithStation = true;
+            }
+            else
+            {
+                globalSignals.RaisePlayerExitStation(activeStationCollider);
+                isInteractingWithStation = false;
+            }
         }
 
         // SHOW CURSOR
