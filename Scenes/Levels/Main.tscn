@@ -1,6 +1,102 @@
-[gd_scene load_steps=2 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=8 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
+[ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
+[ext_resource type="PackedScene" uid="uid://cybc87n6dyyoi" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
+[ext_resource type="Material" uid="uid://fi4tqkkivh3c" path="res://Materials/PrototypePurple.tres" id="4_fovk3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mocvi"]
+sky_material = SubResource("ProceduralSkyMaterial_dmlf6")
+
+[sub_resource type="Environment" id="Environment_1qi3x"]
+background_mode = 2
+sky = SubResource("Sky_mocvi")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_01g1o")
+articleResources = Array[Resource]([])
+emailResources = Array[Resource]([])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1qi3x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ControlStates" type="Node3D" parent="."]
+
+[node name="FeedingControls" type="Node3D" parent="ControlStates"]
+
+[node name="CleaningControls" type="Node3D" parent="ControlStates"]
+
+[node name="ComputerControls" type="Node3D" parent="ControlStates"]
+
+[node name="SlimeCollectionControls" type="Node3D" parent="ControlStates"]
+
+[node name="Stations" type="Node3D" parent="."]
+
+[node name="ComputerStation" parent="Stations" instance=ExtResource("2_te2wr")]
+
+[node name="FeedingStation" type="Node3D" parent="Stations"]
+
+[node name="FeedingStationDeskBase" type="CSGBox3D" parent="Stations/FeedingStation"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 0.5, -3)
+size = Vector3(3, 1, 1)
+material = ExtResource("4_fovk3")
+
+[node name="FeedingStationDeskTop" type="CSGBox3D" parent="Stations/FeedingStation"]
+transform = Transform3D(-2.80971e-08, -0.766044, 0.642788, -3.34849e-08, 0.642788, 0.766044, -1, 0, -4.37114e-08, -6.99151, 1.0607, -3)
+size = Vector3(3, 1.5, 1)
+material = ExtResource("4_fovk3")
+
+[node name="CleaningStation" type="Node3D" parent="Stations"]
+
+[node name="SlimeCollectionStation" type="Node3D" parent="Stations"]
+
+[node name="ClockOutStation" type="Node3D" parent="Stations"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Construction" type="Node3D" parent="Environment"]
+
+[node name="Floor" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(16, 1, 16)
+
+[node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(16, 6, 1)
+
+[node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(16, 6, 1)
+
+[node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(15, 6, 1)
+
+[node name="WallEast" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(15, 6, 1)
+
+[node name="Lighting" type="Node3D" parent="Environment"]
+
+[node name="Player" parent="." instance=ExtResource("2_l82l3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
