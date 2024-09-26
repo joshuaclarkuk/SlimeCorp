@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b020e2hls2ace"]
+
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_ft1ox"]
+[ext_resource type="Script" path="res://Scripts/Stations/CleaningStation.cs" id="2_7hmnt"]
+
+[node name="CleaningStation" instance=ExtResource("1_ft1ox")]
+script = ExtResource("2_7hmnt")

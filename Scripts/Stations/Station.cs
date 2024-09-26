@@ -3,7 +3,7 @@ using System;
 
 public abstract partial class Station : Node
 {
-    [Export] protected E_StationType stationType;
+    [Export] public E_StationType StationType { get; private set; }
 
     private GlobalSignals globalSignals = null;
     private Area3D interactColliderNode = null;
@@ -27,7 +27,7 @@ public abstract partial class Station : Node
     {
         if (body is Player)
         {
-            globalSignals.RaisePlayerEnterStationCollider(stationType);
+            globalSignals.RaisePlayerEnterStationCollider(StationType);
         }        
     }
 
@@ -35,7 +35,7 @@ public abstract partial class Station : Node
     {
        if (body is Player)
         {
-            globalSignals.RaisePlayerExitStationCollider(stationType);
+            globalSignals.RaisePlayerExitStationCollider(StationType);
         }
     }
 }

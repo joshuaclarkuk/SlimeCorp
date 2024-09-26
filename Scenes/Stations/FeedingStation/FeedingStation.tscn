@@ -5,7 +5,7 @@
 
 [node name="FeedingStation" instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
-stationType = 2
+StationType = 2
 
 [node name="Desk" type="CSGBox3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

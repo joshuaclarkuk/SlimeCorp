@@ -9,6 +9,19 @@ public partial class ControlStates : Node3D
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
+        globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
+
+        // Deactivate all control states on launch
+        foreach (ControlState controlState in GetChildren())
+        {
+            DeactivateControlState(controlState);
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
+        globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
     }
 
     private void HandlePlayerInteractWithStation(E_StationType stationType)
@@ -33,6 +46,14 @@ public partial class ControlStates : Node3D
                     DeactivateControlState(controlState);
                 }
             }
+        }
+    }
+
+    private void HandlePlayerExitStation(E_StationType type)
+    {
+        foreach (ControlState controlState in GetChildren())
+        {
+            DeactivateControlState(controlState);
         }
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
@@ -10,9 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/ControlStates/ComputerControlState.cs" id="4_ov7h8"]
 [ext_resource type="Script" path="res://Scripts/ControlStates/SlimeCollectionControlState.cs" id="6_5n72x"]
 [ext_resource type="Script" path="res://Scripts/ControlStates/ClockOutControlState.cs" id="7_hqo51"]
-[ext_resource type="Script" path="res://Scripts/Stations/CleaningStation.cs" id="10_j8hjr"]
-[ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation.cs" id="11_o1grt"]
-[ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation.cs" id="12_oot0i"]
+[ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,8 +27,6 @@ glow_enabled = true
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("controlStatesHeaderNode", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
-articleResources = Array[Resource]([])
-emailResources = Array[Resource]([])
 controlStatesHeaderNode = NodePath("ControlStates")
 stationsHeaderNode = NodePath("Stations")
 
@@ -64,24 +60,16 @@ stationType = 4
 script = ExtResource("7_hqo51")
 stationType = 5
 
-[node name="Stations" type="Node3D" parent="."]
+[node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
+script = ExtResource("8_8q08k")
+rovingCameraNode = NodePath("../RovingCamera")
+playerNode = NodePath("../Player")
+cameraTweenDuration = 0.5
 
 [node name="ComputerStation" parent="Stations" instance=ExtResource("2_te2wr")]
 
 [node name="FeedingStation" parent="Stations" instance=ExtResource("3_xnieq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 0, -4)
-
-[node name="CleaningStation" type="Node3D" parent="Stations"]
-script = ExtResource("10_j8hjr")
-stationType = 3
-
-[node name="SlimeCollectionStation" type="Node3D" parent="Stations"]
-script = ExtResource("11_o1grt")
-stationType = 4
-
-[node name="ClockOutStation" type="Node3D" parent="Stations"]
-script = ExtResource("12_oot0i")
-stationType = 5
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -121,3 +109,6 @@ size = Vector3(15, 6, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_l82l3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="RovingCamera" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 3, 2, 0)

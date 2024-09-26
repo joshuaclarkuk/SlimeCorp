@@ -40,6 +40,10 @@ public partial class Player : CharacterBody3D
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
         globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
+        globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
+
+        // Make camera current (just in case Godot thinks Roving Camera should be current)
+        playerCameraNode.MakeCurrent();
 
         // Capture mouse cursor on start
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -53,6 +57,8 @@ public partial class Player : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        if (isInteractingWithStation) { return; }
+
         HandleCameraRotation();
 
         Vector3 velocity = Velocity;
@@ -123,7 +129,6 @@ public partial class Player : CharacterBody3D
             else
             {
                 globalSignals.RaisePlayerExitStation(activeStationCollider);
-                isInteractingWithStation = false;
             }
         }
 
@@ -175,5 +180,11 @@ public partial class Player : CharacterBody3D
             activeStationCollider = E_StationType.NONE;
             GD.Print($"{Name} active station collider: {activeStationCollider.ToString()}");
         }
+    }
+
+    private void HandlePlayerCanMoveAgain()
+    {
+        playerCameraNode.MakeCurrent();
+        isInteractingWithStation = false;
     }
 }
