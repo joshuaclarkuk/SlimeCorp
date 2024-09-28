@@ -11,7 +11,6 @@ public partial class Main : Node3D
     [Export] private EmailResource[] emailResources;
 
     [ExportCategory("Stations")]
-    [Export] private Node3D controlStatesHeaderNode = null;
     [Export] private Node3D stationsHeaderNode = null;
 
     // Signals
@@ -39,9 +38,6 @@ public partial class Main : Node3D
 
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
-
-        // DELETE THIS WHEN CLOCKING IN SYSTEM IS UP AND RUNNING
-        globalSignals.RaisePlayerClockedIn();
     }
 
     public override void _ExitTree()

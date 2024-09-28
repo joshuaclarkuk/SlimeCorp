@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Stations/FeedingStation/FeedingStation.cs" id="2_jxwy1"]
 [ext_resource type="Material" uid="uid://b15kwvqglnup0" path="res://Materials/M_PrototypeRed.tres" id="3_yxkfq"]
 
-[node name="FeedingStation" instance=ExtResource("1_5275c")]
+[node name="FeedingStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
+debugLabel = NodePath("StationDebugLabel")
 StationType = 2
 
 [node name="Desk" type="CSGBox3D" parent="." index="2"]

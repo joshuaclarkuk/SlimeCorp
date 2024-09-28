@@ -3,15 +3,22 @@ using System;
 
 public abstract partial class Station : Node
 {
+    [ExportCategory("Required Nodes")]
+    [Export] private Label3D debugLabel = null;
+
+    [ExportCategory("Station Type")]
     [Export] public E_StationType StationType { get; private set; }
 
-    private GlobalSignals globalSignals = null;
+    protected GlobalSignals globalSignals = null;
     private Area3D interactColliderNode = null;
 
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         interactColliderNode = GetNode<Area3D>("InteractCollider");
+
+        // Set debug label
+        debugLabel.Text = StationType.ToString();
 
         interactColliderNode.BodyEntered += HandleInteractColliderNodeAreaEntered;
         interactColliderNode.BodyExited += HandleInteractColliderNodeAreaExited;

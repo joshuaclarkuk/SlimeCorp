@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Stations/CleaningStation/CleaningStation.cs" id="2_7hmnt"]
 [ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="3_8614t"]
 
-[node name="CleaningStation" instance=ExtResource("1_ft1ox")]
+[node name="CleaningStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_ft1ox")]
 script = ExtResource("2_7hmnt")
+debugLabel = NodePath("StationDebugLabel")
 StationType = 3
 
 [node name="Mesh" type="CSGBox3D" parent="." index="2"]

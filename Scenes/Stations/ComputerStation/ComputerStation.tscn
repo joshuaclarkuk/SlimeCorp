@@ -8,8 +8,9 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_qspvi"]
 viewport_path = NodePath("ComputerSubviewport")
 
-[node name="ComputerStation" instance=ExtResource("1_l2scn")]
+[node name="ComputerStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_l2scn")]
 script = ExtResource("2_0tb71")
+debugLabel = NodePath("StationDebugLabel")
 StationType = 1
 
 [node name="Desk" type="CSGBox3D" parent="." index="2"]

@@ -8,6 +8,9 @@ public class GlobalConstants
     public const string INPUT_INTERACT = "Interact";
     public const string INPUT_JUMP = "Jump";
 
+    public const string INPUT_MOUSE_1 = "Mouse1";
+    public const string INPUT_MOUSE_2 = "Mouse2";
+
     public const string INPUT_UI_UP = "UIUp";
     public const string INPUT_UI_DOWN = "UIDown";
     public const string INPUT_UI_LEFT = "UILeft";

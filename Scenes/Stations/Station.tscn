@@ -15,3 +15,7 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractCollider"]
 shape = SubResource("BoxShape3D_x2ag0")
+
+[node name="StationDebugLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.5)
+text = "Test"

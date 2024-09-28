@@ -4,8 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation/ClockOutStation.cs" id="2_5adtr"]
 [ext_resource type="Material" uid="uid://diryno02iw2d7" path="res://Materials/M_PrototypeGreen.tres" id="3_k0srk"]
 
-[node name="ClockOutStation" instance=ExtResource("1_2uuoq")]
+[node name="ClockOutStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_2uuoq")]
 script = ExtResource("2_5adtr")
+debugLabel = NodePath("StationDebugLabel")
 StationType = 5
 
 [node name="Mesh" type="CSGBox3D" parent="." index="2"]

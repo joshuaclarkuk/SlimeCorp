@@ -9,8 +9,9 @@ albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("3_baasw")
 uv1_triplanar = true
 
-[node name="SlimeCollectionStation" instance=ExtResource("1_uotg4")]
+[node name="SlimeCollectionStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_uotg4")]
 script = ExtResource("2_2mdql")
+debugLabel = NodePath("StationDebugLabel")
 StationType = 4
 
 [node name="CanisterMeshes" type="Node3D" parent="." index="2"]
