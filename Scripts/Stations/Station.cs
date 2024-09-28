@@ -23,6 +23,8 @@ public abstract partial class Station : Node
         interactColliderNode.BodyExited -= HandleInteractColliderNodeAreaExited;
     }
 
+    public abstract override void _UnhandledInput(InputEvent @event);
+
     public void HandleInteractColliderNodeAreaEntered(Node3D body)
     {
         if (body is Player)

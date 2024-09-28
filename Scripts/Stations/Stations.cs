@@ -20,14 +20,19 @@ public partial class Stations : Node3D
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+
+        // Link signals with camera movement
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
         globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
 
-        // Initialise dictionary
+        // Initialise camera position dictionary
         foreach(Station station in GetChildren())
         {
             cameraPositionDictionary.Add(station.StationType, station.GetNode<Marker3D>("CameraLocation"));
         }
+
+        // Deactivate each station input callbacks on start
+        DeactivateAllStationInputs();
 
         // Get reference to player camera position
         playerCameraPivotNode = playerNode.GetNode<Node3D>("PlayerCameraPivot");
@@ -39,10 +44,22 @@ public partial class Stations : Node3D
         globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
     }
 
-    private void HandlePlayerInteractWithStation(E_StationType type)
+    private void HandlePlayerInteractWithStation(E_StationType stationType)
     {
-        // Try to find the target transform in the dictionary
-        if (cameraPositionDictionary.TryGetValue(type, out Marker3D targetMarker))
+        MoveCameraToStation(stationType);
+        ActivateRelevantStationInputs(stationType);
+    }
+
+    private void HandlePlayerExitStation(E_StationType stationType)
+    {
+        MoveCameraToPlayer();
+        DeactivateAllStationInputs();
+    }
+
+    private void MoveCameraToStation(E_StationType stationType)
+    {
+        // Move camera to station position
+        if (cameraPositionDictionary.TryGetValue(stationType, out Marker3D targetMarker))
         {
             // Set roving camera to player's position
             rovingCameraNode.GlobalTransform = playerCameraPivotNode.GlobalTransform;
@@ -64,11 +81,36 @@ public partial class Stations : Node3D
         }
         else
         {
-            GD.PrintErr($"Station type {type} not found in camera position dictionary.");
+            GD.PrintErr($"Station type {stationType} not found in camera position dictionary.");
         }
     }
 
-    private void HandlePlayerExitStation(E_StationType type)
+    private void ActivateRelevantStationInputs(E_StationType stationType)
+    {
+        if (stationType == E_StationType.NONE)
+        {
+            foreach (Station station in GetChildren())
+            {
+                DeactivateStationInputs(station);
+            }
+        }
+        else
+        {
+            foreach (Station station in GetChildren())
+            {
+                if (station.StationType == stationType)
+                {
+                    ActivateStationInputs(station);
+                }
+                else
+                {
+                    DeactivateStationInputs(station);
+                }
+            }
+        }
+    }
+
+    private void MoveCameraToPlayer()
     {
         // Create and execute camera tweens
         // Position
@@ -84,8 +126,29 @@ public partial class Stations : Node3D
         returnCameraRotationTween.Play();
     }
 
+    private void DeactivateAllStationInputs()
+    {
+        foreach (Station station in GetChildren())
+        {
+            DeactivateStationInputs(station);
+        }
+    }
+
+    private void ActivateStationInputs(Station station)
+    {
+        station.SetProcessInput(true);
+        station.SetProcessUnhandledInput(true);
+    }
+
+    private void DeactivateStationInputs(Station station)
+    {
+        station.SetProcessInput(false);
+        station.SetProcessUnhandledInput(false);
+    }
+
     private void HandleReturnCameraTweenFinished()
     {
+        // Signal to turn off guard clause in Player _PhysicsProcess
         globalSignals.RaisePlayerCanMoveAgain();
     }
 }

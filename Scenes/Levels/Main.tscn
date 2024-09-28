@@ -1,17 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=12 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="2_asnck"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
-[ext_resource type="Script" path="res://Scripts/ControlStates/ControlStates.cs" id="2_uxk6c"]
-[ext_resource type="Script" path="res://Scripts/ControlStates/FeedingControlState.cs" id="3_qmg4l"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
-[ext_resource type="Script" path="res://Scripts/ControlStates/CleaningControlState.cs" id="4_lm8pv"]
-[ext_resource type="Script" path="res://Scripts/ControlStates/ComputerControlState.cs" id="4_ov7h8"]
-[ext_resource type="Script" path="res://Scripts/ControlStates/SlimeCollectionControlState.cs" id="6_5n72x"]
-[ext_resource type="Script" path="res://Scripts/ControlStates/ClockOutControlState.cs" id="7_hqo51"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
@@ -35,7 +29,7 @@ script = ExtResource("1_01g1o")
 creatureNeeds = NodePath("CreatureNeeds")
 articleResources = Array[Resource]([null, null, null, null, null])
 emailResources = Array[Resource]([null, null, null, null, null])
-controlStatesHeaderNode = NodePath("ControlStates")
+controlStatesHeaderNode = NodePath("")
 stationsHeaderNode = NodePath("Stations")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -60,29 +54,6 @@ size = Vector2i(1024, 1024)
 [node name="CreatureNeedsDisplay" parent="CreatureNeeds/CreatureNeedsViewport" instance=ExtResource("3_qt08h")]
 
 [node name="UpdateDisplayTimer" type="Timer" parent="CreatureNeeds"]
-
-[node name="ControlStates" type="Node3D" parent="."]
-script = ExtResource("2_uxk6c")
-
-[node name="FeedingControls" type="Node3D" parent="ControlStates"]
-script = ExtResource("3_qmg4l")
-stationType = 2
-
-[node name="CleaningControls" type="Node3D" parent="ControlStates"]
-script = ExtResource("4_lm8pv")
-stationType = 3
-
-[node name="ComputerControls" type="Node3D" parent="ControlStates"]
-script = ExtResource("4_ov7h8")
-stationType = 1
-
-[node name="SlimeCollectionControls" type="Node3D" parent="ControlStates"]
-script = ExtResource("6_5n72x")
-stationType = 4
-
-[node name="ClockOutControls" type="Node3D" parent="ControlStates"]
-script = ExtResource("7_hqo51")
-stationType = 5
 
 [node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
 script = ExtResource("8_8q08k")
