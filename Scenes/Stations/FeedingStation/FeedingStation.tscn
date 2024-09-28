@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ceveuvbbbq55n"]
+[gd_scene load_steps=4 format=3 uid="uid://ceveuvbbbq55n"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_5275c"]
 [ext_resource type="Script" path="res://Scripts/Stations/FeedingStation/FeedingStation.cs" id="2_jxwy1"]
+[ext_resource type="Material" uid="uid://b15kwvqglnup0" path="res://Materials/M_PrototypeRed.tres" id="3_yxkfq"]
 
 [node name="FeedingStation" instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
@@ -10,3 +11,4 @@ StationType = 2
 [node name="Desk" type="CSGBox3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 size = Vector3(3, 1, 1)
+material = ExtResource("3_yxkfq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="2_asnck"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
+[ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="7_5p5ij"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
+[ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
+[ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -24,12 +27,11 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_kw8h5"]
 viewport_path = NodePath("CreatureNeeds/CreatureNeedsViewport")
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "controlStatesHeaderNode", "stationsHeaderNode")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
 creatureNeeds = NodePath("CreatureNeeds")
 articleResources = Array[Resource]([null, null, null, null, null])
 emailResources = Array[Resource]([null, null, null, null, null])
-controlStatesHeaderNode = NodePath("")
 stationsHeaderNode = NodePath("Stations")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -45,7 +47,7 @@ creatureNeedsDisplayNode = NodePath("CreatureNeedsViewport/CreatureNeedsDisplay"
 needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
 
 [node name="CreatureNeedsScreen" type="Sprite3D" parent="CreatureNeeds"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.2, 3.2, -7.98191)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
 texture = SubResource("ViewportTexture_kw8h5")
 
 [node name="CreatureNeedsViewport" type="SubViewport" parent="CreatureNeeds"]
@@ -64,7 +66,16 @@ cameraTweenDuration = 0.5
 [node name="ComputerStation" parent="Stations" instance=ExtResource("2_te2wr")]
 
 [node name="FeedingStation" parent="Stations" instance=ExtResource("3_xnieq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 0, -4)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
+
+[node name="ClockOutStation" parent="Stations" instance=ExtResource("7_5p5ij")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
+
+[node name="CleaningStation" parent="Stations" instance=ExtResource("8_jl626")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
+
+[node name="SlimeCollectionStation" parent="Stations" instance=ExtResource("9_mb0pm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -74,28 +85,28 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.5, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
 collision_mask = 0
-size = Vector3(16, 1, 16)
+size = Vector3(20, 1, 16)
 
 [node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(16, 6, 1)
+size = Vector3(22, 6, 1)
 
 [node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(16, 6, 1)
+size = Vector3(22, 6, 1)
 
 [node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 3, -0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 3, -0.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(15, 6, 1)
 
 [node name="WallEast" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 3, -0.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 3, -0.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(15, 6, 1)

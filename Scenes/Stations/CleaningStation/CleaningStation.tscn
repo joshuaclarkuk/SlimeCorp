@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b020e2hls2ace"]
+[gd_scene load_steps=4 format=3 uid="uid://b020e2hls2ace"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_ft1ox"]
 [ext_resource type="Script" path="res://Scripts/Stations/CleaningStation/CleaningStation.cs" id="2_7hmnt"]
+[ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="3_8614t"]
 
 [node name="CleaningStation" instance=ExtResource("1_ft1ox")]
 script = ExtResource("2_7hmnt")
+StationType = 3
+
+[node name="Mesh" type="CSGBox3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(0.5, 0.5, 0.3)
+material = ExtResource("3_8614t")

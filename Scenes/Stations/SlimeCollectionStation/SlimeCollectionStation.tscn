@@ -1,7 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://c81xuqyf4vlou"]
+[gd_scene load_steps=5 format=3 uid="uid://c81xuqyf4vlou"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_uotg4"]
 [ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation/SlimeCollectionStation.cs" id="2_2mdql"]
+[ext_resource type="Texture2D" uid="uid://cg0efdvrbkvox" path="res://Assets/Textures/Prototype/Light/texture_05.png" id="3_baasw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81n1w"]
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("3_baasw")
+uv1_triplanar = true
 
 [node name="SlimeCollectionStation" instance=ExtResource("1_uotg4")]
 script = ExtResource("2_2mdql")
+StationType = 4
+
+[node name="CanisterMeshes" type="Node3D" parent="." index="2"]
+
+[node name="Canister1" type="CSGCylinder3D" parent="CanisterMeshes" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.4, 0)
+radius = 0.3
+height = 0.8
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="Canister2" type="CSGCylinder3D" parent="CanisterMeshes" index="1"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.7, 1.2, 0)
+radius = 0.3
+height = 0.8
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="Canister3" type="CSGCylinder3D" parent="CanisterMeshes" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.4, 0)
+radius = 0.3
+height = 0.8
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="Canister4" type="CSGCylinder3D" parent="CanisterMeshes" index="3"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.49012e-08, 1.2, 0)
+radius = 0.3
+height = 0.8
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="Canister5" type="CSGCylinder3D" parent="CanisterMeshes" index="4"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.7, 0.4, 0)
+radius = 0.3
+height = 0.8
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="Wheel" type="CSGCylinder3D" parent="CanisterMeshes" index="5"]
+transform = Transform3D(0.866025, 0, 0.5, 0.5, -4.37114e-08, -0.866025, 2.18557e-08, 1, -3.78552e-08, 0.7, 1.2, 0)
+radius = 0.3
+height = 0.002
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="WheelInner" type="CSGCylinder3D" parent="CanisterMeshes/Wheel" index="0"]
+transform = Transform3D(1, 0, -8.27351e-16, 0, 1, 0, -8.27351e-16, 0, 1, 0, 0, 0)
+operation = 2
+radius = 0.24
+height = 0.002
+material = SubResource("StandardMaterial3D_81n1w")
