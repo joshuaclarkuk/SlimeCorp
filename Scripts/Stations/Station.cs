@@ -30,6 +30,9 @@ public abstract partial class Station : Node
         interactColliderNode.BodyExited -= HandleInteractColliderNodeAreaExited;
     }
 
+    public abstract void EnterStation();
+    public abstract void ExitStation();
+
     public abstract override void _UnhandledInput(InputEvent @event);
 
     public void HandleInteractColliderNodeAreaEntered(Node3D body)

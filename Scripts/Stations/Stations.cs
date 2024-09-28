@@ -54,6 +54,7 @@ public partial class Stations : Node3D
     {
         MoveCameraToPlayer();
         DeactivateAllStationInputs();
+        CallStationExitMethod(stationType);
     }
 
     private void MoveCameraToStation(E_StationType stationType)
@@ -101,6 +102,7 @@ public partial class Stations : Node3D
                 if (station.StationType == stationType)
                 {
                     ActivateStationInputs(station);
+                    CallStationEnterMethod(station);
                 }
                 else
                 {
@@ -126,14 +128,6 @@ public partial class Stations : Node3D
         returnCameraRotationTween.Play();
     }
 
-    private void DeactivateAllStationInputs()
-    {
-        foreach (Station station in GetChildren())
-        {
-            DeactivateStationInputs(station);
-        }
-    }
-
     private void ActivateStationInputs(Station station)
     {
         station.SetProcessInput(true);
@@ -144,6 +138,26 @@ public partial class Stations : Node3D
     {
         station.SetProcessInput(false);
         station.SetProcessUnhandledInput(false);
+    }
+
+    private void DeactivateAllStationInputs()
+    {
+        foreach (Station station in GetChildren())
+        {
+            DeactivateStationInputs(station);
+        }
+    }
+
+    private void CallStationEnterMethod(Station station) { station.EnterStation(); }
+    private void CallStationExitMethod(E_StationType stationType) 
+    {
+        foreach (Station station in GetChildren())
+        {
+            if (station.StationType == stationType)
+            {
+                station.ExitStation();
+            }
+        }
     }
 
     private void HandleReturnCameraTweenFinished()
