@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://wp8155nwu4mq"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/Buttons.cs" id="1_2ibfs"]
+[ext_resource type="PackedScene" uid="uid://y48k5t3gmky0" path="res://Scenes/Stations/Button.tscn" id="2_wpuw2"]
+
+[node name="Buttons" type="Node3D" node_paths=PackedStringArray("buttonArray")]
+script = ExtResource("1_2ibfs")
+buttonArray = [NodePath("Button0"), NodePath("Button1"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4"), NodePath("Button5"), NodePath("Button6"), NodePath("Button7"), NodePath("Button8"), NodePath("Button9")]
+
+[node name="Button0" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.3)
+
+[node name="Button1" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.1)
+
+[node name="Button2" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+
+[node name="Button3" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, 0.1)
+
+[node name="Button4" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.1)
+
+[node name="Button5" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+
+[node name="Button6" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.1)
+
+[node name="Button7" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -0.3)
+
+[node name="Button8" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+
+[node name="Button9" parent="." instance=ExtResource("2_wpuw2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.3)

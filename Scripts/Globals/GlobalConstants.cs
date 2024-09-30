@@ -17,6 +17,17 @@ public class GlobalConstants
     public const string INPUT_UI_RIGHT = "UIRight";
     public const string INPUT_UI_ENTER = "UIEnter";
 
+    public const string INPUT_NUM_0 = "Num0";
+    public const string INPUT_NUM_1 = "Num1";
+    public const string INPUT_NUM_2 = "Num2";
+    public const string INPUT_NUM_3 = "Num3";
+    public const string INPUT_NUM_4 = "Num4";
+    public const string INPUT_NUM_5 = "Num5";
+    public const string INPUT_NUM_6 = "Num6";
+    public const string INPUT_NUM_7 = "Num7";
+    public const string INPUT_NUM_8 = "Num8";
+    public const string INPUT_NUM_9 = "Num9";
+
     // ANIMATION
     public const string ANIM_IDLE = "Idle";
 }

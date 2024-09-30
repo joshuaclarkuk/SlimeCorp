@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://y48k5t3gmky0"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/Button.cs" id="1_jkc86"]
+
+[node name="Button" type="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 0.3)
+radius = 0.1
+height = 0.1
+script = ExtResource("1_jkc86")
