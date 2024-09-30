@@ -56,6 +56,7 @@ public partial class Main : Node3D
         {
             case 0:
                 // Day 0 logic here
+                creatureNeeds.SetUpForNewDay(1.0f); // Replace with resource when created
                 break;
             case 1:
                 // Day 1 logic here

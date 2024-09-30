@@ -7,3 +7,14 @@
     SLIMECOLLECTION,
     CLOCKOUT
 }
+
+public enum E_IngredientList
+{
+    BRAIN = 0,
+    EYEBALLS,
+    LUNGS,
+    HEART,
+    LIVER,
+    STOMACH,
+    KIDNEYS,
+}
