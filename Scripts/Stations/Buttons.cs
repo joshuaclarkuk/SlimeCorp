@@ -45,13 +45,24 @@ public partial class Buttons : Node3D
         // Get array position of button pressed
         int buttonIndex = Array.IndexOf(buttonArray, button);
 
-        if (isDown)
+        if (shouldStayDown)
         {
-            OnButtonEngaged?.Invoke(buttonIndex);
+            if (isDown)
+            {
+                OnButtonEngaged?.Invoke(buttonIndex);
+            }
+            else
+            {
+                OnButtonDisengaged?.Invoke(buttonIndex);
+            }
         }
         else
         {
-            OnButtonDisengaged?.Invoke(buttonIndex);
+            if (isDown)
+            {
+                button.RaiseButton(buttonPressDuration);
+                OnButtonEngaged?.Invoke(buttonIndex);
+            }
         }
     }
 }

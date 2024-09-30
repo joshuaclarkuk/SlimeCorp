@@ -23,4 +23,5 @@ material = ExtResource("3_k0srk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.5)
 
 [node name="Buttons" parent="." index="4" instance=ExtResource("4_u8e5p")]
-transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 1, 0.2)
+transform = Transform3D(0.4, 0, 0, 0, 0.103528, -0.38637, 0, 0.38637, 0.103528, 0, 1, 0.3)
+buttonPressDuration = 0.1
