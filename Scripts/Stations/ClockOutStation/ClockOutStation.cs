@@ -3,9 +3,6 @@ using System;
 
 public partial class ClockOutStation : Station
 {
-    [ExportCategory("Required Nodes")]
-    [Export] Buttons buttonsNode = null;
-
     private bool isClockedIn = false;
 
     public override void EnterStation()
@@ -20,6 +17,8 @@ public partial class ClockOutStation : Station
 
     public override void _UnhandledInput(InputEvent @event)
     {
+        base._UnhandledInput( @event );
+
         if (Input.IsActionJustPressed(GlobalConstants.INPUT_MOUSE_1))
         {
             if (!isClockedIn)
@@ -35,51 +34,89 @@ public partial class ClockOutStation : Station
                 GD.Print("Player clocked out");
             }
         }
+    }
 
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_0))
+    protected override void HandleButtonEngaged(int buttonIndex)
+    {
+        GD.Print($"Button {buttonIndex} was pressed in {Name}.");
+
+        switch (buttonIndex)
         {
-            PushButton(0);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_1))
-        {
-            PushButton(1);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_2))
-        {
-            PushButton(2);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_3))
-        {
-            PushButton(3);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_4))
-        {
-            PushButton(4);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_5))
-        {
-            PushButton(5);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_6))
-        {
-            PushButton(6);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_7))
-        {
-            PushButton(7);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_8))
-        {
-            PushButton(8);
-        }
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_9))
-        {
-            PushButton(9);
+            case 0:
+                // Execute behavior for button 0
+                break;
+            case 1:
+                // Execute behavior for button 1
+                break;
+            case 2:
+                // Execute behavior for button 1
+                break;
+            case 3:
+                // Execute behavior for button 1
+                break;
+            case 4:
+                // Execute behavior for button 1
+                break;
+            case 5:
+                // Execute behavior for button 1
+                break;
+            case 6:
+                // Execute behavior for button 1
+                break;
+            case 7:
+                // Execute behavior for button 1
+                break;
+            case 8:
+                // Execute behavior for button 1
+                break;
+            case 9:
+                // Execute behavior for button 1
+                break;
+            default:
+                GD.Print("Unhandled button press");
+                break;
         }
     }
 
-    private void PushButton(int buttonToPush)
+    protected override void HandleButtonDisengaged(int buttonIndex)
     {
-        buttonsNode.PushButton(buttonToPush);
+        GD.Print($"Button {buttonIndex} was released in FeedingStation.");
+
+        switch (buttonIndex)
+        {
+            case 0:
+                // Execute behavior for button 0
+                break;
+            case 1:
+                // Execute behavior for button 1
+                break;
+            case 2:
+                // Execute behavior for button 1
+                break;
+            case 3:
+                // Execute behavior for button 1
+                break;
+            case 4:
+                // Execute behavior for button 1
+                break;
+            case 5:
+                // Execute behavior for button 1
+                break;
+            case 6:
+                // Execute behavior for button 1
+                break;
+            case 7:
+                // Execute behavior for button 1
+                break;
+            case 8:
+                // Execute behavior for button 1
+                break;
+            case 9:
+                // Execute behavior for button 1
+                break;
+            default:
+                GD.Print("Unhandled button press");
+                break;
+        }
     }
 }

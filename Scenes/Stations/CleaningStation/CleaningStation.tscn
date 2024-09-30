@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://b020e2hls2ace"]
+[gd_scene load_steps=5 format=3 uid="uid://b020e2hls2ace"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_ft1ox"]
 [ext_resource type="Script" path="res://Scripts/Stations/CleaningStation/CleaningStation.cs" id="2_7hmnt"]
 [ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="3_8614t"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_dr244"]
 
-[node name="CleaningStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_ft1ox")]
+[node name="CleaningStation" node_paths=PackedStringArray("buttonsNode", "debugLabel") instance=ExtResource("1_ft1ox")]
 script = ExtResource("2_7hmnt")
+buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 3
 
@@ -13,3 +15,9 @@ StationType = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 size = Vector3(0.5, 0.5, 0.3)
 material = ExtResource("3_8614t")
+
+[node name="StationDebugLabel" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.5)
+
+[node name="Buttons" parent="." index="4" instance=ExtResource("4_dr244")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0.3)

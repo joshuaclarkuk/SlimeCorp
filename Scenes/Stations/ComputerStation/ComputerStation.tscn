@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cl66tnesuy5xc"]
+[gd_scene load_steps=7 format=3 uid="uid://cl66tnesuy5xc"]
 
 [ext_resource type="Material" uid="uid://co5cjrv45f6al" path="res://Materials/PrototypeOrange.tres" id="1_jgb0e"]
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_l2scn"]
 [ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/ComputerStation.cs" id="2_0tb71"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/ComputerScreen.tscn" id="2_1xe00"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_0qnvq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qspvi"]
 viewport_path = NodePath("ComputerSubviewport")
 
-[node name="ComputerStation" node_paths=PackedStringArray("debugLabel") instance=ExtResource("1_l2scn")]
+[node name="ComputerStation" node_paths=PackedStringArray("buttonsNode", "debugLabel") instance=ExtResource("1_l2scn")]
 script = ExtResource("2_0tb71")
+buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 1
 
@@ -32,3 +34,6 @@ handle_input_locally = false
 render_target_update_mode = 4
 
 [node name="ComputerScreen" parent="ComputerSubviewport" index="0" instance=ExtResource("2_1xe00")]
+
+[node name="Buttons" parent="." index="7" instance=ExtResource("5_0qnvq")]
+transform = Transform3D(1, 0, 0, 0, 0.766044, -0.642788, 0, 0.642788, 0.766044, 0.8, 1.2, 0.4)

@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 
 public partial class Buttons : Node3D
 {
@@ -15,8 +14,8 @@ public partial class Buttons : Node3D
 
     private bool isTravelling = false;
 
-    public event Action OnButtonEngaged;
-    public event Action OnButtonDisengaged;
+    public event Action<int> OnButtonEngaged;
+    public event Action<int> OnButtonDisengaged;
 
     public override void _Ready()
     {
@@ -43,13 +42,16 @@ public partial class Buttons : Node3D
 
     private void HandleButtonIsDown(Button button, bool isDown)
     {
+        // Get array position of button pressed
+        int buttonIndex = Array.IndexOf(buttonArray, button);
+
         if (isDown)
         {
-            GD.Print($"{button.Name} is down");
+            OnButtonEngaged?.Invoke(buttonIndex);
         }
         else
         {
-            GD.Print($"{button.Name} is up");
+            OnButtonDisengaged?.Invoke(buttonIndex);
         }
     }
 }

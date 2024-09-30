@@ -37,22 +37,20 @@ public partial class Button : CsgCylinder3D
         animateButtonUpTween.SetTrans(Tween.TransitionType.Sine);
         animateButtonUpTween.TweenProperty(this, "position", startingPosition, buttonPressDuration);
         animateButtonUpTween.Play();
-        animateButtonUpTween.Finished += HandleAnimateButtonUpFinished;
+        animateButtonUpTween.Finished += HandleAnimateButtonUpTweenFinished;
     }
 
     private void HandleAnimateButtonDownTweenFinished()
     {
-        GD.Print("Button Depressed");
         IsDown = true;
-        OnButtonDowned?.Invoke(this, IsDown);
+        OnButtonDowned?.Invoke(this, IsDown); // Sent to Buttons class
         IsTravelling = false;
     }
 
-    private void HandleAnimateButtonUpFinished()
+    private void HandleAnimateButtonUpTweenFinished()
     {
-        GD.Print("Button Up");
         IsDown = false;
-        OnButtonDowned?.Invoke(this, IsDown);
+        OnButtonDowned?.Invoke(this, IsDown); // Sent to Buttons class
         IsTravelling = false;
     }
 }
