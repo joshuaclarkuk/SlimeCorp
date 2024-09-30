@@ -21,7 +21,7 @@ public partial class Buttons : Node3D
     {
         foreach (Button button in buttonArray)
         {
-            button.OnButtonDowned += HandleButtonIsDown;
+            button.OnButtonDowned += HandleButtonIsPushed;
         }
     }
 
@@ -40,7 +40,19 @@ public partial class Buttons : Node3D
         }
     }
 
-    private void HandleButtonIsDown(Button button, bool isDown)
+    public void ResetAndRaiseAllButtons()
+    {
+        // Guard clause to ensure only buttons that should stay down can use this method
+        if (!shouldStayDown) { return; }
+
+        // Raise all buttons
+        foreach (Button button in buttonArray)
+        {
+            button.RaiseButton(buttonPressDuration);
+        }
+    }
+
+    private void HandleButtonIsPushed(Button button, bool isDown)
     {
         // Get array position of button pressed
         int buttonIndex = Array.IndexOf(buttonArray, button);

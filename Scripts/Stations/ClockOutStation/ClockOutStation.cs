@@ -7,11 +7,13 @@ public partial class ClockOutStation : Station
 
     public override void EnterStation()
     {
+        base.EnterStation();
         GD.Print($"Calling EnterStation method on {Name}");
     }
 
     public override void ExitStation()
     {
+        base.ExitStation();
         GD.Print($"Calling ExitStation method on {Name}");
     }
 

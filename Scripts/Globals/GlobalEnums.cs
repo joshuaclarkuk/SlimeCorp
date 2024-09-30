@@ -17,4 +17,6 @@ public enum E_IngredientList
     LIVER,
     STOMACH,
     KIDNEYS,
+    SKIN,
+    NAILS
 }

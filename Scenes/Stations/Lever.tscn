@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cluil6r6xlmbe"]
+
+[node name="Lever" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="PivotPoint" type="Node3D" parent="."]
+
+[node name="LeverColumn" type="CSGBox3D" parent="PivotPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+size = Vector3(0.06, 0.6, 0.06)

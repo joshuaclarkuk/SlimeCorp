@@ -7,6 +7,9 @@ public abstract partial class Station : Node
     [Export] protected Buttons buttonsNode = null;
     [Export] private Label3D debugLabel = null;
 
+    [ExportCategory("Mouse Settings")]
+    [Export] protected float mouseDragSensitivity = 0.003f;
+
     [ExportCategory("Station Type")]
     [Export] public E_StationType StationType { get; private set; }
 
@@ -35,8 +38,15 @@ public abstract partial class Station : Node
         interactColliderNode.BodyExited -= HandleInteractColliderNodeAreaExited;
     }
 
-    public abstract void EnterStation();
-    public abstract void ExitStation();
+    public virtual void EnterStation()
+    {
+        Input.MouseMode = Input.MouseModeEnum.Visible;
+    }
+
+    public virtual void ExitStation()
+    {
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+    }
 
     public override void _UnhandledInput(InputEvent @event)
     {
