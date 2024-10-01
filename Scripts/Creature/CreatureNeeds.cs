@@ -9,10 +9,10 @@ public partial class CreatureNeeds : Node3D
     [Export] private Timer needsDisplayUpdateTimerNode = null;
 
     [ExportCategory("Behaviour")]
-    [Export] private float hungerDepletionRate = 1.0f;
-    [Export] private float happinessDepletionRate = 1.0f;
-    [Export] private float cleanlinessDepletionRate = 1.0f;
-    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 99.0f;
+    [Export] private float hungerDepletionRate = 0.6f;
+    [Export] private float happinessDepletionRate = 0.4f;
+    [Export] private float cleanlinessDepletionRate = 0.5f;
+    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 40.0f;
     [Export] private int maxIngredientsRequested = 4;
 
     private GlobalSignals globalSignals = null;
@@ -157,8 +157,7 @@ public partial class CreatureNeeds : Node3D
         currentTimeLeft -= (float)delta;
     }
 
-    // THERE WILL BE ISSUES WITH THIS WHERE CREATURE CAN POTENTIALLY REQUEST LOADS OF INGREDIENTS
-    // NEED TO FIND A WAY TO LIMIT THIS TO, SAY, FOUR INGREDIENTS, MAX
+    // NOT SURE WHY THIS IS TRIGGERING AS SOON AS PLAYER CLOCKS IN
     private void MakeFeedingRequestIfBelowThreshold()
     {
         if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f) && !hasMadeFeedingRequest)

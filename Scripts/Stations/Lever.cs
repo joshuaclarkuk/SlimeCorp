@@ -11,6 +11,9 @@ public partial class Lever : Node3D
     private float targetRotation = Mathf.DegToRad(45.0f);
     private float currentRotation = 0.0f;
 
+    public event Action OnLeverTargetReached;
+    public event Action OnLeverTargetLeft;
+
     public override void _Ready()
     {
         // Can't export DegToRad values due to confusing maths, so need to initialise instead

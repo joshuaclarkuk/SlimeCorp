@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7mjrwc8070tk"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/CodeComponent.cs" id="1_rohac"]
+
+[node name="CodeComponent" type="Node3D" node_paths=PackedStringArray("digits", "codeResetTimer")]
+script = ExtResource("1_rohac")
+digits = [NodePath("Digits/Digit1"), NodePath("Digits/Digit2"), NodePath("Digits/Digit3"), NodePath("Digits/Digit4")]
+defaultColour = Color(1, 0.615686, 0, 1)
+enteredColour = Color(0.054902, 0.501961, 1, 1)
+correctColour = Color(0.14902, 1, 0, 1)
+incorrectColour = Color(1, 0.101961, 0, 1)
+codeResetTimer = NodePath("CodeResetTimer")
+
+[node name="Digits" type="Node3D" parent="."]
+
+[node name="Digit1" type="Label3D" parent="Digits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149768, 0, 0)
+text = "0"
+
+[node name="Digit2" type="Label3D" parent="Digits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0497681, 0, 0)
+text = "0"
+
+[node name="Digit3" type="Label3D" parent="Digits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0502319, 0, 0)
+text = "0"
+
+[node name="Digit4" type="Label3D" parent="Digits"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.150232, 0, 0)
+text = "0"
+
+[node name="CodeResetTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

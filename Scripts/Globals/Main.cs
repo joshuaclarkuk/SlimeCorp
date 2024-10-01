@@ -57,6 +57,7 @@ public partial class Main : Node3D
             case 0:
                 // Day 0 logic here
                 creatureNeeds.SetUpForNewDay(1.0f); // Replace with resource when created
+                GenerateEmployeeNumber();
                 break;
             case 1:
                 // Day 1 logic here
@@ -103,6 +104,20 @@ public partial class Main : Node3D
     private void ResetSlimeCollectedAmount()
     {
         // Set slime collected back to zero
+    }
+
+    private void GenerateEmployeeNumber()
+    {
+        // Generate employee number here
+        Random random = new Random();
+        int[] employeeNumber = new int[4];
+        for (int i = 0; i < employeeNumber.Length; i++)
+        {
+            employeeNumber[i] = random.Next(0, 10);
+        }
+
+        // Pass code in to event
+        globalSignals.RaiseEmployeeNumberGenerated(employeeNumber);
     }
 
     private void HandlePlayerInteractWithStation(E_StationType type)
