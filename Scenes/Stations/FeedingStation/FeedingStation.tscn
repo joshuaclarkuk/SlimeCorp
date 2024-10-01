@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="5_7kvbw"]
 [ext_resource type="Script" path="res://Scripts/Stations/Lever.cs" id="6_7mi7u"]
 
-[node name="FeedingStation" node_paths=PackedStringArray("leverNode", "buttonsNode", "debugLabel") instance=ExtResource("1_5275c")]
+[node name="FeedingStation" node_paths=PackedStringArray("leverNode", "servingFoodTimerNode", "buttonsNode", "debugLabel") instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
 leverNode = NodePath("Lever")
+servingFoodTimerNode = NodePath("ServingFoodTimer")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 2
@@ -30,3 +31,7 @@ travelAmount = 0.06
 [node name="Lever" parent="." index="5" instance=ExtResource("5_7kvbw")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.6, 1.1, 0.3)
 script = ExtResource("6_7mi7u")
+
+[node name="ServingFoodTimer" type="Timer" parent="." index="6"]
+wait_time = 5.0
+one_shot = true

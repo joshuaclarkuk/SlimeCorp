@@ -6,6 +6,7 @@ public partial class FeedingStation : Station
 {
     [ExportCategory("Required Nodes")]
     [Export] private Lever leverNode = null;
+    [Export] private Timer servingFoodTimerNode = null;
 
     private Dictionary<E_IngredientList, bool> activeIngredients = new Dictionary<E_IngredientList, bool>();
 
@@ -13,35 +14,45 @@ public partial class FeedingStation : Station
     {
         base._Ready();
 
-        // Initialise ingredient dictionary with all possible ingredients and set initial values to false
+        // Store ingredient enum values
         Array enumValues = Enum.GetValues(typeof(E_IngredientList));
-        for (int i = 0; i < enumValues.Length; i++)
-        {
-            activeIngredients.Add((E_IngredientList)enumValues.GetValue(i), false);
-        }
+
+        // Initialise ingredient dictionary with all possible ingredients and set initial values to false
+        InitialiseIngredientDictionary(enumValues);
 
         // Assign button debug label values (leaves 0 clear for "Reset")
-        buttonsNode.ButtonArray[0].AssignDebugLabelText("Reset");
-        int enumIndex = 0;
-        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
-        {
-            if (enumIndex < enumValues.Length)
-            {
-                buttonsNode.ButtonArray[j].AssignDebugLabelText(enumValues.GetValue(enumIndex).ToString());
-                enumIndex++;
-            }
-        }
+        AssignDebugLabelValues(enumValues);
+
+        // Have to link in _Ready and _Exit otherwise would lose track of timer when player exits Station
+        servingFoodTimerNode.Timeout += HandleServingFoodTimerTimeout;
+    }
+
+    public override void _ExitTree()
+    {
+        servingFoodTimerNode.Timeout -= HandleServingFoodTimerTimeout;
     }
 
     public override void EnterStation()
     {
         base.EnterStation();
+
+        // Link signals
+        leverNode.OnLeverTargetReached += HandleLeverTargetReached;
+
         GD.Print($"Calling EnterStation method on {Name}");
     }
 
     public override void ExitStation()
     {
         base.ExitStation();
+
+        // Unlink signals
+        leverNode.OnLeverTargetReached -= HandleLeverTargetReached;
+
+        // Reset machine
+        buttonsNode.ResetAndRaiseAllButtons();
+        leverNode.ReturnToOriginalPosition();
+
         GD.Print($"Calling ExitStation method on {Name}");
     }
 
@@ -51,9 +62,15 @@ public partial class FeedingStation : Station
 
         if (isMouseClicked)
         {
-            leverNode.MovePhysicalHandleWithMouseMotion(mouseDragSensitivity, mouseDragMotion);
-        }    
-
+            if (canInteractWithStation)
+            {
+                leverNode.MovePhysicalHandleWithMouseMotion(mouseDragSensitivity, mouseDragMotion);
+            }
+        }
+        else
+        {
+            leverNode.ReturnToOriginalPosition();
+        }
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)
@@ -180,6 +197,41 @@ public partial class FeedingStation : Station
         foreach (KeyValuePair<E_IngredientList, bool> entry in activeIngredients)
         {
             GD.Print($"Ingredient: {entry.Key}, Served: {entry.Value}");
+        }
+    }
+
+    private void HandleLeverTargetReached()
+    {
+        servingFoodTimerNode.Start();
+        canInteractWithStation = false;
+        globalSignals.RaiseServeCreatureFood(activeIngredients);
+        globalSignals.RaisePlayerExitStation(StationType);
+    }
+
+    private void HandleServingFoodTimerTimeout()
+    {
+        canInteractWithStation = true;
+    }
+
+    private void InitialiseIngredientDictionary(Array enumValues)
+    {
+        for (int i = 0; i < enumValues.Length; i++)
+        {
+            activeIngredients.Add((E_IngredientList)enumValues.GetValue(i), false);
+        }
+    }
+
+    private void AssignDebugLabelValues(Array enumValues)
+    {
+        buttonsNode.ButtonArray[0].AssignDebugLabelText("Reset");
+        int enumIndex = 0;
+        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
+        {
+            if (enumIndex < enumValues.Length)
+            {
+                buttonsNode.ButtonArray[j].AssignDebugLabelText(enumValues.GetValue(enumIndex).ToString());
+                enumIndex++;
+            }
         }
     }
 }

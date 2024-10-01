@@ -18,6 +18,7 @@ public abstract partial class Station : Node
 
     protected Vector2 mouseDragMotion = Vector2.Zero;
     protected bool isMouseClicked = false;
+    protected bool canInteractWithStation = true; // Use to lock a station out from interaction (after serving food, for example)
 
     public override void _Ready()
     {
@@ -49,6 +50,7 @@ public abstract partial class Station : Node
     public virtual void ExitStation()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        isMouseClicked = false;
     }
 
     public override void _UnhandledInput(InputEvent @event)

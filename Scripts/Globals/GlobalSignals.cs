@@ -13,6 +13,7 @@ public partial class GlobalSignals : Node
     public event Action OnPlayerClockedOut;
 
     public event Action<Dictionary<E_IngredientList, bool>> OnCreatureFeedRequest;
+    public event Action<Dictionary<E_IngredientList, bool>> OnServeCreatureFood;
 
     public event Action<E_StationType> OnPlayerEnterStationCollider;
     public event Action<E_StationType> OnPlayerExitStationCollider;
@@ -29,6 +30,7 @@ public partial class GlobalSignals : Node
     public void RaisePlayerClockedOut() { OnPlayerClockedOut?.Invoke(); }
 
     public void RaiseCreatureFeedRequest(Dictionary<E_IngredientList, bool> requestedIngredients) { OnCreatureFeedRequest?.Invoke(requestedIngredients); }
+    public void RaiseServeCreatureFood(Dictionary<E_IngredientList, bool> servedIngredients) { OnServeCreatureFood?.Invoke(servedIngredients); }
 
     public void RaisePlayerEnterStationCollider(E_StationType stationType) { OnPlayerEnterStationCollider?.Invoke(stationType); }
     public void RaisePlayerExitStationCollider(E_StationType stationType) { OnPlayerExitStationCollider?.Invoke(stationType); }

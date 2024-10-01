@@ -28,6 +28,12 @@ public partial class Lever : Node3D
         UpdateRotation(currentRotation);
     }
 
+    public void ReturnToOriginalPosition()
+    {
+        UpdateRotation(startRotation);
+        currentRotation = startRotation;
+    }
+
     // Be able to drag a lever down using mouse drag
     public void MovePhysicalHandleWithMouseMotion(float mouseDragSensitivity, Vector2 mouseDragMotion)
     {
