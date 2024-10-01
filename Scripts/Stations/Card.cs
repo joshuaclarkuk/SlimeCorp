@@ -19,59 +19,43 @@ public partial class Card : Node3D
         UpdateLocation(currentLocation);
     }
 
-    public void MovePhysicalCardWithMouseMotion(float mouseDragMotion, float mouseDragSensitivity)
-    {
-        float percentageStep = mouseDragMotion * (range * mouseDragSensitivity);
-
-        // If startLocation is greater that targetLocation, clamp on the negative, otherwise clamp on the positive
-        if (startLocation > targetLocation)
-        {
-            currentLocation += percentageStep;
-            currentLocation = Mathf.Clamp(currentLocation, targetLocation, startLocation);
-        }
-        else
-        {
-            currentLocation -= percentageStep;
-            currentLocation = Mathf.Clamp(currentLocation, startLocation, targetLocation);
-        }
-
-        UpdateLocation(currentLocation);
-    }
-
     public void ReturnToOriginalPosition()
     {
         UpdateLocation(startLocation);
         currentLocation = startLocation;
     }
 
+    public void MovePhysicalCardWithMouseMotion(float mouseDragMotion, float mouseDragSensitivity)
+    {
+        // If startLocation is greater that targetLocation, clamp on the negative, otherwise clamp on the positive
+        if (startLocation > targetLocation)
+        {
+            float percentageStep = mouseDragMotion * (range * mouseDragSensitivity);
+            currentLocation += percentageStep;
+        }
+        else
+        {
+            float percentageStep = -mouseDragMotion * (range * mouseDragSensitivity);
+            currentLocation -= percentageStep;
+        }
+
+        // Always clamps location no matter whether the card needs swiping up or down
+        currentLocation = Mathf.Clamp(currentLocation, Mathf.Min(startLocation, targetLocation), Mathf.Max(startLocation, targetLocation));
+
+        UpdateLocation(currentLocation);
+    }
+
     private void UpdateLocation(float newLocation)
     {
         Position = new Vector3(Position.X, newLocation, Position.Z);
 
-        float ninetyPercentPoint = 0.0f;
-        if (startLocation > targetLocation)
+        if (Mathf.Abs(currentLocation - targetLocation) <= 0.1f * range)
         {
-            ninetyPercentPoint = targetLocation + (range * 0.1f);  // 90% towards the target (downwards)
-            if (currentLocation <= ninetyPercentPoint)
-            {
-                OnCardTargetReached?.Invoke();
-            }
-            else
-            {
-                OnCardTargetLeft?.Invoke();
-            }
+            OnCardTargetReached?.Invoke();
         }
         else
         {
-            ninetyPercentPoint = targetLocation - (range * 0.1f);  // 90% towards the target (upwards)
-            if (currentLocation >= ninetyPercentPoint)
-            {
-                OnCardTargetReached?.Invoke();
-            }
-            else
-            {
-                OnCardTargetLeft?.Invoke();
-            }
+            OnCardTargetLeft?.Invoke();
         }
     }
 }

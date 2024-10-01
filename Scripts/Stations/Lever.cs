@@ -31,55 +31,36 @@ public partial class Lever : Node3D
     // Be able to drag a lever down using mouse drag
     public void MovePhysicalHandleWithMouseMotion(float mouseDragSensitivity, Vector2 mouseDragMotion)
     {
-        float percentageStep = mouseDragMotion.Y * (range * mouseDragSensitivity);
-
         if (startRotation > targetRotation)
         {
+            float percentageStep = -mouseDragMotion.Y * (range * mouseDragSensitivity);
             currentRotation += percentageStep;
-            currentRotation = Mathf.Clamp(currentRotation, startRotation, targetRotation);
         }
         else
         {
+            float percentageStep = mouseDragMotion.Y * (range * mouseDragSensitivity);
             currentRotation -= percentageStep;
-            currentRotation = Mathf.Clamp(currentRotation, startRotation, targetRotation);
         }
+
+        // Always clamps rotation no matter whether the lever starts in the up position or the down position
+        currentRotation = Mathf.Clamp(currentRotation, Mathf.Min(startRotation, targetRotation), Mathf.Max(startRotation, targetRotation));
 
         UpdateRotation(currentRotation);
-
-        if (currentRotation >= targetRotation * 0.9f)
-        {
-            GD.Print("Lever at end of motion");
-        }
     }
 
     private void UpdateRotation(float newRotation)
     {
         Rotation = new Vector3(newRotation, Rotation.Y, Rotation.Z);
 
-        float ninetyPercentPoint = 0.0f;
-        if (startRotation > targetRotation)
+        // Always calculates correct threshold no matter whether the lever starts in the up position or the down position
+        if (Math.Abs(currentRotation - targetRotation) <= 0.1f * range)
         {
-            ninetyPercentPoint = targetRotation + (range * 0.1f);  // 90% towards the target (downwards)
-            if (currentRotation <= ninetyPercentPoint)
-            {
-                OnLeverTargetReached?.Invoke();
-            }
-            else
-            {
-                OnLeverTargetLeft?.Invoke();
-            }
+            GD.Print("Lever at end of motion");
+            OnLeverTargetReached?.Invoke();
         }
         else
         {
-            ninetyPercentPoint = targetRotation - (range * 0.1f);  // 90% towards the target (upwards)
-            if (currentRotation >= ninetyPercentPoint)
-            {
-                OnLeverTargetReached?.Invoke();
-            }
-            else
-            {
-                OnLeverTargetLeft?.Invoke();
-            }
+            OnLeverTargetLeft?.Invoke();
         }
     }
 }
