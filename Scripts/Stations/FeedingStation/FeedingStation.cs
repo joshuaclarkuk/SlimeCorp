@@ -5,11 +5,9 @@ using System.Collections.Generic;
 public partial class FeedingStation : Station
 {
     [ExportCategory("Required Nodes")]
-    [Export] private Node3D handlePivot = null;
+    [Export] private Lever leverNode = null;
 
     private Dictionary<E_IngredientList, bool> activeIngredients = new Dictionary<E_IngredientList, bool>();
-    private bool isMouseClicked = false;
-    private Vector2 mouseDragMotion = Vector2.Zero;
 
     public override void _Ready()
     {
@@ -39,25 +37,11 @@ public partial class FeedingStation : Station
     {
         base._UnhandledInput(@event);
 
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_MOUSE_1))
-        {
-            isMouseClicked = true;
-        }
-        else if (Input.IsActionJustReleased(GlobalConstants.INPUT_MOUSE_1))
-        {
-            isMouseClicked = false;
-        }
-
         if (isMouseClicked)
         {
-            // Drag handle with mouse motion
-            if (@event is InputEventMouseMotion motion)
-            {
-                mouseDragMotion = -motion.Relative * mouseDragSensitivity;
-                handlePivot.RotateX(-mouseDragMotion.Y);
-                GD.Print($"Mouse drag motion: {mouseDragMotion}");
-            }
-        }
+            leverNode.MovePhysicalHandleWithMouseMotion(mouseDragSensitivity, mouseDragMotion);
+        }    
+
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)

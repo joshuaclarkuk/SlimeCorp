@@ -8,13 +8,16 @@ public abstract partial class Station : Node
     [Export] private Label3D debugLabel = null;
 
     [ExportCategory("Mouse Settings")]
-    [Export] protected float mouseDragSensitivity = 0.003f;
+    [Export] protected float mouseDragSensitivity = 0.05f;
 
     [ExportCategory("Station Type")]
     [Export] public E_StationType StationType { get; private set; }
 
     protected GlobalSignals globalSignals = null;
     private Area3D interactColliderNode = null;
+
+    protected Vector2 mouseDragMotion = Vector2.Zero;
+    protected bool isMouseClicked = false;
 
     public override void _Ready()
     {
@@ -60,6 +63,25 @@ public abstract partial class Station : Node
         if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_7)) { PushButton(7); }
         if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_8)) { PushButton(8); }
         if (Input.IsActionJustPressed(GlobalConstants.INPUT_NUM_9)) { PushButton(9); }
+
+        // Click and drag mouse
+        if (Input.IsActionJustPressed(GlobalConstants.INPUT_MOUSE_1))
+        {
+            isMouseClicked = true;
+        }
+        else if (Input.IsActionJustReleased(GlobalConstants.INPUT_MOUSE_1))
+        {
+            isMouseClicked = false;
+        }
+
+        if (isMouseClicked)
+        {
+            // Calculate mouse motion
+            if (@event is InputEventMouseMotion motion)
+            {
+                mouseDragMotion = -motion.Relative * mouseDragSensitivity;
+            }
+        }
     }
 
     protected abstract void HandleButtonEngaged(int buttonIndex);
