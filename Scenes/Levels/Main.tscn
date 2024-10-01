@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=16 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="2_asnck"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
+[ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,6 +46,7 @@ shadow_enabled = true
 script = ExtResource("2_asnck")
 creatureNeedsDisplayNode = NodePath("CreatureNeedsViewport/CreatureNeedsDisplay")
 needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
+percentageMaxHungerBeforeFeedingRequestMade = 99.0
 
 [node name="CreatureNeedsScreen" type="Sprite3D" parent="CreatureNeeds"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
@@ -118,3 +120,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 
 [node name="RovingCamera" type="Camera3D" parent="."]
 transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 3, 2, 0)
+
+[node name="DebugUI" parent="." instance=ExtResource("11_yopgj")]

@@ -23,7 +23,7 @@ material = ExtResource("3_yxkfq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.6)
 
 [node name="Buttons" parent="." index="4" instance=ExtResource("4_1utrv")]
-transform = Transform3D(0.6, 0, 0, 0, 0.563816, -0.205212, 0, 0.205212, 0.563816, 0.3, 1.2, 0.2)
+transform = Transform3D(0.6, 0, 0, 0, 0.385673, -0.459627, 0, 0.459627, 0.385673, 0.3, 1.2, 0.3)
 shouldStayDown = true
 travelAmount = 0.06
 

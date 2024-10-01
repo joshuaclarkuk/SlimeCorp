@@ -3,6 +3,9 @@ using System;
 
 public partial class Button : CsgCylinder3D
 {
+    [ExportCategory("Required Nodes")]
+    [Export] private Label3D debugLabelNode = null;
+
     public bool IsTravelling { get; private set; } = false;
     public bool IsDown { get; private set; } = false;
 
@@ -38,6 +41,11 @@ public partial class Button : CsgCylinder3D
         animateButtonUpTween.TweenProperty(this, "position", startingPosition, buttonPressDuration);
         animateButtonUpTween.Play();
         animateButtonUpTween.Finished += HandleAnimateButtonUpTweenFinished;
+    }
+
+    public void AssignDebugLabelText(string text)
+    {
+        debugLabelNode.Text = text;
     }
 
     private void HandleAnimateButtonDownTweenFinished()

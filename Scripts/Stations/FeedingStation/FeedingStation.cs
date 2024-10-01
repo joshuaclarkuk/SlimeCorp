@@ -19,6 +19,18 @@ public partial class FeedingStation : Station
         {
             activeIngredients.Add((E_IngredientList)enumValues.GetValue(i), false);
         }
+
+        // Assign button debug label values (leaves 0 clear for "Reset")
+        buttonsNode.ButtonArray[0].AssignDebugLabelText("Reset");
+        int enumIndex = 0;
+        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
+        {
+            if (enumIndex < enumValues.Length)
+            {
+                buttonsNode.ButtonArray[j].AssignDebugLabelText(enumValues.GetValue(enumIndex).ToString());
+                enumIndex++;
+            }
+        }
     }
 
     public override void EnterStation()

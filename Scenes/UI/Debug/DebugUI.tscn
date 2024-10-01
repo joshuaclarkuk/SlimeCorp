@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg2l7oxrw1wlj"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Debug/DebugUI.cs" id="1_m6kf3"]
+[ext_resource type="PackedScene" uid="uid://bpxy4xuhf4j7f" path="res://Scenes/UI/Debug/FoodRequest.tscn" id="2_l5jpd"]
+
+[node name="DebugUI" type="Control" node_paths=PackedStringArray("employeeNumberLabelNode", "foodRequestContainerNode")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_m6kf3")
+employeeNumberLabelNode = NodePath("DebugMenuContainer/EmployeeCodeContainer/EmployeeCodeValue")
+foodRequestContainerNode = NodePath("DebugMenuContainer/FoodRequestContainer")
+foodRequestScene = ExtResource("2_l5jpd")
+
+[node name="DebugMenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 219.0
+offset_bottom = 90.0
+theme_override_constants/separation = 20
+
+[node name="EmployeeCodeContainer" type="HBoxContainer" parent="DebugMenuContainer"]
+layout_mode = 2
+
+[node name="EmployeeCodeLabel" type="Label" parent="DebugMenuContainer/EmployeeCodeContainer"]
+layout_mode = 2
+text = "Employee Code: "
+
+[node name="EmployeeCodeValue" type="Label" parent="DebugMenuContainer/EmployeeCodeContainer"]
+layout_mode = 2
+text = "0000"
+
+[node name="FoodRequestContainer" type="VBoxContainer" parent="DebugMenuContainer"]
+layout_mode = 2
+
+[node name="Titles" type="HBoxContainer" parent="DebugMenuContainer/FoodRequestContainer"]
+layout_mode = 2
+
+[node name="FoodRequestedTitleLabel" type="Label" parent="DebugMenuContainer/FoodRequestContainer/Titles"]
+layout_mode = 2
+text = "FOOD REQUESTED || "
+
+[node name="FoodReceivedTitleLabel" type="Label" parent="DebugMenuContainer/FoodRequestContainer/Titles"]
+layout_mode = 2
+text = "Received?"

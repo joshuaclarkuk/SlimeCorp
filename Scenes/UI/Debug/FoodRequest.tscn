@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpxy4xuhf4j7f"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Debug/FoodRequest.cs" id="1_b44t6"]
+
+[node name="FoodRequest" type="HBoxContainer" node_paths=PackedStringArray("ingredientLabelNode", "requestedLabelNode")]
+script = ExtResource("1_b44t6")
+ingredientLabelNode = NodePath("IngredientLabel")
+requestedLabelNode = NodePath("RequestedLabel")
+
+[node name="IngredientLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="RequestedLabel" type="Label" parent="."]
+layout_mode = 2

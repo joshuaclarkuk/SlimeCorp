@@ -157,7 +157,6 @@ public partial class CreatureNeeds : Node3D
         currentTimeLeft -= (float)delta;
     }
 
-    // NOT SURE WHY THIS IS TRIGGERING AS SOON AS PLAYER CLOCKS IN
     private void MakeFeedingRequestIfBelowThreshold()
     {
         if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f) && !hasMadeFeedingRequest)
@@ -169,6 +168,7 @@ public partial class CreatureNeeds : Node3D
             while (requestedIngredientList.Count < 1);  // Ensure we get at least 1 ingredient
 
             hasMadeFeedingRequest = true;
+            globalSignals.RaiseCreatureFeedRequest(requestedIngredientList);
 
             // Debug request
             foreach (E_IngredientList ingredient in requestedIngredientList.Keys)

@@ -4,7 +4,7 @@ using System;
 public partial class Buttons : Node3D
 {
     [ExportCategory("Required Nodes")]
-    [Export] private Button[] buttonArray = null;
+    [Export] public Button[] ButtonArray { get; private set; } = null;
 
     [ExportCategory("Button Behaviour")]
     [Export] private bool shouldStayDown = false;
@@ -18,7 +18,7 @@ public partial class Buttons : Node3D
 
     public override void _Ready()
     {
-        foreach (Button button in buttonArray)
+        foreach (Button button in ButtonArray)
         {
             button.OnButtonDowned += HandleButtonIsPushed;
         }
@@ -27,15 +27,15 @@ public partial class Buttons : Node3D
     public void PushButton(int buttonNumber)
     {
         // Guard clause to make sure you can't press a button that's animating
-        if (buttonArray[buttonNumber].IsTravelling) { return; }
+        if (ButtonArray[buttonNumber].IsTravelling) { return; }
 
-        if (!buttonArray[buttonNumber].IsDown)
+        if (!ButtonArray[buttonNumber].IsDown)
         {
-            buttonArray[buttonNumber].DepressButton(travelAmount, buttonPressDuration);
+            ButtonArray[buttonNumber].DepressButton(travelAmount, buttonPressDuration);
         }
         else
         {
-            buttonArray[buttonNumber].RaiseButton(buttonPressDuration);
+            ButtonArray[buttonNumber].RaiseButton(buttonPressDuration);
         }
     }
 
@@ -45,7 +45,7 @@ public partial class Buttons : Node3D
         if (!shouldStayDown) { return; }
 
         // Raise all buttons
-        foreach (Button button in buttonArray)
+        foreach (Button button in ButtonArray)
         {
             button.RaiseButton(buttonPressDuration);
         }
@@ -54,7 +54,7 @@ public partial class Buttons : Node3D
     private void HandleButtonIsPushed(Button button, bool isDown)
     {
         // Get array position of button pressed
-        int buttonIndex = Array.IndexOf(buttonArray, button);
+        int buttonIndex = Array.IndexOf(ButtonArray, button);
 
         if (shouldStayDown)
         {
