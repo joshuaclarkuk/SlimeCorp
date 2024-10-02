@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wp8155nwu4mq"]
 
-[ext_resource type="Script" path="res://Scripts/Stations/Buttons.cs" id="1_2ibfs"]
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/Buttons.cs" id="1_2ibfs"]
 [ext_resource type="PackedScene" uid="uid://y48k5t3gmky0" path="res://Scenes/Stations/Button.tscn" id="2_wpuw2"]
 
 [node name="Buttons" type="Node3D" node_paths=PackedStringArray("ButtonArray")]

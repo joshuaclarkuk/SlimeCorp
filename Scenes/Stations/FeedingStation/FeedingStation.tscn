@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://b15kwvqglnup0" path="res://Materials/M_PrototypeRed.tres" id="3_yxkfq"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_1utrv"]
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="5_7kvbw"]
-[ext_resource type="Script" path="res://Scripts/Stations/Lever.cs" id="6_7mi7u"]
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/Lever.cs" id="6_7mi7u"]
 
 [node name="FeedingStation" node_paths=PackedStringArray("leverNode", "servingFoodTimerNode", "buttonsNode", "debugLabel") instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")

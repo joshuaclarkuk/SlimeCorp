@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class CreatureNeeds : Node3D
 {
@@ -36,11 +37,11 @@ public partial class CreatureNeeds : Node3D
 
     // Feeding request
     private E_IngredientList[] possibleIngredientsArray = null;
-    private Dictionary<E_IngredientList, bool> requestedIngredientList = new Dictionary<E_IngredientList, bool>();
+    private Dictionary<E_IngredientList, bool> requestedIngredientDictionary = new Dictionary<E_IngredientList, bool>();
 
     public override void _Ready()
     {
-        // Initialise possible ingredients array
+        // Initialise possible ingredients array and compile dictionary
         Array enumValues = Enum.GetValues(typeof(E_IngredientList));
         possibleIngredientsArray = new E_IngredientList[enumValues.Length];
 
@@ -50,10 +51,17 @@ public partial class CreatureNeeds : Node3D
             possibleIngredientsArray[i] = (E_IngredientList)enumValues.GetValue(i);
         }
 
+        // Initialise requestedIngredientDictionary with all possible keys and set values to false
+        foreach (E_IngredientList ingredient in Enum.GetValues(typeof(E_IngredientList)))
+        {
+            requestedIngredientDictionary[ingredient] = false;
+        }
+
         // Link global signals so we know when player has clocked in and out
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
+        globalSignals.OnServeCreatureFood += HandleServeCreatureFood;
 
         // Link timer signal to update UI on timeout
         needsDisplayUpdateTimerNode.Timeout += HandleNeedsDisplayUpdateTimerNodeTimeout;
@@ -83,57 +91,30 @@ public partial class CreatureNeeds : Node3D
         creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
-    public void BeServedFood(List<E_IngredientList> ingredientsBeingServed)
+    private void HandleServeCreatureFood(Dictionary<E_IngredientList, bool> servedIngredients)
     {
-        // Check for unwanted ingredients        
-        bool hasExtraIngredients = false;
+        bool hasBeenServedCorrectIngredients = true; // Flag
 
-        // Mark requested ingredients as true if they are served
-        foreach (E_IngredientList servedIngredient in ingredientsBeingServed)
+        foreach (E_IngredientList ingredient in Enum.GetValues(typeof(E_IngredientList)))
         {
-            if (requestedIngredientList.ContainsKey(servedIngredient))
-            {
-                requestedIngredientList[servedIngredient] = true;
-            }
-            else
-            {
-                hasExtraIngredients = true;
-            }
-        }
+            bool requestedValue = requestedIngredientDictionary.ContainsKey(ingredient) ? requestedIngredientDictionary[ingredient] : false;
+            bool servedValue = servedIngredients.ContainsKey(ingredient) ? servedIngredients[ingredient] : false;
 
-        // Check for missing ingredients
-        List<E_IngredientList> missingIngredients = new List<E_IngredientList>();
-        foreach (KeyValuePair<E_IngredientList, bool> ingredient in requestedIngredientList)
-        {
-            if (!ingredient.Value)
+            // Compare the requested and served values for the current ingredient
+            if (requestedValue != servedValue)
             {
-                missingIngredients.Add(ingredient.Key);  // Add missing ingredients to list
+                GD.Print($"Mismatch for ingredient {ingredient}: Requested {requestedValue}, Served {servedValue}");
+                hasBeenServedCorrectIngredients = false;
             }
         }
 
-
-        // Print debug information
-        GD.Print("=== Requested Ingredients Status ===");
-        foreach (KeyValuePair<E_IngredientList, bool> entry in requestedIngredientList)
+        if (hasBeenServedCorrectIngredients)
         {
-            GD.Print($"Ingredient: {entry.Key}, Served: {entry.Value}");
+            GD.Print("All served ingredients match the requested ingredients.");
         }
-        GD.Print("====================================");
-
-        // Check for errors
-        if (missingIngredients.Count > 0)
+        else
         {
-            GD.PrintErr("Missing Ingredients: " + string.Join(", ", missingIngredients));
-        }
-
-        if (hasExtraIngredients)
-        {
-            GD.PrintErr("There are extra ingredients that shouldn't have been served.");
-        }
-
-        if (missingIngredients.Count == 0 && !hasExtraIngredients)
-        {
-            GD.Print("All ingredients are correct!");
+            GD.Print("There was a mismatch between served and requested ingredients.");
         }
     }
 
@@ -165,15 +146,15 @@ public partial class CreatureNeeds : Node3D
             {
                 ProcessFeedingRequest();
             }
-            while (requestedIngredientList.Count < 1);  // Ensure we get at least 1 ingredient
+            while (requestedIngredientDictionary.Count < 1);  // Ensure we get at least 1 ingredient
 
             hasMadeFeedingRequest = true;
-            globalSignals.RaiseCreatureFeedRequest(requestedIngredientList);
+            globalSignals.RaiseCreatureFeedRequest(requestedIngredientDictionary);
 
             // Debug request
-            foreach (E_IngredientList ingredient in requestedIngredientList.Keys)
+            foreach (E_IngredientList ingredient in requestedIngredientDictionary.Keys)
             {
-                GD.Print($"Creature has requested: {ingredient} and set its value to {requestedIngredientList[ingredient]}");
+                GD.Print($"Creature has requested: {ingredient} and set its value to {requestedIngredientDictionary[ingredient]}");
             }
         }
     }
@@ -181,33 +162,46 @@ public partial class CreatureNeeds : Node3D
     private void ProcessFeedingRequest()
     {
         GD.Print("Hunger below threshold. Making feeding request");
-        // Clear list and reset counters for a new request
-        requestedIngredientList.Clear();
+        // Make sure all values are set to false before making a new request for safety
+        foreach (E_IngredientList ingredient in requestedIngredientDictionary.Keys.ToList())
+        {
+            requestedIngredientDictionary[ingredient] = false;
+        }
+
         numIngredientsRequested = 0;
 
         // Loop through possible ingredients and decide whether or not it is wanted
         foreach (E_IngredientList ingredient in possibleIngredientsArray)
         {
-            // Break early if max ingredients have already been requested
+            // Break early if the max number of ingredients have already been requested
             if (numIngredientsRequested >= maxIngredientsRequested)
             {
                 break;
             }
 
-            // Randomly decide if the ingredient is needed, with a 50% chance
+            // Randomly decide if the ingredient is needed (50% chance)
             bool wantsIngredient = GD.Randi() % 2 == 0;
 
+            // If the ingredient is wanted, set it to true in the dictionary
             if (wantsIngredient)
             {
-                requestedIngredientList.Add(ingredient, false);
+                requestedIngredientDictionary[ingredient] = true;
                 numIngredientsRequested++;
             }
         }
 
-        // If the list is empty, warn that a new request will be made
-        if (requestedIngredientList.Count == 0)
+        // If no ingredients were selected, warn that new request will be made
+        if (numIngredientsRequested == 0)
         {
             GD.Print("No ingredients requested, will retry.");
+        }
+        else
+        {
+            // Print requested ingredients
+            foreach (var entry in requestedIngredientDictionary)
+            {
+                GD.Print($"{entry.Key}: Requested = {entry.Value}");
+            }
         }
     }
 

@@ -50,8 +50,7 @@ public partial class FeedingStation : Station
         leverNode.OnLeverTargetReached -= HandleLeverTargetReached;
 
         // Reset machine
-        buttonsNode.ResetAndRaiseAllButtons();
-        leverNode.ReturnToOriginalPosition();
+        ResetMachine();
 
         GD.Print($"Calling ExitStation method on {Name}");
     }
@@ -73,10 +72,14 @@ public partial class FeedingStation : Station
         }
     }
 
+    public void ResetMachine()
+    {
+        buttonsNode.ResetAndRaiseAllButtons();
+        leverNode.ReturnToOriginalPosition();
+    }
+
     protected override void HandleButtonEngaged(int buttonIndex)
     {
-        GD.Print($"Button {buttonIndex} was pressed in {Name}.");
-
         switch (buttonIndex)
         {
             case 0:
@@ -127,8 +130,6 @@ public partial class FeedingStation : Station
 
     protected override void HandleButtonDisengaged(int buttonIndex)
     {
-        GD.Print($"Button {buttonIndex} was released in FeedingStation.");
-
         switch (buttonIndex)
         {
             case 0:
@@ -180,24 +181,12 @@ public partial class FeedingStation : Station
     {
         E_IngredientList ingredientEnum = (E_IngredientList)ingredientIndex;
         activeIngredients[ingredientEnum] = true;
-        GD.Print($"Ingredient added: {activeIngredients[ingredientEnum]}");
-
-        foreach (KeyValuePair<E_IngredientList, bool> entry in activeIngredients)
-        {
-            GD.Print($"Ingredient: {entry.Key}, Served: {entry.Value}");
-        }
     }
 
     private void RemoveIngredientFromList(int ingredientIndex)
     {
         E_IngredientList ingredientEnum = (E_IngredientList)ingredientIndex;
         activeIngredients[ingredientEnum] = false;
-        GD.Print($"Ingredient removed: {activeIngredients[ingredientEnum]}");
-
-        foreach (KeyValuePair<E_IngredientList, bool> entry in activeIngredients)
-        {
-            GD.Print($"Ingredient: {entry.Key}, Served: {entry.Value}");
-        }
     }
 
     private void HandleLeverTargetReached()
@@ -223,7 +212,10 @@ public partial class FeedingStation : Station
 
     private void AssignDebugLabelValues(Array enumValues)
     {
+        // Set button 0 to be "Reset"
         buttonsNode.ButtonArray[0].AssignDebugLabelText("Reset");
+
+        // Assign buttons 1 - 9 to be results of loop through enum
         int enumIndex = 0;
         for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
         {

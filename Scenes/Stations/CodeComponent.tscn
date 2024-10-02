@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7mjrwc8070tk"]
 
-[ext_resource type="Script" path="res://Scripts/Stations/CodeComponent.cs" id="1_rohac"]
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/CodeComponent.cs" id="1_rohac"]
 
 [node name="CodeComponent" type="Node3D" node_paths=PackedStringArray("digits", "codeResetTimer")]
 script = ExtResource("1_rohac")
