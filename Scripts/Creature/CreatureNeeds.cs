@@ -118,37 +118,23 @@ public partial class CreatureNeeds : Node3D
 
     private void MakeFeedingRequestIfBelowThreshold()
     {
-        if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f))
+        if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f) && !hasMadeFeedingRequest)
         {
-            if (!hasMadeFeedingRequest)
-            {
-                GD.Print("Hunger below threshold. Making feeding request");
-                feedingComponentNode.ProcessFeedingRequest();
-                hasMadeFeedingRequest = true;
-                isFeedingRequestSatisfied = false;
-            }
-        }
-        else if (isFeedingRequestSatisfied)
-        {
-            hasMadeFeedingRequest = false;
+            GD.Print("Hunger below threshold. Making feeding request");
+            feedingComponentNode.ProcessFeedingRequest();
+            hasMadeFeedingRequest = true;
+            isFeedingRequestSatisfied = false;
         }
     }
 
     private void MakeCleaningRequestIfBelowThreshold()
     {
-        if (currentCleanlinessLevel <= maxCleanlinessLevel * (percentageMaxCleanlinessBeforeCleaningRequestMade / 100.0f))
+        if (currentCleanlinessLevel <= maxCleanlinessLevel * (percentageMaxCleanlinessBeforeCleaningRequestMade / 100.0f) && !hasMadeCleaningRequest)
         {
-            if (!hasMadeCleaningRequest)
-            {
-                GD.Print("Cleanliness below threshold. Making cleaning request");
-                cleaningComponentNode.ProcessCleaningRequest();
-                hasMadeCleaningRequest = true;
-                isFeedingRequestSatisfied = false;
-            }
-        }
-        else if (isCleaningRequestSatisfied)
-        {
-            hasMadeCleaningRequest = false;
+            GD.Print("Cleanliness below threshold. Making cleaning request");
+            cleaningComponentNode.ProcessCleaningRequest();
+            hasMadeCleaningRequest = true;
+            isCleaningRequestSatisfied = false;
         }
     }
 
