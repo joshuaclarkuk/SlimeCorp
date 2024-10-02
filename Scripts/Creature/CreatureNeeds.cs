@@ -16,8 +16,8 @@ public partial class CreatureNeeds : Node3D
     [Export] private float cleanlinessDepletionRate = 0.5f;
 
     [ExportCategory("Request Points (Percentage Left)")]
-    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 30.0f;
-    [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 30.0f;
+    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 95.0f;
+    [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 95.0f;
 
     [ExportCategory("Replenishment/Addition Rates")]
     [Export] private float maxHungerReplenishment = 100.0f;
@@ -118,23 +118,37 @@ public partial class CreatureNeeds : Node3D
 
     private void MakeFeedingRequestIfBelowThreshold()
     {
-        if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f) && !hasMadeFeedingRequest)
+        if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f))
         {
-            GD.Print("Hunger below threshold. Making feeding request");
-            feedingComponentNode.ProcessFeedingRequest();
-            hasMadeFeedingRequest = true;
-            isFeedingRequestSatisfied = false;
+            if (!hasMadeFeedingRequest)
+            {
+                GD.Print("Hunger below threshold. Making feeding request");
+                feedingComponentNode.ProcessFeedingRequest();
+                hasMadeFeedingRequest = true;
+                isFeedingRequestSatisfied = false;
+            }
+        }
+        else if (isFeedingRequestSatisfied)
+        {
+            hasMadeFeedingRequest = false;
         }
     }
 
     private void MakeCleaningRequestIfBelowThreshold()
     {
-        if (currentCleanlinessLevel <= maxCleanlinessLevel * (percentageMaxCleanlinessBeforeCleaningRequestMade / 100.0f) && !hasMadeCleaningRequest)
+        if (currentCleanlinessLevel <= maxCleanlinessLevel * (percentageMaxCleanlinessBeforeCleaningRequestMade / 100.0f))
         {
-            GD.Print("Cleanliness below threshold. Making cleaning request");
-            cleaningComponentNode.ProcessCleaningRequest();
-            hasMadeCleaningRequest = true;
-            isFeedingRequestSatisfied = false;
+            if (!hasMadeCleaningRequest)
+            {
+                GD.Print("Cleanliness below threshold. Making cleaning request");
+                cleaningComponentNode.ProcessCleaningRequest();
+                hasMadeCleaningRequest = true;
+                isFeedingRequestSatisfied = false;
+            }
+        }
+        else if (isCleaningRequestSatisfied)
+        {
+            hasMadeCleaningRequest = false;
         }
     }
 

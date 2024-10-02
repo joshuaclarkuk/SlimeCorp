@@ -73,9 +73,9 @@ public partial class DebugUI : Control
 
     private void ClearRequestFromScreen(VBoxContainer containerToClear)
     {
-        foreach (HBoxContainer requestLabel in containerToClear.GetChildren())
+        for (int i = 1; i < containerToClear.GetChildCount(); i++)
         {
-            requestLabel.QueueFree();
+            containerToClear.GetChild(i).QueueFree();
         }
     }
 

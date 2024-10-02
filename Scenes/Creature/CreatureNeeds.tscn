@@ -9,8 +9,6 @@ script = ExtResource("1_dak7a")
 feedingComponentNode = NodePath("FeedingComponent")
 cleaningComponentNode = NodePath("Cleaning Component")
 needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
-percentageMaxHungerBeforeFeedingRequestMade = 99.0
-percentageMaxCleanlinessBeforeCleaningRequestMade = 99.0
 
 [node name="FeedingComponent" type="Node3D" parent="."]
 script = ExtResource("2_vmpfc")
