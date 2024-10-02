@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://lv3a7gtpt3cx"]
+[gd_scene load_steps=4 format=3 uid="uid://lv3a7gtpt3cx"]
 
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="1_dak7a"]
 [ext_resource type="Script" path="res://Scripts/Creature/FeedingComponent.cs" id="2_vmpfc"]
+[ext_resource type="Script" path="res://Scripts/Creature/CleaningComponent.cs" id="3_3ibnh"]
 
-[node name="CreatureNeeds" type="Node3D" node_paths=PackedStringArray("feedingComponentNode", "needsDisplayUpdateTimerNode")]
+[node name="CreatureNeeds" type="Node3D" node_paths=PackedStringArray("feedingComponentNode", "cleaningComponentNode", "needsDisplayUpdateTimerNode")]
 script = ExtResource("1_dak7a")
 feedingComponentNode = NodePath("FeedingComponent")
+cleaningComponentNode = NodePath("Cleaning Component")
 needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
 percentageMaxHungerBeforeFeedingRequestMade = 99.0
+percentageMaxCleanlinessBeforeCleaningRequestMade = 99.0
 
 [node name="FeedingComponent" type="Node3D" parent="."]
 script = ExtResource("2_vmpfc")
+
+[node name="Cleaning Component" type="Node3D" parent="."]
+script = ExtResource("3_3ibnh")
 
 [node name="UpdateDisplayTimer" type="Timer" parent="."]

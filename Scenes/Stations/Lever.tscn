@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://cluil6r6xlmbe"]
+[gd_scene load_steps=2 format=3 uid="uid://cluil6r6xlmbe"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/Lever.cs" id="1_ppnnw"]
 
 [node name="Lever" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+script = ExtResource("1_ppnnw")
 
 [node name="PivotPoint" type="Node3D" parent="."]
 

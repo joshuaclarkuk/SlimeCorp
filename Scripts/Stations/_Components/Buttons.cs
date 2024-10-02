@@ -8,7 +8,7 @@ public partial class Buttons : Node3D
 
     [ExportCategory("Button Behaviour")]
     [Export] private bool shouldStayDown = false;
-    [Export] private float buttonPressDuration = 0.3f;
+    [Export] private float buttonPressDuration = 0.05f;
     [Export] private float travelAmount = 0.04f;
 
     private bool isTravelling = false;

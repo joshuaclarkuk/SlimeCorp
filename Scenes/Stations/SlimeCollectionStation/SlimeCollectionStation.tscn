@@ -17,7 +17,7 @@ debugLabel = NodePath("StationDebugLabel")
 StationType = 4
 
 [node name="CameraLocation" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.2, 0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, 0.8)
 
 [node name="CanisterMeshes" type="Node3D" parent="." index="2"]
 
@@ -68,4 +68,4 @@ material = SubResource("StandardMaterial3D_81n1w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.6, 0.5)
 
 [node name="Buttons" parent="." index="4" instance=ExtResource("4_8lu24")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.7, 0.4, 0.3)
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 1.2, 0.3)

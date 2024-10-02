@@ -15,6 +15,12 @@ public partial class GlobalSignals : Node
     public event Action<Dictionary<E_IngredientList, bool>> OnCreatureFeedRequest;
     public event Action<Dictionary<E_IngredientList, bool>> OnServeCreatureFood;
 
+    public event Action<Dictionary<E_AreasToClean, bool>> OnAreasToCleanRequest;
+    public event Action<Dictionary<E_AreasToClean, bool>> OnAreasToCleanCleaned;
+
+    public event Action<bool> OnCreatureFeedRequestSatisfied; // Used to determine whether request should be cleared or not
+    public event Action<bool> OnCreatureCleanRequestSatisfied; // Used to determine whether request should be cleared or not
+
     public event Action<E_StationType> OnPlayerEnterStationCollider;
     public event Action<E_StationType> OnPlayerExitStationCollider;
     public event Action<E_StationType> OnPlayerInteractWithStation;
@@ -31,6 +37,12 @@ public partial class GlobalSignals : Node
 
     public void RaiseCreatureFeedRequest(Dictionary<E_IngredientList, bool> requestedIngredients) { OnCreatureFeedRequest?.Invoke(requestedIngredients); }
     public void RaiseServeCreatureFood(Dictionary<E_IngredientList, bool> servedIngredients) { OnServeCreatureFood?.Invoke(servedIngredients); }
+
+    public void RaiseCreatureFeedRequestSatisfied(bool isSatisfied) { OnCreatureFeedRequestSatisfied?.Invoke(isSatisfied); }
+    public void RaiseCreatureCleanRequestSatisfied(bool isSatisfied) { OnCreatureCleanRequestSatisfied?.Invoke(isSatisfied); }
+
+    public void RaiseAreasToCleanRequest(Dictionary<E_AreasToClean, bool> areasToClean) { OnAreasToCleanRequest?.Invoke(areasToClean); }
+    public void RaiseAreasToCleanCleaned(Dictionary<E_AreasToClean, bool> areasCleaned) { OnAreasToCleanCleaned?.Invoke(areasCleaned); }
 
     public void RaisePlayerEnterStationCollider(E_StationType stationType) { OnPlayerEnterStationCollider?.Invoke(stationType); }
     public void RaisePlayerExitStationCollider(E_StationType stationType) { OnPlayerExitStationCollider?.Invoke(stationType); }

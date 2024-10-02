@@ -20,3 +20,24 @@ public enum E_IngredientList
     SKIN,
     NAILS
 }
+
+public enum E_AreasToClean
+{
+    C1 = 0,
+    C2,
+    C3,
+    B1,
+    B2,
+    B3,
+    A1,
+    A2,
+    A3
+}
+
+public enum E_NeedMetAmount
+{
+    NONE = 0,
+    HALF,
+    MOST,
+    ALL
+}

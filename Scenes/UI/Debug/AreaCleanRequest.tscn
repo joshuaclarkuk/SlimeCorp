@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr5mbyn0i5622"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Debug/AreaCleanRequest.cs" id="1_4gnt2"]
+
+[node name="AreaCleanRequest" type="HBoxContainer" node_paths=PackedStringArray("areaLabelNode", "requestedLabelNode")]
+script = ExtResource("1_4gnt2")
+areaLabelNode = NodePath("AreaLabel")
+requestedLabelNode = NodePath("RequestedLabel")
+
+[node name="AreaLabel" type="Label" parent="."]
+layout_mode = 2
+
+[node name="RequestedLabel" type="Label" parent="."]
+layout_mode = 2

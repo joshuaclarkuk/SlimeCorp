@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceveuvbbbq55n"]
+[gd_scene load_steps=6 format=3 uid="uid://ceveuvbbbq55n"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_5275c"]
 [ext_resource type="Script" path="res://Scripts/Stations/FeedingStation/FeedingStation.cs" id="2_jxwy1"]
 [ext_resource type="Material" uid="uid://b15kwvqglnup0" path="res://Materials/M_PrototypeRed.tres" id="3_yxkfq"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_1utrv"]
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="5_7kvbw"]
-[ext_resource type="Script" path="res://Scripts/Stations/_Components/Lever.cs" id="6_7mi7u"]
 
 [node name="FeedingStation" node_paths=PackedStringArray("leverNode", "servingFoodTimerNode", "buttonsNode", "debugLabel") instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
@@ -26,12 +25,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.6)
 [node name="Buttons" parent="." index="4" instance=ExtResource("4_1utrv")]
 transform = Transform3D(0.6, 0, 0, 0, 0.385673, -0.459627, 0, 0.459627, 0.385673, 0.3, 1.2, 0.3)
 shouldStayDown = true
+buttonPressDuration = 0.3
 travelAmount = 0.06
 
 [node name="Lever" parent="." index="5" instance=ExtResource("5_7kvbw")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.6, 1.1, 0.3)
-script = ExtResource("6_7mi7u")
+
+[node name="LeverColumn" parent="Lever/PivotPoint" index="0"]
+material = ExtResource("3_yxkfq")
 
 [node name="ServingFoodTimer" type="Timer" parent="." index="6"]
 wait_time = 5.0
 one_shot = true
+
+[editable path="Lever"]

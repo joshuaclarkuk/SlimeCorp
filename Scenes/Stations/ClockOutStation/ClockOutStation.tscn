@@ -29,7 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.5)
 
 [node name="Buttons" parent="." index="4" instance=ExtResource("4_u8e5p")]
 transform = Transform3D(0.4, 0, 0, 0, 0.103528, -0.38637, 0, 0.38637, 0.103528, 0, 1, 0.3)
-buttonPressDuration = 0.1
+buttonPressDuration = 0.05
 
 [node name="Card" type="Node3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)

@@ -1,25 +1,31 @@
 using Godot;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 public partial class CreatureNeeds : Node3D
 {
     [ExportCategory("Required Nodes")]
     [Export] private FeedingComponent feedingComponentNode = null;
+    [Export] private CleaningComponent cleaningComponentNode = null;
     [Export] private CreatureNeedsDisplay creatureNeedsDisplayNode = null;
     [Export] private Timer needsDisplayUpdateTimerNode = null;
+    [Export] private DebugUI debugUINode = null;
 
-    [ExportCategory("Behaviour")]
+    [ExportCategory("Depletion Rates")]
     [Export] private float hungerDepletionRate = 0.6f;
     [Export] private float happinessDepletionRate = 0.4f;
     [Export] private float cleanlinessDepletionRate = 0.5f;
-    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 40.0f;
-    [Export] private int maxIngredientsRequested = 4;
+
+    [ExportCategory("Request Points (Percentage Left)")]
+    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 30.0f;
+    [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 30.0f;
+
+    [ExportCategory("Replenishment/Addition Rates")]
+    [Export] private float maxHungerReplenishment = 100.0f;
+    [Export] private float maxCleanlinessReplenishment = 75.0f;
+    [Export] private float maxWasteProductToAdd = 50.0f;
+    [Export] private float maxAngerToAdd = 10.0f;
 
     private GlobalSignals globalSignals = null;
-
-    private int numIngredientsRequested = 0;
 
     // Max levels
     private float maxHungerLevel = 100.0f;
@@ -35,30 +41,23 @@ public partial class CreatureNeeds : Node3D
     // Guards
     private bool playerHasClockedIn = false;
     private bool hasMadeFeedingRequest = false;
-
-    // Feeding requests
-    private Array ingredientEnumValues;
-    private Dictionary<E_IngredientList, bool> requestedIngredientDictionary = new Dictionary<E_IngredientList, bool>();
+    private bool hasMadeCleaningRequest = false;
+    private bool isFeedingRequestSatisfied = false;
+    private bool isCleaningRequestSatisfied = false;
 
     public override void _Ready()
     {
-        // Initialise possible ingredients array and compile dictionary
-        ingredientEnumValues = Enum.GetValues(typeof(E_IngredientList));
-
-        // Initialise requestedIngredientDictionary with all possible keys and set values to false
-        foreach (E_IngredientList ingredient in Enum.GetValues(typeof(E_IngredientList)))
-        {
-            requestedIngredientDictionary[ingredient] = false;
-        }
-
         // Link global signals so we know when player has clocked in and out
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
-        globalSignals.OnServeCreatureFood += HandleServeCreatureFood;
 
         // Link timer signal to update UI on timeout
         needsDisplayUpdateTimerNode.Timeout += HandleNeedsDisplayUpdateTimerNodeTimeout;
+
+        // Link NeedComponent signals
+        feedingComponentNode.OnCreatureServedFood += HandleCreatureServedFood;
+        cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
     }
 
     public override void _ExitTree()
@@ -66,6 +65,10 @@ public partial class CreatureNeeds : Node3D
         needsDisplayUpdateTimerNode.Timeout -= HandleNeedsDisplayUpdateTimerNodeTimeout;
         globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+
+        // Unlink NeedComponent signals
+        feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
+        cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
     }
 
     public override void _Process(double delta)
@@ -73,7 +76,6 @@ public partial class CreatureNeeds : Node3D
         if (playerHasClockedIn)
         {
             ReduceNeedLevels(delta);
-            MakeFeedingRequestIfBelowThreshold();
         }
     }
 
@@ -83,33 +85,12 @@ public partial class CreatureNeeds : Node3D
         SetNumberOfMinutesInDay(minutesInDay);
         ResetAllCreatureNeeds();
         creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
-    private void HandleServeCreatureFood(Dictionary<E_IngredientList, bool> servedIngredients)
+    private void SetNumberOfMinutesInDay(float minutes)
     {
-        bool hasBeenServedCorrectIngredients = true; // Flag
-
-        foreach (E_IngredientList ingredient in Enum.GetValues(typeof(E_IngredientList)))
-        {
-            bool requestedValue = requestedIngredientDictionary.ContainsKey(ingredient) ? requestedIngredientDictionary[ingredient] : false;
-            bool servedValue = servedIngredients.ContainsKey(ingredient) ? servedIngredients[ingredient] : false;
-
-            // Compare the requested and served values for the current ingredient
-            if (requestedValue != servedValue)
-            {
-                GD.Print($"Mismatch for ingredient {ingredient}: Requested {requestedValue}, Served {servedValue}");
-                hasBeenServedCorrectIngredients = false;
-            }
-        }
-
-        if (hasBeenServedCorrectIngredients)
-        {
-            GD.Print("All served ingredients match the requested ingredients.");
-        }
-        else
-        {
-            GD.Print("There was a mismatch between served and requested ingredients.");
-        }
+        currentTimeLeft = minutes * 60.0f;
     }
 
     private void ResetAllCreatureNeeds()
@@ -119,83 +100,41 @@ public partial class CreatureNeeds : Node3D
         currentCleanlinessLevel = maxCleanlinessLevel;
     }
 
-    private void SetNumberOfMinutesInDay(float minutes)
-    {
-        currentTimeLeft = minutes * 60.0f;
-    }
-
     private void ReduceNeedLevels(double delta)
     {
-        currentHungerLevel -= (float)delta * hungerDepletionRate;
-        currentHappinessLevel -= (float)delta * happinessDepletionRate;
-        currentCleanlinessLevel -= (float)delta * cleanlinessDepletionRate;
-        currentTimeLeft -= (float)delta;
+        currentHungerLevel = Mathf.Max(0, currentHungerLevel - (float)delta * hungerDepletionRate);
+        currentHappinessLevel = Mathf.Max(0, currentHappinessLevel - (float)delta * happinessDepletionRate);
+        currentCleanlinessLevel = Mathf.Max(0, currentCleanlinessLevel - (float)delta * cleanlinessDepletionRate);
+        currentTimeLeft = Mathf.Max(0, currentTimeLeft - (float)delta);
+
+        MakeFeedingRequestIfBelowThreshold();
+        MakeCleaningRequestIfBelowThreshold();
+    }
+
+    private void AddWasteProduct(float amountOfWaste)
+    {
+        currentCleanlinessLevel -= amountOfWaste;
     }
 
     private void MakeFeedingRequestIfBelowThreshold()
     {
         if (currentHungerLevel <= maxHungerLevel * (percentageMaxHungerBeforeFeedingRequestMade / 100.0f) && !hasMadeFeedingRequest)
         {
-            do
-            {
-                ProcessFeedingRequest();
-            }
-            while (requestedIngredientDictionary.Count < 1);  // Ensure we get at least 1 ingredient
-
+            GD.Print("Hunger below threshold. Making feeding request");
+            feedingComponentNode.ProcessFeedingRequest();
             hasMadeFeedingRequest = true;
-            globalSignals.RaiseCreatureFeedRequest(requestedIngredientDictionary);
-
-            // Debug request
-            foreach (E_IngredientList ingredient in requestedIngredientDictionary.Keys)
-            {
-                GD.Print($"Creature has requested: {ingredient} and set its value to {requestedIngredientDictionary[ingredient]}");
-            }
+            isFeedingRequestSatisfied = false;
         }
     }
 
-    private void ProcessFeedingRequest()
+    private void MakeCleaningRequestIfBelowThreshold()
     {
-        GD.Print("Hunger below threshold. Making feeding request");
-        // Make sure all values are set to false before making a new request for safety
-        foreach (E_IngredientList ingredient in requestedIngredientDictionary.Keys.ToList())
+        if (currentCleanlinessLevel <= maxCleanlinessLevel * (percentageMaxCleanlinessBeforeCleaningRequestMade / 100.0f) && !hasMadeCleaningRequest)
         {
-            requestedIngredientDictionary[ingredient] = false;
-        }
-
-        numIngredientsRequested = 0;
-
-        // Loop through possible ingredients and decide whether or not it is wanted
-        foreach (E_IngredientList ingredient in ingredientEnumValues)
-        {
-            // Break early if the max number of ingredients have already been requested
-            if (numIngredientsRequested >= maxIngredientsRequested)
-            {
-                break;
-            }
-
-            // Randomly decide if the ingredient is needed (50% chance)
-            bool wantsIngredient = GD.Randi() % 2 == 0;
-
-            // If the ingredient is wanted, set it to true in the dictionary
-            if (wantsIngredient)
-            {
-                requestedIngredientDictionary[ingredient] = true;
-                numIngredientsRequested++;
-            }
-        }
-
-        // If no ingredients were selected, warn that new request will be made
-        if (numIngredientsRequested == 0)
-        {
-            GD.Print("No ingredients requested, will retry.");
-        }
-        else
-        {
-            // Print requested ingredients
-            foreach (var entry in requestedIngredientDictionary)
-            {
-                GD.Print($"{entry.Key}: Requested = {entry.Value}");
-            }
+            GD.Print("Cleanliness below threshold. Making cleaning request");
+            cleaningComponentNode.ProcessCleaningRequest();
+            hasMadeCleaningRequest = true;
+            isFeedingRequestSatisfied = false;
         }
     }
 
@@ -205,6 +144,97 @@ public partial class CreatureNeeds : Node3D
         float newHappinessPercentage = currentHappinessLevel / maxHappinessLevel * 100.0f;
         float newCleanlinessPercentage = currentCleanlinessLevel / maxCleanlinessLevel * 100.0f;
         creatureNeedsDisplayNode.UpdateProgressBars(newHungerPercentage, newHappinessPercentage, newHappinessPercentage, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft); // DEBUG TO REMOVE
+    }
+
+    private void HandleCreatureServedFood(E_NeedMetAmount amount)
+    {
+        float newHungerLevel = 0.0f;
+
+        switch (amount)
+        {
+            case E_NeedMetAmount.NONE:
+                // Add anger mutiplied by 1.0
+                break;
+            case E_NeedMetAmount.HALF:
+                newHungerLevel = currentHungerLevel + maxHungerReplenishment * 0.5f;
+                currentHungerLevel = Mathf.Min(newHungerLevel, maxHungerLevel * 1.2f); // Cap at 20% over max
+                AddWasteProduct(maxWasteProductToAdd * 0.5f);
+                // Add anger mutiplied by 0.5
+                break;
+            case E_NeedMetAmount.MOST:
+                newHungerLevel = currentHungerLevel + maxHungerReplenishment * 0.75f;
+                currentHungerLevel = Mathf.Min(newHungerLevel, maxHungerLevel * 1.2f); // Cap at 20% over max
+                AddWasteProduct(maxWasteProductToAdd * 0.75f);
+                // Add anger mutiplied by 0.25
+                break;
+            case E_NeedMetAmount.ALL:
+                newHungerLevel = currentHungerLevel + maxHungerReplenishment * 1.0f;
+                currentHungerLevel = Mathf.Min(newHungerLevel, maxHungerLevel * 1.2f); // Cap at 20% over max
+                AddWasteProduct(maxWasteProductToAdd * 1.0f);
+                // For every five points over 100, add an additional waste product penalty
+                break;
+            default:
+                GD.PrintErr("No valid food amount received by CreatureNeeds from FeedingComponent");
+                break;
+        }
+
+        // Add excess waste if OVERFEEDING creature
+        if (currentHungerLevel > maxHungerLevel)
+        {
+            float excessHunger = currentHungerLevel - maxHungerLevel;
+            int additionalWaste = Mathf.FloorToInt(excessHunger / 5.0f);
+            AddWasteProduct(additionalWaste);  // Add 1.0f waste for each 5-point increment
+        }
+
+        GD.Print($"Current hunger level: {currentHungerLevel}");
+
+        // Only changes ingredient request if the last attempt to serve it brought it above the threshold for feeding
+        if ((currentHungerLevel / maxHungerLevel * 100.0f) > percentageMaxHungerBeforeFeedingRequestMade && !isFeedingRequestSatisfied)
+        {
+            hasMadeFeedingRequest = false;
+            globalSignals.RaiseCreatureFeedRequestSatisfied(true);
+            isFeedingRequestSatisfied = true;
+        }
+    }
+
+    private void HandleAreaCleaned(E_NeedMetAmount amount)
+    {
+        float newCleanlinessLevel = 0.0f;
+
+        switch (amount)
+        {
+            case E_NeedMetAmount.NONE:
+                // Add anger mutiplied by 1.0
+                break;
+            case E_NeedMetAmount.HALF:
+                newCleanlinessLevel = currentCleanlinessLevel + maxCleanlinessReplenishment * 0.5f;
+                currentCleanlinessLevel = Mathf.Min(newCleanlinessLevel, maxCleanlinessLevel);
+                // Add anger mutiplied by 0.5
+                break;
+            case E_NeedMetAmount.MOST:
+                newCleanlinessLevel = currentCleanlinessLevel + maxCleanlinessReplenishment * 0.75f;
+                currentCleanlinessLevel = Mathf.Min(newCleanlinessLevel, maxCleanlinessLevel);
+                // Add anger mutiplied by 0.25
+                break;
+            case E_NeedMetAmount.ALL:
+                newCleanlinessLevel = currentCleanlinessLevel + maxCleanlinessReplenishment * 1.0f;
+                currentCleanlinessLevel = Mathf.Min(newCleanlinessLevel, maxCleanlinessLevel);
+                break;
+            default:
+                GD.PrintErr("No valid cleaned area received by CreatureNeeds from CleaningComponent");
+                break;
+        }
+
+        GD.Print($"Current cleanliness level: {currentCleanlinessLevel}");
+
+        // Only changes cleaning request if the last attempt to clean it brought it above the threshold for cleaning
+        if ((currentCleanlinessLevel / maxCleanlinessLevel * 100.0f) > percentageMaxCleanlinessBeforeCleaningRequestMade && !isCleaningRequestSatisfied)
+        {
+            hasMadeCleaningRequest = false;
+            globalSignals.RaiseCreatureCleanRequestSatisfied(true);
+            isCleaningRequestSatisfied = true;
+        }
     }
 
     private void HandlePlayerClockedIn()

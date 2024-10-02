@@ -177,6 +177,31 @@ public partial class FeedingStation : Station
         }
     }
 
+    private void InitialiseIngredientDictionary(Array enumValues)
+    {
+        for (int i = 0; i < enumValues.Length; i++)
+        {
+            activeIngredients.Add((E_IngredientList)enumValues.GetValue(i), false);
+        }
+    }
+
+    private void AssignDebugLabelValues(Array enumValues)
+    {
+        // Set button 0 to be "Reset"
+        buttonsNode.ButtonArray[0].AssignDebugLabelText(" 0\nReset");
+
+        // Assign buttons 1 - 9 to be results of loop through enum
+        int enumIndex = 0;
+        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
+        {
+            if (enumIndex < enumValues.Length)
+            {
+                buttonsNode.ButtonArray[j].AssignDebugLabelText($"{j}\n{enumValues.GetValue(enumIndex)}");
+                enumIndex++;
+            }
+        }
+    }
+
     private void AddIngredientToList(int ingredientIndex)
     {
         E_IngredientList ingredientEnum = (E_IngredientList)ingredientIndex;
@@ -200,30 +225,5 @@ public partial class FeedingStation : Station
     private void HandleServingFoodTimerTimeout()
     {
         canInteractWithStation = true;
-    }
-
-    private void InitialiseIngredientDictionary(Array enumValues)
-    {
-        for (int i = 0; i < enumValues.Length; i++)
-        {
-            activeIngredients.Add((E_IngredientList)enumValues.GetValue(i), false);
-        }
-    }
-
-    private void AssignDebugLabelValues(Array enumValues)
-    {
-        // Set button 0 to be "Reset"
-        buttonsNode.ButtonArray[0].AssignDebugLabelText("Reset");
-
-        // Assign buttons 1 - 9 to be results of loop through enum
-        int enumIndex = 0;
-        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
-        {
-            if (enumIndex < enumValues.Length)
-            {
-                buttonsNode.ButtonArray[j].AssignDebugLabelText(enumValues.GetValue(enumIndex).ToString());
-                enumIndex++;
-            }
-        }
     }
 }
