@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://lv3a7gtpt3cx"]
+
+[ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="1_dak7a"]
+[ext_resource type="Script" path="res://Scripts/Creature/FeedingComponent.cs" id="2_vmpfc"]
+
+[node name="CreatureNeeds" type="Node3D" node_paths=PackedStringArray("feedingComponentNode", "needsDisplayUpdateTimerNode")]
+script = ExtResource("1_dak7a")
+feedingComponentNode = NodePath("FeedingComponent")
+needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
+percentageMaxHungerBeforeFeedingRequestMade = 99.0
+
+[node name="FeedingComponent" type="Node3D" parent="."]
+script = ExtResource("2_vmpfc")
+
+[node name="UpdateDisplayTimer" type="Timer" parent="."]

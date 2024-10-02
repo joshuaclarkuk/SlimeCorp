@@ -6,6 +6,7 @@ using System.Linq;
 public partial class CreatureNeeds : Node3D
 {
     [ExportCategory("Required Nodes")]
+    [Export] private FeedingComponent feedingComponentNode = null;
     [Export] private CreatureNeedsDisplay creatureNeedsDisplayNode = null;
     [Export] private Timer needsDisplayUpdateTimerNode = null;
 
@@ -35,21 +36,14 @@ public partial class CreatureNeeds : Node3D
     private bool playerHasClockedIn = false;
     private bool hasMadeFeedingRequest = false;
 
-    // Feeding request
-    private E_IngredientList[] possibleIngredientsArray = null;
+    // Feeding requests
+    private Array ingredientEnumValues;
     private Dictionary<E_IngredientList, bool> requestedIngredientDictionary = new Dictionary<E_IngredientList, bool>();
 
     public override void _Ready()
     {
         // Initialise possible ingredients array and compile dictionary
-        Array enumValues = Enum.GetValues(typeof(E_IngredientList));
-        possibleIngredientsArray = new E_IngredientList[enumValues.Length];
-
-        // Assign possibleIngredientsArray values to each of the values in the ingredients enum
-        for (int i = 0; i < enumValues.Length; i++)
-        {
-            possibleIngredientsArray[i] = (E_IngredientList)enumValues.GetValue(i);
-        }
+        ingredientEnumValues = Enum.GetValues(typeof(E_IngredientList));
 
         // Initialise requestedIngredientDictionary with all possible keys and set values to false
         foreach (E_IngredientList ingredient in Enum.GetValues(typeof(E_IngredientList)))
@@ -171,7 +165,7 @@ public partial class CreatureNeeds : Node3D
         numIngredientsRequested = 0;
 
         // Loop through possible ingredients and decide whether or not it is wanted
-        foreach (E_IngredientList ingredient in possibleIngredientsArray)
+        foreach (E_IngredientList ingredient in ingredientEnumValues)
         {
             // Break early if the max number of ingredients have already been requested
             if (numIngredientsRequested >= maxIngredientsRequested)

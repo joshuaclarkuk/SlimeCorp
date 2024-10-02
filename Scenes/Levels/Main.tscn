@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
-[ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="2_asnck"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
+[ext_resource type="PackedScene" uid="uid://lv3a7gtpt3cx" path="res://Scenes/Creature/CreatureNeeds.tscn" id="3_r5tf3"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
 [ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="7_5p5ij"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
@@ -26,7 +26,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kw8h5"]
-viewport_path = NodePath("CreatureNeeds/CreatureNeedsViewport")
+viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
@@ -35,51 +35,14 @@ articleResources = Array[Resource]([null, null, null, null, null])
 emailResources = Array[Resource]([null, null, null, null, null])
 stationsHeaderNode = NodePath("Stations")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_1qi3x")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
-
-[node name="CreatureNeeds" type="Node3D" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "needsDisplayUpdateTimerNode")]
-script = ExtResource("2_asnck")
-creatureNeedsDisplayNode = NodePath("CreatureNeedsViewport/CreatureNeedsDisplay")
-needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
-percentageMaxHungerBeforeFeedingRequestMade = 99.0
-
-[node name="CreatureNeedsScreen" type="Sprite3D" parent="CreatureNeeds"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
-texture = SubResource("ViewportTexture_kw8h5")
-
-[node name="CreatureNeedsViewport" type="SubViewport" parent="CreatureNeeds"]
-size = Vector2i(1024, 1024)
-
-[node name="CreatureNeedsDisplay" parent="CreatureNeeds/CreatureNeedsViewport" instance=ExtResource("3_qt08h")]
-
-[node name="UpdateDisplayTimer" type="Timer" parent="CreatureNeeds"]
-
-[node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
-script = ExtResource("8_8q08k")
-rovingCameraNode = NodePath("../RovingCamera")
-playerNode = NodePath("../Player")
-cameraTweenDuration = 0.5
-
-[node name="ComputerStation" parent="Stations" instance=ExtResource("2_te2wr")]
-
-[node name="FeedingStation" parent="Stations" instance=ExtResource("3_xnieq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
-
-[node name="ClockOutStation" parent="Stations" instance=ExtResource("7_5p5ij")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
-
-[node name="CleaningStation" parent="Stations" instance=ExtResource("8_jl626")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
-
-[node name="SlimeCollectionStation" parent="Stations" instance=ExtResource("9_mb0pm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
-
-[node name="Environment" type="Node3D" parent="."]
 
 [node name="Construction" type="Node3D" parent="Environment"]
 
@@ -114,6 +77,40 @@ collision_mask = 0
 size = Vector3(15, 6, 1)
 
 [node name="Lighting" type="Node3D" parent="Environment"]
+
+[node name="CreatureNeedsScreen" type="Node3D" parent="Environment"]
+
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
+texture = SubResource("ViewportTexture_kw8h5")
+
+[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/CreatureNeedsScreen"]
+size = Vector2i(1024, 1024)
+
+[node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" instance=ExtResource("3_qt08h")]
+
+[node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode") instance=ExtResource("3_r5tf3")]
+creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
+
+[node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
+script = ExtResource("8_8q08k")
+rovingCameraNode = NodePath("../RovingCamera")
+playerNode = NodePath("../Player")
+cameraTweenDuration = 0.5
+
+[node name="ComputerStation" parent="Stations" instance=ExtResource("2_te2wr")]
+
+[node name="FeedingStation" parent="Stations" instance=ExtResource("3_xnieq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
+
+[node name="ClockOutStation" parent="Stations" instance=ExtResource("7_5p5ij")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
+
+[node name="CleaningStation" parent="Stations" instance=ExtResource("8_jl626")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
+
+[node name="SlimeCollectionStation" parent="Stations" instance=ExtResource("9_mb0pm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_l82l3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
