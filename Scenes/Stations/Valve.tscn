@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb5cqe6innndc"]
+
+[ext_resource type="Texture2D" uid="uid://cg0efdvrbkvox" path="res://Assets/Textures/Prototype/Light/texture_05.png" id="1_arn3i"]
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/Valve.cs" id="1_c347r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypqqh"]
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("1_arn3i")
+uv1_triplanar = true
+
+[node name="Valve" type="Node3D"]
+script = ExtResource("1_c347r")
+
+[node name="Wheel" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.866025, 5.85622e-09, 0.5, 0.5, -2.18557e-08, -0.866025, 5.85622e-09, 1, -2.18557e-08, 0, 0, 0)
+radius = 0.3
+height = 0.002
+material = SubResource("StandardMaterial3D_ypqqh")
+
+[node name="WheelInner" type="CSGCylinder3D" parent="Wheel"]
+transform = Transform3D(1, 0, -8.27351e-16, 0, 1, 0, -8.27351e-16, 0, 1, 0, 0, 0)
+operation = 2
+radius = 0.24
+height = 0.002
+material = SubResource("StandardMaterial3D_ypqqh")

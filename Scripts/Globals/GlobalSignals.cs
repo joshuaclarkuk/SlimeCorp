@@ -21,6 +21,8 @@ public partial class GlobalSignals : Node
     public event Action<bool> OnCreatureFeedRequestSatisfied; // Used to determine whether request should be cleared or not
     public event Action<bool> OnCreatureCleanRequestSatisfied; // Used to determine whether request should be cleared or not
 
+    public event Action<bool> OnSlimeBarrelIsAttached; // Used to determine whether slime gauge can fill or not
+
     public event Action<E_StationType> OnPlayerEnterStationCollider;
     public event Action<E_StationType> OnPlayerExitStationCollider;
     public event Action<E_StationType> OnPlayerInteractWithStation;

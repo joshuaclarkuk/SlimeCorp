@@ -47,22 +47,22 @@ shadow_enabled = true
 [node name="Construction" type="Node3D" parent="Environment"]
 
 [node name="Floor" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 0)
 use_collision = true
 collision_mask = 0
-size = Vector3(20, 1, 16)
+size = Vector3(29, 1, 16)
 
 [node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -8.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(22, 6, 1)
+size = Vector3(31, 6, 1)
 
 [node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 7.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(22, 6, 1)
+size = Vector3(31, 6, 1)
 
 [node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 3, -0.5)
@@ -71,10 +71,22 @@ collision_mask = 0
 size = Vector3(15, 6, 1)
 
 [node name="WallEast" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.5, 3, -0.5)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 11.5, 3, -1.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(15, 6, 1)
+size = Vector3(3, 6, 13)
+
+[node name="WallStorageRoomBack" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 16, 3, -4)
+use_collision = true
+collision_mask = 0
+size = Vector3(6, 6, 8)
+
+[node name="WallStorageRoom" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 6, 15)
 
 [node name="Lighting" type="Node3D" parent="Environment"]
 
@@ -88,6 +100,13 @@ texture = SubResource("ViewportTexture_kw8h5")
 size = Vector2i(1024, 1024)
 
 [node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" instance=ExtResource("3_qt08h")]
+
+[node name="Signage" type="Node3D" parent="Environment"]
+
+[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
+text = "Biofuel Canister
+Storage >>>"
 
 [node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")

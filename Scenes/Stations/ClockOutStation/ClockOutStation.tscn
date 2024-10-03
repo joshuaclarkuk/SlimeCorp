@@ -4,12 +4,11 @@
 [ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation/ClockOutStation.cs" id="2_5adtr"]
 [ext_resource type="Material" uid="uid://diryno02iw2d7" path="res://Materials/M_PrototypeGreen.tres" id="3_k0srk"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_u8e5p"]
-[ext_resource type="Script" path="res://Scripts/Stations/_Components/Card.cs" id="5_osbck"]
+[ext_resource type="PackedScene" uid="uid://ubnxatxfab8o" path="res://Scenes/Stations/Card.tscn" id="5_jswnp"]
 [ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="6_326oi"]
 
-[node name="ClockOutStation" node_paths=PackedStringArray("punchCardNode", "codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
+[node name="ClockOutStation" node_paths=PackedStringArray("codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
 script = ExtResource("2_5adtr")
-punchCardNode = NodePath("Card")
 codeComponent = NodePath("CodeComponent")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
@@ -29,17 +28,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.5)
 
 [node name="Buttons" parent="." index="4" instance=ExtResource("4_u8e5p")]
 transform = Transform3D(0.4, 0, 0, 0, 0.103528, -0.38637, 0, 0.38637, 0.103528, 0, 1, 0.3)
-buttonPressDuration = 0.05
 
-[node name="Card" type="Node3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
-script = ExtResource("5_osbck")
-startLocation = 1.7
-targetLocation = 1.2
-
-[node name="Mesh" type="CSGBox3D" parent="Card" index="0"]
-size = Vector3(0.2, 0.2, 0.1)
-material = ExtResource("3_k0srk")
+[node name="Card" parent="." index="5" instance=ExtResource("5_jswnp")]
 
 [node name="CodeComponent" parent="." index="6" instance=ExtResource("6_326oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)

@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://c81xuqyf4vlou"]
+[gd_scene load_steps=7 format=3 uid="uid://c81xuqyf4vlou"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_uotg4"]
 [ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation/SlimeCollectionStation.cs" id="2_2mdql"]
 [ext_resource type="Texture2D" uid="uid://cg0efdvrbkvox" path="res://Assets/Textures/Prototype/Light/texture_05.png" id="3_baasw"]
-[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_8lu24"]
+[ext_resource type="PackedScene" uid="uid://cb5cqe6innndc" path="res://Scenes/Stations/Valve.tscn" id="4_yk3f8"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_gh8vd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81n1w"]
 albedo_color = Color(1, 1, 0, 1)
 albedo_texture = ExtResource("3_baasw")
 uv1_triplanar = true
 
-[node name="SlimeCollectionStation" node_paths=PackedStringArray("buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
+[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
 script = ExtResource("2_2mdql")
+valveNode = NodePath("Valve")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 4
@@ -19,53 +21,32 @@ StationType = 4
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, 0.8)
 
-[node name="CanisterMeshes" type="Node3D" parent="." index="2"]
+[node name="Meshes" type="Node3D" parent="." index="2"]
 
-[node name="Canister1" type="CSGCylinder3D" parent="CanisterMeshes" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.4, 0)
-radius = 0.3
+[node name="Pipe" type="CSGCylinder3D" parent="Meshes" index="0"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.49012e-08, 2, 0)
+radius = 0.1
+height = 4.0
+material = SubResource("StandardMaterial3D_81n1w")
+
+[node name="Pipe2" type="CSGCylinder3D" parent="Meshes" index="1"]
+transform = Transform3D(-3.78552e-08, -1, -2.18557e-08, 0.866025, -4.37114e-08, 0.5, -0.5, 0, 0.866025, 0.4, 1.2, 0)
+radius = 0.1
 height = 0.8
 material = SubResource("StandardMaterial3D_81n1w")
 
-[node name="Canister2" type="CSGCylinder3D" parent="CanisterMeshes" index="1"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.7, 1.2, 0)
-radius = 0.3
-height = 0.8
-material = SubResource("StandardMaterial3D_81n1w")
-
-[node name="Canister3" type="CSGCylinder3D" parent="CanisterMeshes" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.4, 0)
-radius = 0.3
-height = 0.8
-material = SubResource("StandardMaterial3D_81n1w")
-
-[node name="Canister4" type="CSGCylinder3D" parent="CanisterMeshes" index="3"]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -1.49012e-08, 1.2, 0)
-radius = 0.3
-height = 0.8
-material = SubResource("StandardMaterial3D_81n1w")
-
-[node name="Canister5" type="CSGCylinder3D" parent="CanisterMeshes" index="4"]
+[node name="Canister5" type="CSGCylinder3D" parent="Meshes" index="2"]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0.7, 0.4, 0)
 radius = 0.3
 height = 0.8
 material = SubResource("StandardMaterial3D_81n1w")
 
-[node name="Wheel" type="CSGCylinder3D" parent="CanisterMeshes" index="5"]
-transform = Transform3D(0.866025, 0, 0.5, 0.5, -4.37114e-08, -0.866025, 2.18557e-08, 1, -3.78552e-08, 0.7, 1.2, 0)
-radius = 0.3
-height = 0.002
-material = SubResource("StandardMaterial3D_81n1w")
-
-[node name="WheelInner" type="CSGCylinder3D" parent="CanisterMeshes/Wheel" index="0"]
-transform = Transform3D(1, 0, -8.27351e-16, 0, 1, 0, -8.27351e-16, 0, 1, 0, 0, 0)
-operation = 2
-radius = 0.24
-height = 0.002
-material = SubResource("StandardMaterial3D_81n1w")
-
 [node name="StationDebugLabel" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.6, 0.5)
 
-[node name="Buttons" parent="." index="4" instance=ExtResource("4_8lu24")]
-transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 1.2, 0.3)
+[node name="Valve" parent="." index="4" instance=ExtResource("4_yk3f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1.2, 0.1)
+desiredTargetRotation = 360.0
+
+[node name="Buttons" parent="." index="5" instance=ExtResource("5_gh8vd")]
+visible = false

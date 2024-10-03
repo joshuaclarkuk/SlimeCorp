@@ -94,6 +94,9 @@ public partial class CreatureNeeds : Node3D
         // Link NeedComponent signals
         feedingComponentNode.OnCreatureServedFood += HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
+
+        // Link slime barrel attached events
+
     }
 
     private void UnsubscribeFromEvents()

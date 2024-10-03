@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ubnxatxfab8o"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/Card.cs" id="1_q4a57"]
+[ext_resource type="Material" uid="uid://diryno02iw2d7" path="res://Materials/M_PrototypeGreen.tres" id="2_mfral"]
+
+[node name="Card" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+script = ExtResource("1_q4a57")
+startLocation = 1.7
+targetLocation = 1.2
+
+[node name="Mesh" type="CSGBox3D" parent="."]
+size = Vector3(0.2, 0.2, 0.1)
+material = ExtResource("2_mfral")

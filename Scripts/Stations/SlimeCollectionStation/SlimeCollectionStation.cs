@@ -3,21 +3,38 @@ using System;
 
 public partial class SlimeCollectionStation : Station
 {
+    [ExportCategory("Required Nodes")]
+    [Export] private Valve valveNode = null;
+
+    private bool valveIsOpen = false;
+    private bool canisterInSlot = true;
+
     public override void EnterStation()
     {
         base.EnterStation();
+
+        valveNode.OnValveTargetReached += HandleValveTargetReached;
+
         GD.Print($"Calling EnterStation method on {Name}");
     }
 
     public override void ExitStation()
     {
         base.ExitStation();
+
+        valveNode.OnValveTargetReached -= HandleValveTargetReached;
+
         GD.Print($"Calling ExitStation method on {Name}");
     }
 
     public override void _UnhandledInput(InputEvent @event)
     {
         base._UnhandledInput(@event);
+
+        if (isMouseClicked)
+        {
+            valveNode.MovePhysicalValveWithMouseMotion(mouseDragSensitivity, mouseDragMotion);
+        }
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)
@@ -102,5 +119,10 @@ public partial class SlimeCollectionStation : Station
                 GD.Print("Unhandled button press");
                 break;
         }
+    }
+
+    private void HandleValveTargetReached(bool isValveOpen)
+    {
+        GD.Print($"Signal received: valve is open: {isValveOpen}");
     }
 }
