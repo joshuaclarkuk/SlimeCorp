@@ -69,7 +69,7 @@ public partial class CreatureNeeds : Node3D
         if (playerHasClockedIn)
         {
             ReduceNeedLevels(delta);
-            AddSlimeToCanister();
+            AddSlimeToCanister(delta);
         }
     }
 
@@ -121,16 +121,16 @@ public partial class CreatureNeeds : Node3D
 
     private void ReduceNeedLevels(double delta)
     {
-        currentHungerLevel = Mathf.Max(0, currentHungerLevel - (float)delta * hungerDepletionRate);
-        currentHappinessLevel = Mathf.Max(0, currentHappinessLevel - (float)delta * happinessDepletionRate);
-        currentCleanlinessLevel = Mathf.Max(0, currentCleanlinessLevel - (float)delta * cleanlinessDepletionRate);
+        currentHungerLevel = Mathf.Max(0, currentHungerLevel - hungerDepletionRate * (float) delta);
+        currentHappinessLevel = Mathf.Max(0, currentHappinessLevel - happinessDepletionRate * (float)delta);
+        currentCleanlinessLevel = Mathf.Max(0, currentCleanlinessLevel - cleanlinessDepletionRate * (float)delta);
         currentTimeLeft = Mathf.Max(0, currentTimeLeft - (float)delta);
 
         MakeFeedingRequestIfBelowThreshold();
         MakeCleaningRequestIfBelowThreshold();
     }
 
-    private void AddSlimeToCanister()
+    private void AddSlimeToCanister(double delta)
     {
         // Slime to add from food, cleanliness, and happiness
         float slimeToAddFromFood = baseSlimeCollectionRate;
@@ -188,7 +188,7 @@ public partial class CreatureNeeds : Node3D
                 break;
         }
 
-        float totalSlimeToAdd = slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness;
+        float totalSlimeToAdd = (slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness) * (float)delta;
         currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister); // Ensure it doesn't exceed max capacity
 
         GD.Print($"Slime added: {totalSlimeToAdd}, Current slime level: {currentSlimeLevel}");

@@ -11,10 +11,6 @@
       "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\ui\\debug\\debugui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\creature\\feedingcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\creature\\feedingcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -26,24 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FeedingComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\FeedingComponent.cs",
-              "RelativeDocumentMoniker": "Scripts\\Creature\\FeedingComponent.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\FeedingComponent.cs",
-              "RelativeToolTip": "Scripts\\Creature\\FeedingComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T05:37:22.589Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "GlobalSignals.cs",
               "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
               "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalSignals.cs",
@@ -61,7 +44,7 @@
               "RelativeDocumentMoniker": "Scripts\\Creature\\CreatureNeeds.cs",
               "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\CreatureNeeds.cs",
               "RelativeToolTip": "Scripts\\Creature\\CreatureNeeds.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAYwOUAAACNAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAASwH0AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-02T12:49:04.45Z",
               "EditorCaption": ""
@@ -76,8 +59,7 @@
               "RelativeToolTip": "Scripts\\UI\\Debug\\DebugUI.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T14:02:59.1Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-02T14:02:59.1Z"
             }
           ]
         }
