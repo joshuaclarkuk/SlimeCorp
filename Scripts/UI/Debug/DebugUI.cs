@@ -36,13 +36,16 @@ public partial class DebugUI : Control
         UnsubscribeFromEvents();
     }
 
-    public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newTimeLeft, float newSlimeAmount)
+    public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newTimeLeft)
     {
         hungerProgressBar.Value = newHunger;
         happinessProgressBar.Value = newHappiness;
         cleanlinessProgressBar.Value = newCleanliness;
         timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
+    }
 
+    public void UpdateSlimeProgressBar(float newSlimeAmount)
+    {
         slimeCollectedProgressBarNode.Value = newSlimeAmount;
     }
 

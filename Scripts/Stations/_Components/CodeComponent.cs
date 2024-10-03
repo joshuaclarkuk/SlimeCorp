@@ -108,7 +108,6 @@ public partial class CodeComponent : Node3D
     private void HandleEmployeeNumberGenerated(int[] employeeNumber)
     {
         this.employeeNumber = employeeNumber;
-        GD.Print("Employee number generated: " + string.Join("", this.employeeNumber));
     }
 
     private void HandleCodeResetTimerTimeout()

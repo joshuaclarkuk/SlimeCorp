@@ -81,11 +81,11 @@ public partial class CleaningComponent : Node3D
         {
             globalSignals.RaiseAreasToCleanRequest(requestedAreasDictionary);
 
-            // Debug request
-            foreach (E_AreasToClean area in requestedAreasDictionary.Keys)
-            {
-                GD.Print($"Area to clean: {area} is dirty: {requestedAreasDictionary[area]}");
-            }
+            //// Debug request
+            //foreach (E_AreasToClean area in requestedAreasDictionary.Keys)
+            //{
+            //    GD.Print($"Area to clean: {area} is dirty: {requestedAreasDictionary[area]}");
+            //}
         }
     }
 

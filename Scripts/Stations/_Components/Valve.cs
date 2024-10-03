@@ -5,18 +5,17 @@ public partial class Valve : Node3D
 {
     [ExportCategory("Behaviour")]
     [Export] private float desiredStartRotation = 0.0f;
-    [Export] private float desiredTargetRotation = -180.0f;
+    [Export] private float desiredTargetRotation = -360.0f;
 
     private float startRotation = Mathf.DegToRad(0.0f);
     private float targetRotation = Mathf.DegToRad(-180.0f);
     private float currentRotation = 0.0f;
     private float range = 0.0f;
 
-    private bool isValveOpen = true;
+    private bool isValveOpen = false;
     private bool isInTargetZone = false; // Prevents multiple firings on the event
 
-    public event Action<bool> OnValveTargetReached;
-    public event Action OnValveTargetLeft;
+    public event Action<bool> OnValveTargetReached; // bool values are true = "Valve Open" and false = "Valve Closed"
 
     public override void _Ready()
     {
@@ -50,6 +49,7 @@ public partial class Valve : Node3D
         UpdateRotation(currentRotation);
     }
 
+    // FEELS LIKE THERE'S SOME REDUNDANT CODE IN HERE BUT IT'S WORKING SO I'M JUST NOT GOING TO TOUCH IT
     private void UpdateRotation(float newRotation)
     {
         Rotation = new Vector3(Rotation.X, Rotation.Y, newRotation);
@@ -61,8 +61,6 @@ public partial class Valve : Node3D
         {
             if (isInTargetZone)
             {
-                GD.Print("Valve leaving target zone");
-                OnValveTargetLeft?.Invoke();
                 isInTargetZone = true;
             }
         }
@@ -70,7 +68,6 @@ public partial class Valve : Node3D
         {
             if (!isInTargetZone)
             {
-                GD.Print(isValveOpen ? "Valve closed" : "Valve opened");
                 OnValveTargetReached?.Invoke(isValveOpen);
 
                 isValveOpen = !isValveOpen; // Toggle open and closed

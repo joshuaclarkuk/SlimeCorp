@@ -20,6 +20,9 @@ public partial class Main : Node3D
     private int currentDayIndex = 0;
     private int maxDays = 5;
 
+    // Slime counter
+    private float slimeCollectedInDay = 0.0f;
+
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
@@ -30,7 +33,7 @@ public partial class Main : Node3D
         // Connect station-based signals
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
         globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
-
+        globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
 
         // Resource debug error checks
         if (articleResources.Length < maxDays) { GD.PrintErr("Not all article resources present!"); }
@@ -48,6 +51,7 @@ public partial class Main : Node3D
         // Disconnect station-based signals
         globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
         globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
+        globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
     }
 
     private void HandleOnStartNewDay(int dayIndex)
@@ -128,6 +132,12 @@ public partial class Main : Node3D
     private void HandlePlayerExitStation(E_StationType type)
     {
         
+    }
+
+    private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)
+    {
+        slimeCollectedInDay += slimeAmount;
+        GD.Print($"MAIN: Banked {slimeAmount} slime. Daily total: {slimeCollectedInDay}");
     }
 
     private void EndGame()

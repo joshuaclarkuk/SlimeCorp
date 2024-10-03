@@ -81,11 +81,11 @@ public partial class FeedingComponent : Node3D
         {
             globalSignals.RaiseCreatureFeedRequest(requestedIngredientDictionary);
 
-            // Debug request
-            foreach (E_IngredientList ingredient in requestedIngredientDictionary.Keys)
-            {
-                GD.Print($"Creature has requested: {ingredient} and set its value to {requestedIngredientDictionary[ingredient]}");
-            }
+            //// Debug request
+            //foreach (E_IngredientList ingredient in requestedIngredientDictionary.Keys)
+            //{
+            //    GD.Print($"Creature has requested: {ingredient} and set its value to {requestedIngredientDictionary[ingredient]}");
+            //}
         }
     }
 

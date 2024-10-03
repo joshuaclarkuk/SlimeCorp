@@ -6,6 +6,7 @@ public partial class Player : CharacterBody3D
     [ExportCategory("Required Nodes")]
     [Export] private Node3D cameraPivotNode = null;
     [Export] private Camera3D playerCameraNode = null;
+    [Export] private Node3D canisterCarrierNode = null;
 
     [ExportCategory("Player Movement")]
     [Export] private float movementSpeed = 3.0f;
@@ -38,9 +39,10 @@ public partial class Player : CharacterBody3D
 
         // Get GlobalSignals autoload and assign signals
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
-        globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
-        globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
+        SubscribeToEvents();
+
+        // Make sure carrying canister is invisible on start
+        canisterCarrierNode.Visible = false;
 
         // Make camera current (just in case Godot thinks Roving Camera should be current)
         playerCameraNode.MakeCurrent();
@@ -51,8 +53,7 @@ public partial class Player : CharacterBody3D
 
     public override void _ExitTree()
     {
-        globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
-        globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
+        UnsubscribeFromEvents();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -139,6 +140,23 @@ public partial class Player : CharacterBody3D
         }
     }
 
+    private void SubscribeToEvents()
+    {
+        globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
+        globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
+        globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
+        globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
+        globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
+        globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
+        globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
+        globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
+    }
+
     private void HandleCameraRotation()
     {
         // Rotate around Y-axis using mouse X movement
@@ -169,7 +187,6 @@ public partial class Player : CharacterBody3D
         if (activeStationCollider != stationType)
         {
             activeStationCollider = stationType;
-            GD.Print($"{Name} active station collider: {activeStationCollider.ToString()}");
         }        
     }
 
@@ -178,8 +195,17 @@ public partial class Player : CharacterBody3D
         if (activeStationCollider == stationType)
         {
             activeStationCollider = E_StationType.NONE;
-            GD.Print($"{Name} active station collider: {activeStationCollider.ToString()}");
         }
+    }
+
+    private void HandleSlimeCanisterTakenFromStorage()
+    {
+        canisterCarrierNode.Visible = true;
+    }
+
+    private void HandleSlimeCanisterAddedToStation()
+    {
+        canisterCarrierNode.Visible = false;
     }
 
     private void HandlePlayerCanMoveAgain()

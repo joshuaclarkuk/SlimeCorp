@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ubnxatxfab8o" path="res://Scenes/Stations/Card.tscn" id="5_jswnp"]
 [ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="6_326oi"]
 
-[node name="ClockOutStation" node_paths=PackedStringArray("codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
+[node name="ClockOutStation" node_paths=PackedStringArray("punchCardNode", "codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
 script = ExtResource("2_5adtr")
+punchCardNode = NodePath("Card")
 codeComponent = NodePath("CodeComponent")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")

@@ -5,7 +5,8 @@
     FEEDING,
     CLEANING,
     SLIMECOLLECTION,
-    CLOCKOUT
+    CLOCKOUT,
+    CANISTERSTORAGE
 }
 
 public enum E_IngredientList

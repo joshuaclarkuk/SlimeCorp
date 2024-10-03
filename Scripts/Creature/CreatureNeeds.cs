@@ -6,8 +6,11 @@ public partial class CreatureNeeds : Node3D
     [ExportCategory("Required Nodes")]
     [Export] private FeedingComponent feedingComponentNode = null;
     [Export] private CleaningComponent cleaningComponentNode = null;
-    [Export] private CreatureNeedsDisplay creatureNeedsDisplayNode = null;
     [Export] private Timer needsDisplayUpdateTimerNode = null;
+
+    [ExportCategory("External Nodes")]
+    [Export] private CreatureNeedsDisplay creatureNeedsDisplayNode = null;
+    [Export] private SlimeCollectionStation slimeCollectionStationNode = null;
     [Export] private DebugUI debugUINode = null;
 
     [ExportCategory("Max Levels")]
@@ -16,26 +19,19 @@ public partial class CreatureNeeds : Node3D
     [Export] private float maxCleanlinessLevel = 100.0f;
 
     [ExportCategory("Depletion Rates")]
-    [Export] private float hungerDepletionRate = 0.6f;
-    [Export] private float happinessDepletionRate = 0.4f;
-    [Export] private float cleanlinessDepletionRate = 0.5f;
+    [Export] private float hungerDepletionRate = 0.4f;
+    [Export] private float happinessDepletionRate = 0.3f;
+    [Export] private float cleanlinessDepletionRate = 0.2f;
 
     [ExportCategory("Request Points (Percentage Left)")]
-    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 95.0f;
-    [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 95.0f;
+    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 40.0f;
+    [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 30.0f;
 
     [ExportCategory("Replenishment/Addition Rates")]
     [Export] private float maxHungerReplenishment = 100.0f;
     [Export] private float maxCleanlinessReplenishment = 75.0f;
     [Export] private float maxWasteProductToAdd = 50.0f;
     [Export] private float maxAngerToAdd = 10.0f;
-
-    [ExportCategory("Slime Collection")]
-    [Export] private float baseSlimeCollectionRate = 1.0f;
-    [Export] private float maxSlimeInCanister = 100.0f;
-    [Export] private float feedingSlimeMultiplier = 2.0f;
-    [Export] private float cleaningSlimeMultiplier = 2.0f;
-    [Export] private float happinessSlimeMultiplier = 2.0f;
 
     private GlobalSignals globalSignals = null;
 
@@ -44,7 +40,6 @@ public partial class CreatureNeeds : Node3D
     private float currentHappinessLevel = 0.0f;
     private float currentCleanlinessLevel = 0.0f;
     private float currentTimeLeft = 0.0f;
-    private float currentSlimeLevel = 0.0f;
 
     // Guards
     private bool playerHasClockedIn = false;
@@ -69,7 +64,7 @@ public partial class CreatureNeeds : Node3D
         if (playerHasClockedIn)
         {
             ReduceNeedLevels(delta);
-            AddSlimeToCanister(delta);
+            slimeCollectionStationNode.AddSlimeToCanister(delta, currentHungerLevel, maxHungerLevel, currentCleanlinessLevel, maxCleanlinessLevel, currentHappinessLevel, maxHappinessLevel);
         }
     }
 
@@ -79,7 +74,7 @@ public partial class CreatureNeeds : Node3D
         SetNumberOfMinutesInDay(minutesInDay);
         ResetAllCreatureNeeds();
         creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft, currentSlimeLevel);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
     private void SubscribeToEvents()
@@ -94,9 +89,6 @@ public partial class CreatureNeeds : Node3D
         // Link NeedComponent signals
         feedingComponentNode.OnCreatureServedFood += HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
-
-        // Link slime barrel attached events
-
     }
 
     private void UnsubscribeFromEvents()
@@ -104,8 +96,6 @@ public partial class CreatureNeeds : Node3D
         needsDisplayUpdateTimerNode.Timeout -= HandleNeedsDisplayUpdateTimerNodeTimeout;
         globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
-
-        // Unlink NeedComponent signals
         feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
     }
@@ -131,70 +121,6 @@ public partial class CreatureNeeds : Node3D
 
         MakeFeedingRequestIfBelowThreshold();
         MakeCleaningRequestIfBelowThreshold();
-    }
-
-    private void AddSlimeToCanister(double delta)
-    {
-        // Slime to add from food, cleanliness, and happiness
-        float slimeToAddFromFood = baseSlimeCollectionRate;
-        float slimeToAddFromCleanliness = baseSlimeCollectionRate;
-        float slimeToAddFromHappiness = baseSlimeCollectionRate;
-
-        float hungerPercentage = (currentHungerLevel / maxHungerLevel) * 100.0f;
-        switch (hungerPercentage)
-        {
-            case > 100.0f:
-                slimeToAddFromFood *= feedingSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
-                break;
-            case >= 80.0f:
-                slimeToAddFromFood *= feedingSlimeMultiplier;  // Above 80%, multiply
-                break;
-            case < 20.0f:
-                slimeToAddFromFood *= 0.5f; // Below 20% incur penalty
-                    break;
-            default:
-                slimeToAddFromFood *= 1.0f;  // Normal collection rate
-                break;
-        }
-
-        float cleanlinessPercentage = (currentCleanlinessLevel / maxCleanlinessLevel) * 100.0f;
-        switch (cleanlinessPercentage)
-        {
-            case > 100.0f:
-                slimeToAddFromCleanliness *= cleaningSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
-                break;
-            case >= 80.0f:
-                slimeToAddFromCleanliness *= cleaningSlimeMultiplier;  // Above 80%, multiply
-                break;
-            case < 20.0f:
-                slimeToAddFromCleanliness *= 0.5f; // Below 20% incur penalty
-                break;
-            default:
-                slimeToAddFromCleanliness *= 1.0f;  // Normal collection rate
-                break;
-        }
-
-        float happinessPercentage = (currentHappinessLevel / maxHappinessLevel) * 100.0f;
-        switch (happinessPercentage)
-        {
-            case > 100.0f:
-                slimeToAddFromHappiness *= happinessSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
-                break;
-            case >= 80.0f:
-                slimeToAddFromHappiness *= happinessSlimeMultiplier;  // Above 80%, multiply
-                break;
-            case < 20.0f:
-                slimeToAddFromHappiness *= 0.5f; // Below 20% incur penalty
-                break;
-            default:
-                slimeToAddFromHappiness *= 1.0f;  // Normal collection rate
-                break;
-        }
-
-        float totalSlimeToAdd = (slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness) * (float)delta;
-        currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister); // Ensure it doesn't exceed max capacity
-
-        GD.Print($"Slime added: {totalSlimeToAdd}, Current slime level: {currentSlimeLevel}");
     }
 
     private void AddWasteProduct(float amountOfWaste)
@@ -230,7 +156,7 @@ public partial class CreatureNeeds : Node3D
         float newHappinessPercentage = currentHappinessLevel / maxHappinessLevel * 100.0f;
         float newCleanlinessPercentage = currentCleanlinessLevel / maxCleanlinessLevel * 100.0f;
         creatureNeedsDisplayNode.UpdateProgressBars(newHungerPercentage, newHappinessPercentage, newHappinessPercentage, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft, currentSlimeLevel); // DEBUG TO REMOVE
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft); // DEBUG TO REMOVE
     }
 
     private void HandleCreatureServedFood(E_NeedMetAmount amount)

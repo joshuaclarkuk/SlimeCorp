@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cotmprmmj4p87"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/Canister.cs" id="1_8uy3h"]
+[ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="1_agvk6"]
+
+[node name="Canister" type="Node3D"]
+script = ExtResource("1_8uy3h")
+
+[node name="Canister" type="CSGCylinder3D" parent="."]
+material = ExtResource("1_agvk6")
