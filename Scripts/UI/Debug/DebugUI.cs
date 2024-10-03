@@ -4,14 +4,19 @@ using System.Collections.Generic;
 
 public partial class DebugUI : Control
 {
-    [ExportCategory("Required Nodes")]
+    [ExportCategory("Employee Number Nodes")]
     [Export] private Label employeeNumberLabelNode = null;
+
+    [ExportCategory("Creature Needs Nodes")]
     [Export] private VBoxContainer foodRequestContainerNode = null;
     [Export] private VBoxContainer areaCleanRequestContainerNode = null;
     [Export] private ProgressBar hungerProgressBar = null;
     [Export] private ProgressBar happinessProgressBar = null;
     [Export] private ProgressBar cleanlinessProgressBar = null;
     [Export] private Label timeLeftText = null;
+
+    [ExportCategory("Slime Collected Nodes")]
+    [Export] private ProgressBar slimeCollectedProgressBarNode = null;
 
     [ExportCategory("Scenes To Instantiate")]
     [Export] private PackedScene foodRequestScene = null;
@@ -21,7 +26,28 @@ public partial class DebugUI : Control
 
     public override void _Ready()
     {
+        // Get global signals and subscribe
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+        SubscribeToEvents();
+    }
+
+    public override void _ExitTree()
+    {
+        UnsubscribeFromEvents();
+    }
+
+    public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newTimeLeft, float newSlimeAmount)
+    {
+        hungerProgressBar.Value = newHunger;
+        happinessProgressBar.Value = newHappiness;
+        cleanlinessProgressBar.Value = newCleanliness;
+        timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
+
+        slimeCollectedProgressBarNode.Value = newSlimeAmount;
+    }
+
+    private void SubscribeToEvents()
+    {
         globalSignals.OnEmployeeNumberGenerated += HandleEmployeeNumberGenerated;
         globalSignals.OnCreatureFeedRequest += HandleCreatureFeedRequest;
         globalSignals.OnAreasToCleanRequest += HandleAreasToCleanRequest;
@@ -29,21 +55,13 @@ public partial class DebugUI : Control
         globalSignals.OnCreatureCleanRequestSatisfied += HandleCreatureCleanRequestSatisfied;
     }
 
-    public override void _ExitTree()
+    private void UnsubscribeFromEvents()
     {
         globalSignals.OnEmployeeNumberGenerated -= HandleEmployeeNumberGenerated;
         globalSignals.OnCreatureFeedRequest -= HandleCreatureFeedRequest;
         globalSignals.OnAreasToCleanRequest -= HandleAreasToCleanRequest;
         globalSignals.OnCreatureFeedRequestSatisfied -= HandleCreatureFeedRequestSatisfied;
         globalSignals.OnCreatureCleanRequestSatisfied -= HandleCreatureCleanRequestSatisfied;
-    }
-
-    public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newTimeLeft)
-    {
-        hungerProgressBar.Value = newHunger;
-        happinessProgressBar.Value = newHappiness;
-        cleanlinessProgressBar.Value = newCleanliness;
-        timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
     }
 
     private void HandleEmployeeNumberGenerated(int[] employeeNumber)

@@ -10,6 +10,11 @@ public partial class CreatureNeeds : Node3D
     [Export] private Timer needsDisplayUpdateTimerNode = null;
     [Export] private DebugUI debugUINode = null;
 
+    [ExportCategory("Max Levels")]
+    [Export] private float maxHungerLevel = 100.0f;
+    [Export] private float maxHappinessLevel = 100.0f;
+    [Export] private float maxCleanlinessLevel = 100.0f;
+
     [ExportCategory("Depletion Rates")]
     [Export] private float hungerDepletionRate = 0.6f;
     [Export] private float happinessDepletionRate = 0.4f;
@@ -25,18 +30,21 @@ public partial class CreatureNeeds : Node3D
     [Export] private float maxWasteProductToAdd = 50.0f;
     [Export] private float maxAngerToAdd = 10.0f;
 
-    private GlobalSignals globalSignals = null;
+    [ExportCategory("Slime Collection")]
+    [Export] private float baseSlimeCollectionRate = 1.0f;
+    [Export] private float maxSlimeInCanister = 100.0f;
+    [Export] private float feedingSlimeMultiplier = 2.0f;
+    [Export] private float cleaningSlimeMultiplier = 2.0f;
+    [Export] private float happinessSlimeMultiplier = 2.0f;
 
-    // Max levels
-    private float maxHungerLevel = 100.0f;
-    private float maxHappinessLevel = 100.0f;
-    private float maxCleanlinessLevel = 100.0f;
+    private GlobalSignals globalSignals = null;
 
     // Current levels
     private float currentHungerLevel = 0.0f;
     private float currentHappinessLevel = 0.0f;
     private float currentCleanlinessLevel = 0.0f;
     private float currentTimeLeft = 0.0f;
+    private float currentSlimeLevel = 0.0f;
 
     // Guards
     private bool playerHasClockedIn = false;
@@ -47,8 +55,36 @@ public partial class CreatureNeeds : Node3D
 
     public override void _Ready()
     {
-        // Link global signals so we know when player has clocked in and out
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+        SubscribeToEvents();
+    }
+
+    public override void _ExitTree()
+    {
+        UnsubscribeFromEvents();
+    }
+
+    public override void _Process(double delta)
+    {
+        if (playerHasClockedIn)
+        {
+            ReduceNeedLevels(delta);
+            AddSlimeToCanister();
+        }
+    }
+
+    // Called by Main to initialise needs per day
+    public void SetUpForNewDay(float minutesInDay)
+    {
+        SetNumberOfMinutesInDay(minutesInDay);
+        ResetAllCreatureNeeds();
+        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft, currentSlimeLevel);
+    }
+
+    private void SubscribeToEvents()
+    {
+        // Link global signals so we know when player has clocked in and out
         globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
 
@@ -60,7 +96,7 @@ public partial class CreatureNeeds : Node3D
         cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
     }
 
-    public override void _ExitTree()
+    private void UnsubscribeFromEvents()
     {
         needsDisplayUpdateTimerNode.Timeout -= HandleNeedsDisplayUpdateTimerNodeTimeout;
         globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
@@ -69,23 +105,6 @@ public partial class CreatureNeeds : Node3D
         // Unlink NeedComponent signals
         feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
-    }
-
-    public override void _Process(double delta)
-    {
-        if (playerHasClockedIn)
-        {
-            ReduceNeedLevels(delta);
-        }
-    }
-
-    // Called by Main to initialise needs per day
-    public void SetUpForNewDay(float minutesInDay)
-    {
-        SetNumberOfMinutesInDay(minutesInDay);
-        ResetAllCreatureNeeds();
-        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
     private void SetNumberOfMinutesInDay(float minutes)
@@ -109,6 +128,70 @@ public partial class CreatureNeeds : Node3D
 
         MakeFeedingRequestIfBelowThreshold();
         MakeCleaningRequestIfBelowThreshold();
+    }
+
+    private void AddSlimeToCanister()
+    {
+        // Slime to add from food, cleanliness, and happiness
+        float slimeToAddFromFood = baseSlimeCollectionRate;
+        float slimeToAddFromCleanliness = baseSlimeCollectionRate;
+        float slimeToAddFromHappiness = baseSlimeCollectionRate;
+
+        float hungerPercentage = (currentHungerLevel / maxHungerLevel) * 100.0f;
+        switch (hungerPercentage)
+        {
+            case > 100.0f:
+                slimeToAddFromFood *= feedingSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
+                break;
+            case >= 80.0f:
+                slimeToAddFromFood *= feedingSlimeMultiplier;  // Above 80%, multiply
+                break;
+            case < 20.0f:
+                slimeToAddFromFood *= 0.5f; // Below 20% incur penalty
+                    break;
+            default:
+                slimeToAddFromFood *= 1.0f;  // Normal collection rate
+                break;
+        }
+
+        float cleanlinessPercentage = (currentCleanlinessLevel / maxCleanlinessLevel) * 100.0f;
+        switch (cleanlinessPercentage)
+        {
+            case > 100.0f:
+                slimeToAddFromCleanliness *= cleaningSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
+                break;
+            case >= 80.0f:
+                slimeToAddFromCleanliness *= cleaningSlimeMultiplier;  // Above 80%, multiply
+                break;
+            case < 20.0f:
+                slimeToAddFromCleanliness *= 0.5f; // Below 20% incur penalty
+                break;
+            default:
+                slimeToAddFromCleanliness *= 1.0f;  // Normal collection rate
+                break;
+        }
+
+        float happinessPercentage = (currentHappinessLevel / maxHappinessLevel) * 100.0f;
+        switch (happinessPercentage)
+        {
+            case > 100.0f:
+                slimeToAddFromHappiness *= happinessSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
+                break;
+            case >= 80.0f:
+                slimeToAddFromHappiness *= happinessSlimeMultiplier;  // Above 80%, multiply
+                break;
+            case < 20.0f:
+                slimeToAddFromHappiness *= 0.5f; // Below 20% incur penalty
+                break;
+            default:
+                slimeToAddFromHappiness *= 1.0f;  // Normal collection rate
+                break;
+        }
+
+        float totalSlimeToAdd = slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness;
+        currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister); // Ensure it doesn't exceed max capacity
+
+        GD.Print($"Slime added: {totalSlimeToAdd}, Current slime level: {currentSlimeLevel}");
     }
 
     private void AddWasteProduct(float amountOfWaste)
@@ -144,7 +227,7 @@ public partial class CreatureNeeds : Node3D
         float newHappinessPercentage = currentHappinessLevel / maxHappinessLevel * 100.0f;
         float newCleanlinessPercentage = currentCleanlinessLevel / maxCleanlinessLevel * 100.0f;
         creatureNeedsDisplayNode.UpdateProgressBars(newHungerPercentage, newHappinessPercentage, newHappinessPercentage, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft); // DEBUG TO REMOVE
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft, currentSlimeLevel); // DEBUG TO REMOVE
     }
 
     private void HandleCreatureServedFood(E_NeedMetAmount amount)
