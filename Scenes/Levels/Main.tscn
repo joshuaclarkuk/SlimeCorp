@@ -109,9 +109,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.9740
 text = "Biofuel Canister
 Storage >>>"
 
-[node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
-slimeCollectionStationNode = NodePath("../Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 
 [node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
@@ -131,9 +130,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0,
 [node name="CleaningStation" parent="Stations" instance=ExtResource("8_jl626")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
 
-[node name="SlimeCollectionStation" parent="Stations" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
+[node name="SlimeCollectionStation" parent="Stations" instance=ExtResource("9_mb0pm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
-debugUI = NodePath("../../DebugUI")
 
 [node name="CanisterStorageStation" parent="Stations" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
