@@ -5,6 +5,7 @@ public partial class Buttons : Node3D
 {
     [ExportCategory("Required Nodes")]
     [Export] public Button[] ButtonArray { get; private set; } = null;
+    [Export] private OneShotAudioComponent oneShotAudioComponentNode = null;
 
     [ExportCategory("Button Behaviour")]
     [Export] private bool shouldStayDown = false;
@@ -32,6 +33,7 @@ public partial class Buttons : Node3D
         if (!ButtonArray[buttonNumber].IsDown)
         {
             ButtonArray[buttonNumber].DepressButton(travelAmount, buttonPressDuration);
+            oneShotAudioComponentNode.PlayAudioClip();
         }
         else
         {

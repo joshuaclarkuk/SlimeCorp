@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://wp8155nwu4mq"]
+[gd_scene load_steps=12 format=3 uid="uid://wp8155nwu4mq"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/_Components/Buttons.cs" id="1_2ibfs"]
 [ext_resource type="PackedScene" uid="uid://y48k5t3gmky0" path="res://Scenes/Stations/Button.tscn" id="2_wpuw2"]
+[ext_resource type="PackedScene" uid="uid://ckk613qbhotxt" path="res://Scenes/Audio/OneShotAudioComponent.tscn" id="3_uaa3p"]
+[ext_resource type="AudioStream" uid="uid://bfg2r1g0862qu" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress1.wav" id="4_fmucy"]
+[ext_resource type="AudioStream" uid="uid://chvnqciixhnco" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress2.wav" id="5_ub6ct"]
+[ext_resource type="AudioStream" uid="uid://b0h1hqd3xres0" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress3.wav" id="6_wavd8"]
+[ext_resource type="AudioStream" uid="uid://bcm2rf3h8b816" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress4.wav" id="7_26ta3"]
+[ext_resource type="AudioStream" uid="uid://c1i0xqx61yxs8" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress5.wav" id="8_n2nmp"]
+[ext_resource type="AudioStream" uid="uid://dg3kcgobbylsn" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress6.wav" id="9_adq3v"]
+[ext_resource type="AudioStream" uid="uid://2hfgeyosgob4" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress7.wav" id="10_0ai0k"]
+[ext_resource type="AudioStream" uid="uid://cx71ltgantq0g" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress8.wav" id="11_p7bj2"]
 
-[node name="Buttons" type="Node3D" node_paths=PackedStringArray("ButtonArray")]
+[node name="Buttons" type="Node3D" node_paths=PackedStringArray("ButtonArray", "oneShotAudioComponentNode")]
 script = ExtResource("1_2ibfs")
 ButtonArray = [NodePath("Button0"), NodePath("Button1"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4"), NodePath("Button5"), NodePath("Button6"), NodePath("Button7"), NodePath("Button8"), NodePath("Button9")]
+oneShotAudioComponentNode = NodePath("OneShotAudioComponent")
 
 [node name="Button0" parent="." instance=ExtResource("2_wpuw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, 0.3)
@@ -36,3 +46,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
 
 [node name="Button9" parent="." instance=ExtResource("2_wpuw2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.3)
+
+[node name="OneShotAudioComponent" parent="." instance=ExtResource("3_uaa3p")]
+audioStreams = Array[AudioStream]([ExtResource("4_fmucy"), ExtResource("5_ub6ct"), ExtResource("6_wavd8"), ExtResource("7_26ta3"), ExtResource("8_n2nmp"), ExtResource("9_adq3v"), ExtResource("10_0ai0k"), ExtResource("11_p7bj2")])
+minVolumeDb = -2.0
+maxVolumeDb = 0.0

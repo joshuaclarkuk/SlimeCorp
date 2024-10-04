@@ -100,7 +100,6 @@ public partial class Player : CharacterBody3D
 			velocity.Z = Mathf.Lerp(velocity.Z, targetVelocity.Z, acceleration * 2 * (float)delta);
 		}
 
-
 		Velocity = velocity;
 		MoveAndSlide();
 	}
@@ -124,6 +123,7 @@ public partial class Player : CharacterBody3D
 
 			if (!isInteractingWithStation)
 			{
+				Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
 				globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
 				isInteractingWithStation = true;
 			}

@@ -1,7 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://db8ayysgph1a2"]
+[gd_scene load_steps=13 format=3 uid="uid://db8ayysgph1a2"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_iqhkd"]
 [ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="2_prxc5"]
+[ext_resource type="Script" path="res://Scripts/Player/FootstepAudio.cs" id="3_48gdc"]
+[ext_resource type="AudioStream" uid="uid://b1y318ebamhc7" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_1.wav" id="4_n0lhe"]
+[ext_resource type="AudioStream" uid="uid://cfnjno47w80gr" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_2.wav" id="5_c35bk"]
+[ext_resource type="AudioStream" uid="uid://bcn07hpiv2s8l" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_3.wav" id="6_6b1av"]
+[ext_resource type="AudioStream" uid="uid://cprygpu605mx2" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_4.wav" id="7_607c6"]
+[ext_resource type="AudioStream" uid="uid://ns6bfyddgw3" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_5.wav" id="8_e86mt"]
+[ext_resource type="AudioStream" uid="uid://c03sixvvfsy7i" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_6.wav" id="9_b16fw"]
+[ext_resource type="AudioStream" uid="uid://cbqi7ohi7g0fx" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_7.wav" id="10_ysfvl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_34n1q"]
 
@@ -58,3 +66,14 @@ cull_mask = 2
 visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_s46c6")
+
+[node name="FootstepAudio" type="Node3D" parent="." node_paths=PackedStringArray("concreteFootstepPlayerNode", "playerNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("3_48gdc")
+concreteFootstepPlayerNode = NodePath("ConcreteFootsteps")
+concreteFootsteps = Array[AudioStream]([ExtResource("4_n0lhe"), ExtResource("5_c35bk"), ExtResource("6_6b1av"), ExtResource("7_607c6"), ExtResource("8_e86mt"), ExtResource("9_b16fw"), ExtResource("10_ysfvl")])
+playerNode = NodePath("..")
+modifier = 0.64
+
+[node name="ConcreteFootsteps" type="AudioStreamPlayer3D" parent="FootstepAudio"]
+bus = &"Sound Effects"
