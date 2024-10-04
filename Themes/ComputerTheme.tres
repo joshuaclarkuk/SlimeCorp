@@ -1,10 +1,16 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://w1n0c3fk5nfk"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://w1n0c3fk5nfk"]
 
 [ext_resource type="StyleBox" uid="uid://fi6eahtkncpo" path="res://Themes/StyleBoxes/GreenBorderStyleBox.tres" id="1_jq5pp"]
-[ext_resource type="FontFile" uid="uid://bk0uid85746t2" path="res://Assets/Fonts/ka1.ttf" id="1_kbffp"]
+[ext_resource type="FontFile" uid="uid://dq281orcvlsjf" path="res://Assets/Fonts/Welbut__.ttf" id="2_f58am"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ft2sj"]
+bg_color = Color(0.854902, 0.854902, 0.854902, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxssc"]
+bg_color = Color(0, 0.905882, 0, 1)
 
 [resource]
-default_font = ExtResource("1_kbffp")
+default_font = ExtResource("2_f58am")
 Button/colors/font_color = Color(0, 0.905882, 0, 1)
 Label/colors/font_color = Color(0, 0.90773, 0, 1)
 MarginContainer/constants/margin_bottom = 20
@@ -13,4 +19,7 @@ MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
 PanelContainer/styles/panel = ExtResource("1_jq5pp")
 ProgressBar/colors/font_color = Color(0, 0.905882, 0, 1)
+ProgressBar/font_sizes/font_size = 54
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ft2sj")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_oxssc")
 VBoxContainer/constants/separation = 20

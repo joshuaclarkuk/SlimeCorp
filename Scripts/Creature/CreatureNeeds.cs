@@ -19,9 +19,9 @@ public partial class CreatureNeeds : Node3D
     [Export] private float maxCleanlinessLevel = 100.0f;
 
     [ExportCategory("Depletion Rates")]
-    [Export] private float hungerDepletionRate = 0.4f;
-    [Export] private float happinessDepletionRate = 0.3f;
-    [Export] private float cleanlinessDepletionRate = 0.2f;
+    [Export] private float hungerDepletionRate = 0.2f;
+    [Export] private float happinessDepletionRate = 0.15f;
+    [Export] private float cleanlinessDepletionRate = 0.1f;
 
     [ExportCategory("Request Points (Percentage Left)")]
     [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 40.0f;

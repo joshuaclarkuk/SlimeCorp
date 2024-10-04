@@ -13,6 +13,12 @@ public partial class CreatureNeedsDisplay : Control
         hungerProgressBar.Value = newHunger;
         happinessProgressBar.Value = newHappiness;
         cleanlinessProgressBar.Value = newCleanliness;
-        timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
+
+        // Display time left in minutes (thought could be perceived as hours)
+        int minutes = (int)newTimeLeft / 60;
+        int seconds = (int)newTimeLeft % 60;
+
+        // Format the string to display as "MM:SS"
+        timeLeftText.Text = string.Format("{0}h {1:00}m", minutes, seconds);
     }
 }
