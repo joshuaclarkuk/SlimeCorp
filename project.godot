@@ -24,6 +24,12 @@ Options="*res://Scripts/Globals/Options.cs"
 
 project/assembly_name="SlimeCorp"
 
+[file_customization]
+
+folder_colors={
+"res://3D Folder/": "orange"
+}
+
 [input]
 
 WalkForwards={
