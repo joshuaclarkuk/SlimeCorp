@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://c81xuqyf4vlou"]
+[gd_scene load_steps=7 format=3 uid="uid://c81xuqyf4vlou"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_uotg4"]
 [ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation/SlimeCollectionStation.cs" id="2_2mdql"]
 [ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="3_e1r0l"]
 [ext_resource type="PackedScene" uid="uid://cb5cqe6innndc" path="res://Scenes/Stations/Valve.tscn" id="4_yk3f8"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_gh8vd"]
+[ext_resource type="AudioStream" uid="uid://bn5vnit1a02dv" path="res://Assets/Audio/SFX/Stations/SlimeCollectionGrinding.ogg" id="6_6uxru"]
 
-[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "canisterMeshToAppear", "buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
+[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "canisterMeshToAppear", "slimeCollectionAudioNode", "buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
 script = ExtResource("2_2mdql")
 valveNode = NodePath("Valve")
 canisterMeshToAppear = NodePath("Meshes/Canister")
+slimeCollectionAudioNode = NodePath("SlimeCollectionAudio")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 4
@@ -47,3 +49,8 @@ desiredTargetRotation = 359.0
 
 [node name="Buttons" parent="." index="5" instance=ExtResource("5_gh8vd")]
 visible = false
+
+[node name="SlimeCollectionAudio" type="AudioStreamPlayer3D" parent="." index="6"]
+stream = ExtResource("6_6uxru")
+volume_db = 20.0
+max_distance = 6.0

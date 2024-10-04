@@ -6,6 +6,7 @@ public partial class SlimeCollectionStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Valve valveNode = null;
     [Export] private Node3D canisterMeshToAppear = null;
+    [Export] private AudioStreamPlayer3D slimeCollectionAudioNode = null;
 
     [ExportCategory("External Nodes")]
     [Export] private DebugUI debugUI = null;
@@ -22,6 +23,7 @@ public partial class SlimeCollectionStation : Station
     private bool valveIsOpen = false;
     private bool playerIsHoldingBarrel = false;
     private bool canisterInSlot = true;
+    private bool hasStartedAudio = false; // Switches harvesting audio loop on and off
 
     public override void _Ready()
     {
@@ -153,6 +155,13 @@ public partial class SlimeCollectionStation : Station
     {
         if (!canisterInSlot || valveIsOpen) { return; }
 
+        // Play harvesting audio
+        if (!hasStartedAudio)
+        {
+            slimeCollectionAudioNode.Play();
+            hasStartedAudio = true;
+        }
+
         // Slime to add from food, cleanliness, and happiness
         float slimeToAddFromFood = baseSlimeCollectionRate;
         float slimeToAddFromCleanliness = baseSlimeCollectionRate;
@@ -242,6 +251,7 @@ public partial class SlimeCollectionStation : Station
 
         if (valveIsOpen)
         {
+            // Remove canister if one is present
             if (canisterInSlot)
             {
                 RemoveCanisterFromStationAndBankSlime();
@@ -251,6 +261,13 @@ public partial class SlimeCollectionStation : Station
 
     private void RemoveCanisterFromStationAndBankSlime()
     {
+        // Stop harvesting audio
+        if (hasStartedAudio)
+        {
+            slimeCollectionAudioNode.Stop();
+            hasStartedAudio = false;
+        }
+
         canisterInSlot = false;
         canisterMeshToAppear.Visible = false;
         globalSignals.RaiseSlimeCanisterRemovedFromStation(currentSlimeLevel);
