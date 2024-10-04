@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5qteejt5iiuk"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_raovl"]
+[ext_resource type="ArrayMesh" uid="uid://dm8mkr2e6bvrf" path="res://3D Folder/3D models/Level/mainroom.obj" id="2_w3c6d"]
+[ext_resource type="Material" uid="uid://c6xufhgacmixq" path="res://3D Folder/materials folder/main room.tres" id="3_nly3d"]
+[ext_resource type="ArrayMesh" uid="uid://8fxxv5xm4rl7" path="res://3D Folder/3D models/Level/mainroomroof.obj" id="4_ow6m8"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_raovl")
+
+[node name="Mainroom" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.1948, 208.032, 9.27753)
+mesh = ExtResource("2_w3c6d")
+surface_material_override/0 = ExtResource("3_nly3d")
+
+[node name="Mainroomroof" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.5898, 207.975, 9.27021)
+mesh = ExtResource("4_ow6m8")
+surface_material_override/0 = ExtResource("3_nly3d")

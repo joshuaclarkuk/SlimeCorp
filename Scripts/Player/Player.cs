@@ -3,214 +3,214 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-    [ExportCategory("Required Nodes")]
-    [Export] private Node3D cameraPivotNode = null;
-    [Export] private Camera3D playerCameraNode = null;
-    [Export] private Node3D canisterCarrierNode = null;
+	[ExportCategory("Required Nodes")]
+	[Export] private Node3D cameraPivotNode = null;
+	[Export] private Camera3D playerCameraNode = null;
+	[Export] private Node3D canisterCarrierNode = null;
 
-    [ExportCategory("Player Movement")]
-    [Export] private float movementSpeed = 3.0f;
-    [Export] private float acceleration = 10.0f;
-    [Export] private float jumpHeight = 1.0f;
-    [Export] private float fallMultiplier = 2.5f;
-    [Export] private float mouseSensitivity = 0.003f;
-
-
-    // Get the gravity from the project settings to be synced with RigidBody nodes.
-    public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
-
-    // Global signals
-    private Options options;
-    private GlobalSignals globalSignals;
-
-    // Mouse motion vector
-    private Vector2 mouseMotion = Vector2.Zero;
-
-    // Station-specific variables
-    private E_StationType activeStationCollider = E_StationType.NONE;
-    private bool isInteractingWithStation = false;
-
-    public override void _Ready()
-    {
-        base._Ready();
-
-        // Get Options autoload
-        options = GetNode<Options>("/root/Options");
-
-        // Get GlobalSignals autoload and assign signals
-        globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        SubscribeToEvents();
-
-        // Make sure carrying canister is invisible on start
-        canisterCarrierNode.Visible = false;
-
-        // Make camera current (just in case Godot thinks Roving Camera should be current)
-        playerCameraNode.MakeCurrent();
-
-        // Capture mouse cursor on start
-        Input.MouseMode = Input.MouseModeEnum.Captured;
-    }
-
-    public override void _ExitTree()
-    {
-        UnsubscribeFromEvents();
-    }
-
-    public override void _PhysicsProcess(double delta)
-    {
-        if (isInteractingWithStation) { return; }
-
-        HandleCameraRotation();
-
-        Vector3 velocity = Velocity;
-
-        // Add the gravity.
-        if (!IsOnFloor())
-        {
-            if (velocity.Y >= 0)
-            {
-                velocity.Y -= gravity * (float)delta * 2;
-            }
-            else
-            {
-                velocity.Y -= gravity * (float)delta * fallMultiplier;
-            }
-        }
-
-        // Handle Jump.
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_JUMP) && IsOnFloor())
-            velocity.Y = (float)Mathf.Sqrt(jumpHeight * 2.0 * gravity);
-
-        // Handle Movement
-        Vector2 inputDir = Input.GetVector(GlobalConstants.INPUT_STRAFE_LEFT, GlobalConstants.INPUT_STRAFE_RIGHT, GlobalConstants.INPUT_WALK_FORWARDS, GlobalConstants.INPUT_WALK_BACKWARDS);
-        Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
-
-        // Define the target velocity based on input
-        Vector3 targetVelocity = direction * movementSpeed;
-
-        if (targetVelocity != Vector3.Zero)
-        {
-            velocity.X = Mathf.Lerp(velocity.X, targetVelocity.X, acceleration * (float)delta);
-            velocity.Z = Mathf.Lerp(velocity.Z, targetVelocity.Z, acceleration * (float)delta);
-        }
-        else
-        {
-            // Forces faster stopping than accelerating
-            velocity.X = Mathf.Lerp(velocity.X, targetVelocity.X, acceleration * 2 * (float)delta);
-            velocity.Z = Mathf.Lerp(velocity.Z, targetVelocity.Z, acceleration * 2 * (float)delta);
-        }
+	[ExportCategory("Player Movement")]
+	[Export] private float movementSpeed = 3.0f;
+	[Export] private float acceleration = 10.0f;
+	[Export] private float jumpHeight = 1.0f;
+	[Export] private float fallMultiplier = 2.5f;
+	[Export] private float mouseSensitivity = 0.003f;
 
 
-        Velocity = velocity;
-        MoveAndSlide();
-    }
+	// Get the gravity from the project settings to be synced with RigidBody nodes.
+	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        // CAMERA LOOK
-        if (Input.MouseMode == Input.MouseModeEnum.Captured)
-        {
-            // Control camera with mouse motion
-            if (@event is InputEventMouseMotion motion)
-            {
-                mouseMotion = -motion.Relative * mouseSensitivity;
-            }
-        }
+	// Global signals
+	private Options options;
+	private GlobalSignals globalSignals;
 
-        // INTERACT WITH STATION
-        if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
-        {
-            if (activeStationCollider == E_StationType.NONE) { return; }
+	// Mouse motion vector
+	private Vector2 mouseMotion = Vector2.Zero;
 
-            if (!isInteractingWithStation)
-            {
-                globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-                isInteractingWithStation = true;
-            }
-            else
-            {
-                globalSignals.RaisePlayerExitStation(activeStationCollider);
-            }
-        }
+	// Station-specific variables
+	private E_StationType activeStationCollider = E_StationType.NONE;
+	private bool isInteractingWithStation = false;
 
-        // SHOW CURSOR
-        if (Input.IsActionJustPressed("ui_cancel"))
-        {
-            Input.MouseMode = Input.MouseModeEnum.Visible;
-        }
-    }
+	public override void _Ready()
+	{
+		base._Ready();
 
-    private void SubscribeToEvents()
-    {
-        globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
-        globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
-        globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
-        globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
-        globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
-    }
+		// Get Options autoload
+		options = GetNode<Options>("/root/Options");
 
-    private void UnsubscribeFromEvents()
-    {
-        globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
-        globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
-        globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
-        globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
-    }
+		// Get GlobalSignals autoload and assign signals
+		globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+		SubscribeToEvents();
 
-    private void HandleCameraRotation()
-    {
-        // Rotate around Y-axis using mouse X movement
-        RotateY(mouseMotion.X);
+		// Make sure carrying canister is invisible on start
+		canisterCarrierNode.Visible = false;
 
-        // Move camera via pivot but clamp to prevent it spinning all the way around on the X axis
-        if (options.IsInverted)
-        {
-            cameraPivotNode.RotateX(-mouseMotion.Y);
-        }
-        else
-        {
-            cameraPivotNode.RotateX(mouseMotion.Y);
-        }
-        Vector3 rotationDegrees;
-        rotationDegrees.X = Mathf.Clamp(cameraPivotNode.RotationDegrees.X, -85.0f, 85.0f);
-        rotationDegrees.Y = cameraPivotNode.RotationDegrees.Y;
-        rotationDegrees.Z = cameraPivotNode.RotationDegrees.Z;
+		// Make camera current (just in case Godot thinks Roving Camera should be current)
+		playerCameraNode.MakeCurrent();
 
-        cameraPivotNode.RotationDegrees = rotationDegrees;
+		// Capture mouse cursor on start
+		Input.MouseMode = Input.MouseModeEnum.Captured;
+	}
 
-        // Reset mouseMotion to prevent infinite movement
-        mouseMotion = Vector2.Zero;
-    }
+	public override void _ExitTree()
+	{
+		UnsubscribeFromEvents();
+	}
 
-    private void HandlePlayerEnterStationCollider(E_StationType stationType)
-    {
-        if (activeStationCollider != stationType)
-        {
-            activeStationCollider = stationType;
-        }        
-    }
+	public override void _PhysicsProcess(double delta)
+	{
+		if (isInteractingWithStation) { return; }
 
-    private void HandlePlayerExitStationCollider(E_StationType stationType)
-    {
-        if (activeStationCollider == stationType)
-        {
-            activeStationCollider = E_StationType.NONE;
-        }
-    }
+		HandleCameraRotation();
 
-    private void HandleSlimeCanisterTakenFromStorage()
-    {
-        canisterCarrierNode.Visible = true;
-    }
+		Vector3 velocity = Velocity;
 
-    private void HandleSlimeCanisterAddedToStation()
-    {
-        canisterCarrierNode.Visible = false;
-    }
+		// Add the gravity.
+		if (!IsOnFloor())
+		{
+			if (velocity.Y >= 0)
+			{
+				velocity.Y -= gravity * (float)delta * 2;
+			}
+			else
+			{
+				velocity.Y -= gravity * (float)delta * fallMultiplier;
+			}
+		}
 
-    private void HandlePlayerCanMoveAgain()
-    {
-        playerCameraNode.MakeCurrent();
-        isInteractingWithStation = false;
-    }
+		// Handle Jump.
+		if (Input.IsActionJustPressed(GlobalConstants.INPUT_JUMP) && IsOnFloor())
+			velocity.Y = (float)Mathf.Sqrt(jumpHeight * 2.0 * gravity);
+
+		// Handle Movement
+		Vector2 inputDir = Input.GetVector(GlobalConstants.INPUT_STRAFE_LEFT, GlobalConstants.INPUT_STRAFE_RIGHT, GlobalConstants.INPUT_WALK_FORWARDS, GlobalConstants.INPUT_WALK_BACKWARDS);
+		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+
+		// Define the target velocity based on input
+		Vector3 targetVelocity = direction * movementSpeed;
+
+		if (targetVelocity != Vector3.Zero)
+		{
+			velocity.X = Mathf.Lerp(velocity.X, targetVelocity.X, acceleration * (float)delta);
+			velocity.Z = Mathf.Lerp(velocity.Z, targetVelocity.Z, acceleration * (float)delta);
+		}
+		else
+		{
+			// Forces faster stopping than accelerating
+			velocity.X = Mathf.Lerp(velocity.X, targetVelocity.X, acceleration * 2 * (float)delta);
+			velocity.Z = Mathf.Lerp(velocity.Z, targetVelocity.Z, acceleration * 2 * (float)delta);
+		}
+
+
+		Velocity = velocity;
+		MoveAndSlide();
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		// CAMERA LOOK
+		if (Input.MouseMode == Input.MouseModeEnum.Captured)
+		{
+			// Control camera with mouse motion
+			if (@event is InputEventMouseMotion motion)
+			{
+				mouseMotion = -motion.Relative * mouseSensitivity;
+			}
+		}
+
+		// INTERACT WITH STATION
+		if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
+		{
+			if (activeStationCollider == E_StationType.NONE) { return; }
+
+			if (!isInteractingWithStation)
+			{
+				globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+				isInteractingWithStation = true;
+			}
+			else
+			{
+				globalSignals.RaisePlayerExitStation(activeStationCollider);
+			}
+		}
+
+		// SHOW CURSOR
+		if (Input.IsActionJustPressed("ui_cancel"))
+		{
+			Input.MouseMode = Input.MouseModeEnum.Visible;
+		}
+	}
+
+	private void SubscribeToEvents()
+	{
+		globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
+		globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
+		globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
+		globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
+		globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
+	}
+
+	private void UnsubscribeFromEvents()
+	{
+		globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
+		globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
+		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
+		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
+	}
+
+	private void HandleCameraRotation()
+	{
+		// Rotate around Y-axis using mouse X movement
+		RotateY(mouseMotion.X);
+
+		// Move camera via pivot but clamp to prevent it spinning all the way around on the X axis
+		if (options.IsInverted)
+		{
+			cameraPivotNode.RotateX(-mouseMotion.Y);
+		}
+		else
+		{
+			cameraPivotNode.RotateX(mouseMotion.Y);
+		}
+		Vector3 rotationDegrees;
+		rotationDegrees.X = Mathf.Clamp(cameraPivotNode.RotationDegrees.X, -85.0f, 85.0f);
+		rotationDegrees.Y = cameraPivotNode.RotationDegrees.Y;
+		rotationDegrees.Z = cameraPivotNode.RotationDegrees.Z;
+
+		cameraPivotNode.RotationDegrees = rotationDegrees;
+
+		// Reset mouseMotion to prevent infinite movement
+		mouseMotion = Vector2.Zero;
+	}
+
+	private void HandlePlayerEnterStationCollider(E_StationType stationType)
+	{
+		if (activeStationCollider != stationType)
+		{
+			activeStationCollider = stationType;
+		}        
+	}
+
+	private void HandlePlayerExitStationCollider(E_StationType stationType)
+	{
+		if (activeStationCollider == stationType)
+		{
+			activeStationCollider = E_StationType.NONE;
+		}
+	}
+
+	private void HandleSlimeCanisterTakenFromStorage()
+	{
+		canisterCarrierNode.Visible = true;
+	}
+
+	private void HandleSlimeCanisterAddedToStation()
+	{
+		canisterCarrierNode.Visible = false;
+	}
+
+	private void HandlePlayerCanMoveAgain()
+	{
+		playerCameraNode.MakeCurrent();
+		isInteractingWithStation = false;
+	}
 }
