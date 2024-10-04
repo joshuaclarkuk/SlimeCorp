@@ -16,14 +16,51 @@ public partial class OperatingSystem : Control
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        globalSignals.OnEmailReceived += HandleEmailReceived;
-        globalSignals.OnNewsArticleReceived += HandleNewsArticleReceived;
+        SubscribeToSignals();
+
+        // Set invisible on start
+        Visible = false;
     }
 
     public override void _ExitTree()
     {
+        UnsubscribeFromSignals();
+    }
+
+    private void SubscribeToSignals()
+    {
+        globalSignals.OnEmailReceived += HandleEmailReceived;
+        globalSignals.OnNewsArticleReceived += HandleNewsArticleReceived;
+        globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
+        globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
+    }
+
+    private void UnsubscribeFromSignals()
+    {
         globalSignals.OnEmailReceived -= HandleEmailReceived;
         globalSignals.OnNewsArticleReceived -= HandleNewsArticleReceived;
+        globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
+        globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
+    }
+
+    private void FadeComputerScreen(float finalValue)
+    {
+        Tween fadeTween = CreateTween();
+        fadeTween.Finished += HandleFadeTweenFinished;
+        fadeTween.SetTrans(Tween.TransitionType.Sine);
+        fadeTween.SetEase(Tween.EaseType.InOut);
+
+        fadeTween.TweenProperty(this, "modulate:a", finalValue, 1.0f);
+    }
+
+    private void HandlePlayerInteractWithStation(E_StationType stationType)
+    {
+        if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(1.0f); }
+    }
+
+    private void HandlePlayerExitStation(E_StationType stationType)
+    {
+        if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(0.0f); }
     }
 
     private void HandleEmailReceived(ComputerItemResource resource)
@@ -34,5 +71,10 @@ public partial class OperatingSystem : Control
     private void HandleNewsArticleReceived(ComputerItemResource resource)
     {
         newsItemSpawnerNode.AddNewItemToScreen(resource);
+    }
+
+    private void HandleFadeTweenFinished()
+    {
+        Visible = !Visible;
     }
 }

@@ -31,11 +31,10 @@ glow_enabled = true
 [sub_resource type="ViewportTexture" id="ViewportTexture_kw8h5"]
 viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "stationsHeaderNode", "operatingSystemNode")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Stations")
-operatingSystemNode = NodePath("AspectRatioContainer/OperatingSystem")
 emailItemResources = Array[Object]([ExtResource("2_01ype")])
 
 [node name="Environment" type="Node3D" parent="."]
@@ -153,6 +152,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OperatingSystem" parent="AspectRatioContainer" instance=ExtResource("12_81ppp")]
+visible = false
 visibility_layer = 4
 custom_minimum_size = Vector2(600, 600)
 layout_mode = 2

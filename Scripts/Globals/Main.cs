@@ -10,7 +10,6 @@ public partial class Main : Node3D
     [Export] private Node3D stationsHeaderNode = null;
 
     [ExportCategory("Computer Items")]
-    [Export] private OperatingSystem operatingSystemNode = null;
     [Export] private ComputerItemResource[] emailItemResources = null;
     [Export] private ComputerItemResource[] newsItemResources = null;
 
@@ -32,12 +31,7 @@ public partial class Main : Node3D
         globalSignals.OnStartNewDay += HandleOnStartNewDay;
         globalSignals.OnEndDay += HandleOnEndDay;
         // Connect station-based signals
-        globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
-        globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
-
-        // Set operating system to invisible on start
-        operatingSystemNode.Visible = false;
 
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
@@ -49,8 +43,6 @@ public partial class Main : Node3D
         globalSignals.OnStartNewDay -= HandleOnStartNewDay;
         globalSignals.OnEndDay -= HandleOnEndDay;
         // Disconnect station-based signals
-        globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
-        globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
     }
 
@@ -122,22 +114,6 @@ public partial class Main : Node3D
 
         // Pass code in to event
         globalSignals.RaiseEmployeeNumberGenerated(employeeNumber);
-    }
-
-    private void HandlePlayerInteractWithStation(E_StationType type)
-    {
-        if (type == E_StationType.COMPUTER)
-        {
-            operatingSystemNode.Visible = true;
-        }
-    }
-
-    private void HandlePlayerExitStation(E_StationType type)
-    {
-        if (type == E_StationType.COMPUTER)
-        {
-            operatingSystemNode.Visible = false;
-        }
     }
 
     private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)
