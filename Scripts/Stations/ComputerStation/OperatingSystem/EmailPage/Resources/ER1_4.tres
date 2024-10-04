@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://dkihdhji3o6iy"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_0h5e0"]
+
+[resource]
+script = ExtResource("1_0h5e0")
+ItemTitle = "Project Brief - Resource Extraction Initiative"
+ItemBody = "Dear [New Employee],
+
+As part of your onboarding, you have been assigned to the Resource Extraction Initiative, a key project here at Aeternum Energy. This initiative focuses on our proprietary methods of fuel generation, and you will play a crucial role in ensuring its ongoing efficiency and success.
+
+Your work will directly contribute to the long-term sustainability of our energy resources, helping to meet global demand. Due to the sensitive nature of our extraction process, please adhere to all guidelines and be mindful of your interactions with research data.
+
+Further details about your specific role in the project will be provided in the coming days. Please don't hesitate to contact your immediate supervisor if you have any questions.
+
+Best regards,
+Henry Graves
+Senior Project Manager"
+ItemByline = "From: Henry Graves, Senior Project Manager"
+ItemDateReceived = "Date: October 12, 2026"

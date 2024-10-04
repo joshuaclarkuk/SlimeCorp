@@ -1,13 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=24 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
-[ext_resource type="Resource" uid="uid://bsfijobaw48xc" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/EmailResourceTest1.tres" id="2_01ype"]
+[ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_ge1xm"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
+[ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_2.tres" id="3_8kgyc"]
 [ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="3_gd6ql"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://lv3a7gtpt3cx" path="res://Scenes/Creature/CreatureNeeds.tscn" id="3_r5tf3"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
+[ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_3.tres" id="4_bhogl"]
+[ext_resource type="Resource" uid="uid://dkihdhji3o6iy" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_4.tres" id="5_gre0t"]
+[ext_resource type="Resource" uid="uid://c7bee0yqrpwrj" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_5.tres" id="6_3nqy6"]
 [ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="7_5p5ij"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
@@ -37,7 +41,7 @@ viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport"
 script = ExtResource("1_01g1o")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Stations")
-emailItemResources = Array[Object]([ExtResource("2_01ype")])
+emailItemResources = Array[Object]([ExtResource("2_ge1xm"), ExtResource("3_8kgyc"), ExtResource("4_bhogl"), ExtResource("5_gre0t"), ExtResource("6_3nqy6")])
 
 [node name="Environment" type="Node3D" parent="."]
 

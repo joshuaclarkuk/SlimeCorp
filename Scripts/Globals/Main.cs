@@ -35,6 +35,12 @@ public partial class Main : Node3D
 
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
+
+        // Send initial stack of emails to computer
+        foreach (ComputerItemResource emailResource in emailItemResources)
+        {
+            globalSignals.RaiseEmailReceived(emailResource);
+        }
     }
 
     public override void _ExitTree()

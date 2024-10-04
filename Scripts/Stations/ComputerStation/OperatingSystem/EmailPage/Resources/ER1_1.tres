@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://cepnpusbc381q"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_w128d"]
+
+[resource]
+script = ExtResource("1_w128d")
+ItemTitle = "Welcome to Aeternum Energy"
+ItemBody = "Welcome to Aeternum Energy! We are delighted to have you join our dynamic and innovative team. As a company at the forefront of energy solutions, your role here will contribute to our continued success in delivering unparalleled service to our clients.
+
+At Aeternum, we are driven by a commitment to sustainability and cutting-edge technologies, and we believe that your unique skills will play an integral part in our future growth. You will find that Aeternum provides a supportive and collaborative environment, with opportunities for personal and professional development.
+
+We look forward to seeing the impact of your work. Should you have any questions during your onboarding, feel free to reach out to the HR department.
+
+Best regards,
+Richard Crowley
+Director of Human Resources"
+ItemByline = "From: Richard Crowley, Director of Human Resources"
+ItemDateReceived = "Date: October 7, 2026"

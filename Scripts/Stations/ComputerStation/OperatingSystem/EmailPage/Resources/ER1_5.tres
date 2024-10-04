@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://c7bee0yqrpwrj"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_fnp3b"]
+
+[resource]
+script = ExtResource("1_fnp3b")
+ItemTitle = "Health and Safety Advisory"
+ItemBody = "Dear [New Employee],
+
+We at Aeternum Energy prioritize the health and well-being of all our staff, especially those working within the more intensive energy harvesting zones. As part of your training, you will undergo a comprehensive health and safety briefing designed to familiarize you with the unique challenges associated with our energy production methods.
+
+Please be vigilant in adhering to all safety protocols, and report any unusual occurrences immediately to your supervisor. Your safety is our top priority, and regular health checks will be conducted to ensure you remain in optimal condition during your time with us.
+
+We look forward to your cooperation in maintaining a safe and productive work environment.
+
+Warm regards,
+Dr. Vivian Moss
+Director of Health and Safety"
+ItemByline = "From: Dr. Vivian Moss, Director of Health and Safety"
+ItemDateReceived = "Date: October 15, 2026"
