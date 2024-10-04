@@ -3,36 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\slimecollectionstation\\slimecollectionstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\slimecollectionstation\\slimecollectionstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\computerstation\\operatingsystem\\operatingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\computerstation\\operatingsystem\\operatingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\canisterstoragestation\\canisterstoragestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\canisterstoragestation\\canisterstoragestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\clockoutstation\\clockoutstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\clockoutstation\\clockoutstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\creature\\creatureneeds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\creature\\creatureneeds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\ui\\debug\\debugui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\ui\\debug\\debugui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\computerstation\\computerstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\computerstation\\computerstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\Player.cs",
-              "RelativeDocumentMoniker": "Scripts\\Player\\Player.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\Player.cs",
-              "RelativeToolTip": "Scripts\\Player\\Player.cs",
-              "ViewState": "AgIAALoAAAAAAAAAAAASwNEAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T15:11:17.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClockOutStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ClockOutStation\\ClockOutStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\ClockOutStation\\ClockOutStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ClockOutStation\\ClockOutStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\ClockOutStation\\ClockOutStation.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAIwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T15:04:11.539Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DebugUI.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\Debug\\DebugUI.cs",
-              "RelativeDocumentMoniker": "Scripts\\UI\\Debug\\DebugUI.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\Debug\\DebugUI.cs",
-              "RelativeToolTip": "Scripts\\UI\\Debug\\DebugUI.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCsAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T15:00:25.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CanisterStorageStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\CanisterStorageStation\\CanisterStorageStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\CanisterStorageStation\\CanisterStorageStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\CanisterStorageStation\\CanisterStorageStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\CanisterStorageStation\\CanisterStorageStation.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAwwEsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:56:17.292Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\Main.cs",
               "RelativeDocumentMoniker": "Scripts\\Globals\\Main.cs",
               "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\Main.cs",
               "RelativeToolTip": "Scripts\\Globals\\Main.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAASwIoAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwCoAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:55:10.654Z",
+              "WhenOpened": "2024-10-04T12:28:26.885Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GlobalSignals.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
-              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalSignals.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
-              "RelativeToolTip": "Scripts\\Globals\\GlobalSignals.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAASwCIAAAA1AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "OperatingSystem.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
+              "RelativeDocumentMoniker": "Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
+              "RelativeToolTip": "Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:34:18.587Z",
+              "WhenOpened": "2024-10-04T11:25:14.687Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SlimeCollectionStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAO0AAAAFAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ComputerStation.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ComputerStation\\ComputerStation.cs",
+              "RelativeDocumentMoniker": "Scripts\\Stations\\ComputerStation\\ComputerStation.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ComputerStation\\ComputerStation.cs",
+              "RelativeToolTip": "Scripts\\Stations\\ComputerStation\\ComputerStation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T14:33:41.247Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreatureNeeds.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\CreatureNeeds.cs",
-              "RelativeDocumentMoniker": "Scripts\\Creature\\CreatureNeeds.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\CreatureNeeds.cs",
-              "RelativeToolTip": "Scripts\\Creature\\CreatureNeeds.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAASwEIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T12:49:04.45Z",
+              "WhenOpened": "2024-10-04T12:24:21.686Z",
               "EditorCaption": ""
             }
           ]

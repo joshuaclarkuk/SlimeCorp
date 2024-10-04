@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctp0lj7xhqriu"]
+
+[ext_resource type="PackedScene" uid="uid://c5qku0urn50du" path="res://Scenes/Stations/ComputerStation/ComputerItemSpawner.tscn" id="1_u6i60"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/NewsPage/NewsItemSpawner.cs" id="2_a31ko"]
+[ext_resource type="PackedScene" uid="uid://bois17jug4yjt" path="res://Scripts/Stations/ComputerStation/OperatingSystem/NewsPage/NewsItem.tscn" id="3_iqmkg"]
+
+[node name="NewsItemSpawner" instance=ExtResource("1_u6i60")]
+script = ExtResource("2_a31ko")
+packedSceneToInstantiate = ExtResource("3_iqmkg")

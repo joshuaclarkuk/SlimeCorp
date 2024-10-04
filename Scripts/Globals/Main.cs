@@ -6,12 +6,12 @@ public partial class Main : Node3D
     [ExportCategory("Creature")]
     [Export] private CreatureNeeds creatureNeeds = null;
 
-    [ExportCategory("Resources")]
-    [Export] private ArticleResource[] articleResources;
-    [Export] private EmailResource[] emailResources;
-
     [ExportCategory("Stations")]
     [Export] private Node3D stationsHeaderNode = null;
+
+    [ExportCategory("Computer Items")]
+    [Export] private ComputerItemResource[] emailItemResources = null;
+    [Export] private ComputerItemResource[] newsItemResources = null;
 
     // Signals
     private GlobalSignals globalSignals;
@@ -31,13 +31,7 @@ public partial class Main : Node3D
         globalSignals.OnStartNewDay += HandleOnStartNewDay;
         globalSignals.OnEndDay += HandleOnEndDay;
         // Connect station-based signals
-        globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
-        globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
-
-        // Resource debug error checks
-        if (articleResources.Length < maxDays) { GD.PrintErr("Not all article resources present!"); }
-        if (emailResources.Length < maxDays) { GD.PrintErr("Not all email resources present!"); }
 
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
@@ -49,8 +43,6 @@ public partial class Main : Node3D
         globalSignals.OnStartNewDay -= HandleOnStartNewDay;
         globalSignals.OnEndDay -= HandleOnEndDay;
         // Disconnect station-based signals
-        globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
-        globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
     }
 
@@ -122,16 +114,6 @@ public partial class Main : Node3D
 
         // Pass code in to event
         globalSignals.RaiseEmployeeNumberGenerated(employeeNumber);
-    }
-
-    private void HandlePlayerInteractWithStation(E_StationType type)
-    {
-        
-    }
-
-    private void HandlePlayerExitStation(E_StationType type)
-    {
-        
     }
 
     private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)
