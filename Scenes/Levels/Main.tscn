@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=20 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="Resource" uid="uid://bsfijobaw48xc" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/EmailResourceTest1.tres" id="2_01ype"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
+[ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Passenger.ogg" id="15_qi1cm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -110,8 +111,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.9740
 text = "Biofuel Canister
 Storage >>>"
 
-[node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
+slimeCollectionStationNode = NodePath("../Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 
 [node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
@@ -131,8 +133,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0,
 [node name="CleaningStation" parent="Stations" instance=ExtResource("8_jl626")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
 
-[node name="SlimeCollectionStation" parent="Stations" instance=ExtResource("9_mb0pm")]
+[node name="SlimeCollectionStation" parent="Stations" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
+debugUI = NodePath("../../DebugUI")
 
 [node name="CanisterStorageStation" parent="Stations" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
@@ -159,3 +162,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="DebugUI" parent="." instance=ExtResource("11_yopgj")]
+
+[node name="WorldAudio" type="Node3D" parent="."]
+
+[node name="Non-Diegetic" type="Node" parent="WorldAudio"]
+
+[node name="Music" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
+stream = ExtResource("15_qi1cm")
+autoplay = true
+
+[node name="Ambience" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
+
+[node name="Diegetic" type="Node3D" parent="WorldAudio"]

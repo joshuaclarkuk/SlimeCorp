@@ -11,6 +11,9 @@ public partial class OperatingSystem : Control
     [Export] private ComputerItemResource[] emailItemResources;
     [Export] private ComputerItemResource[] newsItemResources;
 
+    [ExportCategory("Behaviour")]
+    [Export] private float fadeDuration = 0.3f;
+
     private GlobalSignals globalSignals = null;
 
     public override void _Ready()
@@ -50,7 +53,7 @@ public partial class OperatingSystem : Control
         fadeTween.Finished += HandleFadeTweenFinished;
         fadeTween.SetTrans(Tween.TransitionType.Sine);
         fadeTween.SetEase(Tween.EaseType.InOut);
-        fadeTween.TweenProperty(this, "modulate:a", finalValue, 1.0f);
+        fadeTween.TweenProperty(this, "modulate:a", finalValue, fadeDuration);
 
         if (finalValue > 0)
         {
@@ -60,12 +63,17 @@ public partial class OperatingSystem : Control
 
     private void HandlePlayerInteractWithStation(E_StationType stationType)
     {
-        Visible = true;
+        // Register mouse events
+        MouseFilter = MouseFilterEnum.Stop;
+
         if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(1.0f); }
     }
 
     private void HandlePlayerExitStation(E_StationType stationType)
     {
+        // Ignore mouse events
+        MouseFilter = MouseFilterEnum.Ignore;
+
         if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(0.0f); }
     }
 
