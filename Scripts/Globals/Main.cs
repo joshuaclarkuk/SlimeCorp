@@ -6,12 +6,12 @@ public partial class Main : Node3D
     [ExportCategory("Creature")]
     [Export] private CreatureNeeds creatureNeeds = null;
 
-    [ExportCategory("Resources")]
-    [Export] private ArticleResource[] articleResources;
-    [Export] private EmailResource[] emailResources;
-
     [ExportCategory("Stations")]
     [Export] private Node3D stationsHeaderNode = null;
+
+    [ExportCategory("Computer Items")]
+    [Export] private ComputerItemResource[] emailItemResources = null;
+    [Export] private ComputerItemResource[] newsItemResources = null;
 
     // Signals
     private GlobalSignals globalSignals;
@@ -35,12 +35,11 @@ public partial class Main : Node3D
         globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
 
-        // Resource debug error checks
-        if (articleResources.Length < maxDays) { GD.PrintErr("Not all article resources present!"); }
-        if (emailResources.Length < maxDays) { GD.PrintErr("Not all email resources present!"); }
-
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
+
+        // Send test email
+        globalSignals.RaiseEmailReceived(emailItemResources[0]);
     }
 
     public override void _ExitTree()

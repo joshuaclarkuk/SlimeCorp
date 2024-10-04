@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=19 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
+[ext_resource type="Resource" uid="uid://bsfijobaw48xc" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/EmailResourceTest1.tres" id="2_01ype"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
 [ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="3_gd6ql"]
@@ -33,9 +34,8 @@ viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport"
 [node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "stationsHeaderNode")]
 script = ExtResource("1_01g1o")
 creatureNeeds = NodePath("CreatureNeeds")
-articleResources = Array[Resource]([null, null, null, null, null])
-emailResources = Array[Resource]([null, null, null, null, null])
 stationsHeaderNode = NodePath("Stations")
+emailItemResources = Array[Object]([ExtResource("2_01ype")])
 
 [node name="Environment" type="Node3D" parent="."]
 

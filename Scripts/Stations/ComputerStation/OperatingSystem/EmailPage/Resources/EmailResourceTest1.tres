@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://bsfijobaw48xc"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_8t0c7"]
+
+[resource]
+script = ExtResource("1_8t0c7")
+ItemTitle = "Email Resource Test Title 1"
+ItemBody = "Email Resource Test Body 1"
+ItemByline = "Email Resource Test Byline 1"
+ItemDateReceived = "Email Resource Test Date 1"

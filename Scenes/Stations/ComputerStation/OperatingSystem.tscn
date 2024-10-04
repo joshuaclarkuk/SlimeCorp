@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ntdmg6i2yq7u"]
+[gd_scene load_steps=5 format=3 uid="uid://ntdmg6i2yq7u"]
 
 [ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_474pk"]
+[ext_resource type="PackedScene" uid="uid://dnmbec4rdu0bu" path="res://Scenes/Stations/ComputerStation/EmailPage/EmailItemSpawner.tscn" id="2_3e601"]
 [ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/OperatingSystem.cs" id="2_vkddv"]
+[ext_resource type="PackedScene" uid="uid://ctp0lj7xhqriu" path="res://Scenes/Stations/ComputerStation/NewsPage/NewsItemSpawner.tscn" id="5_rn2es"]
 
-[node name="OperatingSystem" type="Control"]
+[node name="OperatingSystem" type="Control" node_paths=PackedStringArray("emailItemSpawnerNode", "newsItemSpawnerNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_474pk")
 script = ExtResource("2_vkddv")
+emailItemSpawnerNode = NodePath("MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer/EmailItemSpawner")
+newsItemSpawnerNode = NodePath("MarginContainer/TabContainer/News/PanelContainer/MarginContainer/NewsItemSpawner")
 
 [node name="BackgroundColour" type="ColorRect" parent="."]
 layout_mode = 1
@@ -54,9 +58,6 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/TO DO/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/TO DO/PanelContainer/MarginContainer"]
-layout_mode = 2
-
 [node name="Emails" type="TabBar" parent="MarginContainer/TabContainer"]
 visible = false
 layout_mode = 2
@@ -73,7 +74,7 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Emails/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer"]
+[node name="EmailItemSpawner" parent="MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer" instance=ExtResource("2_3e601")]
 layout_mode = 2
 
 [node name="News" type="TabBar" parent="MarginContainer/TabContainer"]
@@ -92,7 +93,7 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/News/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/News/PanelContainer/MarginContainer"]
+[node name="NewsItemSpawner" parent="MarginContainer/TabContainer/News/PanelContainer/MarginContainer" instance=ExtResource("5_rn2es")]
 layout_mode = 2
 
 [node name="Reference Manual" type="TabBar" parent="MarginContainer/TabContainer"]
