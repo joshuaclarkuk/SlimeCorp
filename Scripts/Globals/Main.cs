@@ -10,6 +10,7 @@ public partial class Main : Node3D
     [Export] private Node3D stationsHeaderNode = null;
 
     [ExportCategory("Computer Items")]
+    [Export] private OperatingSystem operatingSystemNode = null;
     [Export] private ComputerItemResource[] emailItemResources = null;
     [Export] private ComputerItemResource[] newsItemResources = null;
 
@@ -35,11 +36,11 @@ public partial class Main : Node3D
         globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
 
+        // Set operating system to invisible on start
+        operatingSystemNode.Visible = false;
+
         // Start at day zero
         globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
-
-        // Send test email
-        globalSignals.RaiseEmailReceived(emailItemResources[0]);
     }
 
     public override void _ExitTree()
@@ -125,12 +126,18 @@ public partial class Main : Node3D
 
     private void HandlePlayerInteractWithStation(E_StationType type)
     {
-        
+        if (type == E_StationType.COMPUTER)
+        {
+            operatingSystemNode.Visible = true;
+        }
     }
 
     private void HandlePlayerExitStation(E_StationType type)
     {
-        
+        if (type == E_StationType.COMPUTER)
+        {
+            operatingSystemNode.Visible = false;
+        }
     }
 
     private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)
