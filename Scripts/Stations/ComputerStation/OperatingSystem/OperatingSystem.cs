@@ -19,6 +19,7 @@ public partial class OperatingSystem : Control
         SubscribeToSignals();
 
         // Set invisible on start
+        Modulate = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         Visible = false;
     }
 
@@ -49,12 +50,17 @@ public partial class OperatingSystem : Control
         fadeTween.Finished += HandleFadeTweenFinished;
         fadeTween.SetTrans(Tween.TransitionType.Sine);
         fadeTween.SetEase(Tween.EaseType.InOut);
-
         fadeTween.TweenProperty(this, "modulate:a", finalValue, 1.0f);
+
+        if (finalValue > 0)
+        {
+            Visible = true;
+        }
     }
 
     private void HandlePlayerInteractWithStation(E_StationType stationType)
     {
+        Visible = true;
         if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(1.0f); }
     }
 
@@ -75,6 +81,9 @@ public partial class OperatingSystem : Control
 
     private void HandleFadeTweenFinished()
     {
-        Visible = !Visible;
+        if (Modulate.A <= 0.0f)
+        {
+            Visible = false;
+        }
     }
 }
