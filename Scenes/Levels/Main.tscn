@@ -72,10 +72,10 @@ collision_mask = 0
 size = Vector3(15, 6, 1)
 
 [node name="WallEast" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 11.5, 3, -1.5)
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.1899, 3, -1.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(3, 6, 13)
+size = Vector3(1.62012, 6, 13)
 
 [node name="WallStorageRoomBack" type="CSGBox3D" parent="Environment/Construction"]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 16, 3, -4)
