@@ -6,7 +6,10 @@ public partial class SlimeCollectionStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Valve valveNode = null;
     [Export] private Node3D canisterMeshToAppear = null;
+
+    [ExportCategory("AudioNodes")]
     [Export] private AudioStreamPlayer3D slimeCollectionAudioNode = null;
+    [Export] private AudioStreamPlayer3D barrelRemovedAudioNode = null;
 
     [ExportCategory("External Nodes")]
     [Export] private DebugUI debugUI = null;
@@ -267,6 +270,9 @@ public partial class SlimeCollectionStation : Station
             slimeCollectionAudioNode.Stop();
             hasStartedAudio = false;
         }
+
+        // Play barrel removed audio
+        barrelRemovedAudioNode.Play();
 
         canisterInSlot = false;
         canisterMeshToAppear.Visible = false;

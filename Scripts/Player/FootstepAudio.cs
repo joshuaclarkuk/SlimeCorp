@@ -74,7 +74,7 @@ public partial class FootstepAudio : Node3D
     private void TriggerNextClip()
     {
         concreteFootstepPlayerNode.PitchScale = (float)GD.RandRange(0.9f, 1.1f);
-        concreteFootstepPlayerNode.VolumeDb = (float)GD.RandRange(-16.0f, -12.0f);
+        concreteFootstepPlayerNode.VolumeDb = (float)GD.RandRange(-2.0f, 0.0f);
 
         if (playerNode.IsOnFloor())
         {

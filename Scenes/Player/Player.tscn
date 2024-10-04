@@ -76,4 +76,4 @@ playerNode = NodePath("..")
 modifier = 0.64
 
 [node name="ConcreteFootsteps" type="AudioStreamPlayer3D" parent="FootstepAudio"]
-bus = &"Sound Effects"
+bus = &"Footsteps"
