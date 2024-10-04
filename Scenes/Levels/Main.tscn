@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=18 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
+[ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -144,5 +145,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
 [node name="RovingCamera" type="Camera3D" parent="."]
 transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 3, 2, 0)
 cull_mask = 1
+
+[node name="OperatingSystem" parent="." instance=ExtResource("12_81ppp")]
+visibility_layer = 4
+custom_minimum_size = Vector2(540, 540)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [node name="DebugUI" parent="." instance=ExtResource("11_yopgj")]
