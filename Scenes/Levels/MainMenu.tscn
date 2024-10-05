@@ -1,0 +1,214 @@
+[gd_scene load_steps=17 format=3 uid="uid://b54nwfcy2a6nd"]
+
+[ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="7_4m488"]
+[ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="10_x0pjo"]
+[ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="11_cwtv0"]
+[ext_resource type="Material" uid="uid://bh7gq84vvd67g" path="res://Materials/M_BlurScreenShader.tres" id="11_v0go5"]
+[ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="12_f680s"]
+[ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="13_n7wnk"]
+[ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="14_oqcwr"]
+[ext_resource type="Script" path="res://Scripts/Player/Handicam.cs" id="15_1s8h5"]
+[ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="15_w22mn"]
+[ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="16_x4fog"]
+[ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Passenger.ogg" id="19_67mvn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mocvi"]
+sky_material = SubResource("ProceduralSkyMaterial_dmlf6")
+
+[sub_resource type="Environment" id="Environment_1qi3x"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_mocvi")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tyh3e"]
+viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yuhrx"]
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_1qi3x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="Construction" type="Node3D" parent="Environment"]
+
+[node name="Floor" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(29, 1, 16)
+
+[node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -8.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(31, 6, 1)
+
+[node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 7.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(31, 6, 1)
+
+[node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(15, 6, 1)
+
+[node name="WallEast" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.1899, 3, -1.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(1.62012, 6, 13)
+
+[node name="WallStorageRoomBack" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 16, 3, -4)
+use_collision = true
+collision_mask = 0
+size = Vector3(6, 6, 8)
+
+[node name="WallStorageRoom" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 6, 15)
+
+[node name="Lighting" type="Node3D" parent="Environment"]
+
+[node name="RoomLight" type="SpotLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
+spot_range = 20.0
+spot_angle = 71.0
+spot_angle_attenuation = 0.615573
+
+[node name="CreatureNeedsScreen" type="Node3D" parent="Environment"]
+
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
+texture = SubResource("ViewportTexture_tyh3e")
+
+[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/CreatureNeedsScreen"]
+size = Vector2i(1024, 1024)
+
+[node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" instance=ExtResource("7_4m488")]
+
+[node name="Signage" type="Node3D" parent="Environment"]
+
+[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
+text = "Biofuel Canister
+Storage >>>"
+
+[node name="Stations" type="Node3D" parent="."]
+
+[node name="ComputerStation" parent="Stations" instance=ExtResource("10_x0pjo")]
+
+[node name="FeedingStation" parent="Stations" instance=ExtResource("11_cwtv0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
+
+[node name="ClockOutStation" parent="Stations" instance=ExtResource("12_f680s")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
+
+[node name="CleaningStation" parent="Stations" instance=ExtResource("13_n7wnk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
+
+[node name="SlimeCollectionStation" parent="Stations" instance=ExtResource("14_oqcwr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
+
+[node name="CanisterStorageStation" parent="Stations" instance=ExtResource("15_w22mn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
+
+[node name="Handicam" type="Camera3D" parent="."]
+transform = Transform3D(0.884156, -0.0476356, -0.464757, 0, 0.994788, -0.101962, 0.467192, 0.0901499, 0.879548, -3.802, 0.895, 1.318)
+cull_mask = 1
+script = ExtResource("15_1s8h5")
+amplitude = 2.0
+
+[node name="WorldAudio" type="Node3D" parent="."]
+
+[node name="Non-Diegetic" type="Node" parent="WorldAudio"]
+
+[node name="Music" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
+stream = ExtResource("19_67mvn")
+autoplay = true
+
+[node name="Ambience" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
+
+[node name="Diegetic" type="Node3D" parent="WorldAudio"]
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("16_x4fog")
+
+[node name="BackgroundBlur" type="TextureRect" parent="Menu"]
+material = ExtResource("11_v0go5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_yuhrx")
+
+[node name="GameTitle" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -298.0
+offset_right = 1036.0
+offset_bottom = -230.0
+grow_vertical = 0
+text = "Night Shift at Slime Corp"
+
+[node name="Fields" type="VBoxContainer" parent="Menu"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 70.0
+offset_top = -227.0
+offset_right = 1036.0
+offset_bottom = -60.0
+grow_vertical = 0
+
+[node name="StartButton" type="Button" parent="Menu/Fields"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="Menu/Fields"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Menu/Fields"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
+
+[node name="OptionsPopUp" type="Popup" parent="Menu"]
