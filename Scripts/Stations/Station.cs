@@ -4,7 +4,7 @@ using System;
 public abstract partial class Station : Node
 {
     [ExportCategory("Required Nodes")]
-    [Export] protected Buttons buttonsNode = null;
+    [Export] protected KeypadButtons buttonsNode = null;
     [Export] private Label3D debugLabel = null;
 
     [ExportCategory("Mouse Settings")]

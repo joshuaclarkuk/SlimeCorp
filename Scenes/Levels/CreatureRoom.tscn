@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://eo4oh465d81c"]
+
+[ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_ts1oi"]
+[ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="2_2kawe"]
+[ext_resource type="PackedScene" uid="uid://lv3a7gtpt3cx" path="res://Scenes/Creature/CreatureNeeds.tscn" id="2_27lna"]
+[ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="3_6vxvf"]
+[ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="3_ymc35"]
+[ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="4_ym4pe"]
+[ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="5_k42cv"]
+[ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="6_x2rt1"]
+[ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="7_arnis"]
+[ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="8_egq6n"]
+[ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="9_263lh"]
+[ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="10_waewx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
+viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
+
+[node name="CreatureRoom" node_paths=PackedStringArray("titleCardNode", "creatureNeeds", "stationsHeaderNode") instance=ExtResource("1_ts1oi")]
+titleCardNode = NodePath("TitleCard")
+creatureNeeds = NodePath("CreatureNeeds")
+stationsHeaderNode = NodePath("Stations")
+
+[node name="StorageRoomSeparator" type="CSGBox3D" parent="Environment/Construction" index="5"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.5, 3, -2.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 6, 11)
+
+[node name="StorageRoomFiller" type="CSGBox3D" parent="Environment/Construction" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, -4)
+size = Vector3(6, 6, 8)
+
+[node name="CreatureNeedsScreen" type="Node3D" parent="Environment" index="4"]
+
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen" index="0"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
+texture = SubResource("ViewportTexture_w0js7")
+
+[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/CreatureNeedsScreen" index="1"]
+size = Vector2i(1024, 1024)
+
+[node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("2_2kawe")]
+
+[node name="Signage" type="Node3D" parent="Environment" index="5"]
+
+[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
+text = "Biofuel Canister
+Storage >>>"
+
+[node name="CreatureNeeds" parent="." index="1" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("2_27lna")]
+creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
+slimeCollectionStationNode = NodePath("../Stations/SlimeCollectionStation")
+debugUINode = NodePath("../DebugUI")
+
+[node name="Stations" type="Node3D" parent="." index="2" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
+script = ExtResource("3_6vxvf")
+rovingCameraNode = NodePath("../RovingCamera")
+playerNode = NodePath("../Player")
+
+[node name="ComputerStation" parent="Stations" index="0" instance=ExtResource("3_ymc35")]
+
+[node name="FeedingStation" parent="Stations" index="1" instance=ExtResource("4_ym4pe")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
+
+[node name="ClockOutStation" parent="Stations" index="2" instance=ExtResource("5_k42cv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
+
+[node name="CleaningStation" parent="Stations" index="3" instance=ExtResource("6_x2rt1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
+
+[node name="SlimeCollectionStation" parent="Stations" index="4" node_paths=PackedStringArray("debugUI") instance=ExtResource("7_arnis")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
+debugUI = NodePath("../../DebugUI")
+
+[node name="CanisterStorageStation" parent="Stations" index="5" instance=ExtResource("8_egq6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="5"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OperatingSystem" parent="AspectRatioContainer" index="0" instance=ExtResource("9_263lh")]
+visibility_layer = 4
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+emailItemResources = Array[Object]([])
+
+[node name="DebugUI" parent="." index="6" instance=ExtResource("10_waewx")]
+
+[node name="BlackScreen" parent="." index="9"]
+visible = false

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://delnh0co127wq"]
+
+[ext_resource type="Script" path="res://Scripts/UI/IntroScreens/TitleCard.cs" id="1_1f6yo"]
+[ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="2_xf0on"]
+[ext_resource type="AudioStream" uid="uid://1n52d8d0gfi6" path="res://Assets/Audio/SFX/Titles/Boom2 BRVHRTZ Pixabay.ogg" id="3_tb1kk"]
+
+[node name="TitleCard" type="Control" node_paths=PackedStringArray("titleLabelNode", "bangAudioPlayerNode")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1f6yo")
+titleLabelNode = NodePath("TitleLabel")
+bangAudioPlayerNode = NodePath("BangAudioPlayer")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xf0on")
+theme_override_font_sizes/font_size = 120
+text = "Test Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BangAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tb1kk")

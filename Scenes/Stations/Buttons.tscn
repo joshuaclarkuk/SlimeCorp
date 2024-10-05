@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://wp8155nwu4mq"]
 
-[ext_resource type="Script" path="res://Scripts/Stations/_Components/Buttons.cs" id="1_2ibfs"]
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/KeypadButtons.cs" id="1_2ibfs"]
 [ext_resource type="PackedScene" uid="uid://y48k5t3gmky0" path="res://Scenes/Stations/Button.tscn" id="2_wpuw2"]
 [ext_resource type="PackedScene" uid="uid://ckk613qbhotxt" path="res://Scenes/Audio/OneShotAudioComponent.tscn" id="3_uaa3p"]
 [ext_resource type="AudioStream" uid="uid://bfg2r1g0862qu" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress1.wav" id="4_fmucy"]

@@ -25,7 +25,7 @@ public partial class FootstepAudio : Node3D
     {
         currentSpeed = GetPlayerSpeed();
         isWalking = CheckIfWalking();
-        PlaySoundIfFalling((float)delta);
+        // PlaySoundIfFalling((float)delta);
 
         if (isWalking)
         {
@@ -91,7 +91,7 @@ public partial class FootstepAudio : Node3D
         }
         else
         {
-            if (airTime > 0.25f)
+            if (airTime > 0.5f)
             {
                 TriggerNextClip();
                 airTime = 0;

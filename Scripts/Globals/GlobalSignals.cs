@@ -7,6 +7,8 @@ public partial class GlobalSignals : Node
     public event Action<int> OnStartNewDay;
     public event Action OnEndDay;
 
+    public event Action OnBlackScreenDisappeared;
+
     public event Action<int[]> OnEmployeeNumberGenerated;
 
     public event Action OnPlayerClockedIn;
@@ -36,6 +38,8 @@ public partial class GlobalSignals : Node
 
     public void RaiseStartNewDay(int day) { OnStartNewDay?.Invoke(day); }
     public void RaiseEndDay() { OnEndDay?.Invoke(); }
+
+    public void RaiseOnBlackScreenDisappeared() { OnBlackScreenDisappeared?.Invoke(); }
 
     public void RaiseEmployeeNumberGenerated(int[] employeeNumber) { OnEmployeeNumberGenerated?.Invoke(employeeNumber); }
 

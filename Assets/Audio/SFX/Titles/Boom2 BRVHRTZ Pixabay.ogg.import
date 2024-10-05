@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1n52d8d0gfi6"
+path="res://.godot/imported/Boom2 BRVHRTZ Pixabay.ogg-9b5298f2719d420053d9629f9c1a1f63.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Titles/Boom2 BRVHRTZ Pixabay.ogg"
+dest_files=["res://.godot/imported/Boom2 BRVHRTZ Pixabay.ogg-9b5298f2719d420053d9629f9c1a1f63.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

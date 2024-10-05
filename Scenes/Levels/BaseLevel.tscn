@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://mt7rpxeo4hf"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/CreatureRoom.cs" id="1_f3jsa"]
+[ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_wxygr"]
+[ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_2.tres" id="3_qaeif"]
+[ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_3.tres" id="4_ssij8"]
+[ext_resource type="Resource" uid="uid://dkihdhji3o6iy" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_4.tres" id="5_wdpwx"]
+[ext_resource type="Resource" uid="uid://c7bee0yqrpwrj" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_5.tres" id="6_1wb8d"]
+[ext_resource type="PackedScene" uid="uid://delnh0co127wq" path="res://Scenes/UI/IntroScreens/TitleCard.tscn" id="8_2mmqg"]
+[ext_resource type="PackedScene" uid="uid://bqhcs568cuoek" path="res://Scenes/UI/IntroScreens/BlackScreen.tscn" id="9_06476"]
+[ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="16_422tb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mocvi"]
+sky_material = SubResource("ProceduralSkyMaterial_dmlf6")
+
+[sub_resource type="Environment" id="Environment_1qi3x"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_mocvi")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="BaseLevel" type="Node3D"]
+script = ExtResource("1_f3jsa")
+emailItemResources = Array[Object]([ExtResource("2_wxygr"), ExtResource("3_qaeif"), ExtResource("4_ssij8"), ExtResource("5_wdpwx"), ExtResource("6_1wb8d")])
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_1qi3x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="Construction" type="Node3D" parent="Environment"]
+
+[node name="Floor" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(29, 1, 16)
+
+[node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -8.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(31, 6, 1)
+
+[node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 7.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(31, 6, 1)
+
+[node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(15, 6, 1)
+
+[node name="WallStorageRoom" type="CSGBox3D" parent="Environment/Construction"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, -0.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 6, 15)
+
+[node name="Lighting" type="Node3D" parent="Environment"]
+
+[node name="RoomLight" type="SpotLight3D" parent="Environment/Lighting"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
+spot_range = 20.0
+spot_angle = 71.0
+spot_angle_attenuation = 0.615573
+
+[node name="Player" parent="." instance=ExtResource("16_422tb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+
+[node name="RovingCamera" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 3, 2, 0)
+cull_mask = 1
+
+[node name="WorldAudio" type="Node3D" parent="."]
+
+[node name="Diegetic" type="Node3D" parent="WorldAudio"]
+
+[node name="Non-Diegetic" type="Node" parent="WorldAudio"]
+
+[node name="Music" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
+
+[node name="TitleCard" parent="." instance=ExtResource("8_2mmqg")]
+
+[node name="BlackScreen" parent="." instance=ExtResource("9_06476")]

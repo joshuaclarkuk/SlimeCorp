@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyyccic1hr1ts"]
+
+[ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_w65gr"]
+[ext_resource type="Script" path="res://Scripts/Levels/Lobby.cs" id="2_2s3ji"]
+[ext_resource type="AudioStream" uid="uid://ccechesqp2j3s" path="res://Assets/Audio/Music/Vision.ogg" id="3_58j5d"]
+
+[node name="Lobby" node_paths=PackedStringArray("titleCardNode", "blackScreenNode", "musicNode") instance=ExtResource("1_w65gr")]
+script = ExtResource("2_2s3ji")
+titleCardNode = NodePath("TitleCard")
+blackScreenNode = NodePath("BlackScreen")
+musicNode = NodePath("WorldAudio/Non-Diegetic/Music")
+
+[node name="Floor" parent="Environment/Construction" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.5, 0)
+size = Vector3(42, 1, 16)
+
+[node name="Floor2" type="CSGBox3D" parent="Environment/Construction" index="1"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 39.9778, 3.925, 0)
+use_collision = true
+collision_mask = 0
+size = Vector3(17.7, 1, 16)
+
+[node name="WallNorth2" type="CSGBox3D" parent="Environment/Construction" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 3, -2.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(31, 6, 1)
+
+[node name="WallSouth2" type="CSGBox3D" parent="Environment/Construction" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 3, 2.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(31, 6, 1)
+
+[node name="WallStorageRoom" parent="Environment/Construction" index="7"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, -5)
+size = Vector3(1, 6, 6)
+
+[node name="WallStorageRoom2" type="CSGBox3D" parent="Environment/Construction" index="8"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, 4.5)
+use_collision = true
+collision_mask = 0
+size = Vector3(1, 6, 5)
+
+[node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
+stream = ExtResource("3_58j5d")

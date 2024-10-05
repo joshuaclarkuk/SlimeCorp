@@ -28,7 +28,7 @@ public partial class Player : CharacterBody3D
 
 	// Station-specific variables
 	private E_StationType activeStationCollider = E_StationType.NONE;
-	private bool isInteractingWithStation = false;
+	private bool isRelinquishingControl = false;
 
 	public override void _Ready()
 	{
@@ -49,6 +49,9 @@ public partial class Player : CharacterBody3D
 
 		// Capture mouse cursor on start
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+
+		// Stops player moving until black screen has disappeared
+		isRelinquishingControl = true;
 	}
 
 	public override void _ExitTree()
@@ -58,7 +61,7 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (isInteractingWithStation) { return; }
+		if (isRelinquishingControl) { return; }
 
 		HandleCameraRotation();
 
@@ -121,11 +124,11 @@ public partial class Player : CharacterBody3D
 		{
 			if (activeStationCollider == E_StationType.NONE) { return; }
 
-			if (!isInteractingWithStation)
+			if (!isRelinquishingControl)
 			{
 				Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
 				globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-				isInteractingWithStation = true;
+				isRelinquishingControl = true;
 			}
 			else
 			{
@@ -147,17 +150,20 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
 		globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
+		globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
 	}
 
-	private void UnsubscribeFromEvents()
+    private void UnsubscribeFromEvents()
 	{
 		globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
 		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
-	}
+        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
 
-	private void HandleCameraRotation()
+   }
+
+    private void HandleCameraRotation()
 	{
 		// Rotate around Y-axis using mouse X movement
 		RotateY(mouseMotion.X);
@@ -211,6 +217,11 @@ public partial class Player : CharacterBody3D
 	private void HandlePlayerCanMoveAgain()
 	{
 		playerCameraNode.MakeCurrent();
-		isInteractingWithStation = false;
+		isRelinquishingControl = false;
 	}
+
+    private void HandleBlackScreenDisappeared()
+    {
+		isRelinquishingControl = false;
+    }
 }

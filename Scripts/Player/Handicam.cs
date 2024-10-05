@@ -17,7 +17,7 @@ public partial class Handicam : Camera3D
     public override void _Ready()
     {
         noise = new FastNoiseLite();
-        noise.Seed = (int)GD.Randi();
+        noise.Seed = 1;
         noise.NoiseType = FastNoiseLite.NoiseTypeEnum.Perlin;
     }
 

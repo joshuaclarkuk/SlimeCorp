@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://6bsluq4t6i1h"]
 
-[ext_resource type="Script" path="res://Scripts/Globals/Main.cs" id="1_01g1o"]
+[ext_resource type="Script" path="res://Scripts/Levels/CreatureRoom.cs" id="1_01g1o"]
 [ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_ge1xm"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -172,6 +172,7 @@ custom_minimum_size = Vector2(600, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+emailItemResources = Array[Object]([])
 
 [node name="DebugUI" parent="." instance=ExtResource("11_yopgj")]
 
