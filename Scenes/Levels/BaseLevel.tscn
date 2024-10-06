@@ -10,17 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://bqhcs568cuoek" path="res://Scenes/UI/IntroScreens/BlackScreen.tscn" id="9_06476"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="16_422tb"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3g3f7"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_mocvi"]
-sky_material = SubResource("ProceduralSkyMaterial_dmlf6")
+[sub_resource type="Sky" id="Sky_paeoc"]
+sky_material = SubResource("ProceduralSkyMaterial_3g3f7")
 
-[sub_resource type="Environment" id="Environment_1qi3x"]
+[sub_resource type="Environment" id="Environment_xbloy"]
 background_mode = 2
-background_energy_multiplier = 0.1
-sky = SubResource("Sky_mocvi")
+sky = SubResource("Sky_paeoc")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -28,15 +27,14 @@ glow_enabled = true
 script = ExtResource("1_f3jsa")
 emailItemResources = Array[Object]([ExtResource("2_wxygr"), ExtResource("3_qaeif"), ExtResource("4_ssij8"), ExtResource("5_wdpwx"), ExtResource("6_1wb8d")])
 
-[node name="Environment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_1qi3x")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.2
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xbloy")
+
+[node name="Environment" type="Node3D" parent="."]
 
 [node name="Construction" type="Node3D" parent="Environment"]
 
@@ -71,12 +69,6 @@ collision_mask = 0
 size = Vector3(1, 6, 15)
 
 [node name="Lighting" type="Node3D" parent="Environment"]
-
-[node name="RoomLight" type="SpotLight3D" parent="Environment/Lighting"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
-spot_range = 20.0
-spot_angle = 71.0
-spot_angle_attenuation = 0.615573
 
 [node name="Objects" type="Node3D" parent="Environment"]
 
