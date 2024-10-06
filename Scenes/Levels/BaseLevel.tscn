@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://mt7rpxeo4hf"]
+[gd_scene load_steps=10 format=3 uid="uid://mt7rpxeo4hf"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_f3jsa"]
 [ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_wxygr"]
@@ -10,19 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bqhcs568cuoek" path="res://Scenes/UI/IntroScreens/BlackScreen.tscn" id="9_06476"]
 [ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="16_422tb"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3g3f7"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_paeoc"]
-sky_material = SubResource("ProceduralSkyMaterial_3g3f7")
-
-[sub_resource type="Environment" id="Environment_xbloy"]
-background_mode = 2
-sky = SubResource("Sky_paeoc")
-tonemap_mode = 2
-glow_enabled = true
-
 [node name="BaseLevel" type="Node3D"]
 script = ExtResource("1_f3jsa")
 emailItemResources = Array[Object]([ExtResource("2_wxygr"), ExtResource("3_qaeif"), ExtResource("4_ssij8"), ExtResource("5_wdpwx"), ExtResource("6_1wb8d")])
@@ -32,7 +19,6 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_xbloy")
 
 [node name="Environment" type="Node3D" parent="."]
 
