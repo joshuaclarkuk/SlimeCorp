@@ -15,18 +15,18 @@ public partial class CodeComponent : Node3D
 
     private int[] codeEntered = new int[4];
     private int currentCodeIndex = 0;
-    private int[] employeeNumber = new int[4];
 
     private bool isReady = true;
 
-    private GlobalSignals globalSignals = null;
+    private GlobalValues globalValues = null;
 
     public event Action<bool> OnCorrectCodeEntered;
 
     public override void _Ready()
     {
-        globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        globalSignals.OnEmployeeNumberGenerated += HandleEmployeeNumberGenerated;
+        // Get reference to global values to expose correct employee number
+        globalValues = GetNode<GlobalValues>("/root/GlobalValues");
+
         codeResetTimer.Timeout += HandleCodeResetTimerTimeout;
 
         ResetCode();
@@ -34,7 +34,7 @@ public partial class CodeComponent : Node3D
 
     public override void _ExitTree()
     {
-        globalSignals.OnEmployeeNumberGenerated -= HandleEmployeeNumberGenerated;
+        codeResetTimer.Timeout -= HandleCodeResetTimerTimeout;
     }
 
     public void EnterDigitToMachine(int digit)
@@ -72,7 +72,7 @@ public partial class CodeComponent : Node3D
 
         for (int i = 0; i < codeEntered.Length; i++)
         {
-            if (codeEntered[i] != employeeNumber[i])
+            if (codeEntered[i] != globalValues.EmployeeNumber[i])
             {
                 isCorrect = false;
                 break;
@@ -103,11 +103,6 @@ public partial class CodeComponent : Node3D
                 digit.Modulate = incorrectColour;
             }
         }
-    }
-
-    private void HandleEmployeeNumberGenerated(int[] employeeNumber)
-    {
-        this.employeeNumber = employeeNumber;
     }
 
     private void HandleCodeResetTimerTimeout()

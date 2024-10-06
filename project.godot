@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalSignals="*res://Scripts/Globals/GlobalSignals.cs"
 Options="*res://Scripts/Globals/Options.cs"
+GlobalValues="*res://Scripts/Globals/GlobalValues.cs"
 
 [dotnet]
 
@@ -152,3 +153,4 @@ Num9={
 
 3d_physics/layer_1="Environment"
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Collectable"

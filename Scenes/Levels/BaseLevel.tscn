@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://mt7rpxeo4hf"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/CreatureRoom.cs" id="1_f3jsa"]
+[ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_f3jsa"]
 [ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_wxygr"]
 [ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_2.tres" id="3_qaeif"]
 [ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_3.tres" id="4_ssij8"]
@@ -77,6 +77,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 
 spot_range = 20.0
 spot_angle = 71.0
 spot_angle_attenuation = 0.615573
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="Signage" type="Node3D" parent="Environment"]
 
 [node name="Player" parent="." instance=ExtResource("16_422tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)

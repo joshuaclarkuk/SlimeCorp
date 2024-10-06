@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj7hkoevsmc5f"]
+
+[ext_resource type="Script" path="res://Scripts/Events/Lobby/EmployeeCardEvent.cs" id="1_fuitb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uttyl"]
+size = Vector3(21, 1, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_itv2t"]
+size = Vector3(0.4, 0.6, 0.01)
+
+[sub_resource type="BoxMesh" id="BoxMesh_angdu"]
+size = Vector3(0.1, 0.04, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrajf"]
+size = Vector3(0.5, 0.2, 0.3)
+
+[node name="EmployeeCard" type="Node3D" node_paths=PackedStringArray("spawnColliderNode", "pickUpCardColliderNode", "cardMeshNode", "receptionWrittenNoteNode")]
+script = ExtResource("1_fuitb")
+spawnColliderNode = NodePath("SpawnCardCollider")
+pickUpCardColliderNode = NodePath("Card/CardMesh/PickUpCardCollider")
+cardMeshNode = NodePath("Card/CardMesh")
+receptionWrittenNoteNode = NodePath("ReceptionNote/WrittenLabel")
+note1 = "Gone to
+[unintelligible]
+Back at
+[unintelligible]"
+note2 = "Gone.
+Employee #
+for elevators"
+
+[node name="SpawnCardCollider" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape3D" parent="SpawnCardCollider"]
+shape = SubResource("BoxShape3D_uttyl")
+
+[node name="ReceptionNote" type="Node3D" parent="."]
+
+[node name="WrittenLabel" type="Label3D" parent="ReceptionNote"]
+modulate = Color(0, 0, 0, 1)
+text = "Gone to
+[unintelligible]
+Back in 
+[unintelligible]"
+font_size = 10
+outline_size = 0
+
+[node name="ReceptionNoteMesh" type="MeshInstance3D" parent="ReceptionNote"]
+mesh = SubResource("BoxMesh_itv2t")
+
+[node name="Card" type="Node3D" parent="."]
+
+[node name="CardMesh" type="MeshInstance3D" parent="Card"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_angdu")
+skeleton = NodePath("../..")
+
+[node name="PickUpCardCollider" type="Area3D" parent="Card/CardMesh"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Collider" type="CollisionShape3D" parent="Card/CardMesh/PickUpCardCollider"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_hrajf")

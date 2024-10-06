@@ -23,12 +23,17 @@ public partial class DebugUI : Control
     [Export] private PackedScene areaCleanRequestScene = null;
 
     private GlobalSignals globalSignals = null;
+    private GlobalValues globalValues = null;
 
     public override void _Ready()
     {
         // Get global signals and subscribe
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         SubscribeToEvents();
+
+        // Get global values for employee number
+        globalValues = GetNode<GlobalValues>("/root/GlobalValues");
+        employeeNumberLabelNode.Text = string.Join("", globalValues.EmployeeNumber);
     }
 
     public override void _ExitTree()
@@ -51,7 +56,6 @@ public partial class DebugUI : Control
 
     private void SubscribeToEvents()
     {
-        globalSignals.OnEmployeeNumberGenerated += HandleEmployeeNumberGenerated;
         globalSignals.OnCreatureFeedRequest += HandleCreatureFeedRequest;
         globalSignals.OnAreasToCleanRequest += HandleAreasToCleanRequest;
         globalSignals.OnCreatureFeedRequestSatisfied += HandleCreatureFeedRequestSatisfied;
@@ -60,16 +64,10 @@ public partial class DebugUI : Control
 
     private void UnsubscribeFromEvents()
     {
-        globalSignals.OnEmployeeNumberGenerated -= HandleEmployeeNumberGenerated;
         globalSignals.OnCreatureFeedRequest -= HandleCreatureFeedRequest;
         globalSignals.OnAreasToCleanRequest -= HandleAreasToCleanRequest;
         globalSignals.OnCreatureFeedRequestSatisfied -= HandleCreatureFeedRequestSatisfied;
         globalSignals.OnCreatureCleanRequestSatisfied -= HandleCreatureCleanRequestSatisfied;
-    }
-
-    private void HandleEmployeeNumberGenerated(int[] employeeNumber)
-    {
-        employeeNumberLabelNode.Text = string.Join("",employeeNumber);
     }
 
     private void HandleCreatureFeedRequest(Dictionary<E_IngredientList, bool> dictionary)

@@ -4,12 +4,9 @@ using System.Collections.Generic;
 
 public partial class GlobalSignals : Node
 {
-    public event Action<int> OnStartNewDay;
-    public event Action OnEndDay;
-
     public event Action OnBlackScreenDisappeared;
 
-    public event Action<int[]> OnEmployeeNumberGenerated;
+    public event Action OnGenerateEmployeeNumber;
 
     public event Action OnPlayerClockedIn;
     public event Action OnPlayerClockedOut;
@@ -37,12 +34,9 @@ public partial class GlobalSignals : Node
     public event Action<E_StationType> OnPlayerExitStation;
     public event Action OnPlayerCanMoveAgain; // Prevents player moving before camera has returned
 
-    public void RaiseStartNewDay(int day) { OnStartNewDay?.Invoke(day); }
-    public void RaiseEndDay() { OnEndDay?.Invoke(); }
-
     public void RaiseOnBlackScreenDisappeared() { OnBlackScreenDisappeared?.Invoke(); }
 
-    public void RaiseEmployeeNumberGenerated(int[] employeeNumber) { OnEmployeeNumberGenerated?.Invoke(employeeNumber); }
+    public void RaiseGenerateEmployeeNumber() { OnGenerateEmployeeNumber?.Invoke(); }
 
     public void RaisePlayerClockedIn() { OnPlayerClockedIn?.Invoke(); }
     public void RaisePlayerClockedOut() { OnPlayerClockedOut?.Invoke(); }

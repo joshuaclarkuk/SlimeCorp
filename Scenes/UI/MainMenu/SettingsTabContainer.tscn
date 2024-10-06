@@ -50,9 +50,11 @@ alignment = 1
 
 [node name="WindowModeButton" parent="TabContainer/Display/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_pnojq")]
 layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="ResolutionModeButton" parent="TabContainer/Display/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_fgsjp")]
 layout_mode = 2
+size_flags_horizontal = 1
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
 visible = false

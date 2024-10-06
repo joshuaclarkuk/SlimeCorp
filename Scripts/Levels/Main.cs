@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class CreatureRoom : Node3D
+public partial class Main : Node3D
 {
     [ExportCategory("Titles")]
     [Export] private TitleCard titleCardNode = null;
@@ -31,14 +31,11 @@ public partial class CreatureRoom : Node3D
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
 
         // Connect timeline signals
-        globalSignals.OnStartNewDay += HandleOnStartNewDay;
-        globalSignals.OnEndDay += HandleOnEndDay;
-        globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
+        globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared; // Start new day
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut; // End day
+
         // Connect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
-
-        // Start at day zero
-        globalSignals.RaiseStartNewDay(currentDayIndex); // index should be zero
 
         // Send initial stack of emails to computer
         foreach (ComputerItemResource emailResource in emailItemResources)
@@ -50,40 +47,14 @@ public partial class CreatureRoom : Node3D
     public override void _ExitTree()
     {
         // Disconnect timeline signals
-        globalSignals.OnStartNewDay -= HandleOnStartNewDay;
-        globalSignals.OnEndDay -= HandleOnEndDay;
+        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+
         // Disconnect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
     }
 
-    private void HandleOnStartNewDay(int dayIndex)
-    {
-        switch (dayIndex)
-        {
-            case 0:
-                // Day 0 logic here
-                creatureNeeds.SetUpForNewDay(10.0f); // Replace with resource when created
-                GenerateEmployeeNumber();
-                break;
-            case 1:
-                // Day 1 logic here
-                break;
-            case 2:
-                // Day 2 logic here
-                break;
-            case 3:
-                // Day 3 logic here
-                break;
-            case 4:
-                // Day 4 logic here
-                break;
-            case 5:
-                // Day 5 logic here
-                break;
-        }
-    }
-
-    private void HandleOnEndDay()
+    private void HandlePlayerClockedOut()
     {
         // End day logic here
         currentDayIndex++;
@@ -96,7 +67,6 @@ public partial class CreatureRoom : Node3D
             case 0:
                 // Day 0 logic here
                 creatureNeeds.SetUpForNewDay(10.0f); // Replace with resource when created
-                GenerateEmployeeNumber();
                 titleCardNode.UpdateTextAndDisplay("Orientation");
                 break;
             case 1:
@@ -138,20 +108,6 @@ public partial class CreatureRoom : Node3D
     private void ResetSlimeCollectedAmount()
     {
         // Set slime collected back to zero
-    }
-
-    private void GenerateEmployeeNumber()
-    {
-        // Generate employee number here
-        Random random = new Random();
-        int[] employeeNumber = new int[4];
-        for (int i = 0; i < employeeNumber.Length; i++)
-        {
-            employeeNumber[i] = random.Next(0, 10);
-        }
-
-        // Pass code in to event
-        globalSignals.RaiseEmployeeNumberGenerated(employeeNumber);
     }
 
     private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)

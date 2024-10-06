@@ -10,6 +10,8 @@ public partial class Lobby : Node3D
     [ExportCategory("Music Nodes")]
     [Export] private AudioStreamPlayer musicNode = null;
 
+    [ExportCategory("Lobby Object Nodes")]
+
     private GlobalSignals globalSignals;
 
     public override void _Ready()
@@ -43,7 +45,7 @@ public partial class Lobby : Node3D
     private void HandleBlackScreenDisappeared()
     {        
         // Show title card
-        titleCardNode.UpdateTextAndDisplay("Lobby");
+        titleCardNode.UpdateTextAndDisplay("Orientation");
         musicNode.Play();
 
     }
