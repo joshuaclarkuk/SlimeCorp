@@ -8,6 +8,9 @@ public partial class Player : CharacterBody3D
 	[Export] private Camera3D playerCameraNode = null;
 	[Export] private Node3D canisterCarrierNode = null;
 
+	[ExportCategory("UI Nodes")]
+	[Export] private Control newEmailNotificationNode = null;
+
 	[ExportCategory("Player Movement")]
 	[Export] private float movementSpeed = 3.0f;
 	[Export] private float acceleration = 10.0f;
@@ -41,8 +44,9 @@ public partial class Player : CharacterBody3D
 		globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
 		SubscribeToEvents();
 
-		// Make sure carrying canister is invisible on start
+		// Set intial visiblity variables
 		canisterCarrierNode.Visible = false;
+		newEmailNotificationNode.Visible = false;
 
 		// Make camera current (just in case Godot thinks Roving Camera should be current)
 		playerCameraNode.MakeCurrent();
@@ -80,9 +84,9 @@ public partial class Player : CharacterBody3D
 			}
 		}
 
-		// Handle Jump.
-		if (Input.IsActionJustPressed(GlobalConstants.INPUT_JUMP) && IsOnFloor())
-			velocity.Y = (float)Mathf.Sqrt(jumpHeight * 2.0 * gravity);
+		// JUMP NOT NEEDED.
+		//if (Input.IsActionJustPressed(GlobalConstants.INPUT_JUMP) && IsOnFloor())
+		//	velocity.Y = (float)Mathf.Sqrt(jumpHeight * 2.0 * gravity);
 
 		// Handle Movement
 		Vector2 inputDir = Input.GetVector(GlobalConstants.INPUT_STRAFE_LEFT, GlobalConstants.INPUT_STRAFE_RIGHT, GlobalConstants.INPUT_WALK_FORWARDS, GlobalConstants.INPUT_WALK_BACKWARDS);
@@ -151,7 +155,9 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
 		globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
-	}
+        globalSignals.OnEmailReceived += HandleEmailReceived;
+		globalSignals.OnEmailsRead += HandleEmailsRead;
+    }
 
     private void UnsubscribeFromEvents()
 	{
@@ -160,8 +166,9 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
         globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
-
-   }
+        globalSignals.OnEmailReceived -= HandleEmailReceived;
+        globalSignals.OnEmailsRead -= HandleEmailsRead;
+    }
 
     private void HandleCameraRotation()
 	{
@@ -219,6 +226,16 @@ public partial class Player : CharacterBody3D
 		playerCameraNode.MakeCurrent();
 		isRelinquishingControl = false;
 	}
+
+    private void HandleEmailReceived(ComputerItemResource resource)
+    {
+		newEmailNotificationNode.Visible = true;
+    }
+
+    private void HandleEmailsRead()
+    {
+        newEmailNotificationNode.Visible = false;
+    }
 
     private void HandleBlackScreenDisappeared()
     {

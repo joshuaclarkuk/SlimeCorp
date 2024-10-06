@@ -1,172 +1,90 @@
-[gd_scene load_steps=24 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=14 format=3 uid="uid://6bsluq4t6i1h"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/CreatureRoom.cs" id="1_01g1o"]
-[ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_ge1xm"]
-[ext_resource type="PackedScene" uid="uid://db8ayysgph1a2" path="res://Scenes/Player/Player.tscn" id="2_l82l3"]
+[ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
-[ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_2.tres" id="3_8kgyc"]
 [ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="3_gd6ql"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://lv3a7gtpt3cx" path="res://Scenes/Creature/CreatureNeeds.tscn" id="3_r5tf3"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
-[ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_3.tres" id="4_bhogl"]
-[ext_resource type="Resource" uid="uid://dkihdhji3o6iy" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_4.tres" id="5_gre0t"]
-[ext_resource type="Resource" uid="uid://c7bee0yqrpwrj" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_5.tres" id="6_3nqy6"]
 [ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="7_5p5ij"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
-[ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Passenger.ogg" id="15_qi1cm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dmlf6"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_mocvi"]
-sky_material = SubResource("ProceduralSkyMaterial_dmlf6")
-
-[sub_resource type="Environment" id="Environment_1qi3x"]
-background_mode = 2
-background_energy_multiplier = 0.1
-sky = SubResource("Sky_mocvi")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_kw8h5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("creatureNeeds", "stationsHeaderNode")]
-script = ExtResource("1_01g1o")
+[node name="Main" node_paths=PackedStringArray("titleCardNode", "creatureNeeds", "stationsHeaderNode") instance=ExtResource("1_6dq5d")]
+titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Stations")
-emailItemResources = Array[Object]([ExtResource("2_ge1xm"), ExtResource("3_8kgyc"), ExtResource("4_bhogl"), ExtResource("5_gre0t"), ExtResource("6_3nqy6")])
 
-[node name="Environment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_1qi3x")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.2
-shadow_enabled = true
-
-[node name="Construction" type="Node3D" parent="Environment"]
-
-[node name="Floor" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 0)
+[node name="StorageRoomSeparator" type="CSGBox3D" parent="Environment/Construction" index="5"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.5, 3, -2.5)
 use_collision = true
 collision_mask = 0
-size = Vector3(29, 1, 16)
+size = Vector3(1, 6, 11)
 
-[node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -8.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(31, 6, 1)
-
-[node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 7.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(31, 6, 1)
-
-[node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 3, -0.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(15, 6, 1)
-
-[node name="WallEast" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.1899, 3, -1.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(1.62012, 6, 13)
-
-[node name="WallStorageRoomBack" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 16, 3, -4)
-use_collision = true
-collision_mask = 0
+[node name="StorageRoomFiller" type="CSGBox3D" parent="Environment/Construction" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, -4)
 size = Vector3(6, 6, 8)
 
-[node name="WallStorageRoom" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, -0.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(1, 6, 15)
+[node name="CreatureNeedsScreen" type="Node3D" parent="Environment" index="4"]
 
-[node name="Lighting" type="Node3D" parent="Environment"]
-
-[node name="RoomLight" type="SpotLight3D" parent="Environment/Lighting"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, 0)
-spot_range = 20.0
-spot_angle = 71.0
-spot_angle_attenuation = 0.615573
-
-[node name="CreatureNeedsScreen" type="Node3D" parent="Environment"]
-
-[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen"]
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen" index="0"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
-texture = SubResource("ViewportTexture_kw8h5")
+texture = SubResource("ViewportTexture_w0js7")
 
-[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/CreatureNeedsScreen"]
+[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/CreatureNeedsScreen" index="1"]
 size = Vector2i(1024, 1024)
 
-[node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" instance=ExtResource("3_qt08h")]
+[node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
 
-[node name="Signage" type="Node3D" parent="Environment"]
+[node name="Signage" type="Node3D" parent="Environment" index="5"]
 
-[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage"]
+[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage" index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
 text = "Biofuel Canister
 Storage >>>"
 
-[node name="CreatureNeeds" parent="." node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="CreatureNeeds" parent="." index="1" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
 slimeCollectionStationNode = NodePath("../Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 
-[node name="Stations" type="Node3D" parent="." node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
+[node name="Stations" type="Node3D" parent="." index="2" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../RovingCamera")
 playerNode = NodePath("../Player")
-cameraTweenDuration = 0.5
 
-[node name="ComputerStation" parent="Stations" instance=ExtResource("2_te2wr")]
+[node name="ComputerStation" parent="Stations" index="0" instance=ExtResource("2_te2wr")]
 
-[node name="FeedingStation" parent="Stations" instance=ExtResource("3_xnieq")]
+[node name="FeedingStation" parent="Stations" index="1" instance=ExtResource("3_xnieq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
 
-[node name="ClockOutStation" parent="Stations" instance=ExtResource("7_5p5ij")]
+[node name="ClockOutStation" parent="Stations" index="2" instance=ExtResource("7_5p5ij")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
 
-[node name="CleaningStation" parent="Stations" instance=ExtResource("8_jl626")]
+[node name="CleaningStation" parent="Stations" index="3" instance=ExtResource("8_jl626")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
 
-[node name="SlimeCollectionStation" parent="Stations" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
+[node name="SlimeCollectionStation" parent="Stations" index="4" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
 debugUI = NodePath("../../DebugUI")
 
-[node name="CanisterStorageStation" parent="Stations" instance=ExtResource("3_gd6ql")]
+[node name="CanisterStorageStation" parent="Stations" index="5" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
 
-[node name="Player" parent="." instance=ExtResource("2_l82l3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-
-[node name="RovingCamera" type="Camera3D" parent="."]
-transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 3, 2, 0)
-cull_mask = 1
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="5"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OperatingSystem" parent="AspectRatioContainer" instance=ExtResource("12_81ppp")]
+[node name="OperatingSystem" parent="AspectRatioContainer" index="0" instance=ExtResource("12_81ppp")]
 visibility_layer = 4
 custom_minimum_size = Vector2(600, 600)
 layout_mode = 2
@@ -174,16 +92,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 emailItemResources = Array[Object]([])
 
-[node name="DebugUI" parent="." instance=ExtResource("11_yopgj")]
+[node name="DebugUI" parent="." index="6" instance=ExtResource("11_yopgj")]
 
-[node name="WorldAudio" type="Node3D" parent="."]
-
-[node name="Non-Diegetic" type="Node" parent="WorldAudio"]
-
-[node name="Music" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
-stream = ExtResource("15_qi1cm")
-autoplay = true
-
-[node name="Ambience" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic"]
-
-[node name="Diegetic" type="Node3D" parent="WorldAudio"]
+[node name="BlackScreen" parent="." index="9"]
+visible = false

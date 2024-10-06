@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/OperatingSystem.cs" id="2_vkddv"]
 [ext_resource type="PackedScene" uid="uid://ctp0lj7xhqriu" path="res://Scenes/Stations/ComputerStation/NewsPage/NewsItemSpawner.tscn" id="5_rn2es"]
 
-[node name="OperatingSystem" type="Control" node_paths=PackedStringArray("emailItemSpawnerNode", "newsItemSpawnerNode")]
+[node name="OperatingSystem" type="Control" node_paths=PackedStringArray("tabContainerNode", "emailItemSpawnerNode", "newsItemSpawnerNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,8 +14,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_474pk")
 script = ExtResource("2_vkddv")
-emailItemSpawnerNode = NodePath("MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer/EmailItemSpawner")
-newsItemSpawnerNode = NodePath("MarginContainer/TabContainer/News/PanelContainer/MarginContainer/NewsItemSpawner")
+tabContainerNode = NodePath("MarginContainer/TabContainer")
+emailItemSpawnerNode = NodePath("MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer/ScrollContainer/EmailItemSpawner")
+newsItemSpawnerNode = NodePath("MarginContainer/TabContainer/News/PanelContainer/MarginContainer/ScrollContainer/NewsItemSpawner")
 
 [node name="BackgroundColour" type="ColorRect" parent="."]
 layout_mode = 1
@@ -25,11 +26,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -41,10 +37,9 @@ grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
-current_tab = 2
+current_tab = 0
 
 [node name="TO DO" type="TabBar" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -57,6 +52,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/TO DO/PanelContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/TO DO/PanelContainer/MarginContainer"]
 layout_mode = 2
 
 [node name="Emails" type="TabBar" parent="MarginContainer/TabContainer"]
@@ -75,10 +73,16 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Emails/PanelContainer"]
 layout_mode = 2
 
-[node name="EmailItemSpawner" parent="MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer" instance=ExtResource("2_3e601")]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="EmailItemSpawner" parent="MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer/ScrollContainer" instance=ExtResource("2_3e601")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="News" type="TabBar" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -93,8 +97,13 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/News/PanelContainer"]
 layout_mode = 2
 
-[node name="NewsItemSpawner" parent="MarginContainer/TabContainer/News/PanelContainer/MarginContainer" instance=ExtResource("5_rn2es")]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/News/PanelContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="NewsItemSpawner" parent="MarginContainer/TabContainer/News/PanelContainer/MarginContainer/ScrollContainer" instance=ExtResource("5_rn2es")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Reference Manual" type="TabBar" parent="MarginContainer/TabContainer"]
 visible = false
@@ -113,4 +122,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Reference Manual/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/Reference Manual/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

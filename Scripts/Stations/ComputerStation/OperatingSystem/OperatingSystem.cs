@@ -3,6 +3,9 @@ using System;
 
 public partial class OperatingSystem : Control
 {
+    [ExportCategory("Required Nodes")]
+    [Export] private TabContainer tabContainerNode = null;
+
     [ExportCategory("Item Spawners")]
     [Export] private EmailItemSpawner emailItemSpawnerNode = null;
     [Export] private NewsItemSpawner newsItemSpawnerNode = null;
@@ -37,6 +40,7 @@ public partial class OperatingSystem : Control
         globalSignals.OnNewsArticleReceived += HandleNewsArticleReceived;
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
         globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
+        tabContainerNode.TabClicked += HandleTabClicked;
     }
 
     private void UnsubscribeFromSignals()
@@ -45,6 +49,7 @@ public partial class OperatingSystem : Control
         globalSignals.OnNewsArticleReceived -= HandleNewsArticleReceived;
         globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
         globalSignals.OnPlayerExitStation -= HandlePlayerExitStation;
+        tabContainerNode.TabClicked -= HandleTabClicked;
     }
 
     private void FadeComputerScreen(float finalValue)
@@ -85,6 +90,15 @@ public partial class OperatingSystem : Control
     private void HandleNewsArticleReceived(ComputerItemResource resource)
     {
         newsItemSpawnerNode.AddNewItemToScreen(resource);
+    }
+
+    private void HandleTabClicked(long tab)
+    {
+        // If email tab clicked, raise emails raid signal to turn off player email notification
+        if (tab == 1)
+        {
+            globalSignals.RaiseEmailsRead();
+        }
     }
 
     private void HandleFadeTweenFinished()

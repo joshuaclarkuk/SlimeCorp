@@ -8,16 +8,10 @@ public partial class MainMenu : Control
     [Export] private Button optionsButtonNode = null;
     [Export] private Button quitGameButtonNode = null;
 
-    [ExportCategory("Options Menu Buttons")]
-    [Export] private CheckBox displayModeOptionsButtonNode = null;
-    [Export] private Button backToMenuButtonNode = null;
-
     [ExportCategory("Required Nodes")]
     [Export] private PackedScene firstLevelToLoad = null;
     [Export] private Control startPageNode = null;
-    [Export] private Control optionsPageNode = null;
-
-    private bool isMaximised = false;
+    [Export] private OptionsPage optionsPageNode = null;
 
     public override void _Ready()
     {
@@ -39,9 +33,9 @@ public partial class MainMenu : Control
         startGameButtonNode.Pressed += HandleStartGameButtonPressed;
         optionsButtonNode.Pressed += HandleOptionsButtonPressed;
         quitGameButtonNode.Pressed += HandleQuitGameButtonPressed;
-        backToMenuButtonNode.Pressed += HandleBackToMenuButtonPressed;
 
         // OPTIONS MENU
+        optionsPageNode.OnReturnToMenuButtonClick += HandleReturnToMenuButtonClick;
     }
 
     private void UnsubscribeFromEvents()
@@ -50,9 +44,9 @@ public partial class MainMenu : Control
         startGameButtonNode.Pressed -= HandleStartGameButtonPressed;
         optionsButtonNode.Pressed -= HandleOptionsButtonPressed;
         quitGameButtonNode.Pressed -= HandleQuitGameButtonPressed;
-        backToMenuButtonNode.Pressed -= HandleBackToMenuButtonPressed;
 
         // OPTIONS MENU
+        optionsPageNode.OnReturnToMenuButtonClick -= HandleReturnToMenuButtonClick;
     }
 
     // START MENU
@@ -65,6 +59,18 @@ public partial class MainMenu : Control
     {
         startPageNode.Visible = false;
         optionsPageNode.Visible = true;
+
+        startPageNode.SetProcess(false);
+        optionsPageNode.SetProcess(true);
+    }
+
+    private void HandleReturnToMenuButtonClick()
+    {
+        startPageNode.Visible = true;
+        optionsPageNode.Visible = false;
+
+        startPageNode.SetProcess(true);
+        optionsPageNode.SetProcess(false);
     }
 
     private void HandleQuitGameButtonPressed()

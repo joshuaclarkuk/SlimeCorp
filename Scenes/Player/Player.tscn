@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://db8ayysgph1a2"]
+[gd_scene load_steps=16 format=3 uid="uid://db8ayysgph1a2"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_iqhkd"]
 [ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="2_prxc5"]
@@ -10,18 +10,22 @@
 [ext_resource type="AudioStream" uid="uid://ns6bfyddgw3" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_5.wav" id="8_e86mt"]
 [ext_resource type="AudioStream" uid="uid://c03sixvvfsy7i" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_6.wav" id="9_b16fw"]
 [ext_resource type="AudioStream" uid="uid://cbqi7ohi7g0fx" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_7.wav" id="10_ysfvl"]
+[ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="11_arihh"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerUI.cs" id="12_2n2q2"]
+[ext_resource type="Texture2D" uid="uid://w4n1gg6o03ld" path="res://Assets/Sprites/EmailIcon.png" id="13_a0mat"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_34n1q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s46c6"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("cameraPivotNode", "playerCameraNode", "canisterCarrierNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("cameraPivotNode", "playerCameraNode", "canisterCarrierNode", "newEmailNotificationNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_iqhkd")
 cameraPivotNode = NodePath("PlayerCameraPivot")
 playerCameraNode = NodePath("PlayerCameraPivot/PlayerCamera")
 canisterCarrierNode = NodePath("PlayerCameraPivot/PlayerCamera/CanisterCarrier")
+newEmailNotificationNode = NodePath("PlayerUI/MarginContainer/NewEmailNotification")
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_34n1q")
@@ -77,3 +81,45 @@ modifier = 0.64
 
 [node name="ConcreteFootsteps" type="AudioStreamPlayer3D" parent="FootstepAudio"]
 bus = &"Footsteps"
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("11_arihh")
+script = ExtResource("12_2n2q2")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewEmailNotification" type="Control" parent="PlayerUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/MarginContainer/NewEmailNotification"]
+layout_mode = 0
+offset_left = -182.0
+offset_top = -113.0
+offset_right = 721.0
+offset_bottom = 399.0
+scale = Vector2(0.194551, 0.194551)
+
+[node name="Icon" type="TextureRect" parent="PlayerUI/MarginContainer/NewEmailNotification/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("13_a0mat")
+
+[node name="NewEmailLabel" type="Label" parent="PlayerUI/MarginContainer/NewEmailNotification/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "New Email"

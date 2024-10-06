@@ -3,44 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\levels\\creatureroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\levels\\creatureroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\ResolutionModeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\UI\\MainMenu\\ResolutionModeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\_components\\codecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\_components\\codecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\WindowModeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\UI\\MainMenu\\WindowModeButton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\options.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\options.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\player\\footstepaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\player\\footstepaudio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\ui\\mainmenu\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\ui\\mainmenu\\mainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\ui\\introscreens\\titlecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\ui\\introscreens\\titlecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\stations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\stations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\levels\\lobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\levels\\lobby.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\computerstation\\operatingsystem\\operatingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\computerstation\\operatingsystem\\operatingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\player\\handicam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\player\\handicam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\OptionsPage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\UI\\MainMenu\\OptionsPage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,136 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CodeComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\CodeComponent.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\_Components\\CodeComponent.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\CodeComponent.cs",
-              "RelativeToolTip": "Scripts\\Stations\\_Components\\CodeComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T15:52:47.049Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreatureRoom.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Levels\\CreatureRoom.cs",
-              "RelativeDocumentMoniker": "Scripts\\Levels\\CreatureRoom.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Levels\\CreatureRoom.cs",
-              "RelativeToolTip": "Scripts\\Levels\\CreatureRoom.cs",
-              "ViewState": "AgIAAHYAAAAAAAAAAAArwJkAAABDAAAAAAAAAA==",
+              "Title": "ResolutionModeButton.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\ResolutionModeButton.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\MainMenu\\ResolutionModeButton.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\ResolutionModeButton.cs",
+              "RelativeToolTip": "Scripts\\UI\\MainMenu\\ResolutionModeButton.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwCcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T15:22:53.988Z",
+              "WhenOpened": "2024-10-06T06:26:55.476Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Stations.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\Stations.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\Stations.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\Stations.cs",
-              "RelativeToolTip": "Scripts\\Stations\\Stations.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "WindowModeButton.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\WindowModeButton.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\MainMenu\\WindowModeButton.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\WindowModeButton.cs",
+              "RelativeToolTip": "Scripts\\UI\\MainMenu\\WindowModeButton.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T15:33:20.989Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FootstepAudio.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\FootstepAudio.cs",
-              "RelativeDocumentMoniker": "Scripts\\Player\\FootstepAudio.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\FootstepAudio.cs",
-              "RelativeToolTip": "Scripts\\Player\\FootstepAudio.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwBsAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T15:19:49.203Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\Player.cs",
-              "RelativeDocumentMoniker": "Scripts\\Player\\Player.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\Player.cs",
-              "RelativeToolTip": "Scripts\\Player\\Player.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T15:14:38.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TitleCard.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\IntroScreens\\TitleCard.cs",
-              "RelativeDocumentMoniker": "Scripts\\UI\\IntroScreens\\TitleCard.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\IntroScreens\\TitleCard.cs",
-              "RelativeToolTip": "Scripts\\UI\\IntroScreens\\TitleCard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T14:55:20.166Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Lobby.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Levels\\Lobby.cs",
-              "RelativeDocumentMoniker": "Scripts\\Levels\\Lobby.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Levels\\Lobby.cs",
-              "RelativeToolTip": "Scripts\\Levels\\Lobby.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T14:48:49.226Z",
+              "WhenOpened": "2024-10-06T06:08:20.968Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GlobalSignals.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
-              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalSignals.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
-              "RelativeToolTip": "Scripts\\Globals\\GlobalSignals.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAA4AAAAAAAAAA==",
+              "Title": "Options.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\Options.cs",
+              "RelativeDocumentMoniker": "Scripts\\Globals\\Options.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\Options.cs",
+              "RelativeToolTip": "Scripts\\Globals\\Options.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T14:42:19.738Z",
+              "WhenOpened": "2024-10-06T06:01:01.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Handicam.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\Handicam.cs",
-              "RelativeDocumentMoniker": "Scripts\\Player\\Handicam.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\Handicam.cs",
-              "RelativeToolTip": "Scripts\\Player\\Handicam.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAXAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "MainMenu.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\MainMenu.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\MainMenu\\MainMenu.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\MainMenu.cs",
+              "RelativeToolTip": "Scripts\\UI\\MainMenu\\MainMenu.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowEgAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T05:32:48.271Z",
+              "WhenOpened": "2024-10-06T05:33:30.141Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "OperatingSystem.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
-              "RelativeToolTip": "Scripts\\Stations\\ComputerStation\\OperatingSystem\\OperatingSystem.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAcwFsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "OptionsPage.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\OptionsPage.cs",
+              "RelativeDocumentMoniker": "Scripts\\UI\\MainMenu\\OptionsPage.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\UI\\MainMenu\\OptionsPage.cs",
+              "RelativeToolTip": "Scripts\\UI\\MainMenu\\OptionsPage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T20:56:10.938Z",
+              "WhenOpened": "2024-10-06T05:40:26.535Z",
               "EditorCaption": ""
             }
           ]

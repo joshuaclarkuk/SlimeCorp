@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://t4vquhmibbj2"]
+
+[ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="1_oofwy"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/MainMenu.cs" id="2_eg5ks"]
+[ext_resource type="PackedScene" uid="uid://dyyccic1hr1ts" path="res://Scenes/Levels/Lobby.tscn" id="3_6l8sw"]
+[ext_resource type="Material" uid="uid://bh7gq84vvd67g" path="res://Materials/M_BlurScreenShader.tres" id="4_2ky1h"]
+[ext_resource type="PackedScene" uid="uid://v0ulbv20iqrk" path="res://Scenes/UI/MainMenu/OptionsPage.tscn" id="5_082tu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yuhrx"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("startGameButtonNode", "optionsButtonNode", "quitGameButtonNode", "startPageNode", "optionsPageNode")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_oofwy")
+script = ExtResource("2_eg5ks")
+startGameButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/StartButton")
+optionsButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/OptionsButton")
+quitGameButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/QuitButton")
+firstLevelToLoad = ExtResource("3_6l8sw")
+startPageNode = NodePath("Pages/StartPage")
+optionsPageNode = NodePath("Pages/OptionsPage")
+
+[node name="BackgroundBlur" type="TextureRect" parent="."]
+material = ExtResource("4_2ky1h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_yuhrx")
+
+[node name="Pages" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartPage" type="Control" parent="Pages"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Pages/StartPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/StartPage/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="GameTitle" type="Label" parent="Pages/StartPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Night Shift at Slime Corp"
+
+[node name="Fields" type="VBoxContainer" parent="Pages/StartPage/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="StartButton" type="Button" parent="Pages/StartPage/MarginContainer/VBoxContainer/Fields"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "Start Game"
+
+[node name="OptionsButton" type="Button" parent="Pages/StartPage/MarginContainer/VBoxContainer/Fields"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="Pages/StartPage/MarginContainer/VBoxContainer/Fields"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 36
+text = "Quit Game"
+
+[node name="OptionsPage" parent="Pages" instance=ExtResource("5_082tu")]
+layout_mode = 1

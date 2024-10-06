@@ -28,6 +28,7 @@ public partial class GlobalSignals : Node
     public event Action<bool> OnCreatureCleanRequestSatisfied; // Used to determine whether request should be cleared or not
 
     public event Action<ComputerItemResource> OnEmailReceived;
+    public event Action OnEmailsRead;
     public event Action<ComputerItemResource> OnNewsArticleReceived;
 
     public event Action<E_StationType> OnPlayerEnterStationCollider;
@@ -56,6 +57,7 @@ public partial class GlobalSignals : Node
     public void RaiseCreatureCleanRequestSatisfied(bool isSatisfied) { OnCreatureCleanRequestSatisfied?.Invoke(isSatisfied); }
 
     public void RaiseEmailReceived(ComputerItemResource emailResource) { OnEmailReceived?.Invoke(emailResource); }
+    public void RaiseEmailsRead() { OnEmailsRead?.Invoke(); }
     public void RaiseNewsArticleReceived(ComputerItemResource articleResource) { OnNewsArticleReceived?.Invoke(articleResource); }
 
     public void RaiseSlimeCanisterRemovedFromStation(float slimeAmount) { OnSlimeCanisterRemovedFromStation?.Invoke(slimeAmount); }
