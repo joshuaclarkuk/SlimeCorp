@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d10hrsi2isj68"]
+
+[ext_resource type="Material" uid="uid://dwldf05jsl41m" path="res://Materials/M_PrototypeGold.tres" id="1_ojhnl"]
+[ext_resource type="Script" path="res://Scripts/Events/Lobby/ElevatorDoors.cs" id="1_yvk83"]
+
+[node name="ElevatorDoors" type="Node3D"]
+script = ExtResource("1_yvk83")
+
+[node name="DoorLeft" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+size = Vector3(1, 2, 0.1)
+material = ExtResource("1_ojhnl")
+
+[node name="DoorRight" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+size = Vector3(1, 2, 0.1)
+material = ExtResource("1_ojhnl")

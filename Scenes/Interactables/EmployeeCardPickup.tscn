@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://db3tg464h5c8s"]
+
+[ext_resource type="Script" path="res://Scripts/Interactables/EmployeeCardPickup.cs" id="1_8huvs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrajf"]
+size = Vector3(0.5, 0.2, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_angdu"]
+size = Vector3(0.1, 0.04, 0.06)
+
+[node name="EmployeeCardPickup" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_8huvs")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_hrajf")
+
+[node name="CardMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_angdu")
+skeleton = NodePath("../..")

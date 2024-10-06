@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://jiyh1k0ak4yv"]
+
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_fjaxl"]
+[ext_resource type="Script" path="res://Scripts/Stations/ElevatorPanelStation/ElevatorPanelStation.cs" id="2_ojemp"]
+[ext_resource type="Material" uid="uid://dwldf05jsl41m" path="res://Materials/M_PrototypeGold.tres" id="3_m0ai6"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_mxjmm"]
+[ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="5_haog7"]
+
+[node name="ElevatorPanelStation" node_paths=PackedStringArray("codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_fjaxl")]
+script = ExtResource("2_ojemp")
+codeComponent = NodePath("CodeComponent")
+buttonsNode = NodePath("Buttons")
+debugLabel = NodePath("StationDebugLabel")
+StationType = 7
+
+[node name="StationDebugLabel" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.0871421)
+text = "Elevator
+Code"
+
+[node name="Mesh" type="CSGBox3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(0.5, 0.5, 0.3)
+material = ExtResource("3_m0ai6")
+
+[node name="Buttons" parent="." index="4" instance=ExtResource("4_mxjmm")]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 1, 0.2)
+
+[node name="CodeComponent" parent="." index="5" instance=ExtResource("5_haog7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)

@@ -3,6 +3,8 @@ using System;
 
 public partial class GlobalValues : Node
 {
+    public bool HasEmployeeCard { get; private set; } = false;
+
     public int[] EmployeeNumber = new int[] { 0, 0, 0, 0 };
 
     private GlobalSignals globalSignals = null;
@@ -11,6 +13,12 @@ public partial class GlobalValues : Node
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         
+    }
+
+    public void SetHasEmployeeCard(bool hasCard)
+    {
+        HasEmployeeCard = hasCard;
+        GD.Print($"Has employee card: {HasEmployeeCard}");
     }
 
     private void GenerateEmployeeNumber()

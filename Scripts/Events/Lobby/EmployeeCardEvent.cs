@@ -5,15 +5,17 @@ public partial class EmployeeCardEvent : Node3D
 {
     [ExportCategory("Required Nodes")]
     [Export] private Area3D spawnColliderNode = null;
-    [Export] private Area3D pickUpCardColliderNode = null;
-    [Export] private MeshInstance3D cardMeshNode = null;
     [Export] private Label3D receptionWrittenNoteNode = null;
+    [Export] private Marker3D employeeCardSpawnLocationNode = null;
+    [Export] private PackedScene employeeCardPickupScene = null;
 
     [ExportCategory("Reception Notes")]
     [Export(PropertyHint.MultilineText)] private string note1 = string.Empty;
     [Export(PropertyHint.MultilineText)] private string note2 = string.Empty;
 
     private GlobalSignals globalSignals = null;
+
+    private bool hasSpawned = false;
 
     public override void _Ready()
     {
@@ -23,8 +25,7 @@ public partial class EmployeeCardEvent : Node3D
         // Subscribe to events
         spawnColliderNode.BodyEntered += HandleSpawnColliderBodyEntered;
 
-        // Initialise colliders
-        TogglePickUpCardCollision(false);
+        // Initialise note
         receptionWrittenNoteNode.Text = note1;
     }
 
@@ -36,24 +37,24 @@ public partial class EmployeeCardEvent : Node3D
 
     private void HandleSpawnColliderBodyEntered(Node3D body)
     {
+        if (hasSpawned) { return; }
+
         if (body is Player)
         {
-            GD.Print("Employee card spawned");
             this.CallDeferred(nameof(DeferredCardSpawnActions)); // Have to defer to be able to disable the collision object that's registering the collision
         }
     }
 
     private void DeferredCardSpawnActions()
     {
-        TogglePickUpCardCollision(true);
+        // Spawn card
+        EmployeeCardPickup pickup = (EmployeeCardPickup)employeeCardPickupScene.Instantiate();
+        AddChild(pickup);
+        pickup.Position = employeeCardSpawnLocationNode.Position;
+
         receptionWrittenNoteNode.Text = note2;
         spawnColliderNode.GetChild<CollisionShape3D>(0).Disabled = true;
         globalSignals.RaiseGenerateEmployeeNumber();
-    }
-
-    private void TogglePickUpCardCollision(bool isActive)
-    {
-        cardMeshNode.Visible = isActive;
-        pickUpCardColliderNode.GetChild<CollisionShape3D>(0).Disabled = !isActive;
+        hasSpawned = true;
     }
 }

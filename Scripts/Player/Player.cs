@@ -7,6 +7,8 @@ public partial class Player : CharacterBody3D
 	[Export] private Node3D cameraPivotNode = null;
 	[Export] private Camera3D playerCameraNode = null;
 	[Export] private Node3D canisterCarrierNode = null;
+	[Export] private RayCast3D interactRaycastNode = null;
+	[Export] private Timer interactRaycastTimerNode = null;
 
 	[ExportCategory("UI Nodes")]
 	[Export] private Control newEmailNotificationNode = null;
@@ -33,14 +35,15 @@ public partial class Player : CharacterBody3D
 	private E_StationType activeStationCollider = E_StationType.NONE;
 	private bool isRelinquishingControl = false;
 
+	// Interact raycast result
+	private Interactable currentInteractable = null;
+
 	public override void _Ready()
 	{
 		base._Ready();
 
-		// Get Options autoload
+		// Get autoloads
 		options = GetNode<Options>("/root/Options");
-
-		// Get GlobalSignals autoload and assign signals
 		globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
 		SubscribeToEvents();
 
@@ -53,6 +56,9 @@ public partial class Player : CharacterBody3D
 
 		// Capture mouse cursor on start
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+
+		// Set interact raycast node to disabled and start timer to activate
+		interactRaycastTimerNode.Start();
 
 		// Stops player moving until black screen has disappeared
 		isRelinquishingControl = true;
@@ -123,31 +129,41 @@ public partial class Player : CharacterBody3D
 			}
 		}
 
-		// INTERACT WITH STATION
+		// INTERACT WITH STATION/INTERACTABLE
 		if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
-		{
-			if (activeStationCollider == E_StationType.NONE) { return; }
-
-			if (!isRelinquishingControl)
+        {
+            InteractWithStation();
+			if (currentInteractable != null)
 			{
-				Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
-				globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-				isRelinquishingControl = true;
+				GD.Print("Calling Interact on Interactable");
+				currentInteractable.Interact();
 			}
-			else
-			{
-				globalSignals.RaisePlayerExitStation(activeStationCollider);
-			}
-		}
+        }
 
-		// SHOW CURSOR
-		if (Input.IsActionJustPressed("ui_cancel"))
+        // SHOW CURSOR
+        if (Input.IsActionJustPressed("ui_cancel"))
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 	}
 
-	private void SubscribeToEvents()
+    private void InteractWithStation()
+    {
+        if (activeStationCollider == E_StationType.NONE) { return; }
+
+        if (!isRelinquishingControl)
+        {
+            Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
+            globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+            isRelinquishingControl = true;
+        }
+        else
+        {
+            globalSignals.RaisePlayerExitStation(activeStationCollider);
+        }
+    }
+
+    private void SubscribeToEvents()
 	{
 		globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
@@ -157,6 +173,7 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
         globalSignals.OnEmailReceived += HandleEmailReceived;
 		globalSignals.OnEmailsRead += HandleEmailsRead;
+        interactRaycastTimerNode.Timeout += HandleInteractRaycastTimerTimeout;
     }
 
     private void UnsubscribeFromEvents()
@@ -168,6 +185,7 @@ public partial class Player : CharacterBody3D
         globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
         globalSignals.OnEmailReceived -= HandleEmailReceived;
         globalSignals.OnEmailsRead -= HandleEmailsRead;
+        interactRaycastTimerNode.Timeout -= HandleInteractRaycastTimerTimeout;
     }
 
     private void HandleCameraRotation()
@@ -235,6 +253,19 @@ public partial class Player : CharacterBody3D
     private void HandleEmailsRead()
     {
         newEmailNotificationNode.Visible = false;
+    }
+
+    private void HandleInteractRaycastTimerTimeout()
+    {
+		if (interactRaycastNode.GetCollider() != null)
+		{
+			currentInteractable = (Interactable)interactRaycastNode.GetCollider();
+        }
+		else
+		{
+			currentInteractable = null;
+		}
+        interactRaycastTimerNode.Start();
     }
 
     private void HandleBlackScreenDisappeared()

@@ -6,7 +6,8 @@
     CLEANING,
     SLIMECOLLECTION,
     CLOCKOUT,
-    CANISTERSTORAGE
+    CANISTERSTORAGE,
+    ELEVATORPANEL
 }
 
 public enum E_IngredientList
