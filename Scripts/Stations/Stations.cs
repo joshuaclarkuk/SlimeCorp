@@ -6,7 +6,6 @@ public partial class Stations : Node3D
 {
     [ExportCategory("Required Nodes")]
     [Export] private Camera3D rovingCameraNode = null;
-    [Export] private Player playerNode = null;
 
     [ExportCategory("Behaviour")]
     [Export] private float cameraTweenDuration = 1.0f;
@@ -15,11 +14,13 @@ public partial class Stations : Node3D
     private Dictionary<E_StationType, Marker3D> cameraPositionDictionary = new Dictionary<E_StationType, Marker3D>();
 
     // Member variable for player camera position
+    private Player player = null;
     private Node3D playerCameraPivotNode;
 
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+        player = GetNode<Player>("/root/Player");
 
         // Link signals with camera movement
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
@@ -35,7 +36,7 @@ public partial class Stations : Node3D
         DeactivateAllStationInputs();
 
         // Get reference to player camera position
-        playerCameraPivotNode = playerNode.GetNode<Node3D>("PlayerCameraPivot");
+        playerCameraPivotNode = player.GetNode<Node3D>("PlayerCameraPivot");
     }
 
     public override void _ExitTree()

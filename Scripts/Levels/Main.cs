@@ -3,6 +3,9 @@ using System;
 
 public partial class Main : Node3D
 {
+    [ExportCategory("Player Start")]
+    [Export] private Marker3D playerStartNode = null;
+
     [ExportCategory("Titles")]
     [Export] private TitleCard titleCardNode = null;
 
@@ -26,6 +29,7 @@ public partial class Main : Node3D
     private GlobalValues globalValues = null;
     private GlobalSignals globalSignals = null;
     private GlobalEvents globalEvents = null;
+    private Player player = null;
 
     // Day counter
     private int currentDayIndex = 1;
@@ -40,6 +44,7 @@ public partial class Main : Node3D
         globalValues = GetNode<GlobalValues>("/root/GlobalValues");
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalEvents = GetNode<GlobalEvents>("/root/GlobalEvents");
+        player = GetNode<Player>("/root/Player");
 
         // Connect timeline signals
         globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared; // Start new day
@@ -54,6 +59,9 @@ public partial class Main : Node3D
         {
             globalSignals.RaiseEmailReceived(emailResource);
         }
+
+        // Set player to player start
+        player.GlobalTransform = playerStartNode.GlobalTransform;
     }
 
     public override void _ExitTree()

@@ -135,9 +135,9 @@ public partial class ElevatorPanelStation : Station
         }
     }
 
-    private void HandleGenerateEmployeeNumber()
+    private void HandleGenerateEmployeeNumber(int[] employeeNumber)
     {
-        employeeNumberLabelNode.Text = $"Employee Number\n{string.Join("",globalValues.EmployeeNumber)}";
+        employeeNumberLabelNode.Text = $"Employee Number\n{string.Join("", globalValues.EmployeeNumber)}";
         playerHasEmployeeCard = true;
     }
 
@@ -154,6 +154,7 @@ public partial class ElevatorPanelStation : Station
         {
             elevatorDoorsNode.ToggleElevatorDoorsOpen(true);
             doorsAreOpen = true;
+            globalSignals.RaisePlayerExitStation(StationType);
         }
     }
 }

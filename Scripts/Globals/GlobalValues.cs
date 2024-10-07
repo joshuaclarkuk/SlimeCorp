@@ -12,7 +12,12 @@ public partial class GlobalValues : Node
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        
+        SubscribeToEvents();
+    }
+
+    public override void _ExitTree()
+    {
+        UnsubscribeFromEvents();
     }
 
     public void SetHasEmployeeCard(bool hasCard)
@@ -21,17 +26,23 @@ public partial class GlobalValues : Node
         GD.Print($"Has employee card: {HasEmployeeCard}");
     }
 
-    public void GenerateEmployeeNumber()
+    public void SetEmployeeNumber(int[] employeeNumber)
     {
-        // Generate employee number here
-        Random random = new Random();
-        int[] employeeNumber = new int[4];
-        for (int i = 0; i < employeeNumber.Length; i++)
-        {
-            employeeNumber[i] = random.Next(0, 10);
-        }
         EmployeeNumber = employeeNumber;
+    }
 
-        GD.Print($"Generated employee number: {string.Join("",employeeNumber)} vs Official employee number: {string.Join("", EmployeeNumber)}");
+    private void SubscribeToEvents()
+    {
+        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
+    }
+
+    private void HandleGenerateEmployeeNumber(int[] employeeNumber)
+    {
+        EmployeeNumber = employeeNumber;
     }
 }
