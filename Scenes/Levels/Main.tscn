@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=16 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -14,15 +14,110 @@
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
+size = Vector3(30, 1, 39)
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
-viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
+viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
 [node name="Main" node_paths=PackedStringArray("titleCardNode", "creatureNeeds", "stationsHeaderNode") instance=ExtResource("1_6dq5d")]
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
-stationsHeaderNode = NodePath("Stations")
+stationsHeaderNode = NodePath("Environment/Objects/Stations")
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="0"]
+[node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
+
+[node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/FloorCollision" index="0"]
+shape = SubResource("BoxShape3D_8gho2")
+
+[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
+script = ExtResource("8_8q08k")
+rovingCameraNode = NodePath("../../../RovingCamera")
+playerNode = NodePath("../../../Player")
+
+[node name="ComputerStation" parent="Environment/Objects/Stations" index="0" instance=ExtResource("2_te2wr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, -0.029242, -2)
+
+[node name="FeedingStation" parent="Environment/Objects/Stations" index="1" instance=ExtResource("3_xnieq")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -8.33052, -0.0225658, -13.0066)
+
+[node name="ClockOutStation" parent="Environment/Objects/Stations" index="2" instance=ExtResource("7_5p5ij")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -23.5, 0, -3.5)
+
+[node name="CleaningStation" parent="Environment/Objects/Stations" index="3" instance=ExtResource("8_jl626")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.7, 0, -4.8)
+
+[node name="SlimeCollectionStation" parent="Environment/Objects/Stations" index="4" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.2, -0.2, 10)
+debugUI = NodePath("../../../../DebugUI")
+
+[node name="CanisterStorageStation" parent="Environment/Objects/Stations" index="5" instance=ExtResource("3_gd6ql")]
+transform = Transform3D(-1, 0, -1.60937e-07, 0, 1, 0, 1.60937e-07, 0, -1, -11.9, 0, 22)
+
+[node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)
+
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/Objects/CreatureNeedsScreen" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
+texture = SubResource("ViewportTexture_w0js7")
+
+[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/Objects/CreatureNeedsScreen" index="1"]
+size = Vector2i(1024, 1024)
+
+[node name="CreatureNeedsDisplay" parent="Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
+
+[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.426, 1, 10)
+text = "Biofuel Canister
+Storage >>>"
+
+[node name="OmniLight" type="OmniLight3D" parent="Lighting" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -1.3504)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, 8.35553)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -11.1275)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 7.0892, -14.1681)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 7.264, -4.71915)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="Player" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 1, -2)
+
+[node name="RovingCamera" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
+
+[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
+slimeCollectionStationNode = NodePath("../Environment/Objects/Stations/SlimeCollectionStation")
+debugUINode = NodePath("../DebugUI")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="8"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,84 +132,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 emailItemResources = Array[Object]([])
 
-[node name="DebugUI" parent="." index="1" instance=ExtResource("11_yopgj")]
+[node name="DebugUI" parent="." index="9" instance=ExtResource("11_yopgj")]
 
-[node name="CreatureNeeds" parent="." index="3" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
-creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
-slimeCollectionStationNode = NodePath("../Stations/SlimeCollectionStation")
-debugUINode = NodePath("../DebugUI")
-
-[node name="Stations" type="Node3D" parent="." index="4" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
-script = ExtResource("8_8q08k")
-rovingCameraNode = NodePath("../RovingCamera")
-playerNode = NodePath("../Player")
-
-[node name="ComputerStation" parent="Stations" index="0" instance=ExtResource("2_te2wr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -20)
-
-[node name="FeedingStation" parent="Stations" index="1" instance=ExtResource("3_xnieq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
-
-[node name="ClockOutStation" parent="Stations" index="2" instance=ExtResource("7_5p5ij")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
-
-[node name="CleaningStation" parent="Stations" index="3" instance=ExtResource("8_jl626")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
-
-[node name="SlimeCollectionStation" parent="Stations" index="4" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
-debugUI = NodePath("../../DebugUI")
-
-[node name="CanisterStorageStation" parent="Stations" index="5" instance=ExtResource("3_gd6ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
-
-[node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
-
-[node name="CreatureNeedsScreen" type="Node3D" parent="Environment" index="3"]
-
-[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen" index="0"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
-texture = SubResource("ViewportTexture_w0js7")
-
-[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/CreatureNeedsScreen" index="1"]
-size = Vector2i(1024, 1024)
-
-[node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
-
-[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage" index="0"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
-text = "Biofuel Canister
-Storage >>>"
-
-[node name="OmniLight" type="OmniLight3D" parent="Lighting" index="0"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 9.9646, -1.4504)
-light_energy = 5.075
-shadow_enabled = true
-omni_range = 22.279
-
-[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 9.9646, 8.25553)
-light_energy = 5.075
-shadow_enabled = true
-omni_range = 22.279
-
-[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 9.9646, -11.2275)
-light_energy = 5.075
-shadow_enabled = true
-omni_range = 22.279
-
-[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="3"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 10.0892, -14.2681)
-light_energy = 5.075
-shadow_enabled = true
-omni_range = 22.279
-
-[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="4"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 10.264, -4.81915)
-light_energy = 5.075
-shadow_enabled = true
-omni_range = 22.279
-
-[node name="BlackScreen" parent="." index="12"]
+[node name="BlackScreen" parent="." index="11"]
 visible = false
