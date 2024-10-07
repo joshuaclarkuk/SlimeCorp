@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bd6ijjqnhneik"]
+
+[ext_resource type="Texture2D" uid="uid://chpcjw8322txg" path="res://3D Folder/textures folder/Level folder/elevation/verhoging_Albedo.png" id="1_csr20"]
+[ext_resource type="Texture2D" uid="uid://3tmnv3dksw80" path="res://3D Folder/textures folder/Level folder/elevation/verhoging_Metalness.png" id="2_d4xb0"]
+[ext_resource type="Texture2D" uid="uid://ceaf57cbn4orl" path="res://3D Folder/textures folder/Level folder/elevation/verhoging_Normal.png" id="3_yai85"]
+[ext_resource type="Texture2D" uid="uid://cjcggpou76gj0" path="res://3D Folder/textures folder/Level folder/elevation/verhoging_Roughness.png" id="4_n1yl3"]
+
+[resource]
+albedo_texture = ExtResource("1_csr20")
+metallic = 1.0
+metallic_texture = ExtResource("2_d4xb0")
+roughness_texture = ExtResource("4_n1yl3")
+normal_enabled = true
+normal_texture = ExtResource("3_yai85")

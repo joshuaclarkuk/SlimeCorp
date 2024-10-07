@@ -24,36 +24,6 @@ shadow_enabled = true
 
 [node name="Construction" type="Node3D" parent="Environment"]
 
-[node name="Floor" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, -0.5, 0)
-use_collision = true
-collision_mask = 0
-size = Vector3(29, 1, 16)
-
-[node name="WallNorth" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, -8.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(31, 6, 1)
-
-[node name="WallSouth" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 7.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(31, 6, 1)
-
-[node name="WallWest" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.5, 3, -0.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(15, 6, 1)
-
-[node name="WallStorageRoom" type="CSGBox3D" parent="Environment/Construction"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 19.5, 3, -0.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(1, 6, 15)
-
 [node name="Lighting" type="Node3D" parent="Environment"]
 
 [node name="Objects" type="Node3D" parent="Environment"]

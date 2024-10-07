@@ -131,39 +131,39 @@ public partial class Player : CharacterBody3D
 
 		// INTERACT WITH STATION/INTERACTABLE
 		if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
-        {
-            InteractWithStation();
+		{
+			InteractWithStation();
 			if (currentInteractable != null)
 			{
 				GD.Print("Calling Interact on Interactable");
 				currentInteractable.Interact();
 			}
-        }
+		}
 
-        // SHOW CURSOR
-        if (Input.IsActionJustPressed("ui_cancel"))
+		// SHOW CURSOR
+		if (Input.IsActionJustPressed("ui_cancel"))
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 	}
 
-    private void InteractWithStation()
-    {
-        if (activeStationCollider == E_StationType.NONE) { return; }
+	private void InteractWithStation()
+	{
+		if (activeStationCollider == E_StationType.NONE) { return; }
 
-        if (!isRelinquishingControl)
-        {
-            Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
-            globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-            isRelinquishingControl = true;
-        }
-        else
-        {
-            globalSignals.RaisePlayerExitStation(activeStationCollider);
-        }
-    }
+		if (!isRelinquishingControl)
+		{
+			Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
+			globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+			isRelinquishingControl = true;
+		}
+		else
+		{
+			globalSignals.RaisePlayerExitStation(activeStationCollider);
+		}
+	}
 
-    private void SubscribeToEvents()
+	private void SubscribeToEvents()
 	{
 		globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
@@ -171,24 +171,24 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
 		globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
-        globalSignals.OnEmailReceived += HandleEmailReceived;
+		globalSignals.OnEmailReceived += HandleEmailReceived;
 		globalSignals.OnEmailsRead += HandleEmailsRead;
-        interactRaycastTimerNode.Timeout += HandleInteractRaycastTimerTimeout;
-    }
+		interactRaycastTimerNode.Timeout += HandleInteractRaycastTimerTimeout;
+	}
 
-    private void UnsubscribeFromEvents()
+	private void UnsubscribeFromEvents()
 	{
 		globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
 		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
-        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
-        globalSignals.OnEmailReceived -= HandleEmailReceived;
-        globalSignals.OnEmailsRead -= HandleEmailsRead;
-        interactRaycastTimerNode.Timeout -= HandleInteractRaycastTimerTimeout;
-    }
+		globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
+		globalSignals.OnEmailReceived -= HandleEmailReceived;
+		globalSignals.OnEmailsRead -= HandleEmailsRead;
+		interactRaycastTimerNode.Timeout -= HandleInteractRaycastTimerTimeout;
+	}
 
-    private void HandleCameraRotation()
+	private void HandleCameraRotation()
 	{
 		// Rotate around Y-axis using mouse X movement
 		RotateY(mouseMotion.X);
@@ -245,31 +245,31 @@ public partial class Player : CharacterBody3D
 		isRelinquishingControl = false;
 	}
 
-    private void HandleEmailReceived(ComputerItemResource resource)
-    {
+	private void HandleEmailReceived(ComputerItemResource resource)
+	{
 		newEmailNotificationNode.Visible = true;
-    }
+	}
 
-    private void HandleEmailsRead()
-    {
-        newEmailNotificationNode.Visible = false;
-    }
+	private void HandleEmailsRead()
+	{
+		newEmailNotificationNode.Visible = false;
+	}
 
-    private void HandleInteractRaycastTimerTimeout()
-    {
+	private void HandleInteractRaycastTimerTimeout()
+	{
 		if (interactRaycastNode.GetCollider() != null)
 		{
 			currentInteractable = (Interactable)interactRaycastNode.GetCollider();
-        }
+		}
 		else
 		{
 			currentInteractable = null;
 		}
-        interactRaycastTimerNode.Start();
-    }
+		interactRaycastTimerNode.Start();
+	}
 
-    private void HandleBlackScreenDisappeared()
-    {
+	private void HandleBlackScreenDisappeared()
+	{
 		isRelinquishingControl = false;
-    }
+	}
 }

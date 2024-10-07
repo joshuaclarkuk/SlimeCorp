@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://dy4gvxlt7h57t"]
+
+[ext_resource type="Texture2D" uid="uid://cv8jospwgm1o2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Albedo.png" id="1_tfu4o"]
+[ext_resource type="Texture2D" uid="uid://jbrr5abn5iq2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Metalness.png" id="2_w7ipg"]
+[ext_resource type="Texture2D" uid="uid://cext5h5fsy0cq" path="res://3D Folder/textures folder/Level folder/Walls/walls_Normal.png" id="3_6wx53"]
+[ext_resource type="Texture2D" uid="uid://c6cypv6gee06n" path="res://3D Folder/textures folder/Level folder/Walls/walls_Roughness.png" id="4_6xnlm"]
+
+[resource]
+albedo_texture = ExtResource("1_tfu4o")
+metallic = 1.0
+metallic_texture = ExtResource("2_w7ipg")
+roughness_texture = ExtResource("4_6xnlm")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_6wx53")

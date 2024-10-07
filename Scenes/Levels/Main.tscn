@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=16 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -10,8 +10,23 @@
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="10_hb5fi"]
+=======
+[ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_w2vyj"]
+[ext_resource type="PackedScene" uid="uid://caextdl02xdes" path="res://Scenes/Models/RoomModels/MainRoomModel.tscn" id="11_urvas"]
+>>>>>>> bade9c8513f79c51d52f26d9c30866b25fb7c4e4
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
+
+[sub_resource type="Environment" id="Environment_6w2o1"]
+ssao_enabled = true
+ssao_radius = 4.5
+ssao_intensity = 4.14
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
@@ -32,6 +47,7 @@ rovingCameraNode = NodePath("../RovingCamera")
 playerNode = NodePath("../Player")
 
 [node name="ComputerStation" parent="Stations" index="0" instance=ExtResource("2_te2wr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -20)
 
 [node name="FeedingStation" parent="Stations" index="1" instance=ExtResource("3_xnieq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
@@ -49,15 +65,31 @@ debugUI = NodePath("../../DebugUI")
 [node name="CanisterStorageStation" parent="Stations" index="5" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
 
-[node name="StorageRoomSeparator" type="CSGBox3D" parent="Environment/Construction" index="5"]
+<<<<<<< HEAD
+[node name="Main room" parent="Stations" index="6" instance=ExtResource("10_hb5fi")]
+transform = Transform3D(1.4515, 0, 0, 0, 1.4515, 0, 0, 0, 1.4515, 16.5534, -4.18597, -0.999733)
+
+[node name="WorldEnvironment" parent="." index="3"]
+environment = SubResource("Environment_6w2o1")
+
+[node name="Construction" parent="Environment" index="0"]
+visible = false
+
+[node name="StorageRoomSeparator" type="CSGBox3D" parent="Environment/Construction" index="0"]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.5, 3, -2.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(1, 6, 11)
 
-[node name="StorageRoomFiller" type="CSGBox3D" parent="Environment/Construction" index="6"]
+[node name="StorageRoomFiller" type="CSGBox3D" parent="Environment/Construction" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, -4)
 size = Vector3(6, 6, 8)
+=======
+[node name="HappinessGameStation" parent="Stations" index="6" instance=ExtResource("10_w2vyj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6, 0, 1.6)
+
+[node name="Main room" parent="Environment/Construction" index="0" instance=ExtResource("11_urvas")]
+>>>>>>> bade9c8513f79c51d52f26d9c30866b25fb7c4e4
 
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment" index="4"]
 
@@ -76,6 +108,38 @@ size = Vector2i(1024, 1024)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
 text = "Biofuel Canister
 Storage >>>"
+
+[node name="Lights" type="Node" parent="Environment" index="6"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11126, 11.9646, -4.15347)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment/Lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11126, 11.9646, -13.8594)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Environment/Lights" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11126, 11.9646, 5.62367)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Environment/Lights" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7247, 12.0892, 8.66425)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Environment/Lights" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7112, 12.264, -0.784714)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="5"]
 anchors_preset = 15
