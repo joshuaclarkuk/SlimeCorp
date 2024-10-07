@@ -93,7 +93,7 @@ public partial class CreatureNeeds : Node3D
         // Link NeedComponent signals
         feedingComponentNode.OnCreatureServedFood += HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
-        globalSignals.OnCreaturePlayedWith += HandleHappinessIncreased;
+        globalSignals.OnCreaturePlayedWith += HandleCreaturePlayedWith;
     }
 
     private void UnsubscribeFromEvents()
@@ -103,7 +103,7 @@ public partial class CreatureNeeds : Node3D
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
         feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
-        globalSignals.OnCreaturePlayedWith -= HandleHappinessIncreased;
+        globalSignals.OnCreaturePlayedWith -= HandleCreaturePlayedWith;
     }
 
     private void SetNumberOfMinutesInDay(float minutes)
@@ -153,6 +153,17 @@ public partial class CreatureNeeds : Node3D
             cleaningComponentNode.ProcessCleaningRequest();
             hasMadeCleaningRequest = true;
             isCleaningRequestSatisfied = false;
+        }
+    }    
+    
+    private void MakePlayRequestIfBelowThreshold()
+    {
+        if (currentHappinessLevel <= maxHappinessLevel * (percentageMaxHappinessBeforePlayRequestMade / 100.0f) && !hasMadePlayRequest)
+        {
+            GD.Print("Happiness below threshold. Making play request");
+            // Trigger alarms etc
+            hasMadePlayRequest = true;
+            isPlayRequestSatisfied = false;
         }
     }
 
@@ -255,7 +266,7 @@ public partial class CreatureNeeds : Node3D
         }
     }
 
-    private void HandleHappinessIncreased()
+    private void HandleCreaturePlayedWith()
     {
         float newHappinessLevel = 0.0f;
 
@@ -268,7 +279,6 @@ public partial class CreatureNeeds : Node3D
         if ((currentHappinessLevel / maxHappinessLevel * 100.0f) > percentageMaxHappinessBeforePlayRequestMade && !isPlayRequestSatisfied)
         {
             hasMadePlayRequest = false;
-            globalSignals.RaiseCreaturePlayRequestSatisfied(true);
             isPlayRequestSatisfied = true;
         }
     }

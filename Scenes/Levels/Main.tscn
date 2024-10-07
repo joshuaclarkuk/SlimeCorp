@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=17 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
+[ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
@@ -59,6 +60,9 @@ debugUI = NodePath("../../../../DebugUI")
 [node name="CanisterStorageStation" parent="Environment/Objects/Stations" index="5" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(-1, 0, -1.60937e-07, 0, 1, 0, 1.60937e-07, 0, -1, -11.9, 0, 22)
 
+[node name="HappinessGameStation" parent="Environment/Objects/Stations" index="6" instance=ExtResource("10_jnwi1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.6, 0, 1)
+
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)
 
@@ -106,11 +110,8 @@ light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-[node name="Player" parent="." index="4"]
+[node name="Player" parent="." index="6"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 1, -2)
-
-[node name="RovingCamera" parent="." index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
 
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
@@ -134,5 +135,8 @@ emailItemResources = Array[Object]([])
 
 [node name="DebugUI" parent="." index="9" instance=ExtResource("11_yopgj")]
 
-[node name="BlackScreen" parent="." index="11"]
+[node name="RovingCamera" parent="." index="10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
+
+[node name="BlackScreen" parent="." index="12"]
 visible = false

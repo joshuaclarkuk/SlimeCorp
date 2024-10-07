@@ -52,7 +52,7 @@ public partial class GlobalSignals : Node
     public void RaiseAreasToCleanCleaned(Dictionary<E_AreasToClean, bool> areasCleaned) { OnAreasToCleanCleaned?.Invoke(areasCleaned); }
 
     public void RaiseCreaturePlayRequest() { OnCreaturePlayRequest?.Invoke(); }
-    public void RaiseHappinessIncreased() { OnCreaturePlayedWith?.Invoke(); }
+    public void RaiseCreaturePlayedWith() { OnCreaturePlayedWith?.Invoke(); }
 
     public void RaiseCreatureFeedRequestSatisfied(bool isSatisfied) { OnCreatureFeedRequestSatisfied?.Invoke(isSatisfied); }
     public void RaiseCreatureCleanRequestSatisfied(bool isSatisfied) { OnCreatureCleanRequestSatisfied?.Invoke(isSatisfied); }

@@ -5,7 +5,7 @@ public partial class Handicam : Camera3D
 {
     [ExportCategory("Camera Movement")]
     // [Export] private float decay = 0.5f; // Removed so that camera never stops moving. Add back in for traditional camera shake
-    [Export] private float amplitude = 5.0f;
+    [Export] private float amplitude = 2.0f;
 
     private float trauma = 0.5f;
     private float traumaPower = 2.0f;

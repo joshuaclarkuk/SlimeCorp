@@ -6,7 +6,7 @@ public partial class HappinessGameComponent : Node2D
     [ExportCategory("Required Nodes")]
     [Export] private HappinessGamePlayer happinessGamePlayerNode = null;
     [Export] private Timer spawnEnemyBlocksTimerNode = null;
-    [Export] private HappinessGameEnemy enemyToSpawn = null;
+    [Export] private PackedScene enemyToSpawn = null;
     [Export] private PackedScene projectileSceneToSpawn = null;
 
     [ExportCategory("Behaviour")]
@@ -16,7 +16,7 @@ public partial class HappinessGameComponent : Node2D
     private Vector2 currentPos = Vector2.Zero;
     private Vector2 viewportDimensions = new Vector2(512, 512);
     private float xOffset = 0.0f;
-    private float yOffset = 10.0f;
+    private float yOffset = 16.0f;
     private int xIndex = 0;
     private int maxXIndex = 15;
 
@@ -36,14 +36,25 @@ public partial class HappinessGameComponent : Node2D
         happinessGamePlayerNode.Position = new Vector2(xOffset, viewportDimensions.Y - yOffset);
 
         // Initialise enemy array
-        foreach (HappinessGameEnemy enemy in enemiesToSpawn)
+        enemiesToSpawn = new HappinessGameEnemy[maxEnemiesToSpawn];
+        for (int i = 0; i < maxEnemiesToSpawn; i++)
         {
-            //enemy[] = 
+            HappinessGameEnemy enemyInstance = enemyToSpawn.Instantiate<HappinessGameEnemy>();
+            enemiesToSpawn[i] = enemyInstance;
         }
 
-        // Subscribe to spawn timeout and start timer
+        // Subscribe to spawn timeout, start timer and spawn first wave
         spawnEnemyBlocksTimerNode.Timeout += HandleSpawnEnemyBlocksTimerTimeout;
         spawnEnemyBlocksTimerNode.Start();
+
+        // Add enemies to tree
+        foreach (HappinessGameEnemy enemy in enemiesToSpawn)
+        {
+            AddChild(enemy);
+        }
+
+        // Set initial positions
+        SpawnEnemyWave();
     }
 
     public override void _ExitTree()
@@ -68,7 +79,7 @@ public partial class HappinessGameComponent : Node2D
             xIndex--;
         }
 
-        happinessGamePlayerNode.Position = new Vector2(currentPos.X + xOffset, 500.0f);
+        happinessGamePlayerNode.Position = new Vector2(currentPos.X + xOffset, viewportDimensions.Y - yOffset);
     }
 
     public void SpawnProjectile()
@@ -81,6 +92,17 @@ public partial class HappinessGameComponent : Node2D
 
     private void HandleSpawnEnemyBlocksTimerTimeout()
     {
-        
+        SpawnEnemyWave();
+    }
+
+    private void SpawnEnemyWave()
+    {
+        foreach (HappinessGameEnemy enemy in enemiesToSpawn)
+        {
+            enemy.Position = new Vector2((GD.RandRange(1, 15) * moveStep) + moveStep / 2, (GD.RandRange(1, 8) * moveStep) + moveStep / 2);  // Random spawn position at the top of the screen
+            enemy.ToggleEnemy(true); // Set enemy visible to true and activate collider
+        }
+
+        spawnEnemyBlocksTimerNode.Start();
     }
 }
