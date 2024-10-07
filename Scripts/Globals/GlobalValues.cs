@@ -21,7 +21,7 @@ public partial class GlobalValues : Node
         GD.Print($"Has employee card: {HasEmployeeCard}");
     }
 
-    private void GenerateEmployeeNumber()
+    public void GenerateEmployeeNumber()
     {
         // Generate employee number here
         Random random = new Random();
@@ -32,6 +32,6 @@ public partial class GlobalValues : Node
         }
         EmployeeNumber = employeeNumber;
 
-        GD.Print($"Generated employee number: {employeeNumber} vs Official employee number: {EmployeeNumber}");
+        GD.Print($"Generated employee number: {string.Join("",employeeNumber)} vs Official employee number: {string.Join("", EmployeeNumber)}");
     }
 }
