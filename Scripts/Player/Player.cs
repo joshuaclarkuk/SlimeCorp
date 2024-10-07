@@ -4,8 +4,8 @@ using System;
 public partial class Player : CharacterBody3D
 {
 	[ExportCategory("Required Nodes")]
-	[Export] private Node3D cameraPivotNode = null;
-	[Export] private Camera3D playerCameraNode = null;
+    [Export] public Camera3D PlayerCameraNode { get; private set; } = null;
+    [Export] private Node3D cameraPivotNode = null;
 	[Export] private Node3D canisterCarrierNode = null;
 	[Export] private RayCast3D interactRaycastNode = null;
 	[Export] private Timer interactRaycastTimerNode = null;
@@ -52,10 +52,7 @@ public partial class Player : CharacterBody3D
 		newEmailNotificationNode.Visible = false;
 
 		// Make camera current (just in case Godot thinks Roving Camera should be current)
-		playerCameraNode.MakeCurrent();
-
-		// Capture mouse cursor on start
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+		PlayerCameraNode.MakeCurrent();
 
 		// Set interact raycast node to disabled and start timer to activate
 		interactRaycastTimerNode.Start();
@@ -241,7 +238,7 @@ public partial class Player : CharacterBody3D
 
 	private void HandlePlayerCanMoveAgain()
 	{
-		playerCameraNode.MakeCurrent();
+		PlayerCameraNode.MakeCurrent();
 		isRelinquishingControl = false;
 	}
 

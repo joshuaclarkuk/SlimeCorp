@@ -26,6 +26,9 @@ public partial class Lobby : Node3D
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
 
+        // Capture mouse
+        Input.MouseMode = Input.MouseModeEnum.Captured;
+
         SubscribeToEvents();
     }
 

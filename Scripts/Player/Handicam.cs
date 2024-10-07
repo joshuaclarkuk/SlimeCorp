@@ -16,6 +16,9 @@ public partial class Handicam : Camera3D
 
     public override void _Ready()
     {
+        // Overrides player camera in Main Menu
+        MakeCurrent();
+
         noise = new FastNoiseLite();
         noise.Seed = 1;
         noise.NoiseType = FastNoiseLite.NoiseTypeEnum.Perlin;

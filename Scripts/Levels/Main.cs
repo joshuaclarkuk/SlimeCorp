@@ -62,6 +62,9 @@ public partial class Main : Node3D
 
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
+
+        // Capture mouse
+        Input.MouseMode = Input.MouseModeEnum.Captured;
     }
 
     public override void _ExitTree()

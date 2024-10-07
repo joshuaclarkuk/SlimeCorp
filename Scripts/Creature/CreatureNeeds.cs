@@ -32,7 +32,7 @@ public partial class CreatureNeeds : Node3D
     [Export] private float maxHungerReplenishment = 100.0f;
     [Export] private float maxCleanlinessReplenishment = 75.0f;
     [Export] private float maxHappinessReplenishment = 5.0f;
-    [Export] private float maxWasteProductToAdd = 50.0f;
+    [Export] private float maxWasteProductToAdd = 10.0f;
     [Export] private float maxAngerToAdd = 10.0f;
 
     private GlobalSignals globalSignals = null;

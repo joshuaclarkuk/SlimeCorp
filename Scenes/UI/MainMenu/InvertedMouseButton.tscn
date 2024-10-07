@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjcmhnr08s8fj"]
+
+[ext_resource type="PackedScene" uid="uid://crmun6056pyw7" path="res://Scenes/UI/MainMenu/OptionsButtonBase.tscn" id="1_4n1v3"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/InvertedMouseButton.cs" id="2_rvy53"]
+
+[node name="InvertedMouseButton" node_paths=PackedStringArray("optionButtonNode") instance=ExtResource("1_4n1v3")]
+script = ExtResource("2_rvy53")
+optionButtonNode = NodePath("HBoxContainer/OptionButton")
+
+[node name="Label" parent="HBoxContainer" index="0"]
+text = "Inverted Mouse?"

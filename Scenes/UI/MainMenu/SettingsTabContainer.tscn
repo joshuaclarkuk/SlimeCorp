@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://crxi4vawih877"]
+[gd_scene load_steps=5 format=3 uid="uid://crxi4vawih877"]
 
 [ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="1_ue5e4"]
 [ext_resource type="PackedScene" uid="uid://blw1vjtmpfiaw" path="res://Scenes/UI/MainMenu/WindowModeButton.tscn" id="2_pnojq"]
 [ext_resource type="PackedScene" uid="uid://6djihol85t1q" path="res://Scenes/UI/MainMenu/ResolutionModeButton.tscn" id="3_fgsjp"]
+[ext_resource type="PackedScene" uid="uid://cjcmhnr08s8fj" path="res://Scenes/UI/MainMenu/InvertedMouseButton.tscn" id="4_kf0un"]
 
 [node name="SettingsTabContainer" type="Control"]
 layout_mode = 3
@@ -26,9 +27,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Display" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -57,7 +59,6 @@ layout_mode = 2
 size_flags_horizontal = 1
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -73,3 +74,7 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
+
+[node name="InvertedMouseButton" parent="TabContainer/Controls/MarginContainer/VBoxContainer" instance=ExtResource("4_kf0un")]
+layout_mode = 2
+size_flags_vertical = 3
