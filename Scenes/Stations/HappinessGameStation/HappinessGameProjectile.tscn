@@ -8,12 +8,18 @@ size = Vector2(8, 16)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g0tru"]
 size = Vector2(8, 16)
 
-[node name="HappinessGameProjectile" type="Area2D"]
+[node name="HappinessGameProjectile" type="Area2D" node_paths=PackedStringArray("selfDestructTimerNode")]
 script = ExtResource("1_bti1j")
-movementSpeed = 100.0
+selfDestructTimerNode = NodePath("SelfDestructTimer")
+movementSpeed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bnftb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_g0tru")
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true

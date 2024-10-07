@@ -1,19 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://bapnc5v1qheh1"]
+[gd_scene load_steps=6 format=3 uid="uid://bapnc5v1qheh1"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/HappinessGameStation/HappinessGameComponent.cs" id="1_wfani"]
 [ext_resource type="PackedScene" uid="uid://vlx5khoj8k8s" path="res://Scenes/Stations/HappinessGameStation/HappinessGamePlayer.tscn" id="2_qtpci"]
 [ext_resource type="PackedScene" uid="uid://b54yel2crqqts" path="res://Scenes/Stations/HappinessGameStation/HappinessGameProjectile.tscn" id="3_2csnk"]
 [ext_resource type="PackedScene" uid="uid://bt1apx7f3fi5m" path="res://Scenes/Stations/HappinessGameStation/HappinessGameEnemy.tscn" id="4_onx05"]
+[ext_resource type="Texture2D" uid="uid://d3mbwlxypgjbd" path="res://Assets/Sprites/HappinessGame/16x16GridWhite512px.png" id="4_x2g76"]
 
 [node name="HappinessGameComponent" type="Node2D" node_paths=PackedStringArray("happinessGamePlayerNode", "spawnEnemyBlocksTimerNode")]
 script = ExtResource("1_wfani")
 happinessGamePlayerNode = NodePath("HappinessGamePlayer")
 spawnEnemyBlocksTimerNode = NodePath("SpawnEnemyBlocksTimer")
+enemyToSpawn = ExtResource("4_onx05")
 projectileSceneToSpawn = ExtResource("3_2csnk")
 
+[node name="BackgroundGrid" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 0.364706)
+position = Vector2(256, 256)
+texture = ExtResource("4_x2g76")
+
 [node name="HappinessGamePlayer" parent="." instance=ExtResource("2_qtpci")]
+position = Vector2(16, 496)
 
 [node name="SpawnEnemyBlocksTimer" type="Timer" parent="."]
-
-[node name="HappinessGameEnemy" parent="." instance=ExtResource("4_onx05")]
-position = Vector2(16, 41)
+wait_time = 120.0
+one_shot = true

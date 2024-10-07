@@ -1,26 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt1apx7f3fi5m"]
+[gd_scene load_steps=4 format=3 uid="uid://bt1apx7f3fi5m"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/HappinessGameStation/HappinessGameEnemy.cs" id="1_v5hxd"]
 [ext_resource type="Texture2D" uid="uid://c1h5nkpnjlnp" path="res://Assets/Sprites/HappinessGame/WhiteBlockSprite.png" id="2_0w620"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17yx7"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtg0x"]
-
-[node name="HappinessGameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("enemyHitboxAreaNode")]
+[node name="HappinessGameEnemy" type="CharacterBody2D" node_paths=PackedStringArray("characterBodyColliderNode")]
 position = Vector2(0, 512)
 script = ExtResource("1_v5hxd")
-enemyHitboxAreaNode = NodePath("EnemyHitbox")
+characterBodyColliderNode = NodePath("EnemyCollider")
 
 [node name="EnemyCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_17yx7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
+scale = Vector2(2, 2)
 texture = ExtResource("2_0w620")
-
-[node name="EnemyHitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
-shape = SubResource("RectangleShape2D_gtg0x")

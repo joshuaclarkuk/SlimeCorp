@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://vlx5khoj8k8s"]
+[gd_scene load_steps=4 format=3 uid="uid://vlx5khoj8k8s"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/HappinessGameStation/HappinessGamePlayer.cs" id="1_rvo0t"]
 [ext_resource type="Texture2D" uid="uid://c1h5nkpnjlnp" path="res://Assets/Sprites/HappinessGame/WhiteBlockSprite.png" id="2_0yg4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17yx7"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtg0x"]
+size = Vector2(32, 32)
 
 [node name="HappinessGamePlayer" type="CharacterBody2D"]
 position = Vector2(0, 512)
@@ -17,9 +15,5 @@ shape = SubResource("RectangleShape2D_17yx7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0, 1)
+scale = Vector2(2, 2)
 texture = ExtResource("2_0yg4q")
-
-[node name="PlayerHitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-shape = SubResource("RectangleShape2D_gtg0x")

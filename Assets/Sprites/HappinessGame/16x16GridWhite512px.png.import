@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl62dmbfciouj"
-path="res://.godot/imported/PlayerSprite.png-32c9da53e879a25abcb6d62329381e8f.ctex"
+uid="uid://d3mbwlxypgjbd"
+path="res://.godot/imported/16x16GridWhite512px.png-3a8f581c41f8a5e532c100ab5e817597.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/HappinessGame/PlayerSprite.png"
-dest_files=["res://.godot/imported/PlayerSprite.png-32c9da53e879a25abcb6d62329381e8f.ctex"]
+source_file="res://Assets/Sprites/HappinessGame/16x16GridWhite512px.png"
+dest_files=["res://.godot/imported/16x16GridWhite512px.png-3a8f581c41f8a5e532c100ab5e817597.ctex"]
 
 [params]
 

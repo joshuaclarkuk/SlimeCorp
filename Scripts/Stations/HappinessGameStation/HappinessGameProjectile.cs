@@ -3,6 +3,9 @@ using System;
 
 public partial class HappinessGameProjectile : Area2D
 {
+    [ExportCategory("Required Nodes")]
+    [Export] private Timer selfDestructTimerNode = null;
+
     [ExportCategory("Behaviour")]
     [Export] private float movementSpeed = 1.0f;
 
@@ -11,11 +14,14 @@ public partial class HappinessGameProjectile : Area2D
     public override void _EnterTree()
     {
         BodyEntered += HandleBodyEntered;
+
+        selfDestructTimerNode.Timeout += HandleSelfDestructTimerTimeout;
     }
 
     public override void _ExitTree()
     {
         BodyEntered -= HandleBodyEntered;
+        selfDestructTimerNode.Timeout -= HandleSelfDestructTimerTimeout;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -40,10 +46,14 @@ public partial class HappinessGameProjectile : Area2D
         if (body is HappinessGameEnemy)
         {
             HappinessGameEnemy enemy = (HappinessGameEnemy)body;
-            GD.Print("Good hit");
-            enemy.QueueFree();
-            globalSignals.RaiseHappinessIncreased();
+            enemy.ToggleEnemy(false);
+            globalSignals.RaiseCreaturePlayedWith();
             QueueFree();
         }
+    }
+
+    private void HandleSelfDestructTimerTimeout()
+    {
+        QueueFree();
     }
 }

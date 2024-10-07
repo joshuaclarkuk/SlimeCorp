@@ -1,12 +1,29 @@
 ﻿using Godot;
+using System;
 
 public partial class ElevatorPanelStation : Station
 {
     [ExportCategory("Required Nodes")]
     [Export] private CodeComponent codeComponentNode = null;
     [Export] private ElevatorDoors elevatorDoorsNode = null;
+    [Export] private Label3D employeeNumberLabelNode = null;
 
+    private bool playerHasEmployeeCard = false;
     private bool doorsAreOpen = false;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
+    }
 
     public override void EnterStation()
     {
@@ -118,8 +135,16 @@ public partial class ElevatorPanelStation : Station
         }
     }
 
+    private void HandleGenerateEmployeeNumber(int[] employeeNumber)
+    {
+        employeeNumberLabelNode.Text = $"Employee Number\n{string.Join("", globalValues.EmployeeNumber)}";
+        playerHasEmployeeCard = true;
+    }
+
     private void EnterDigitToMachine(int digit)
     {
+        if (!playerHasEmployeeCard) { return; }
+
         codeComponentNode.EnterDigitToMachine(digit);
     }
 
@@ -129,6 +154,7 @@ public partial class ElevatorPanelStation : Station
         {
             elevatorDoorsNode.ToggleElevatorDoorsOpen(true);
             doorsAreOpen = true;
+            globalSignals.RaisePlayerExitStation(StationType);
         }
     }
 }

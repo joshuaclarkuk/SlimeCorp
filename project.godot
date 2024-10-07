@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 GlobalSignals="*res://Scripts/Globals/GlobalSignals.cs"
 Options="*res://Scripts/Globals/Options.cs"
 GlobalValues="*res://Scripts/Globals/GlobalValues.cs"
+GlobalEvents="*res://Scripts/Globals/GlobalEvents.cs"
+Player="*res://Scenes/Player/Player.tscn"
 
 [dotnet]
 

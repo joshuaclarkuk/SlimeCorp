@@ -34,4 +34,4 @@ texture = SubResource("PlaceholderTexture2D_oy6rk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.5)
 
 [node name="Buttons" parent="." index="5" instance=ExtResource("5_0qnvq")]
-transform = Transform3D(0.5, 0, 0, 0, 0.498097, 0.0435776, 0, -0.0435776, 0.498097, 0.3, 1, 0.2)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3, 1, 0.2)

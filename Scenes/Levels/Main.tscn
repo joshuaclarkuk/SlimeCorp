@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
+=======
+[gd_scene load_steps=20 format=3 uid="uid://6bsluq4t6i1h"]
+>>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -10,8 +14,10 @@
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
+[ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
+<<<<<<< HEAD
 <<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="13_f6gbl"]
 =======
@@ -20,14 +26,29 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
 >>>>>>> 6497e61569983c75863a841fc07ea8c5289a1603
+=======
+[ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
+[ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
+[ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Main/Passenger.ogg" id="12_w8hik"]
+
+[sub_resource type="Environment" id="Environment_861r3"]
+fog_density = 0.005
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
+size = Vector3(30, 1, 39)
+>>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("titleCardNode", "creatureNeeds", "stationsHeaderNode") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode") instance=ExtResource("1_6dq5d")]
+playerStartNode = NodePath("PlayerStart")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
+<<<<<<< HEAD
 
 [node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
@@ -37,10 +58,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../RovingCamera")
 playerNode = NodePath("../Player")
+=======
+nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
+lightingHeaderNode = NodePath("Lighting")
 
-[node name="ComputerStation" parent="Stations" index="0" instance=ExtResource("2_te2wr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -20)
+[node name="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_861r3")
 
+[node name="PlayerStart" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, -2)
+>>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
+
+[node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
+
+<<<<<<< HEAD
 [node name="FeedingStation" parent="Stations" index="1" instance=ExtResource("3_xnieq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
 
@@ -79,6 +111,18 @@ shape = SubResource("BoxShape3D_8gho2")
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../../../RovingCamera")
 playerNode = NodePath("../../../Player")
+=======
+[node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/FloorCollision" index="0"]
+shape = SubResource("BoxShape3D_8gho2")
+
+[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
+script = ExtResource("8_8q08k")
+rovingCameraNode = NodePath("../../../RovingCamera")
+>>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [node name="ComputerStation" parent="Environment/Objects/Stations" index="0" instance=ExtResource("2_te2wr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, -0.029242, -2)
@@ -99,6 +143,12 @@ debugUI = NodePath("../../../../DebugUI")
 [node name="CanisterStorageStation" parent="Environment/Objects/Stations" index="5" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(-1, 0, -1.60937e-07, 0, 1, 0, 1.60937e-07, 0, -1, -11.9, 0, 22)
 
+<<<<<<< HEAD
+=======
+[node name="HappinessGameStation" parent="Environment/Objects/Stations" index="6" instance=ExtResource("10_jnwi1")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.6, 0, 1)
+
+>>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)
 
@@ -146,11 +196,18 @@ light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
+<<<<<<< HEAD
 [node name="Player" parent="." index="4"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 1, -2)
 
 [node name="RovingCamera" parent="." index="5"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
+=======
+[node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
+
+[node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
+stream = ExtResource("12_w8hik")
+>>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
@@ -174,7 +231,10 @@ emailItemResources = Array[Object]([])
 
 [node name="DebugUI" parent="." index="9" instance=ExtResource("11_yopgj")]
 
-[node name="BlackScreen" parent="." index="11"]
+[node name="RovingCamera" parent="." index="10"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
+
+[node name="BlackScreen" parent="." index="12"]
 visible = false
 
 [node name="Main room" parent="." index="12" instance=ExtResource("13_f6gbl")]

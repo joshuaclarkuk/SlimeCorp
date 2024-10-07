@@ -6,7 +6,7 @@ public partial class GlobalSignals : Node
 {
     public event Action OnBlackScreenDisappeared;
 
-    public event Action OnGenerateEmployeeNumber;
+    public event Action<int[]> OnGenerateEmployeeNumber;
 
     public event Action OnPlayerClockedIn;
     public event Action OnPlayerClockedOut;
@@ -40,7 +40,7 @@ public partial class GlobalSignals : Node
 
     public void RaiseOnBlackScreenDisappeared() { OnBlackScreenDisappeared?.Invoke(); }
 
-    public void RaiseGenerateEmployeeNumber() { OnGenerateEmployeeNumber?.Invoke(); }
+    public void RaiseGenerateEmployeeNumber(int[] employeeNumber) { OnGenerateEmployeeNumber?.Invoke(employeeNumber); }
 
     public void RaisePlayerClockedIn() { OnPlayerClockedIn?.Invoke(); }
     public void RaisePlayerClockedOut() { OnPlayerClockedOut?.Invoke(); }
@@ -52,7 +52,7 @@ public partial class GlobalSignals : Node
     public void RaiseAreasToCleanCleaned(Dictionary<E_AreasToClean, bool> areasCleaned) { OnAreasToCleanCleaned?.Invoke(areasCleaned); }
 
     public void RaiseCreaturePlayRequest() { OnCreaturePlayRequest?.Invoke(); }
-    public void RaiseHappinessIncreased() { OnCreaturePlayedWith?.Invoke(); }
+    public void RaiseCreaturePlayedWith() { OnCreaturePlayedWith?.Invoke(); }
 
     public void RaiseCreatureFeedRequestSatisfied(bool isSatisfied) { OnCreatureFeedRequestSatisfied?.Invoke(isSatisfied); }
     public void RaiseCreatureCleanRequestSatisfied(bool isSatisfied) { OnCreatureCleanRequestSatisfied?.Invoke(isSatisfied); }

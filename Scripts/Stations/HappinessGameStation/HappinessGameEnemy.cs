@@ -4,26 +4,16 @@ using System;
 public partial class HappinessGameEnemy : CharacterBody2D
 {
     [ExportCategory("Required Nodes")]
-    [Export] private Area2D enemyHitboxAreaNode = null;
+    [Export] private CollisionShape2D characterBodyColliderNode = null;
 
-    public override void _EnterTree()
+    public void ToggleEnemy(bool isAlive)
     {
-        enemyHitboxAreaNode.AreaEntered += HandleEnemyHitboxAreaEntered;
+        Visible = isAlive;
+        CallDeferred(nameof(ToggleCollider), isAlive);
     }
 
-    public override void _ExitTree()
+    private void ToggleCollider(bool isAlive)
     {
-        enemyHitboxAreaNode.AreaEntered -= HandleEnemyHitboxAreaEntered;
-    }
-
-    private void HandleEnemyHitboxAreaEntered(Area2D area)
-    {
-        if (area is HappinessGameProjectile)
-        {
-            GD.Print("Good hit");
-            HappinessGameProjectile projectile = (HappinessGameProjectile)area;
-            projectile.QueueFree();
-            QueueFree();
-        }
+        characterBodyColliderNode.Disabled = !isAlive;
     }
 }
