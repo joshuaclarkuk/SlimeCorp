@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -12,15 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
-
-[sub_resource type="Environment" id="Environment_6w2o1"]
-ssao_enabled = true
-ssao_radius = 4.5
-ssao_intensity = 4.14
-ssil_enabled = true
-sdfgi_enabled = true
-sdfgi_use_occlusion = true
-glow_enabled = true
+[ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/CreatureNeedsScreen/CreatureNeedsViewport")
@@ -30,12 +22,29 @@ titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Stations")
 
-[node name="CreatureNeeds" parent="." index="1" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OperatingSystem" parent="AspectRatioContainer" index="0" instance=ExtResource("12_81ppp")]
+visibility_layer = 4
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+emailItemResources = Array[Object]([])
+
+[node name="DebugUI" parent="." index="1" instance=ExtResource("11_yopgj")]
+
+[node name="CreatureNeeds" parent="." index="3" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
 slimeCollectionStationNode = NodePath("../Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 
-[node name="Stations" type="Node3D" parent="." index="2" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
+[node name="Stations" type="Node3D" parent="." index="4" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../RovingCamera")
 playerNode = NodePath("../Player")
@@ -59,17 +68,9 @@ debugUI = NodePath("../../DebugUI")
 [node name="CanisterStorageStation" parent="Stations" index="5" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
 
-[node name="StorageRoomSeparator" type="CSGBox3D" parent="Environment/Construction" index="5"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.5, 3, -2.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(1, 6, 11)
+[node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
 
-[node name="StorageRoomFiller" type="CSGBox3D" parent="Environment/Construction" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, -4)
-size = Vector3(6, 6, 8)
-
-[node name="CreatureNeedsScreen" type="Node3D" parent="Environment" index="4"]
+[node name="CreatureNeedsScreen" type="Node3D" parent="Environment" index="3"]
 
 [node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/CreatureNeedsScreen" index="0"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 7.6, 3.9, -7.98191)
@@ -80,61 +81,40 @@ size = Vector2i(1024, 1024)
 
 [node name="CreatureNeedsDisplay" parent="Environment/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
 
-[node name="Signage2" type="Node3D" parent="Environment" index="5"]
-
-[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage2" index="0"]
+[node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage" index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.97401, 2, 4)
 text = "Biofuel Canister
 Storage >>>"
 
-[node name="Lights" type="Node" parent="Environment" index="6"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Lights" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11126, 11.9646, -4.15347)
+[node name="OmniLight" type="OmniLight3D" parent="Lighting" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 9.9646, -1.4504)
 light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Environment/Lights" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11126, 11.9646, -13.8594)
+[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 9.9646, 8.25553)
 light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Environment/Lights" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11126, 11.9646, 5.62367)
+[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 9.9646, -11.2275)
 light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Environment/Lights" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7247, 12.0892, 8.66425)
+[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 10.0892, -14.2681)
 light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Environment/Lights" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7112, 12.264, -0.784714)
+[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 10.264, -4.81915)
 light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="5"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="OperatingSystem" parent="AspectRatioContainer" index="0" instance=ExtResource("12_81ppp")]
-visibility_layer = 4
-custom_minimum_size = Vector2(600, 600)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-emailItemResources = Array[Object]([])
-
-[node name="DebugUI" parent="." index="6" instance=ExtResource("11_yopgj")]
-
-[node name="BlackScreen" parent="." index="11"]
+[node name="BlackScreen" parent="." index="12"]
 visible = false
