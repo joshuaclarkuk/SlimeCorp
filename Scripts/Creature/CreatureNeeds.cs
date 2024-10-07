@@ -26,10 +26,12 @@ public partial class CreatureNeeds : Node3D
     [ExportCategory("Request Points (Percentage Left)")]
     [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 40.0f;
     [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 30.0f;
+    [Export] private float percentageMaxHappinessBeforePlayRequestMade = 20.0f;
 
     [ExportCategory("Replenishment/Addition Rates")]
     [Export] private float maxHungerReplenishment = 100.0f;
     [Export] private float maxCleanlinessReplenishment = 75.0f;
+    [Export] private float maxHappinessReplenishment = 5.0f;
     [Export] private float maxWasteProductToAdd = 50.0f;
     [Export] private float maxAngerToAdd = 10.0f;
 
@@ -45,8 +47,10 @@ public partial class CreatureNeeds : Node3D
     private bool playerHasClockedIn = false;
     private bool hasMadeFeedingRequest = false;
     private bool hasMadeCleaningRequest = false;
+    private bool hasMadePlayRequest = false;
     private bool isFeedingRequestSatisfied = false;
     private bool isCleaningRequestSatisfied = false;
+    private bool isPlayRequestSatisfied = false;
 
     public override void _Ready()
     {
@@ -89,6 +93,7 @@ public partial class CreatureNeeds : Node3D
         // Link NeedComponent signals
         feedingComponentNode.OnCreatureServedFood += HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
+        globalSignals.OnCreaturePlayedWith += HandleHappinessIncreased;
     }
 
     private void UnsubscribeFromEvents()
@@ -98,6 +103,7 @@ public partial class CreatureNeeds : Node3D
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
         feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
+        globalSignals.OnCreaturePlayedWith -= HandleHappinessIncreased;
     }
 
     private void SetNumberOfMinutesInDay(float minutes)
@@ -246,6 +252,24 @@ public partial class CreatureNeeds : Node3D
             hasMadeCleaningRequest = false;
             globalSignals.RaiseCreatureCleanRequestSatisfied(true);
             isCleaningRequestSatisfied = true;
+        }
+    }
+
+    private void HandleHappinessIncreased()
+    {
+        float newHappinessLevel = 0.0f;
+
+        newHappinessLevel = currentHappinessLevel + maxHappinessReplenishment;
+        currentHappinessLevel = Mathf.Min(newHappinessLevel, maxHappinessLevel);
+
+        GD.Print($"Current happiness level: {currentHappinessLevel}");
+
+        // Only changes play request if the last attempt to play with it brought it above the threshold
+        if ((currentHappinessLevel / maxHappinessLevel * 100.0f) > percentageMaxHappinessBeforePlayRequestMade && !isPlayRequestSatisfied)
+        {
+            hasMadePlayRequest = false;
+            globalSignals.RaiseCreaturePlayRequestSatisfied(true);
+            isPlayRequestSatisfied = true;
         }
     }
 

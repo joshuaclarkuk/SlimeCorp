@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvdnqemklskrt"]
+
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_qae27"]
+[ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="2_7wcqi"]
+[ext_resource type="Script" path="res://Scripts/Stations/HappinessGameStation/HappinessGameStation.cs" id="2_vys67"]
+[ext_resource type="PackedScene" uid="uid://bapnc5v1qheh1" path="res://Scenes/Stations/HappinessGameStation/HappinessGameComponent.tscn" id="3_6lmv3"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_88ai8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w6j0f"]
+viewport_path = NodePath("SubViewport")
+
+[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "buttonsNode", "debugLabel") instance=ExtResource("1_qae27")]
+script = ExtResource("2_vys67")
+happinessGameComponentNode = NodePath("SubViewport/HappinessGameComponent")
+buttonsNode = NodePath("Buttons")
+debugLabel = NodePath("StationDebugLabel")
+StationType = 7
+
+[node name="CameraLocation" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.5)
+
+[node name="StationDebugLabel" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.1)
+
+[node name="Mesh" type="CSGBox3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+size = Vector3(1, 2, 1)
+material = ExtResource("2_7wcqi")
+
+[node name="SubViewport" type="SubViewport" parent="." index="4"]
+
+[node name="HappinessGameComponent" parent="SubViewport" index="0" instance=ExtResource("3_6lmv3")]
+
+[node name="Screen" type="Sprite3D" parent="." index="5"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.7, 0.0179134)
+texture = SubResource("ViewportTexture_w6j0f")
+
+[node name="Buttons" parent="." index="6" instance=ExtResource("5_88ai8")]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 1.3, 0)
+
+[node name="Button0" parent="Buttons" index="0"]
+visible = false
+
+[node name="Button1" parent="Buttons" index="1"]
+visible = false
+
+[node name="Button2" parent="Buttons" index="2"]
+visible = false
+
+[node name="Button3" parent="Buttons" index="3"]
+visible = false
+
+[node name="Button5" parent="Buttons" index="5"]
+visible = false
+
+[node name="Button7" parent="Buttons" index="7"]
+visible = false
+
+[node name="Button9" parent="Buttons" index="9"]
+visible = false
+
+[editable path="Buttons"]
