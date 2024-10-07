@@ -21,98 +21,85 @@ titleCardNode = NodePath("TitleCard")
 blackScreenNode = NodePath("BlackScreen")
 musicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 
-[node name="Floor" parent="Environment/Construction" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.5, -8.5)
-size = Vector3(30, 1, 33)
-
-[node name="Floor2" type="CSGBox3D" parent="Environment/Construction" index="1"]
+[node name="Floor2" type="CSGBox3D" parent="Environment/Construction" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.2, 8.1, 2.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(16, 1, 21)
 
-[node name="Staircase" type="CSGBox3D" parent="Environment/Construction" index="2"]
+[node name="Staircase" type="CSGBox3D" parent="Environment/Construction" index="1"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 27.9778, 3.925, 0)
 use_collision = true
 collision_mask = 0
 size = Vector3(17.7, 1, 16)
 
-[node name="WallNorth" parent="Environment/Construction" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, -8.5)
-size = Vector3(12, 6, 1)
-
-[node name="WallNorth3" type="CSGBox3D" parent="Environment/Construction" index="4"]
+[node name="WallNorth3" type="CSGBox3D" parent="Environment/Construction" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 3, -8.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(16.6, 6, 1)
 
-[node name="WallNorth2" type="CSGBox3D" parent="Environment/Construction" index="5"]
+[node name="WallNorth2" type="CSGBox3D" parent="Environment/Construction" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5, 9.6, -8.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(31, 19.2, 1)
 
-[node name="WallNorth4" type="CSGBox3D" parent="Environment/Construction" index="6"]
+[node name="WallNorth4" type="CSGBox3D" parent="Environment/Construction" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.8, 13.9, 12.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(6.5, 10.6, 1)
 
-[node name="WallNorth6" type="CSGBox3D" parent="Environment/Construction" index="7"]
+[node name="WallNorth6" type="CSGBox3D" parent="Environment/Construction" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.45, 15.1, 12.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(2.3, 8.2, 1)
 
-[node name="WallNorth5" type="CSGBox3D" parent="Environment/Construction" index="8"]
+[node name="WallNorth5" type="CSGBox3D" parent="Environment/Construction" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.15, 13.9, 12.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(6.3, 10.6, 1)
 
-[node name="WallSouth3" type="CSGBox3D" parent="Environment/Construction" index="10"]
+[node name="WallSouth3" type="CSGBox3D" parent="Environment/Construction" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -24.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(23, 6, 1)
 
-[node name="WallSouth2" type="CSGBox3D" parent="Environment/Construction" index="11"]
+[node name="WallSouth2" type="CSGBox3D" parent="Environment/Construction" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.55, 9.55, 7.4)
 use_collision = true
 collision_mask = 0
 size = Vector3(15.1, 19.1, 1)
 
-[node name="WallWest2" type="CSGBox3D" parent="Environment/Construction" index="13"]
+[node name="WallWest2" type="CSGBox3D" parent="Environment/Construction" index="9"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.5, 3, -16.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(15, 6, 1)
 
-[node name="WallWest4" type="CSGBox3D" parent="Environment/Construction" index="14"]
+[node name="WallWest4" type="CSGBox3D" parent="Environment/Construction" index="10"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5, 3, -4)
 use_collision = true
 collision_mask = 0
 size = Vector3(8, 6, 1)
 
-[node name="WallWest3" type="CSGBox3D" parent="Environment/Construction" index="15"]
+[node name="WallWest3" type="CSGBox3D" parent="Environment/Construction" index="11"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19.5, 3, -16.5)
 use_collision = true
 collision_mask = 0
 size = Vector3(15, 6, 1)
 
-[node name="WallStorageRoom" parent="Environment/Construction" index="16"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 28.5, 3, -16)
-visible = false
-size = Vector3(1, 6, 2)
-
-[node name="WallStorageRoom3" type="CSGBox3D" parent="Environment/Construction" index="17"]
+[node name="WallStorageRoom3" type="CSGBox3D" parent="Environment/Construction" index="12"]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 35.5, 13.85, 10)
 use_collision = true
 collision_mask = 0
 size = Vector3(1, 10.5, 6)
 
-[node name="WallStorageRoom4" type="CSGBox3D" parent="Environment/Construction" index="18"]
+[node name="WallStorageRoom4" type="CSGBox3D" parent="Environment/Construction" index="13"]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 51.5, 13.85, 2)
 use_collision = true
 collision_mask = 0
@@ -137,19 +124,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7, 3, -7.94798)
 text = "<- Orientation"
 font_size = 124
 
-[node name="OfficesSign" type="Label3D" parent="Environment/Signage" index="1"]
+[node name="TimeDilationSign" type="Label3D" parent="Environment/Signage" index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 10.7, 2.4, -7.94798)
+text = "WARNING
+Time dilation"
+font_size = 124
+
+[node name="OfficesSign" type="Label3D" parent="Environment/Signage" index="2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9473, 8, 0.0520191)
 text = "Offices
 |
 v"
 font_size = 124
 
-[node name="ReceptionSign" type="Label3D" parent="Environment/Signage" index="2"]
+[node name="ReceptionSign" type="Label3D" parent="Environment/Signage" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.05266, 4, -2.94798)
 text = "Waiting Area"
 font_size = 124
 
-[node name="ElevatorSign" type="Label3D" parent="Environment/Signage" index="3"]
+[node name="ElevatorSign" type="Label3D" parent="Environment/Signage" index="4"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 43.4, 16, 11.9295)
 text = "Elevator"
 font_size = 120
