@@ -14,6 +14,7 @@ public abstract partial class Station : Node
     [Export] public E_StationType StationType { get; private set; }
 
     protected GlobalSignals globalSignals = null;
+    protected GlobalValues globalValues = null;
     private Area3D interactColliderNode = null;
 
     protected Vector2 mouseDragMotion = Vector2.Zero;
@@ -23,6 +24,7 @@ public abstract partial class Station : Node
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+        globalValues = GetNode<GlobalValues>("/root/GlobalValues");
         interactColliderNode = GetNode<Area3D>("InteractCollider");
 
         // Set debug label

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=20 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -14,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
+[ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
+[ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Main/Passenger.ogg" id="12_w8hik"]
+
+[sub_resource type="Environment" id="Environment_861r3"]
+fog_density = 0.005
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
@@ -21,10 +28,15 @@ size = Vector3(30, 1, 39)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("titleCardNode", "creatureNeeds", "stationsHeaderNode") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode") instance=ExtResource("1_6dq5d")]
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
+nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
+lightingHeaderNode = NodePath("Lighting")
+
+[node name="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_861r3")
 
 [node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
@@ -109,6 +121,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.87
 light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
+
+[node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
+
+[node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
+stream = ExtResource("12_w8hik")
 
 [node name="Player" parent="." index="6"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 1, -2)

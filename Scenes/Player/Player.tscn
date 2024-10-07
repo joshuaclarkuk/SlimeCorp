@@ -64,7 +64,7 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_cull_mask = 4293918720
-size = Vector2i(1152, 648)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CanisterCamera" type="Camera3D" parent="PlayerCameraPivot/PlayerCamera/CanisterSubviewportContainer/CanisterViewport"]

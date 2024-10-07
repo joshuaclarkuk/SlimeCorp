@@ -31,14 +31,16 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_uttyl")
 
 [node name="ReceptionNote" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984186, 0.177136, 0, -0.177136, 0.984186, 0, 0, 0)
 
 [node name="WrittenLabel" type="Label3D" parent="ReceptionNote"]
-modulate = Color(0, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00633278)
+modulate = Color(0.0962047, 0.0962048, 0.0962047, 1)
 text = "Gone to
 [unintelligible]
 Back in 
 [unintelligible]"
-font_size = 10
+font_size = 11
 outline_size = 0
 
 [node name="ReceptionNoteMesh" type="MeshInstance3D" parent="ReceptionNote"]

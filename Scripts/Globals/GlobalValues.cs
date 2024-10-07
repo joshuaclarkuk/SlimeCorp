@@ -5,7 +5,7 @@ public partial class GlobalValues : Node
 {
     public bool HasEmployeeCard { get; private set; } = false;
 
-    public int[] EmployeeNumber = new int[] { 0, 0, 0, 0 };
+    public int[] EmployeeNumber { get; private set; } = new int[] { 0, 0, 0, 0 };
 
     private GlobalSignals globalSignals = null;
 

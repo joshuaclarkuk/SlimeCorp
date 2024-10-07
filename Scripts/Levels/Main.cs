@@ -12,6 +12,12 @@ public partial class Main : Node3D
     [ExportCategory("Stations")]
     [Export] private Node3D stationsHeaderNode = null;
 
+    [ExportCategory("Music")]
+    [Export] private AudioStreamPlayer nonDiegeticMusicNode = null;
+
+    [ExportCategory("Event Nodes")]
+    [Export] private Node3D lightingHeaderNode = null;
+
     [ExportCategory("Computer Items")]
     [Export] private ComputerItemResource[] emailItemResources = null;
     [Export] private ComputerItemResource[] newsItemResources = null;
@@ -19,6 +25,7 @@ public partial class Main : Node3D
     // Globals
     private GlobalValues globalValues = null;
     private GlobalSignals globalSignals = null;
+    private GlobalEvents globalEvents = null;
 
     // Day counter
     private int currentDayIndex = 1;
@@ -32,9 +39,11 @@ public partial class Main : Node3D
         // Get reference to globals
         globalValues = GetNode<GlobalValues>("/root/GlobalValues");
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+        globalEvents = GetNode<GlobalEvents>("/root/GlobalEvents");
 
         // Connect timeline signals
         globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared; // Start new day
+        globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut; // End day
 
         // Connect station-based signals
@@ -51,16 +60,11 @@ public partial class Main : Node3D
     {
         // Disconnect timeline signals
         globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
+        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
 
         // Disconnect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
-    }
-
-    private void HandlePlayerClockedOut()
-    {
-        // End day logic here
-        currentDayIndex++;
     }
 
     private void HandleBlackScreenDisappeared()
@@ -121,6 +125,19 @@ public partial class Main : Node3D
                 creatureNeeds.SetUpForNewDay(10.0f);
                 break;
         }
+    }
+
+    private void HandlePlayerClockedIn()
+    {
+        // Start music
+        nonDiegeticMusicNode.Play();
+        globalEvents.RaiseMainKillLightsEvent(lightingHeaderNode);
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        // End day logic here
+        currentDayIndex++;
     }
 
     private void ResetAllCreatureNeeds()

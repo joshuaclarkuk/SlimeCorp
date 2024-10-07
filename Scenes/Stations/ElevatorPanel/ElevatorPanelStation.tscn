@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_mxjmm"]
 [ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="5_haog7"]
 
-[node name="ElevatorPanelStation" node_paths=PackedStringArray("codeComponentNode", "buttonsNode", "debugLabel") instance=ExtResource("1_fjaxl")]
+[node name="ElevatorPanelStation" node_paths=PackedStringArray("codeComponentNode", "employeeNumberLabelNode", "buttonsNode", "debugLabel") instance=ExtResource("1_fjaxl")]
 script = ExtResource("2_ojemp")
 codeComponentNode = NodePath("CodeComponent")
+employeeNumberLabelNode = NodePath("EmployeeCard/EmployeeNumberLabel")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
-StationType = 7
+StationType = 8
 
 [node name="StationDebugLabel" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.0871421)
@@ -28,3 +29,8 @@ transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 
 
 [node name="CodeComponent" parent="." index="5" instance=ExtResource("5_haog7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+
+[node name="EmployeeCard" type="Node3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.6, 0)
+
+[node name="EmployeeNumberLabel" type="Label3D" parent="EmployeeCard" index="0"]

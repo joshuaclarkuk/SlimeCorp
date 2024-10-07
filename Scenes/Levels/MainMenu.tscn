@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b54nwfcy2a6nd"]
 
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="1_0vs7j"]
-[ext_resource type="AudioStream" uid="uid://ccechesqp2j3s" path="res://Assets/Audio/Music/Vision.ogg" id="9_3hvo4"]
+[ext_resource type="AudioStream" uid="uid://ccechesqp2j3s" path="res://Assets/Audio/Music/MainMenu/Vision.ogg" id="9_3hvo4"]
 [ext_resource type="PackedScene" uid="uid://t4vquhmibbj2" path="res://Scenes/UI/MainMenu/MainMenu.tscn" id="10_hu2ji"]
 [ext_resource type="Script" path="res://Scripts/Player/Handicam.cs" id="15_1s8h5"]
 
@@ -15,6 +15,38 @@
 
 [node name="Main room" parent="Background/Environment/LevelMesh" instance=ExtResource("1_0vs7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="OmniLight" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -1.3504)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight1" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, 8.35553)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight2" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -11.1275)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight3" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 7.0892, -14.1681)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
+
+[node name="OmniLight4" type="OmniLight3D" parent="Lighting"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 7.264, -4.71915)
+light_energy = 5.075
+shadow_enabled = true
+omni_range = 22.279
 
 [node name="Handicam" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.5, -0.866025, 0, 0.866025, -0.5, 1, -2.18557e-08, -3.78552e-08, -10.0379, 0.160926, -1.72023)
