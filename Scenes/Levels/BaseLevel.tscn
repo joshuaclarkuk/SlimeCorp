@@ -22,13 +22,15 @@ shadow_enabled = true
 
 [node name="Environment" type="Node3D" parent="."]
 
-[node name="Construction" type="Node3D" parent="Environment"]
+[node name="LevelMesh" type="Node3D" parent="Environment"]
 
-[node name="Lighting" type="Node3D" parent="Environment"]
+[node name="LevelCollision" type="Node3D" parent="Environment"]
 
 [node name="Objects" type="Node3D" parent="Environment"]
 
 [node name="Signage" type="Node3D" parent="Environment"]
+
+[node name="Lighting" type="Node3D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("16_422tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)

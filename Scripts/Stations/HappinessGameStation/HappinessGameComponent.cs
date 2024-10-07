@@ -38,7 +38,7 @@ public partial class HappinessGameComponent : Node2D
         // Initialise enemy array
         foreach (HappinessGameEnemy enemy in enemiesToSpawn)
         {
-            enemy[] = 
+            //enemy[] = 
         }
 
         // Subscribe to spawn timeout and start timer
