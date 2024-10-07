@@ -16,18 +16,21 @@ public partial class Main : Node3D
     [Export] private ComputerItemResource[] emailItemResources = null;
     [Export] private ComputerItemResource[] newsItemResources = null;
 
-    // Signals
-    private GlobalSignals globalSignals;
+    // Globals
+    private GlobalValues globalValues = null;
+    private GlobalSignals globalSignals = null;
 
     // Day counter
-    private int currentDayIndex = 0;
-    private int maxDays = 5;
+    private int currentDayIndex = 1;
+    private int maxDays = 10;
 
     // Slime counter
     private float slimeCollectedInDay = 0.0f;
 
     public override void _Ready()
     {
+        // Get reference to globals
+        globalValues = GetNode<GlobalValues>("/root/GlobalValues");
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
 
         // Connect timeline signals
@@ -66,23 +69,56 @@ public partial class Main : Node3D
         {
             case 0:
                 // Day 0 logic here
-                creatureNeeds.SetUpForNewDay(10.0f); // Replace with resource when created
-                titleCardNode.UpdateTextAndDisplay("Orientation");
                 break;
             case 1:
                 // Day 1 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 1");
+                creatureNeeds.SetUpForNewDay(10.0f);
                 break;
             case 2:
                 // Day 2 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 2");
+                creatureNeeds.SetUpForNewDay(10.0f);
                 break;
             case 3:
                 // Day 3 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 3");
+                creatureNeeds.SetUpForNewDay(10.0f);
                 break;
             case 4:
                 // Day 4 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 4");
+                creatureNeeds.SetUpForNewDay(10.0f);
                 break;
             case 5:
                 // Day 5 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 5");
+                creatureNeeds.SetUpForNewDay(10.0f);
+                break;
+            case 6:
+                // Day 5 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 6");
+                creatureNeeds.SetUpForNewDay(10.0f);
+                break;
+            case 7:
+                // Day 5 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 7");
+                creatureNeeds.SetUpForNewDay(10.0f);
+                break;
+            case 8:
+                // Day 5 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 8");
+                creatureNeeds.SetUpForNewDay(10.0f);
+                break;
+            case 9:
+                // Day 5 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 9");
+                creatureNeeds.SetUpForNewDay(10.0f);
+                break;
+            case 10:
+                // Day 5 logic here
+                titleCardNode.UpdateTextAndDisplay("Day 10");
+                creatureNeeds.SetUpForNewDay(10.0f);
                 break;
         }
     }

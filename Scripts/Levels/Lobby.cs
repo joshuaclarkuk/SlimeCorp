@@ -12,14 +12,15 @@ public partial class Lobby : Node3D
 
     [ExportCategory("Lobby Object Nodes")]
 
-    private GlobalSignals globalSignals;
+    private GlobalSignals globalSignals = null;
+    private GlobalValues globalValues = null;
 
     public override void _Ready()
     {
+        globalValues = GetNode<GlobalValues>("/root/GlobalValues");
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        SubscribeToEvents();
 
-        PlayIntroSequence();
+        SubscribeToEvents();
     }
 
     public override void _ExitTree()
@@ -30,16 +31,13 @@ public partial class Lobby : Node3D
     private void SubscribeToEvents()
     {
         globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
+        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
     }
 
     private void UnsubscribeFromEvents()
     {
         globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
-    }
-
-    private void PlayIntroSequence()
-    {
-
+        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
     }
 
     private void HandleBlackScreenDisappeared()
@@ -47,6 +45,10 @@ public partial class Lobby : Node3D
         // Show title card
         titleCardNode.UpdateTextAndDisplay("Orientation");
         musicNode.Play();
+    }
 
+    private void HandleGenerateEmployeeNumber()
+    {
+        globalValues.GenerateEmployeeNumber();
     }
 }

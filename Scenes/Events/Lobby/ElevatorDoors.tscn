@@ -1,17 +1,187 @@
-[gd_scene load_steps=3 format=3 uid="uid://d10hrsi2isj68"]
+[gd_scene load_steps=17 format=3 uid="uid://d10hrsi2isj68"]
 
 [ext_resource type="Material" uid="uid://dwldf05jsl41m" path="res://Materials/M_PrototypeGold.tres" id="1_ojhnl"]
 [ext_resource type="Script" path="res://Scripts/Events/Lobby/ElevatorDoors.cs" id="1_yvk83"]
+[ext_resource type="PackedScene" uid="uid://6bsluq4t6i1h" path="res://Scenes/Levels/Main.tscn" id="2_fn3tm"]
 
-[node name="ElevatorDoors" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_j4ryn"]
+material = ExtResource("1_ojhnl")
+size = Vector3(1.2, 2.4, 0.12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1pc72"]
+size = Vector3(1.2, 2.4, 0.12)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ed4e5"]
+material = ExtResource("1_ojhnl")
+size = Vector3(1.2, 2.4, 0.12)
+
+[sub_resource type="Animation" id="Animation_fy8ju"]
+resource_name = "OpenElevatorDoors"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeftMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(-0.6, 0, 0), Vector3(-1.4, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRightMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0.6, 0, 0), Vector3(1.4, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dqlff"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorLeftMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.6, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorRightMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv0ha"]
+_data = {
+"OpenElevatorDoors": SubResource("Animation_fy8ju"),
+"RESET": SubResource("Animation_dqlff")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huhst"]
+size = Vector3(2.4, 1, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_evrr5"]
+size = Vector3(3, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1l6a"]
+size = Vector3(3, 3, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_flq06"]
+size = Vector3(3, 3, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvmk7"]
+size = Vector3(3, 3, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nidj4"]
+size = Vector3(3, 0.2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o20eh"]
+size = Vector3(3, 0.2, 3)
+
+[node name="ElevatorDoors" type="Node3D" node_paths=PackedStringArray("playerStandInElevatorNode", "elevatorDoorsAnimationPlayerNode")]
 script = ExtResource("1_yvk83")
+playerStandInElevatorNode = NodePath("PlayerStandInElevatorArea")
+elevatorDoorsAnimationPlayerNode = NodePath("AnimationPlayer")
+sceneToTransitionTo = ExtResource("2_fn3tm")
 
-[node name="DoorLeft" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-size = Vector3(1, 2, 0.1)
-material = ExtResource("1_ojhnl")
+[node name="DoorLeftMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0)
+mesh = SubResource("BoxMesh_j4ryn")
 
-[node name="DoorRight" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-size = Vector3(1, 2, 0.1)
-material = ExtResource("1_ojhnl")
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorLeftMesh"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorLeftMesh/StaticBody3D"]
+shape = SubResource("BoxShape3D_1pc72")
+
+[node name="DoorRightMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+mesh = SubResource("BoxMesh_ed4e5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="DoorRightMesh"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorRightMesh/StaticBody3D"]
+shape = SubResource("BoxShape3D_1pc72")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rv0ha")
+}
+
+[node name="PlayerStandInElevatorArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 2.1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape3D" parent="PlayerStandInElevatorArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = SubResource("BoxShape3D_huhst")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="WallNorth" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 2.6)
+mesh = SubResource("BoxMesh_evrr5")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallNorth"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallNorth/StaticBody3D"]
+shape = SubResource("BoxShape3D_d1l6a")
+
+[node name="WallEast" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.3, 0.3, 1.3)
+mesh = SubResource("BoxMesh_flq06")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallEast"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallEast/StaticBody3D"]
+shape = SubResource("BoxShape3D_wvmk7")
+
+[node name="WallWest" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.3, 0.3, 1.3)
+mesh = SubResource("BoxMesh_flq06")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/WallWest"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallWest/StaticBody3D"]
+shape = SubResource("BoxShape3D_wvmk7")
+
+[node name="Floor" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 1.2)
+mesh = SubResource("BoxMesh_nidj4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Floor"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_o20eh")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 1.2)
+mesh = SubResource("BoxMesh_nidj4")
