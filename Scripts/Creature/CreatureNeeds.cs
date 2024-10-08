@@ -32,7 +32,7 @@ public partial class CreatureNeeds : Node3D
     [Export] private float maxHungerReplenishment = 100.0f;
     [Export] private float maxCleanlinessReplenishment = 75.0f;
     [Export] private float maxHappinessReplenishment = 5.0f;
-    [Export] private float maxWasteProductToAdd = 50.0f;
+    [Export] private float maxWasteProductToAdd = 10.0f;
     [Export] private float maxAngerToAdd = 10.0f;
 
     private GlobalSignals globalSignals = null;
@@ -55,6 +55,7 @@ public partial class CreatureNeeds : Node3D
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+
         SubscribeToEvents();
     }
 
@@ -70,15 +71,6 @@ public partial class CreatureNeeds : Node3D
             ReduceNeedLevels(delta);
             slimeCollectionStationNode.AddSlimeToCanister(delta, currentHungerLevel, maxHungerLevel, currentCleanlinessLevel, maxCleanlinessLevel, currentHappinessLevel, maxHappinessLevel);
         }
-    }
-
-    // Called by Main to initialise needs per day
-    public void SetUpForNewDay(float minutesInDay)
-    {
-        SetNumberOfMinutesInDay(minutesInDay);
-        ResetAllCreatureNeeds();
-        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
     private void SubscribeToEvents()
@@ -106,9 +98,18 @@ public partial class CreatureNeeds : Node3D
         globalSignals.OnCreaturePlayedWith -= HandleCreaturePlayedWith;
     }
 
-    private void SetNumberOfMinutesInDay(float minutes)
+    // Called by Main to initialise needs per day
+    public void SetUpForNewDay(int minutesInDay)
     {
-        currentTimeLeft = minutes * 60.0f;
+        SetNumberOfMinutesInDay(minutesInDay);
+        ResetAllCreatureNeeds();
+        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
+    }
+
+    private void SetNumberOfMinutesInDay(int minutes)
+    {
+        currentTimeLeft = (float)minutes * 60.0f;
     }
 
     private void ResetAllCreatureNeeds()
@@ -288,6 +289,7 @@ public partial class CreatureNeeds : Node3D
         playerHasClockedIn = true;
         needsDisplayUpdateTimerNode.Start();
     }
+
 
     private void HandlePlayerClockedOut()
     {

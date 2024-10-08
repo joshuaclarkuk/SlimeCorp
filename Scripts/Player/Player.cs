@@ -4,8 +4,8 @@ using System;
 public partial class Player : CharacterBody3D
 {
 	[ExportCategory("Required Nodes")]
-	[Export] private Node3D cameraPivotNode = null;
-	[Export] private Camera3D playerCameraNode = null;
+    [Export] public Camera3D PlayerCameraNode { get; private set; } = null;
+    [Export] private Node3D cameraPivotNode = null;
 	[Export] private Node3D canisterCarrierNode = null;
 	[Export] private RayCast3D interactRaycastNode = null;
 	[Export] private Timer interactRaycastTimerNode = null;
@@ -33,7 +33,9 @@ public partial class Player : CharacterBody3D
 
 	// Station-specific variables
 	private E_StationType activeStationCollider = E_StationType.NONE;
+	private bool isClockedIn = false;
 	private bool isRelinquishingControl = false;
+	private bool isCarryingSlimeCanister = false;
 
 	// Interact raycast result
 	private Interactable currentInteractable = null;
@@ -52,10 +54,7 @@ public partial class Player : CharacterBody3D
 		newEmailNotificationNode.Visible = false;
 
 		// Make camera current (just in case Godot thinks Roving Camera should be current)
-		playerCameraNode.MakeCurrent();
-
-		// Capture mouse cursor on start
-		Input.MouseMode = Input.MouseModeEnum.Captured;
+		PlayerCameraNode.MakeCurrent();
 
 		// Set interact raycast node to disabled and start timer to activate
 		interactRaycastTimerNode.Start();
@@ -89,10 +88,6 @@ public partial class Player : CharacterBody3D
 				velocity.Y -= gravity * (float)delta * fallMultiplier;
 			}
 		}
-
-		// JUMP NOT NEEDED.
-		//if (Input.IsActionJustPressed(GlobalConstants.INPUT_JUMP) && IsOnFloor())
-		//	velocity.Y = (float)Mathf.Sqrt(jumpHeight * 2.0 * gravity);
 
 		// Handle Movement
 		Vector2 inputDir = Input.GetVector(GlobalConstants.INPUT_STRAFE_LEFT, GlobalConstants.INPUT_STRAFE_RIGHT, GlobalConstants.INPUT_WALK_FORWARDS, GlobalConstants.INPUT_WALK_BACKWARDS);
@@ -131,40 +126,96 @@ public partial class Player : CharacterBody3D
 
 		// INTERACT WITH STATION/INTERACTABLE
 		if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
-		{
-			InteractWithStation();
-			if (currentInteractable != null)
-			{
-				GD.Print("Calling Interact on Interactable");
-				currentInteractable.Interact();
-			}
-		}
+        {
+            InteractWithStation();
+            InteractWithInteractable();
+        }
 
-		// SHOW CURSOR
-		if (Input.IsActionJustPressed("ui_cancel"))
+        // SHOW CURSOR
+        if (Input.IsActionJustPressed("ui_cancel"))
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 	}
 
-	private void InteractWithStation()
+	public void MakeCameraCurrent()
 	{
-		if (activeStationCollider == E_StationType.NONE) { return; }
-
-		if (!isRelinquishingControl)
-		{
-			Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
-			globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-			isRelinquishingControl = true;
-		}
-		else
-		{
-			globalSignals.RaisePlayerExitStation(activeStationCollider);
-		}
+		PlayerCameraNode.MakeCurrent();
 	}
 
-	private void SubscribeToEvents()
+    private void InteractWithStation()
+    {
+        // No active station
+        if (activeStationCollider == E_StationType.NONE)
+        {
+            return;
+        }
+
+        // Check if the player is currently not relinquishing control
+        if (isRelinquishingControl)
+        {
+            // Player is exiting the station interaction
+            globalSignals.RaisePlayerExitStation(activeStationCollider);
+            isRelinquishingControl = false;
+            return;
+        }
+
+        // If player is not clocked in, allow only CLOCKOUT or COMPUTER interactions
+        if (!isClockedIn)
+        {
+            if (activeStationCollider == E_StationType.CLOCKOUT || activeStationCollider == E_StationType.COMPUTER)
+            {
+                InteractWithCurrentStation();
+            }
+            else
+            {
+                GD.PrintErr("Need to clock in first!");
+            }
+            return;
+        }
+
+        // If carrying a slime canister, allow only SLIMECOLLECTION interactions
+        if (isCarryingSlimeCanister)
+        {
+			if (activeStationCollider == E_StationType.SLIMECOLLECTION)
+			{
+				InteractWithCurrentStation();
+			}
+			else
+			{
+                GD.PrintErr("Cannot interact while carrying a slime canister!");
+                return;
+            }
+        }
+
+        // If clocked in and not carrying a slime canister, allow full station interaction
+        InteractWithCurrentStation();
+    }
+
+    private void InteractWithCurrentStation()
+    {
+        // Stop movement and any related sound effects
+        Velocity = Vector3.Zero;
+
+        // Trigger the interaction signal and relinquish control
+        globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+        isRelinquishingControl = true;
+    }
+
+
+    private void InteractWithInteractable()
+    {
+        if (currentInteractable != null)
+        {
+            GD.Print("Calling Interact on Interactable");
+            currentInteractable.Interact();
+        }
+    }
+
+    private void SubscribeToEvents()
 	{
+		globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
+		globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
 		globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
 		globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
@@ -176,9 +227,11 @@ public partial class Player : CharacterBody3D
 		interactRaycastTimerNode.Timeout += HandleInteractRaycastTimerTimeout;
 	}
 
-	private void UnsubscribeFromEvents()
+    private void UnsubscribeFromEvents()
 	{
-		globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
+        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+        globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
 		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
@@ -213,12 +266,22 @@ public partial class Player : CharacterBody3D
 		mouseMotion = Vector2.Zero;
 	}
 
-	private void HandlePlayerEnterStationCollider(E_StationType stationType)
+    private void HandlePlayerClockedIn()
+    {
+        isClockedIn = true;
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        isClockedIn = false;
+    }
+
+    private void HandlePlayerEnterStationCollider(E_StationType stationType)
 	{
 		if (activeStationCollider != stationType)
 		{
 			activeStationCollider = stationType;
-		}        
+		}
 	}
 
 	private void HandlePlayerExitStationCollider(E_StationType stationType)
@@ -232,16 +295,18 @@ public partial class Player : CharacterBody3D
 	private void HandleSlimeCanisterTakenFromStorage()
 	{
 		canisterCarrierNode.Visible = true;
+		isCarryingSlimeCanister = true;
 	}
 
 	private void HandleSlimeCanisterAddedToStation()
 	{
 		canisterCarrierNode.Visible = false;
+		isCarryingSlimeCanister = false;
 	}
 
 	private void HandlePlayerCanMoveAgain()
 	{
-		playerCameraNode.MakeCurrent();
+		PlayerCameraNode.MakeCurrent();
 		isRelinquishingControl = false;
 	}
 

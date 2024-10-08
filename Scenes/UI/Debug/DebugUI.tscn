@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpxy4xuhf4j7f" path="res://Scenes/UI/Debug/FoodRequest.tscn" id="2_l5jpd"]
 [ext_resource type="PackedScene" uid="uid://dr5mbyn0i5622" path="res://Scenes/UI/Debug/AreaCleanRequest.tscn" id="3_q26yq"]
 
-[node name="DebugUI" type="Control" node_paths=PackedStringArray("employeeNumberLabelNode", "foodRequestContainerNode", "areaCleanRequestContainerNode", "hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "timeLeftText", "slimeCollectedProgressBarNode")]
+[node name="DebugUI" type="Control" node_paths=PackedStringArray("employeeNumberLabelNode", "foodRequestContainerNode", "areaCleanRequestContainerNode", "hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "timeLeftText", "slimeRequiredLabelNode", "slimeCollectedProgressBarNode", "collectedSlimeTotalNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,9 @@ hungerProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/
 happinessProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/HappinessProgress")
 cleanlinessProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/CleanlinessProgress")
 timeLeftText = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/TimeLeftInDayValue")
-slimeCollectedProgressBarNode = NodePath("SlimeCollectedContainer/SlimeCollectedBar")
+slimeRequiredLabelNode = NodePath("SlimeCollectedVBox/SlimeRequiredContainer/SlimeRequiredValue")
+slimeCollectedProgressBarNode = NodePath("SlimeCollectedVBox/TotalSlimeContainer/TotalSlimeBar")
+collectedSlimeTotalNode = NodePath("SlimeCollectedVBox/DailySlimeContainer/DailySlimeValue")
 foodRequestScene = ExtResource("2_l5jpd")
 areaCleanRequestScene = ExtResource("3_q26yq")
 
@@ -118,26 +120,54 @@ text = "24:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SlimeCollectedContainer" type="HBoxContainer" parent="."]
+[node name="SlimeCollectedVBox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -313.0
-offset_top = -73.0
-offset_right = -50.0
+offset_left = 50.0
+offset_top = -100.0
+offset_right = 450.0
 offset_bottom = -50.0
-grow_horizontal = 0
 grow_vertical = 0
 
-[node name="SlimeCollectedLabel" type="Label" parent="SlimeCollectedContainer"]
+[node name="SlimeRequiredContainer" type="HBoxContainer" parent="SlimeCollectedVBox"]
 layout_mode = 2
-text = "Slime Collected:"
 
-[node name="SlimeCollectedBar" type="ProgressBar" parent="SlimeCollectedContainer"]
+[node name="SlimeRequiredLabel" type="Label" parent="SlimeCollectedVBox/SlimeRequiredContainer"]
+layout_mode = 2
+text = "Slime Required:"
+
+[node name="SlimeRequiredValue" type="Label" parent="SlimeCollectedVBox/SlimeRequiredContainer"]
+layout_mode = 2
+text = "0000"
+
+[node name="TotalSlimeContainer" type="HBoxContainer" parent="SlimeCollectedVBox"]
+layout_mode = 2
+
+[node name="TotalSlimeLabel" type="Label" parent="SlimeCollectedVBox/TotalSlimeContainer"]
+layout_mode = 2
+text = "Slime in Canister:"
+
+[node name="TotalSlimeBar" type="ProgressBar" parent="SlimeCollectedVBox/TotalSlimeContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 rounded = true
 show_percentage = false
+
+[node name="DailySlimeContainer" type="HBoxContainer" parent="SlimeCollectedVBox"]
+layout_mode = 2
+
+[node name="DailySlimeLabel" type="Label" parent="SlimeCollectedVBox/DailySlimeContainer"]
+layout_mode = 2
+text = "Slime Collected Today:"
+
+[node name="DailySlimeValue" type="Label" parent="SlimeCollectedVBox/DailySlimeContainer"]
+layout_mode = 2
+text = "0000"
+
+[node name="SlimeNoteLabel" type="Label" parent="SlimeCollectedVBox"]
+layout_mode = 2
+text = "(Each canister has a max capacity of 100 litres)"

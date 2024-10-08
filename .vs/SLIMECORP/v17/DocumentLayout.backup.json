@@ -3,57 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\",
   "Documents": [
     {
-<<<<<<< HEAD
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\happinessgamestation\\happinessgamecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\happinessgamestation\\happinessgamecomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\creature\\creatureneeds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\creature\\creatureneeds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\happinessgamestation\\happinessgamestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\happinessgamestation\\happinessgamestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\_components\\keypadbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\_components\\keypadbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\_components\\keypadbuttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\_components\\keypadbuttons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\station.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\happinessgamestation\\happinessgameprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\happinessgamestation\\happinessgameprojectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\happinessgamestation\\happinessgameenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\happinessgamestation\\happinessgameenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\happinessgamestation\\happinessgameplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\happinessgamestation\\happinessgameplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-=======
       "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\slimecollectionstation\\slimecollectionstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\slimecollectionstation\\slimecollectionstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\stations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\stations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\elevatorpanelstation\\elevatorpanelstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\elevatorpanelstation\\elevatorpanelstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\_components\\valve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\_components\\valve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,21 +18,6 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreatureNeeds.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\CreatureNeeds.cs",
-              "RelativeDocumentMoniker": "Scripts\\Creature\\CreatureNeeds.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Creature\\CreatureNeeds.cs",
-              "RelativeToolTip": "Scripts\\Creature\\CreatureNeeds.cs",
-              "ViewState": "AgIAANgAAAAAAAAAAAApwBABAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T10:37:10.34Z"
-=======
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -88,144 +28,23 @@
               "RelativeDocumentMoniker": "Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
               "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
               "RelativeToolTip": "Scripts\\Stations\\SlimeCollectionStation\\SlimeCollectionStation.cs",
-              "ViewState": "AgIAAPwAAAAAAAAAAIAwwBgBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEBAAAAAAAAAAAhwCcBAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T16:33:04.714Z",
+              "WhenOpened": "2024-10-08T13:14:15.296Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Stations.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\Stations.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\Stations.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\Stations.cs",
-              "RelativeToolTip": "Scripts\\Stations\\Stations.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAASwEwAAAAXAAAAAAAAAA==",
+              "Title": "Valve.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\Valve.cs",
+              "RelativeDocumentMoniker": "Scripts\\Stations\\_Components\\Valve.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\Valve.cs",
+              "RelativeToolTip": "Scripts\\Stations\\_Components\\Valve.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAhwCAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T16:25:30.154Z",
+              "WhenOpened": "2024-10-08T13:32:56.908Z",
               "EditorCaption": ""
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-<<<<<<< HEAD
-              "Title": "GlobalSignals.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
-              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalSignals.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
-              "RelativeToolTip": "Scripts\\Globals\\GlobalSignals.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwDoAAAB8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T10:29:36.208Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HappinessGameComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameComponent.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\HappinessGameStation\\HappinessGameComponent.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameComponent.cs",
-              "RelativeToolTip": "Scripts\\Stations\\HappinessGameStation\\HappinessGameComponent.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAIAwwCgAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T09:33:58.654Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HappinessGameProjectile.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameProjectile.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\HappinessGameStation\\HappinessGameProjectile.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameProjectile.cs",
-              "RelativeToolTip": "Scripts\\Stations\\HappinessGameStation\\HappinessGameProjectile.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAC4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T10:18:39.091Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HappinessGameEnemy.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameEnemy.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\HappinessGameStation\\HappinessGameEnemy.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameEnemy.cs",
-              "RelativeToolTip": "Scripts\\Stations\\HappinessGameStation\\HappinessGameEnemy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T10:15:17.271Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "KeypadButton.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\KeypadButton.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\_Components\\KeypadButton.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\KeypadButton.cs",
-              "RelativeToolTip": "Scripts\\Stations\\_Components\\KeypadButton.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T10:04:59.413Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "KeypadButtons.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\KeypadButtons.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\_Components\\KeypadButtons.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\KeypadButtons.cs",
-              "RelativeToolTip": "Scripts\\Stations\\_Components\\KeypadButtons.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowAoAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T09:38:17.353Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Station.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\Station.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\Station.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\Station.cs",
-              "RelativeToolTip": "Scripts\\Stations\\Station.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAmwGUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T09:37:06.663Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HappinessGameStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\HappinessGameStation\\HappinessGameStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGameStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\HappinessGameStation\\HappinessGameStation.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAIwIEAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T09:30:47.833Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HappinessGamePlayer.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGamePlayer.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\HappinessGameStation\\HappinessGamePlayer.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\HappinessGameStation\\HappinessGamePlayer.cs",
-              "RelativeToolTip": "Scripts\\Stations\\HappinessGameStation\\HappinessGamePlayer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T09:25:22.523Z"
-=======
-              "Title": "ElevatorPanelStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ElevatorPanelStation\\ElevatorPanelStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\ElevatorPanelStation\\ElevatorPanelStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\ElevatorPanelStation\\ElevatorPanelStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\ElevatorPanelStation\\ElevatorPanelStation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T15:46:00.037Z"
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
             }
           ]
         }

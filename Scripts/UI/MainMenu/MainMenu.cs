@@ -20,6 +20,9 @@ public partial class MainMenu : Control
         // Initialise pages
         optionsPageNode.Visible = false;
         startPageNode.Visible = true;
+
+        // Set mouse to visible
+        Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     public override void _ExitTree()

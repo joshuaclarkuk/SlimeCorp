@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lv3a7gtpt3cx"]
+[gd_scene load_steps=5 format=3 uid="uid://lv3a7gtpt3cx"]
 
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeeds.cs" id="1_dak7a"]
 [ext_resource type="Script" path="res://Scripts/Creature/FeedingComponent.cs" id="2_vmpfc"]
 [ext_resource type="Script" path="res://Scripts/Creature/CleaningComponent.cs" id="3_3ibnh"]
+[ext_resource type="PackedScene" uid="uid://dvhcbiivsccpb" path="res://Scenes/Creature/FeedRequestSymbolGrid.tscn" id="3_8foe8"]
 
 [node name="CreatureNeeds" type="Node3D" node_paths=PackedStringArray("feedingComponentNode", "cleaningComponentNode", "needsDisplayUpdateTimerNode")]
 script = ExtResource("1_dak7a")
@@ -12,6 +13,8 @@ needsDisplayUpdateTimerNode = NodePath("UpdateDisplayTimer")
 
 [node name="FeedingComponent" type="Node3D" parent="."]
 script = ExtResource("2_vmpfc")
+
+[node name="FeedRequestSymbolGrid" parent="FeedingComponent" instance=ExtResource("3_8foe8")]
 
 [node name="Cleaning Component" type="Node3D" parent="."]
 script = ExtResource("3_3ibnh")

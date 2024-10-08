@@ -20,6 +20,16 @@ public partial class GlobalValues : Node
         UnsubscribeFromEvents();
     }
 
+    private void SubscribeToEvents()
+    {
+        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
+    }
+
+    private void UnsubscribeFromEvents()
+    {
+        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
+    }
+
     public void SetHasEmployeeCard(bool hasCard)
     {
         HasEmployeeCard = hasCard;
@@ -29,16 +39,6 @@ public partial class GlobalValues : Node
     public void SetEmployeeNumber(int[] employeeNumber)
     {
         EmployeeNumber = employeeNumber;
-    }
-
-    private void SubscribeToEvents()
-    {
-        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
-    }
-
-    private void UnsubscribeFromEvents()
-    {
-        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
     }
 
     private void HandleGenerateEmployeeNumber(int[] employeeNumber)

@@ -16,7 +16,9 @@ public partial class DebugUI : Control
     [Export] private Label timeLeftText = null;
 
     [ExportCategory("Slime Collected Nodes")]
+    [Export] private Label slimeRequiredLabelNode = null;
     [Export] private ProgressBar slimeCollectedProgressBarNode = null;
+    [Export] private Label collectedSlimeTotalNode = null;
 
     [ExportCategory("Scenes To Instantiate")]
     [Export] private PackedScene foodRequestScene = null;
@@ -29,11 +31,11 @@ public partial class DebugUI : Control
     {
         // Get global signals and subscribe
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
-        SubscribeToEvents();
 
         // Get global values for employee number
         globalValues = GetNode<GlobalValues>("/root/GlobalValues");
-        employeeNumberLabelNode.Text = string.Join("", globalValues.EmployeeNumber);
+
+        SubscribeToEvents();
     }
 
     public override void _ExitTree()
@@ -49,9 +51,26 @@ public partial class DebugUI : Control
         timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
     }
 
-    public void UpdateSlimeProgressBar(float newSlimeAmount)
+    public void UpdateCurrentSlimeProgressBar(float newSlimeAmount)
     {
         slimeCollectedProgressBarNode.Value = newSlimeAmount;
+    }
+
+    public void UpdateTotalSlimeCollectedProgressBar(float dailySlimeTotal, float totalSlimeRequested)
+    {
+        collectedSlimeTotalNode.Text = dailySlimeTotal.ToString();
+        slimeRequiredLabelNode.Text = totalSlimeRequested.ToString();
+        slimeCollectedProgressBarNode.Value = totalSlimeRequested / dailySlimeTotal * 100.0f;
+
+        // Update daily slime total while accounting for potential div by 0 error at the beginning of the day
+        if (dailySlimeTotal == 0.0f || float.IsInfinity(totalSlimeRequested / dailySlimeTotal) || float.IsNaN(totalSlimeRequested / dailySlimeTotal))
+        {
+            slimeCollectedProgressBarNode.Value = 0.0f; // Set to 0 if the division is invalid
+        }
+        else
+        {
+            slimeCollectedProgressBarNode.Value = totalSlimeRequested / dailySlimeTotal * 100.0f;
+        }
     }
 
     private void SubscribeToEvents()
@@ -60,6 +79,7 @@ public partial class DebugUI : Control
         globalSignals.OnAreasToCleanRequest += HandleAreasToCleanRequest;
         globalSignals.OnCreatureFeedRequestSatisfied += HandleCreatureFeedRequestSatisfied;
         globalSignals.OnCreatureCleanRequestSatisfied += HandleCreatureCleanRequestSatisfied;
+        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
     }
 
     private void UnsubscribeFromEvents()
@@ -68,6 +88,12 @@ public partial class DebugUI : Control
         globalSignals.OnAreasToCleanRequest -= HandleAreasToCleanRequest;
         globalSignals.OnCreatureFeedRequestSatisfied -= HandleCreatureFeedRequestSatisfied;
         globalSignals.OnCreatureCleanRequestSatisfied -= HandleCreatureCleanRequestSatisfied;
+        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
+    }
+
+    private void HandleGenerateEmployeeNumber(int[] employeeNumber)
+    {
+        employeeNumberLabelNode.Text = string.Join("",employeeNumber);
     }
 
     private void HandleCreatureFeedRequest(Dictionary<E_IngredientList, bool> dictionary)

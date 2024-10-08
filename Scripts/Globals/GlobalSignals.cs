@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class GlobalSignals : Node
 {
     public event Action OnBlackScreenDisappeared;
+    public event Action OnDayLoadedIn; // Used by Stations to determine whether or not to hand back control to Player after exiting a station
 
     public event Action<int[]> OnGenerateEmployeeNumber;
 

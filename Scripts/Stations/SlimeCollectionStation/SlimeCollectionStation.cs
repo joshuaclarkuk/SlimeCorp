@@ -33,6 +33,8 @@ public partial class SlimeCollectionStation : Station
         base._Ready();
 
         globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
+        valveNode.OnValveTargetReached += HandleValveTargetReached;
 
         canisterMeshToAppear.Visible = true;
     }
@@ -42,13 +44,14 @@ public partial class SlimeCollectionStation : Station
         base._ExitTree();
 
         globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+        valveNode.OnValveTargetReached -= HandleValveTargetReached;
     }
 
     public override void EnterStation()
     {
         base.EnterStation();
 
-        valveNode.OnValveTargetReached += HandleValveTargetReached;
 
         TryAddingBarrelToStation();
     }
@@ -56,8 +59,6 @@ public partial class SlimeCollectionStation : Station
     public override void ExitStation()
     {
         base.ExitStation();
-
-        valveNode.OnValveTargetReached -= HandleValveTargetReached;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -224,7 +225,7 @@ public partial class SlimeCollectionStation : Station
         float totalSlimeToAdd = (slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness) * (float)delta;
         currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister); // Ensure it doesn't exceed max capacity
 
-        debugUI.UpdateSlimeProgressBar(currentSlimeLevel);
+        debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
 
         // Check if canister is full
         if (currentSlimeLevel >= maxSlimeInCanister)
@@ -278,12 +279,29 @@ public partial class SlimeCollectionStation : Station
         canisterMeshToAppear.Visible = false;
         globalSignals.RaiseSlimeCanisterRemovedFromStation(currentSlimeLevel);
         currentSlimeLevel = 0.0f;
-        debugUI.UpdateSlimeProgressBar(currentSlimeLevel);
+
+        // Reset current slime display to zero
+        debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
+
         // Can play canister removal animation here
     }
 
     private void HandleSlimeCanisterTakenFromStorage()
     {
         playerIsHoldingBarrel = true;
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        // Reset barrel and valve
+        valveNode.ResetValve();
+
+        canisterInSlot = true;
+        valveIsOpen = false;
+        canisterMeshToAppear.Visible = true;
+
+        playerIsHoldingBarrel = false;
+
+        currentSlimeLevel = 0.0f;
     }
 }

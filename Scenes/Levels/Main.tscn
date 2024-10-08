@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=15 format=3 uid="uid://6bsluq4t6i1h"]
-=======
-[gd_scene load_steps=20 format=3 uid="uid://6bsluq4t6i1h"]
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
+[gd_scene load_steps=30 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -17,112 +13,259 @@
 [ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
-<<<<<<< HEAD
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="13_f6gbl"]
-=======
-[ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
-size = Vector3(30, 1, 39)
->>>>>>> 6497e61569983c75863a841fc07ea8c5289a1603
-=======
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
 [ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
 [ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Main/Passenger.ogg" id="12_w8hik"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
+background_mode = 1
 fog_density = 0.005
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
+volumetric_fog_density = 0.03
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgo4w"]
+size = Vector3(1, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnv84"]
+size = Vector3(0.6, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gi2tj"]
+size = Vector3(1, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1hf1"]
+size = Vector3(3, 1, 23)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xaal"]
+size = Vector3(2.9, 1, 4.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s83a"]
+size = Vector3(0.3, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2uhm1"]
+size = Vector3(12, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eddos"]
+size = Vector3(14, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_migoq"]
+size = Vector3(14, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0orqy"]
+size = Vector3(0.7, 3, 24)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
+blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
-<<<<<<< HEAD
-
-[node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
-
-<<<<<<< HEAD
-[node name="Stations" type="Node3D" parent="." index="2" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
-script = ExtResource("8_8q08k")
-rovingCameraNode = NodePath("../RovingCamera")
-playerNode = NodePath("../Player")
-=======
 nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
+debugUI = NodePath("DebugUI")
 
 [node name="WorldEnvironment" parent="." index="1"]
 environment = SubResource("Environment_861r3")
 
 [node name="PlayerStart" parent="." index="2"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 0, -2)
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 1, -1.8)
 
 [node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
 
-<<<<<<< HEAD
-[node name="FeedingStation" parent="Stations" index="1" instance=ExtResource("3_xnieq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.5, 0, -4)
-
-[node name="ClockOutStation" parent="Stations" index="2" instance=ExtResource("7_5p5ij")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4, 0, 6.9)
-
-[node name="CleaningStation" parent="Stations" index="3" instance=ExtResource("8_jl626")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -7.9)
-
-[node name="SlimeCollectionStation" parent="Stations" index="4" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.1, 0, 2)
-debugUI = NodePath("../../DebugUI")
-
-[node name="CanisterStorageStation" parent="Stations" index="5" instance=ExtResource("3_gd6ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1)
-
-[node name="StorageRoomSeparator" type="CSGBox3D" parent="Environment/Construction" index="0"]
-transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 12.5, 3, -2.5)
-use_collision = true
-=======
-[node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
->>>>>>> 6497e61569983c75863a841fc07ea8c5289a1603
-collision_mask = 0
-
-<<<<<<< HEAD
-[node name="StorageRoomFiller" type="CSGBox3D" parent="Environment/Construction" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, -4)
-size = Vector3(6, 6, 8)
-=======
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/FloorCollision" index="0"]
-shape = SubResource("BoxShape3D_8gho2")
->>>>>>> 6497e61569983c75863a841fc07ea8c5289a1603
-
-[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode", "playerNode")]
-script = ExtResource("8_8q08k")
-rovingCameraNode = NodePath("../../../RovingCamera")
-playerNode = NodePath("../../../Player")
-=======
 [node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/FloorCollision" index="0"]
 shape = SubResource("BoxShape3D_8gho2")
+
+[node name="PillarCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, 1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, 1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision3" type="StaticBody3D" parent="Environment/LevelCollision" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, 1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision4" type="StaticBody3D" parent="Environment/LevelCollision" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, -4.7)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision5" type="StaticBody3D" parent="Environment/LevelCollision" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, -4.7)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision6" type="StaticBody3D" parent="Environment/LevelCollision" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, -4.7)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision6" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision7" type="StaticBody3D" parent="Environment/LevelCollision" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -10.4)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision7" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_mnv84")
+
+[node name="PillarCollision8" type="StaticBody3D" parent="Environment/LevelCollision" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 7.2)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision8" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_mnv84")
+
+[node name="PillarCollision9" type="StaticBody3D" parent="Environment/LevelCollision" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 3.9)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision9" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_gi2tj")
+
+[node name="PillarCollision10" type="StaticBody3D" parent="Environment/LevelCollision" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -7.1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision10" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_gi2tj")
+
+[node name="LandingCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/LandingCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+shape = SubResource("BoxShape3D_d1hf1")
+
+[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="12"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -3.4, 0, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StairCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500002, 0, 0.15)
+shape = SubResource("BoxShape3D_8xaal")
+
+[node name="RailingCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/RailingCollision1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_2s83a")
+
+[node name="RailingCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, 6.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/RailingCollision2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_2s83a")
+
+[node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, -13.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionNorth1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionNorth2" type="StaticBody3D" parent="Environment/LevelCollision" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -13.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionNorth2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, 10.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionSouth1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionSouth2" type="StaticBody3D" parent="Environment/LevelCollision" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 10.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionSouth2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="StorageWallCollisionEast" type="StaticBody3D" parent="Environment/LevelCollision" index="19"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.6, 0.5, 17.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionEast" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
+shape = SubResource("BoxShape3D_eddos")
+
+[node name="StorageWallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="20"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8, 0.5, 17.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionWest1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
+shape = SubResource("BoxShape3D_eddos")
+
+[node name="StorageWallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="21"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.8, 0.5, 24.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionSouth1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
+shape = SubResource("BoxShape3D_migoq")
+
+[node name="WallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="22"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, -8.6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionWest1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionWest2" type="StaticBody3D" parent="Environment/LevelCollision" index="23"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, 5.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionWest2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="EyeWallCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/EyeWallCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1, 0)
+shape = SubResource("BoxShape3D_0orqy")
 
 [node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../../../RovingCamera")
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [node name="ComputerStation" parent="Environment/Objects/Stations" index="0" instance=ExtResource("2_te2wr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, -0.029242, -2)
@@ -143,12 +286,9 @@ debugUI = NodePath("../../../../DebugUI")
 [node name="CanisterStorageStation" parent="Environment/Objects/Stations" index="5" instance=ExtResource("3_gd6ql")]
 transform = Transform3D(-1, 0, -1.60937e-07, 0, 1, 0, 1.60937e-07, 0, -1, -11.9, 0, 22)
 
-<<<<<<< HEAD
-=======
 [node name="HappinessGameStation" parent="Environment/Objects/Stations" index="6" instance=ExtResource("10_jnwi1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.6, 0, 1)
 
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)
 
@@ -196,18 +336,10 @@ light_energy = 5.075
 shadow_enabled = true
 omni_range = 22.279
 
-<<<<<<< HEAD
-[node name="Player" parent="." index="4"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 1, -2)
-
-[node name="RovingCamera" parent="." index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
-=======
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 
 [node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
 stream = ExtResource("12_w8hik")
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
@@ -236,6 +368,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1
 
 [node name="BlackScreen" parent="." index="12"]
 visible = false
-
-[node name="Main room" parent="." index="12" instance=ExtResource("13_f6gbl")]
-transform = Transform3D(1.23021, 0, 0, 0, 1.23021, 0, 0, 0, 1.23021, 12, -0.0117791, -3.78013)

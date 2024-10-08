@@ -18,12 +18,12 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s46c6"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("cameraPivotNode", "playerCameraNode", "canisterCarrierNode", "interactRaycastNode", "interactRaycastTimerNode", "newEmailNotificationNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCameraNode", "cameraPivotNode", "canisterCarrierNode", "interactRaycastNode", "interactRaycastTimerNode", "newEmailNotificationNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_iqhkd")
+PlayerCameraNode = NodePath("PlayerCameraPivot/PlayerCamera")
 cameraPivotNode = NodePath("PlayerCameraPivot")
-playerCameraNode = NodePath("PlayerCameraPivot/PlayerCamera")
 canisterCarrierNode = NodePath("PlayerCameraPivot/PlayerCamera/CanisterCarrier")
 interactRaycastNode = NodePath("InteractRaycast")
 interactRaycastTimerNode = NodePath("InteractRaycastTimer")
