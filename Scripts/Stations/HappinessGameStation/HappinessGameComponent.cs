@@ -39,12 +39,8 @@ public partial class HappinessGameComponent : Node2D
         enemiesToSpawn = new HappinessGameEnemy[maxEnemiesToSpawn];
         for (int i = 0; i < maxEnemiesToSpawn; i++)
         {
-<<<<<<< HEAD
-            //enemy[] = 
-=======
             HappinessGameEnemy enemyInstance = enemyToSpawn.Instantiate<HappinessGameEnemy>();
             enemiesToSpawn[i] = enemyInstance;
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
         }
 
         // Subscribe to spawn timeout, start timer and spawn first wave

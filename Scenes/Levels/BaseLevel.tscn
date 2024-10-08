@@ -33,12 +33,6 @@ directional_shadow_mode = 0
 [node name="Signage" type="Node3D" parent="Environment"]
 
 [node name="Lighting" type="Node3D" parent="."]
-<<<<<<< HEAD
-
-[node name="Player" parent="." instance=ExtResource("16_422tb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
-=======
->>>>>>> d7096ee03e07c14889798b1f3e46d0f1693a7d85
 
 [node name="Events" type="Node3D" parent="."]
 

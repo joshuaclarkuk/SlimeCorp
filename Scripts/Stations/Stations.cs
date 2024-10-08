@@ -30,7 +30,7 @@ public partial class Stations : Node3D
         globalSignals.OnPlayerExitStation += HandlePlayerExitStation;
 
         // Initialise camera position dictionary
-        foreach(Station station in GetChildren())
+        foreach (Station station in GetChildren())
         {
             cameraPositionDictionary.Add(station.StationType, station.GetNode<Marker3D>("CameraLocation"));
         }
