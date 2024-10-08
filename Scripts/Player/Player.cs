@@ -33,6 +33,7 @@ public partial class Player : CharacterBody3D
 
 	// Station-specific variables
 	private E_StationType activeStationCollider = E_StationType.NONE;
+	private bool isClockedIn = false;
 	private bool isRelinquishingControl = false;
 
 	// Interact raycast result
@@ -128,40 +129,71 @@ public partial class Player : CharacterBody3D
 
 		// INTERACT WITH STATION/INTERACTABLE
 		if (Input.IsActionJustPressed(GlobalConstants.INPUT_INTERACT))
-		{
-			InteractWithStation();
-			if (currentInteractable != null)
-			{
-				GD.Print("Calling Interact on Interactable");
-				currentInteractable.Interact();
-			}
-		}
+        {
+            InteractWithStation();
+            InteractWithInteractable();
+        }
 
-		// SHOW CURSOR
-		if (Input.IsActionJustPressed("ui_cancel"))
+        // SHOW CURSOR
+        if (Input.IsActionJustPressed("ui_cancel"))
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 	}
 
-	private void InteractWithStation()
-	{
-		if (activeStationCollider == E_StationType.NONE) { return; }
+    private void InteractWithStation()
+    {
+        // No active station
+        if (activeStationCollider == E_StationType.NONE) { return; }
 
-		if (!isRelinquishingControl)
-		{
-			Velocity = Vector3.Zero; // Prevents confusion with CharacterBody and SFX triggering
-			globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-			isRelinquishingControl = true;
-		}
-		else
-		{
-			globalSignals.RaisePlayerExitStation(activeStationCollider);
-		}
-	}
+        // Check if the player is not relinquishing control
+        if (!isRelinquishingControl)
+        {
+            if (!isClockedIn)
+            {
+                if (activeStationCollider == E_StationType.CLOCKOUT || activeStationCollider == E_StationType.COMPUTER)
+                {
+                    // Clock in or interact with a station that doesn't require clocking in
+                    Velocity = Vector3.Zero; // Prevents movement and related sound effects
+                    globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+                    isRelinquishingControl = true;
+                }
+                else
+                {
+                    // Prompt the player to clock in
+                    GD.PrintErr("Need to clock in!");
+                    return;
+                }
+            }
+            else
+            {
+                // Clocked in and interacting with station
+                Velocity = Vector3.Zero;
+                globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+                isRelinquishingControl = true;
+            }
+        }
+        else
+        {
+            // Exiting the station interaction
+            globalSignals.RaisePlayerExitStation(activeStationCollider);
+            isRelinquishingControl = false;
+        }
+    }
 
-	private void SubscribeToEvents()
+    private void InteractWithInteractable()
+    {
+        if (currentInteractable != null)
+        {
+            GD.Print("Calling Interact on Interactable");
+            currentInteractable.Interact();
+        }
+    }
+
+    private void SubscribeToEvents()
 	{
+		globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
+		globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
 		globalSignals.OnPlayerEnterStationCollider += HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider += HandlePlayerExitStationCollider;
 		globalSignals.OnPlayerCanMoveAgain += HandlePlayerCanMoveAgain;
@@ -173,9 +205,11 @@ public partial class Player : CharacterBody3D
 		interactRaycastTimerNode.Timeout += HandleInteractRaycastTimerTimeout;
 	}
 
-	private void UnsubscribeFromEvents()
+    private void UnsubscribeFromEvents()
 	{
-		globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
+        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+        globalSignals.OnPlayerEnterStationCollider -= HandlePlayerEnterStationCollider;
 		globalSignals.OnPlayerExitStationCollider -= HandlePlayerExitStationCollider;
 		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
@@ -210,12 +244,22 @@ public partial class Player : CharacterBody3D
 		mouseMotion = Vector2.Zero;
 	}
 
-	private void HandlePlayerEnterStationCollider(E_StationType stationType)
+    private void HandlePlayerClockedIn()
+    {
+        isClockedIn = true;
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        isClockedIn = false;
+    }
+
+    private void HandlePlayerEnterStationCollider(E_StationType stationType)
 	{
 		if (activeStationCollider != stationType)
 		{
 			activeStationCollider = stationType;
-		}        
+		}
 	}
 
 	private void HandlePlayerExitStationCollider(E_StationType stationType)

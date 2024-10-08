@@ -32,7 +32,7 @@ public partial class Main : Node3D
     private Player player = null;
 
     // Day counter
-    private int currentDayIndex = 1;
+    private int currentDayIndex = 0;
     private int maxDays = 10;
 
     // Slime counter
@@ -84,6 +84,9 @@ public partial class Main : Node3D
         {
             case 0:
                 // Day 0 logic here
+                titleCardNode.UpdateTextAndDisplay("Orientation");
+                creatureNeeds.SetUpForNewDay(3.0f);
+                GenerateEmployeeNumber();
                 break;
             case 1:
                 // Day 1 logic here
@@ -142,13 +145,27 @@ public partial class Main : Node3D
     {
         // Start music
         nonDiegeticMusicNode.Play();
-        globalEvents.RaiseMainKillLightsEvent(lightingHeaderNode);
+        //globalEvents.RaiseMainKillLightsEvent(lightingHeaderNode);
     }
 
     private void HandlePlayerClockedOut()
     {
         // End day logic here
         currentDayIndex++;
+    }
+
+    private void GenerateEmployeeNumber()
+    {
+        // Generate employee number here
+        Random random = new Random();
+        int[] employeeNumber = new int[4];
+        for (int i = 0; i < employeeNumber.Length; i++)
+        {
+            employeeNumber[i] = random.Next(0, 10);
+        }
+        globalSignals.RaiseGenerateEmployeeNumber(employeeNumber);
+
+        GD.Print($"Generated employee number: {string.Join("", employeeNumber)} vs Official employee number: {string.Join("", globalValues.EmployeeNumber)}");
     }
 
     private void ResetAllCreatureNeeds()

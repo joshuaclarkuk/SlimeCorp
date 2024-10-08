@@ -55,6 +55,7 @@ public partial class CreatureNeeds : Node3D
     public override void _Ready()
     {
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
+
         SubscribeToEvents();
     }
 
@@ -70,15 +71,6 @@ public partial class CreatureNeeds : Node3D
             ReduceNeedLevels(delta);
             slimeCollectionStationNode.AddSlimeToCanister(delta, currentHungerLevel, maxHungerLevel, currentCleanlinessLevel, maxCleanlinessLevel, currentHappinessLevel, maxHappinessLevel);
         }
-    }
-
-    // Called by Main to initialise needs per day
-    public void SetUpForNewDay(float minutesInDay)
-    {
-        SetNumberOfMinutesInDay(minutesInDay);
-        ResetAllCreatureNeeds();
-        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
     private void SubscribeToEvents()
@@ -104,6 +96,15 @@ public partial class CreatureNeeds : Node3D
         feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
         globalSignals.OnCreaturePlayedWith -= HandleCreaturePlayedWith;
+    }
+
+    // Called by Main to initialise needs per day
+    public void SetUpForNewDay(float minutesInDay)
+    {
+        SetNumberOfMinutesInDay(minutesInDay);
+        ResetAllCreatureNeeds();
+        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
     private void SetNumberOfMinutesInDay(float minutes)
@@ -169,6 +170,7 @@ public partial class CreatureNeeds : Node3D
 
     private void HandleNeedsDisplayUpdateTimerNodeTimeout()
     {
+        GD.Print("Timer timeout, updating needs display"); // THIS IS NOT WORKING
         float newHungerPercentage = currentHungerLevel / maxHungerLevel * 100.0f;
         float newHappinessPercentage = currentHappinessLevel / maxHappinessLevel * 100.0f;
         float newCleanlinessPercentage = currentCleanlinessLevel / maxCleanlinessLevel * 100.0f;
@@ -285,9 +287,19 @@ public partial class CreatureNeeds : Node3D
 
     private void HandlePlayerClockedIn()
     {
+        GD.Print("Player clocked in, starting timer");
+
+        // Debugging the flag
+        GD.Print($"Before: playerHasClockedIn = {playerHasClockedIn}");
+
         playerHasClockedIn = true;
+
+        // Debug after setting the flag
+        GD.Print($"After: playerHasClockedIn = {playerHasClockedIn}");
+
         needsDisplayUpdateTimerNode.Start();
     }
+
 
     private void HandlePlayerClockedOut()
     {
