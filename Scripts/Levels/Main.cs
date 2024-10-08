@@ -7,6 +7,7 @@ public partial class Main : Node3D
     [Export] private Marker3D playerStartNode = null;
 
     [ExportCategory("Titles")]
+    [Export] private IntroCredits introCreditsNode = null;
     [Export] private BlackScreen blackScreenNode = null;
     [Export] private TitleCard titleCardNode = null;
 
@@ -139,6 +140,12 @@ public partial class Main : Node3D
 
     private void HandlePlayerClockedIn()
     {
+        // Play intro credits scrawl if it's day zero
+        if (currentDayIndex == 0)
+        {
+            introCreditsNode.PlayIntroCreditsAnimation();
+        }
+
         // Start music
         nonDiegeticMusicNode.Play();
         //globalEvents.RaiseMainKillLightsEvent(lightingHeaderNode);

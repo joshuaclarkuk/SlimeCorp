@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=31 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
 [ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
 [ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Main/Passenger.ogg" id="12_w8hik"]
+[ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -59,8 +60,9 @@ size = Vector3(0.7, 3, 24)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "debugUI") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
+introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
@@ -361,10 +363,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 emailItemResources = Array[Object]([])
 
-[node name="DebugUI" parent="." index="9" instance=ExtResource("11_yopgj")]
+[node name="IntroCredits" parent="." index="9" instance=ExtResource("16_88hgn")]
 
-[node name="RovingCamera" parent="." index="10"]
+[node name="DebugUI" parent="." index="10" instance=ExtResource("11_yopgj")]
+
+[node name="RovingCamera" parent="." index="11"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
 
-[node name="BlackScreen" parent="." index="12"]
+[node name="BlackScreen" parent="." index="13"]
 visible = false
