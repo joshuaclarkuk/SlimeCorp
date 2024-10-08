@@ -28,13 +28,14 @@ size = Vector3(30, 1, 39)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
 nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
+debugUI = NodePath("DebugUI")
 
 [node name="WorldEnvironment" parent="." index="1"]
 environment = SubResource("Environment_861r3")

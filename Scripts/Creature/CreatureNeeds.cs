@@ -170,7 +170,6 @@ public partial class CreatureNeeds : Node3D
 
     private void HandleNeedsDisplayUpdateTimerNodeTimeout()
     {
-        GD.Print("Timer timeout, updating needs display"); // THIS IS NOT WORKING
         float newHungerPercentage = currentHungerLevel / maxHungerLevel * 100.0f;
         float newHappinessPercentage = currentHappinessLevel / maxHappinessLevel * 100.0f;
         float newCleanlinessPercentage = currentCleanlinessLevel / maxCleanlinessLevel * 100.0f;
@@ -287,16 +286,7 @@ public partial class CreatureNeeds : Node3D
 
     private void HandlePlayerClockedIn()
     {
-        GD.Print("Player clocked in, starting timer");
-
-        // Debugging the flag
-        GD.Print($"Before: playerHasClockedIn = {playerHasClockedIn}");
-
         playerHasClockedIn = true;
-
-        // Debug after setting the flag
-        GD.Print($"After: playerHasClockedIn = {playerHasClockedIn}");
-
         needsDisplayUpdateTimerNode.Start();
     }
 

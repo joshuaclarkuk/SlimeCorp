@@ -25,6 +25,9 @@ public partial class Main : Node3D
     [Export] private ComputerItemResource[] emailItemResources = null;
     [Export] private ComputerItemResource[] newsItemResources = null;
 
+    [ExportCategory("Debug UI")]
+    [Export] private DebugUI debugUI = null;
+
     // Globals
     private GlobalValues globalValues = null;
     private GlobalSignals globalSignals = null;
@@ -36,6 +39,7 @@ public partial class Main : Node3D
     private int maxDays = 10;
 
     // Slime counter
+    private float requestedSlimeAmountForDay = 0.0f;
     private float slimeCollectedInDay = 0.0f;
 
     public override void _Ready()
@@ -86,6 +90,7 @@ public partial class Main : Node3D
                 // Day 0 logic here
                 titleCardNode.UpdateTextAndDisplay("Orientation");
                 creatureNeeds.SetUpForNewDay(3.0f);
+                ResetSlimeCollectedAndSetNewTarget(100.0f);
                 GenerateEmployeeNumber();
                 break;
             case 1:
@@ -186,14 +191,17 @@ public partial class Main : Node3D
         // Pass in email resource
     }
 
-    private void ResetSlimeCollectedAmount()
+    private void ResetSlimeCollectedAndSetNewTarget(float newTarget)
     {
-        // Set slime collected back to zero
+        requestedSlimeAmountForDay = newTarget;
+        slimeCollectedInDay = 0.0f;
+        debugUI.UpdateTotalSlimeCollectedProgressBar(slimeCollectedInDay, requestedSlimeAmountForDay);
     }
 
     private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)
     {
         slimeCollectedInDay += slimeAmount;
+        debugUI.UpdateTotalSlimeCollectedProgressBar(slimeCollectedInDay, requestedSlimeAmountForDay);
         GD.Print($"MAIN: Banked {slimeAmount} slime. Daily total: {slimeCollectedInDay}");
     }
 

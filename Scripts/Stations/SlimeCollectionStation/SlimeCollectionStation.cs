@@ -224,7 +224,7 @@ public partial class SlimeCollectionStation : Station
         float totalSlimeToAdd = (slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness) * (float)delta;
         currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister); // Ensure it doesn't exceed max capacity
 
-        debugUI.UpdateSlimeProgressBar(currentSlimeLevel);
+        debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
 
         // Check if canister is full
         if (currentSlimeLevel >= maxSlimeInCanister)
@@ -278,7 +278,10 @@ public partial class SlimeCollectionStation : Station
         canisterMeshToAppear.Visible = false;
         globalSignals.RaiseSlimeCanisterRemovedFromStation(currentSlimeLevel);
         currentSlimeLevel = 0.0f;
-        debugUI.UpdateSlimeProgressBar(currentSlimeLevel);
+
+        // Reset current slime display to zero
+        debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
+
         // Can play canister removal animation here
     }
 

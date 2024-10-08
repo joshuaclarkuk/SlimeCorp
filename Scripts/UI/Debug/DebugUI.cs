@@ -16,7 +16,9 @@ public partial class DebugUI : Control
     [Export] private Label timeLeftText = null;
 
     [ExportCategory("Slime Collected Nodes")]
+    [Export] private Label slimeRequiredLabelNode = null;
     [Export] private ProgressBar slimeCollectedProgressBarNode = null;
+    [Export] private Label collectedSlimeTotalNode = null;
 
     [ExportCategory("Scenes To Instantiate")]
     [Export] private PackedScene foodRequestScene = null;
@@ -49,9 +51,16 @@ public partial class DebugUI : Control
         timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
     }
 
-    public void UpdateSlimeProgressBar(float newSlimeAmount)
+    public void UpdateCurrentSlimeProgressBar(float newSlimeAmount)
     {
         slimeCollectedProgressBarNode.Value = newSlimeAmount;
+    }
+
+    public void UpdateTotalSlimeCollectedProgressBar(float dailySlimeTotal, float totalSlimeRequested)
+    {
+        collectedSlimeTotalNode.Text = dailySlimeTotal.ToString();
+        slimeRequiredLabelNode.Text = totalSlimeRequested.ToString();
+        slimeCollectedProgressBarNode.Value = totalSlimeRequested / dailySlimeTotal * 100.0f;
     }
 
     private void SubscribeToEvents()

@@ -10,7 +10,6 @@ public partial class CreatureNeedsDisplay : Control
 
     public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newTimeLeft)
     {
-        GD.Print("Updating progress bars");
         hungerProgressBar.Value = newHunger;
         happinessProgressBar.Value = newHappiness;
         cleanlinessProgressBar.Value = newCleanliness;
