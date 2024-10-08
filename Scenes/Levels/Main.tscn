@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=30 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
@@ -18,12 +18,43 @@
 [ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Main/Passenger.ogg" id="12_w8hik"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
+background_mode = 1
 fog_density = 0.005
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
+volumetric_fog_density = 0.03
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dgo4w"]
+size = Vector3(1, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mnv84"]
+size = Vector3(0.6, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gi2tj"]
+size = Vector3(1, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d1hf1"]
+size = Vector3(3, 1, 23)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xaal"]
+size = Vector3(2.9, 1, 4.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s83a"]
+size = Vector3(0.3, 1, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2uhm1"]
+size = Vector3(12, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eddos"]
+size = Vector3(14, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_migoq"]
+size = Vector3(14, 3, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0orqy"]
+size = Vector3(0.7, 3, 24)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
@@ -53,6 +84,184 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/FloorCollision" index="0"]
 shape = SubResource("BoxShape3D_8gho2")
+
+[node name="PillarCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, 1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, 1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision3" type="StaticBody3D" parent="Environment/LevelCollision" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, 1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision4" type="StaticBody3D" parent="Environment/LevelCollision" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, -4.7)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision5" type="StaticBody3D" parent="Environment/LevelCollision" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, -4.7)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision6" type="StaticBody3D" parent="Environment/LevelCollision" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, -4.7)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision6" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dgo4w")
+
+[node name="PillarCollision7" type="StaticBody3D" parent="Environment/LevelCollision" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -10.4)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision7" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_mnv84")
+
+[node name="PillarCollision8" type="StaticBody3D" parent="Environment/LevelCollision" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 7.2)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision8" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_mnv84")
+
+[node name="PillarCollision9" type="StaticBody3D" parent="Environment/LevelCollision" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 3.9)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision9" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_gi2tj")
+
+[node name="PillarCollision10" type="StaticBody3D" parent="Environment/LevelCollision" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -7.1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/PillarCollision10" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
+shape = SubResource("BoxShape3D_gi2tj")
+
+[node name="LandingCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/LandingCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+shape = SubResource("BoxShape3D_d1hf1")
+
+[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="12"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -3.4, 0, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StairCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500002, 0, 0.15)
+shape = SubResource("BoxShape3D_8xaal")
+
+[node name="RailingCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, -8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/RailingCollision1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_2s83a")
+
+[node name="RailingCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, 6.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/RailingCollision2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_2s83a")
+
+[node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, -13.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionNorth1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionNorth2" type="StaticBody3D" parent="Environment/LevelCollision" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -13.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionNorth2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, 10.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionSouth1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionSouth2" type="StaticBody3D" parent="Environment/LevelCollision" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 10.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionSouth2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="StorageWallCollisionEast" type="StaticBody3D" parent="Environment/LevelCollision" index="19"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.6, 0.5, 17.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionEast" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
+shape = SubResource("BoxShape3D_eddos")
+
+[node name="StorageWallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="20"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8, 0.5, 17.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionWest1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
+shape = SubResource("BoxShape3D_eddos")
+
+[node name="StorageWallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="21"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.8, 0.5, 24.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionSouth1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
+shape = SubResource("BoxShape3D_migoq")
+
+[node name="WallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="22"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, -8.6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionWest1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="WallCollisionWest2" type="StaticBody3D" parent="Environment/LevelCollision" index="23"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, 5.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionWest2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_2uhm1")
+
+[node name="EyeWallCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/EyeWallCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1, 0)
+shape = SubResource("BoxShape3D_0orqy")
 
 [node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
 script = ExtResource("8_8q08k")

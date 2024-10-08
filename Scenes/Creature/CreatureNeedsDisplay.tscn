@@ -12,9 +12,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_a8527")
 script = ExtResource("2_lmnia")
-hungerProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/HungerProgress")
+hungerProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/FuelProgress")
 happinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/HappinessProgress")
-cleanlinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/CleanlinessProgress")
+cleanlinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/WasteProgress")
 timeLeftText = NodePath("MarginContainer/VBoxContainer/GridContainer/TimeLeftInDayValue")
 
 [node name="BackgroundColour" type="ColorRect" parent="."]
@@ -46,13 +46,13 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 
-[node name="HungerLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="FuelLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 50
-text = "Hunger"
+text = "Fuel"
 
-[node name="HungerProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="FuelProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -70,16 +70,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 show_percentage = false
 
-[node name="CleanlinessLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="WasteLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 50
-text = "Cleanliness"
+text = "Waste Buildup"
 
-[node name="CleanlinessProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+[node name="WasteProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+fill_mode = 1
 show_percentage = false
 
 [node name="TimeLeftInDayLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
