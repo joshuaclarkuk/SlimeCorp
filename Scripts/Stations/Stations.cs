@@ -10,6 +10,9 @@ public partial class Stations : Node3D
     [ExportCategory("Behaviour")]
     [Export] private float cameraTweenDuration = 1.0f;
 
+    // Used to determine whether exiting clock-out Station will return control to Player or not
+    public bool isTransitioningBetweenDays = false;
+
     private GlobalSignals globalSignals = null;
     private Dictionary<E_StationType, Marker3D> cameraPositionDictionary = new Dictionary<E_StationType, Marker3D>();
 
@@ -163,7 +166,12 @@ public partial class Stations : Node3D
 
     private void HandleReturnCameraTweenFinished()
     {
-        // Signal to turn off guard clause in Player _PhysicsProcess
-        globalSignals.RaisePlayerCanMoveAgain();
+        // THIS IS CAUSING A CONFLICT WITH BLACKSCREEN ON WHEN TO HAND CONTROL BACK TO PLAYER
+        // Set up public bool to determine whether or not game is transitioning between days
+        if (!isTransitioningBetweenDays)
+        {
+            // Signal to turn off guard clause in Player _PhysicsProcess
+            globalSignals.RaisePlayerCanMoveAgain();
+        }
     }
 }

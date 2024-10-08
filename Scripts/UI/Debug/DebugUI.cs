@@ -61,6 +61,16 @@ public partial class DebugUI : Control
         collectedSlimeTotalNode.Text = dailySlimeTotal.ToString();
         slimeRequiredLabelNode.Text = totalSlimeRequested.ToString();
         slimeCollectedProgressBarNode.Value = totalSlimeRequested / dailySlimeTotal * 100.0f;
+
+        // Update daily slime total while accounting for potential div by 0 error at the beginning of the day
+        if (dailySlimeTotal == 0.0f || float.IsInfinity(totalSlimeRequested / dailySlimeTotal) || float.IsNaN(totalSlimeRequested / dailySlimeTotal))
+        {
+            slimeCollectedProgressBarNode.Value = 0.0f; // Set to 0 if the division is invalid
+        }
+        else
+        {
+            slimeCollectedProgressBarNode.Value = totalSlimeRequested / dailySlimeTotal * 100.0f;
+        }
     }
 
     private void SubscribeToEvents()

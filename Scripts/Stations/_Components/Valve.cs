@@ -30,6 +30,21 @@ public partial class Valve : Node3D
         UpdateRotation(currentRotation);
     }
 
+    public void ResetValve()
+    {
+        startRotation = Mathf.DegToRad(desiredStartRotation);
+        targetRotation = Mathf.DegToRad(desiredTargetRotation);
+        currentRotation = startRotation;
+
+        range = Mathf.Abs(startRotation - targetRotation);
+
+        isValveOpen = false;
+        isInTargetZone = false;
+
+        // Make sure valve starts in correct position
+        UpdateRotation(currentRotation);
+    }
+
     // Be able to drag a lever down using mouse drag
     public void MovePhysicalValveWithMouseMotion(float mouseDragSensitivity, Vector2 mouseDragMotion)
     {

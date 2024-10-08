@@ -33,6 +33,8 @@ public partial class SlimeCollectionStation : Station
         base._Ready();
 
         globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
+        valveNode.OnValveTargetReached += HandleValveTargetReached;
 
         canisterMeshToAppear.Visible = true;
     }
@@ -42,13 +44,14 @@ public partial class SlimeCollectionStation : Station
         base._ExitTree();
 
         globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+        valveNode.OnValveTargetReached -= HandleValveTargetReached;
     }
 
     public override void EnterStation()
     {
         base.EnterStation();
 
-        valveNode.OnValveTargetReached += HandleValveTargetReached;
 
         TryAddingBarrelToStation();
     }
@@ -56,8 +59,6 @@ public partial class SlimeCollectionStation : Station
     public override void ExitStation()
     {
         base.ExitStation();
-
-        valveNode.OnValveTargetReached -= HandleValveTargetReached;
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -288,5 +289,19 @@ public partial class SlimeCollectionStation : Station
     private void HandleSlimeCanisterTakenFromStorage()
     {
         playerIsHoldingBarrel = true;
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        // Reset barrel and valve
+        valveNode.ResetValve();
+
+        canisterInSlot = true;
+        valveIsOpen = false;
+        canisterMeshToAppear.Visible = true;
+
+        playerIsHoldingBarrel = false;
+
+        currentSlimeLevel = 0.0f;
     }
 }

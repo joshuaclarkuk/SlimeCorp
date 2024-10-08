@@ -7,13 +7,14 @@ public partial class Main : Node3D
     [Export] private Marker3D playerStartNode = null;
 
     [ExportCategory("Titles")]
+    [Export] private BlackScreen blackScreenNode = null;
     [Export] private TitleCard titleCardNode = null;
 
     [ExportCategory("Creature")]
     [Export] private CreatureNeeds creatureNeeds = null;
 
     [ExportCategory("Stations")]
-    [Export] private Node3D stationsHeaderNode = null;
+    [Export] private Stations stationsHeaderNode = null;
 
     [ExportCategory("Music")]
     [Export] private AudioStreamPlayer nonDiegeticMusicNode = null;
@@ -88,62 +89,52 @@ public partial class Main : Node3D
         {
             case 0:
                 // Day 0 logic here
-                titleCardNode.UpdateTextAndDisplay("Orientation");
-                creatureNeeds.SetUpForNewDay(3.0f);
-                ResetSlimeCollectedAndSetNewTarget(100.0f);
+                StartNewDay("Orientation", 3, 100.0f);
                 GenerateEmployeeNumber();
                 break;
             case 1:
                 // Day 1 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 1");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                StartNewDay("Day 1", 5, 300.0f);
                 break;
             case 2:
                 // Day 2 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 2");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                StartNewDay("Day 2", 5, 300.0f);
                 break;
             case 3:
                 // Day 3 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 3");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                StartNewDay("Day 3", 5, 300.0f);
                 break;
             case 4:
                 // Day 4 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 4");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                StartNewDay("Day 4", 5, 300.0f);
                 break;
             case 5:
                 // Day 5 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 5");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                StartNewDay("Day 5", 5, 300.0f);
                 break;
             case 6:
-                // Day 5 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 6");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                // Day 6 logic here
+                StartNewDay("Day 6", 5, 300.0f);
                 break;
             case 7:
-                // Day 5 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 7");
-                creatureNeeds.SetUpForNewDay(10.0f);
+                // Day 7 logic here
+                StartNewDay("Final Day", 5, 300.0f);
                 break;
-            case 8:
-                // Day 5 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 8");
-                creatureNeeds.SetUpForNewDay(10.0f);
-                break;
-            case 9:
-                // Day 5 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 9");
-                creatureNeeds.SetUpForNewDay(10.0f);
-                break;
-            case 10:
-                // Day 5 logic here
-                titleCardNode.UpdateTextAndDisplay("Day 10");
-                creatureNeeds.SetUpForNewDay(10.0f);
+            default:
+                GD.PrintErr("Have gone past final day, exiting");
                 break;
         }
+    }
+
+    private void StartNewDay(string titleToDisplay, int minutesInDay, float slimeCollectionTarget)
+    {
+        titleCardNode.UpdateTextAndDisplay(titleToDisplay);
+        creatureNeeds.SetUpForNewDay(minutesInDay);
+        ResetSlimeCollectedAndSetNewTarget(slimeCollectionTarget);
+
+        // Initialise player camera and movement
+        player.MakeCameraCurrent();
+        stationsHeaderNode.isTransitioningBetweenDays = false;
     }
 
     private void HandlePlayerClockedIn()
@@ -156,7 +147,11 @@ public partial class Main : Node3D
     private void HandlePlayerClockedOut()
     {
         // End day logic here
+        blackScreenNode.DisplayBlackScreen();
+        stationsHeaderNode.isTransitioningBetweenDays = true;
         currentDayIndex++;
+        player.GlobalTransform = playerStartNode.GlobalTransform;
+        blackScreenNode.WaitSecondsAndDisappear(3.0f);
     }
 
     private void GenerateEmployeeNumber()
@@ -171,12 +166,6 @@ public partial class Main : Node3D
         globalSignals.RaiseGenerateEmployeeNumber(employeeNumber);
 
         GD.Print($"Generated employee number: {string.Join("", employeeNumber)} vs Official employee number: {string.Join("", globalValues.EmployeeNumber)}");
-    }
-
-    private void ResetAllCreatureNeeds()
-    {
-        // Reset all creature needs
-        // Set number of minutes in day
     }
 
     private void AddNewsArticleToComputer(int articleIndex)
@@ -195,7 +184,8 @@ public partial class Main : Node3D
     {
         requestedSlimeAmountForDay = newTarget;
         slimeCollectedInDay = 0.0f;
-        debugUI.UpdateTotalSlimeCollectedProgressBar(slimeCollectedInDay, requestedSlimeAmountForDay);
+        debugUI.UpdateCurrentSlimeProgressBar(0.0f);
+        debugUI.UpdateTotalSlimeCollectedProgressBar(0.0f, requestedSlimeAmountForDay);
     }
 
     private void HandleSlimeCanisterRemovedFromStation(float slimeAmount)

@@ -99,7 +99,7 @@ public partial class CreatureNeeds : Node3D
     }
 
     // Called by Main to initialise needs per day
-    public void SetUpForNewDay(float minutesInDay)
+    public void SetUpForNewDay(int minutesInDay)
     {
         SetNumberOfMinutesInDay(minutesInDay);
         ResetAllCreatureNeeds();
@@ -107,9 +107,9 @@ public partial class CreatureNeeds : Node3D
         debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
     }
 
-    private void SetNumberOfMinutesInDay(float minutes)
+    private void SetNumberOfMinutesInDay(int minutes)
     {
-        currentTimeLeft = minutes * 60.0f;
+        currentTimeLeft = (float)minutes * 60.0f;
     }
 
     private void ResetAllCreatureNeeds()

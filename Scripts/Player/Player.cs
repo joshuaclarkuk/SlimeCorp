@@ -35,6 +35,7 @@ public partial class Player : CharacterBody3D
 	private E_StationType activeStationCollider = E_StationType.NONE;
 	private bool isClockedIn = false;
 	private bool isRelinquishingControl = false;
+	private bool isCarryingSlimeCanister = false;
 
 	// Interact raycast result
 	private Interactable currentInteractable = null;
@@ -88,10 +89,6 @@ public partial class Player : CharacterBody3D
 			}
 		}
 
-		// JUMP NOT NEEDED.
-		//if (Input.IsActionJustPressed(GlobalConstants.INPUT_JUMP) && IsOnFloor())
-		//	velocity.Y = (float)Mathf.Sqrt(jumpHeight * 2.0 * gravity);
-
 		// Handle Movement
 		Vector2 inputDir = Input.GetVector(GlobalConstants.INPUT_STRAFE_LEFT, GlobalConstants.INPUT_STRAFE_RIGHT, GlobalConstants.INPUT_WALK_FORWARDS, GlobalConstants.INPUT_WALK_BACKWARDS);
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
@@ -141,45 +138,70 @@ public partial class Player : CharacterBody3D
 		}
 	}
 
+	public void MakeCameraCurrent()
+	{
+		PlayerCameraNode.MakeCurrent();
+	}
+
     private void InteractWithStation()
     {
         // No active station
-        if (activeStationCollider == E_StationType.NONE) { return; }
-
-        // Check if the player is not relinquishing control
-        if (!isRelinquishingControl)
+        if (activeStationCollider == E_StationType.NONE)
         {
-            if (!isClockedIn)
+            return;
+        }
+
+        // Check if the player is currently not relinquishing control
+        if (isRelinquishingControl)
+        {
+            // Player is exiting the station interaction
+            globalSignals.RaisePlayerExitStation(activeStationCollider);
+            isRelinquishingControl = false;
+            return;
+        }
+
+        // If player is not clocked in, allow only CLOCKOUT or COMPUTER interactions
+        if (!isClockedIn)
+        {
+            if (activeStationCollider == E_StationType.CLOCKOUT || activeStationCollider == E_StationType.COMPUTER)
             {
-                if (activeStationCollider == E_StationType.CLOCKOUT || activeStationCollider == E_StationType.COMPUTER)
-                {
-                    // Clock in or interact with a station that doesn't require clocking in
-                    Velocity = Vector3.Zero; // Prevents movement and related sound effects
-                    globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-                    isRelinquishingControl = true;
-                }
-                else
-                {
-                    // Prompt the player to clock in
-                    GD.PrintErr("Need to clock in!");
-                    return;
-                }
+                InteractWithCurrentStation();
             }
             else
             {
-                // Clocked in and interacting with station
-                Velocity = Vector3.Zero;
-                globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
-                isRelinquishingControl = true;
+                GD.PrintErr("Need to clock in first!");
+            }
+            return;
+        }
+
+        // If carrying a slime canister, allow only SLIMECOLLECTION interactions
+        if (isCarryingSlimeCanister)
+        {
+			if (activeStationCollider == E_StationType.SLIMECOLLECTION)
+			{
+				InteractWithCurrentStation();
+			}
+			else
+			{
+                GD.PrintErr("Cannot interact while carrying a slime canister!");
+                return;
             }
         }
-        else
-        {
-            // Exiting the station interaction
-            globalSignals.RaisePlayerExitStation(activeStationCollider);
-            isRelinquishingControl = false;
-        }
+
+        // If clocked in and not carrying a slime canister, allow full station interaction
+        InteractWithCurrentStation();
     }
+
+    private void InteractWithCurrentStation()
+    {
+        // Stop movement and any related sound effects
+        Velocity = Vector3.Zero;
+
+        // Trigger the interaction signal and relinquish control
+        globalSignals.RaisePlayerInteractWithStation(activeStationCollider);
+        isRelinquishingControl = true;
+    }
+
 
     private void InteractWithInteractable()
     {
@@ -273,11 +295,13 @@ public partial class Player : CharacterBody3D
 	private void HandleSlimeCanisterTakenFromStorage()
 	{
 		canisterCarrierNode.Visible = true;
+		isCarryingSlimeCanister = true;
 	}
 
 	private void HandleSlimeCanisterAddedToStation()
 	{
 		canisterCarrierNode.Visible = false;
+		isCarryingSlimeCanister = false;
 	}
 
 	private void HandlePlayerCanMoveAgain()
