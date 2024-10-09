@@ -7,6 +7,7 @@ public partial class CreatureNeeds : Node3D
     [Export] private FeedingComponent feedingComponentNode = null;
     [Export] private CleaningComponent cleaningComponentNode = null;
     [Export] private Timer needsDisplayUpdateTimerNode = null;
+    [Export] private Timer failureStateTimerNode = null;
 
     [ExportCategory("External Nodes")]
     [Export] private CreatureNeedsDisplay creatureNeedsDisplayNode = null;
@@ -32,8 +33,7 @@ public partial class CreatureNeeds : Node3D
     [Export] private float maxHungerReplenishment = 100.0f;
     [Export] private float maxCleanlinessReplenishment = 75.0f;
     [Export] private float maxHappinessReplenishment = 5.0f;
-    [Export] private float maxWasteProductToAdd = 10.0f;
-    [Export] private float maxAngerToAdd = 10.0f;
+    [Export] private float maxWasteProductToAddAfterFeeding = 10.0f;
 
     private GlobalSignals globalSignals = null;
 
@@ -51,6 +51,7 @@ public partial class CreatureNeeds : Node3D
     private bool isFeedingRequestSatisfied = false;
     private bool isCleaningRequestSatisfied = false;
     private bool isPlayRequestSatisfied = false;
+    private bool isFailureStateTimerStarted = false;
 
     public override void _Ready()
     {
@@ -73,6 +74,21 @@ public partial class CreatureNeeds : Node3D
         }
     }
 
+    public void SetCreatureNeedDepletionRatesFromResource(float hungerDepletionRate, float happinessDepletionRate, float cleanlinessDepletionRate)
+    {
+        this.hungerDepletionRate = hungerDepletionRate;
+        this.happinessDepletionRate = happinessDepletionRate;
+        this.cleanlinessDepletionRate = cleanlinessDepletionRate;
+    }
+
+    public void SetMaxNeedReplenishmentRatesFromResource(float maxHungerReplenishment, float maxCleanlinessReplenishment, float maxHappinessReplenishment, float maxWasteProductToAddAfterFeeding)
+    {
+        this.maxHungerReplenishment = maxHungerReplenishment;
+        this.maxCleanlinessReplenishment = maxCleanlinessLevel;
+        this.maxHappinessReplenishment = maxHappinessReplenishment;
+        this.maxWasteProductToAddAfterFeeding = maxWasteProductToAddAfterFeeding;
+    }
+
     private void SubscribeToEvents()
     {
         // Link global signals so we know when player has clocked in and out
@@ -86,6 +102,9 @@ public partial class CreatureNeeds : Node3D
         feedingComponentNode.OnCreatureServedFood += HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned += HandleAreaCleaned;
         globalSignals.OnCreaturePlayedWith += HandleCreaturePlayedWith;
+
+        // Link failure state timer timeout
+        failureStateTimerNode.Timeout += HandleFailureStateTimerTimeout;
     }
 
     private void UnsubscribeFromEvents()
@@ -96,6 +115,7 @@ public partial class CreatureNeeds : Node3D
         feedingComponentNode.OnCreatureServedFood -= HandleCreatureServedFood;
         cleaningComponentNode.OnAreaCleaned -= HandleAreaCleaned;
         globalSignals.OnCreaturePlayedWith -= HandleCreaturePlayedWith;
+        failureStateTimerNode.Timeout -= HandleFailureStateTimerTimeout;
     }
 
     // Called by Main to initialise needs per day
@@ -121,13 +141,15 @@ public partial class CreatureNeeds : Node3D
 
     private void ReduceNeedLevels(double delta)
     {
-        currentHungerLevel = Mathf.Max(0, currentHungerLevel - hungerDepletionRate * (float) delta);
+        currentHungerLevel = Mathf.Max(0, currentHungerLevel - hungerDepletionRate * (float)delta);
         currentHappinessLevel = Mathf.Max(0, currentHappinessLevel - happinessDepletionRate * (float)delta);
         currentCleanlinessLevel = Mathf.Max(0, currentCleanlinessLevel - cleanlinessDepletionRate * (float)delta);
         currentTimeLeft = Mathf.Max(0, currentTimeLeft - (float)delta);
 
         MakeFeedingRequestIfBelowThreshold();
         MakeCleaningRequestIfBelowThreshold();
+
+        CheckIfFailingNeedsAndStartFailureTimer();
     }
 
     private void AddWasteProduct(float amountOfWaste)
@@ -168,6 +190,25 @@ public partial class CreatureNeeds : Node3D
         }
     }
 
+    private void CheckIfFailingNeedsAndStartFailureTimer()
+    {
+        if (currentHungerLevel > 0.0f && currentHappinessLevel > 0.0f && currentCleanlinessLevel > 0.0f)
+        {
+            if (isFailureStateTimerStarted)
+            {
+                failureStateTimerNode.Stop();
+                isFailureStateTimerStarted = false;
+            }
+        }
+        else
+        {
+            if (!isFailureStateTimerStarted)
+            {
+                BeginFailureCountdown();
+            }
+        }
+    }
+
     private void HandleNeedsDisplayUpdateTimerNodeTimeout()
     {
         float newHungerPercentage = currentHungerLevel / maxHungerLevel * 100.0f;
@@ -189,19 +230,19 @@ public partial class CreatureNeeds : Node3D
             case E_NeedMetAmount.HALF:
                 newHungerLevel = currentHungerLevel + maxHungerReplenishment * 0.5f;
                 currentHungerLevel = Mathf.Min(newHungerLevel, maxHungerLevel * 1.2f); // Cap at 20% over max
-                AddWasteProduct(maxWasteProductToAdd * 0.5f);
+                AddWasteProduct(maxWasteProductToAddAfterFeeding * 0.5f);
                 // Add anger mutiplied by 0.5
                 break;
             case E_NeedMetAmount.MOST:
                 newHungerLevel = currentHungerLevel + maxHungerReplenishment * 0.75f;
                 currentHungerLevel = Mathf.Min(newHungerLevel, maxHungerLevel * 1.2f); // Cap at 20% over max
-                AddWasteProduct(maxWasteProductToAdd * 0.75f);
+                AddWasteProduct(maxWasteProductToAddAfterFeeding * 0.75f);
                 // Add anger mutiplied by 0.25
                 break;
             case E_NeedMetAmount.ALL:
                 newHungerLevel = currentHungerLevel + maxHungerReplenishment * 1.0f;
                 currentHungerLevel = Mathf.Min(newHungerLevel, maxHungerLevel * 1.2f); // Cap at 20% over max
-                AddWasteProduct(maxWasteProductToAdd * 1.0f);
+                AddWasteProduct(maxWasteProductToAddAfterFeeding * 1.0f);
                 // For every five points over 100, add an additional waste product penalty
                 break;
             default:
@@ -282,6 +323,24 @@ public partial class CreatureNeeds : Node3D
             hasMadePlayRequest = false;
             isPlayRequestSatisfied = true;
         }
+    }
+
+    private void BeginFailureCountdown()
+    {
+        failureStateTimerNode.Start();
+        isFailureStateTimerStarted = true;
+
+        // Build up some tense music
+        // Activate warning lights/alarms
+        // Change creature's eye to red 
+
+        GD.PrintErr("Failure timer started");
+    }
+
+    private void HandleFailureStateTimerTimeout()
+    {
+        GD.PrintErr("Player failed");
+        globalSignals.RaisePlayerFailureState();
     }
 
     private void HandlePlayerClockedIn()

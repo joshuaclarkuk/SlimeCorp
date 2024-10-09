@@ -39,6 +39,9 @@ public partial class GlobalSignals : Node
     public event Action<E_StationType> OnPlayerExitStation;
     public event Action OnPlayerCanMoveAgain; // Prevents player moving before camera has returned
 
+    public event Action OnPlayerFailureState;
+    public event Action OnPlayerWinState;
+
     public void RaiseOnBlackScreenDisappeared() { OnBlackScreenDisappeared?.Invoke(); }
 
     public void RaiseGenerateEmployeeNumber(int[] employeeNumber) { OnGenerateEmployeeNumber?.Invoke(employeeNumber); }
@@ -72,4 +75,7 @@ public partial class GlobalSignals : Node
     public void RaisePlayerInteractWithStation(E_StationType stationType) { OnPlayerInteractWithStation?.Invoke(stationType); }
     public void RaisePlayerExitStation(E_StationType stationType) { OnPlayerExitStation?.Invoke(stationType); }
     public void RaisePlayerCanMoveAgain() { OnPlayerCanMoveAgain?.Invoke(); }
+
+    public void RaisePlayerFailureState() { OnPlayerFailureState?.Invoke(); }
+    public void RaisePlayerWinState() { OnPlayerWinState?.Invoke(); }
 }

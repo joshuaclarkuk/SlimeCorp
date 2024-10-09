@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://w47tw0ikkabw"]
+
+[ext_resource type="Script" path="res://Scripts/Creature/DailyNeedResources/DailyNeedResource.cs" id="1_pan3e"]
+
+[resource]
+script = ExtResource("1_pan3e")
+TitleToDisplay = "Day 2
+Obfuscation"
+MinutesInDay = 5
+SlimeCollectionTarget = 100.0
+HungerDepletionRate = 0.2
+HappinessDepletionRate = 0.15
+CleanlinessDepletionRate = 0.1
+MaxHungerReplenishment = 100.0
+MaxCleanlinessReplenishment = 75.0
+MaxHappinessReplenishment = 5.0
+MaxWasteProductToAdd = 10.0

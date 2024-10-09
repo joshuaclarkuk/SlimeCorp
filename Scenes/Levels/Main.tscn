@@ -1,11 +1,15 @@
-[gd_scene load_steps=31 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=38 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
+[ext_resource type="Resource" uid="uid://cxrkhl2hkp54s" path="res://Scripts/Creature/DailyNeedResources/Day0NeedsResource.tres" id="2_42bof"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
+[ext_resource type="Material" uid="uid://2b8y15eqm4kc" path="res://Materials/MainLevel/M_WindowBlindQuads.tres" id="3_2tkmp"]
 [ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="3_gd6ql"]
+[ext_resource type="Resource" uid="uid://ccrbkvrbb7p00" path="res://Scripts/Creature/DailyNeedResources/Day1NeedsResource.tres" id="3_mujvi"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://lv3a7gtpt3cx" path="res://Scenes/Creature/CreatureNeeds.tscn" id="3_r5tf3"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
+[ext_resource type="Resource" uid="uid://w47tw0ikkabw" path="res://Scripts/Creature/DailyNeedResources/Day2NeedsResource.tres" id="4_drkrt"]
 [ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="7_5p5ij"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
@@ -30,6 +34,18 @@ volumetric_fog_albedo = Color(0.81124, 1, 0.792306, 1)
 adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 0.8
+
+[sub_resource type="QuadMesh" id="QuadMesh_2qiku"]
+material = ExtResource("3_2tkmp")
+size = Vector2(3.6, 3.4)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vgduk"]
+material = ExtResource("3_2tkmp")
+size = Vector2(2.6, 2.6)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m7wyb"]
+material = ExtResource("3_2tkmp")
+size = Vector2(5, 23)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
@@ -73,6 +89,7 @@ introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
+dailyNeedResources = Array[Object]([ExtResource("2_42bof"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), null, null])
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
 nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
@@ -86,6 +103,48 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22, 1
 
 [node name="Main room" parent="Environment/LevelMesh" index="0" instance=ExtResource("12_84x2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2, 0)
+
+[node name="WindowBlinds" type="Node3D" parent="Environment/LevelMesh" index="1"]
+
+[node name="WindowBlindQuad1" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -8.6, 10.5, -1.8)
+mesh = SubResource("QuadMesh_2qiku")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindQuad2" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -14.3, 10.5, -1.8)
+mesh = SubResource("QuadMesh_2qiku")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindQuad3" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -20.2, 10.5, -1.8)
+mesh = SubResource("QuadMesh_2qiku")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindSmallQuad1" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.4, 10.5, 5.2)
+mesh = SubResource("QuadMesh_vgduk")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindSmallQuad3" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -21.1, 10.5, 5.2)
+mesh = SubResource("QuadMesh_vgduk")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindSmallQuad4" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -21.4, 10.5, -8.1)
+mesh = SubResource("QuadMesh_vgduk")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindSmallQuad2" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.4, 10.5, -8.1)
+mesh = SubResource("QuadMesh_vgduk")
+skeleton = NodePath("../..")
+
+[node name="WindowBlindLongQuad" type="MeshInstance3D" parent="Environment/LevelMesh/WindowBlinds" index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.2, 10.3, -1.6)
+mesh = SubResource("QuadMesh_m7wyb")
+skeleton = NodePath("../..")
 
 [node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
@@ -272,11 +331,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1, 0)
 shape = SubResource("BoxShape3D_0orqy")
 
-[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode", "computerStationNode", "creatureNeedsViewportNode")]
+[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../../../RovingCamera")
-computerStationNode = NodePath("ComputerStation")
-creatureNeedsViewportNode = NodePath("../CreatureNeedsScreen/CreatureNeedsViewport")
 
 [node name="ComputerStation" parent="Environment/Objects/Stations" index="0" instance=ExtResource("2_te2wr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, -0.029242, -2)

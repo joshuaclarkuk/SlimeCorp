@@ -14,6 +14,9 @@ public partial class Main : Node3D
     [ExportCategory("Creature")]
     [Export] private CreatureNeeds creatureNeeds = null;
 
+    [ExportCategory("Creature Need Resources")]
+    [Export] private DailyNeedResource[] dailyNeedResources = null;
+
     [ExportCategory("Stations")]
     [Export] private Stations stationsHeaderNode = null;
 
@@ -90,36 +93,36 @@ public partial class Main : Node3D
         {
             case 0:
                 // Day 0 logic here
-                StartNewDay("Orientation", 3, 100.0f);
+                StartNewDay(currentDayIndex, "Orientation", 3, 100.0f);
                 GenerateEmployeeNumber();
                 break;
             case 1:
                 // Day 1 logic here
-                StartNewDay("Day 1", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Day 1", 5, 300.0f);
                 break;
             case 2:
                 // Day 2 logic here
-                StartNewDay("Day 2", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Day 2", 5, 300.0f);
                 break;
             case 3:
                 // Day 3 logic here
-                StartNewDay("Day 3", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Day 3", 5, 300.0f);
                 break;
             case 4:
                 // Day 4 logic here
-                StartNewDay("Day 4", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Day 4", 5, 300.0f);
                 break;
             case 5:
                 // Day 5 logic here
-                StartNewDay("Day 5", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Day 5", 5, 300.0f);
                 break;
             case 6:
                 // Day 6 logic here
-                StartNewDay("Day 6", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Day 6", 5, 300.0f);
                 break;
             case 7:
                 // Day 7 logic here
-                StartNewDay("Final Day", 5, 300.0f);
+                StartNewDay(currentDayIndex, "Final Day", 5, 300.0f);
                 break;
             default:
                 GD.PrintErr("Have gone past final day, exiting");
@@ -127,11 +130,30 @@ public partial class Main : Node3D
         }
     }
 
-    private void StartNewDay(string titleToDisplay, int minutesInDay, float slimeCollectionTarget)
+    private void StartNewDay(int dayIndex, string titleToDisplay, int minutesInDay, float slimeCollectionTarget)
     {
-        titleCardNode.UpdateTextAndDisplay(titleToDisplay);
-        creatureNeeds.SetUpForNewDay(minutesInDay);
-        ResetSlimeCollectedAndSetNewTarget(slimeCollectionTarget);
+        if (dailyNeedResources[dayIndex] != null)
+        {
+            // Initialise Creature Need depletion rates
+            creatureNeeds.SetCreatureNeedDepletionRatesFromResource(
+                dailyNeedResources[dayIndex].HungerDepletionRate, 
+                dailyNeedResources[dayIndex].HappinessDepletionRate, 
+                dailyNeedResources[dayIndex].CleanlinessDepletionRate);
+            creatureNeeds.SetMaxNeedReplenishmentRatesFromResource(
+                dailyNeedResources[dayIndex].MaxHungerReplenishment,
+                dailyNeedResources[dayIndex].MaxCleanlinessReplenishment,
+                dailyNeedResources[dayIndex].MaxHappinessReplenishment,
+                dailyNeedResources[dayIndex].MaxWasteProductToAdd);
+
+            // Set up Title and outline daily parameters
+            titleCardNode.UpdateTextAndDisplay(dailyNeedResources[dayIndex].TitleToDisplay);
+            creatureNeeds.SetUpForNewDay(dailyNeedResources[dayIndex].MinutesInDay);
+            ResetSlimeCollectedAndSetNewTarget(dailyNeedResources[dayIndex].SlimeCollectionTarget);
+        }
+        else
+        {
+            GD.PrintErr("No daily resource found for this day");
+        }
 
         // Initialise player camera and movement
         player.MakeCameraCurrent();
@@ -148,7 +170,6 @@ public partial class Main : Node3D
 
         // Start music
         nonDiegeticMusicNode.Play();
-        //globalEvents.RaiseMainKillLightsEvent(lightingHeaderNode);
     }
 
     private void HandlePlayerClockedOut()
