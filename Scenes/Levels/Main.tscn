@@ -451,6 +451,7 @@ emailItemResources = Array[Object]([])
 [node name="IntroCredits" parent="." index="9" instance=ExtResource("16_88hgn")]
 
 [node name="DebugUI" parent="." index="10" instance=ExtResource("11_yopgj")]
+visible = false
 
 [node name="RovingCamera" parent="." index="11"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)

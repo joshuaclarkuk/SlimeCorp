@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_eywr5"]
 resource_name = "CreditScrawl"
-length = 32.0
+length = 40.0
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -15,10 +15,10 @@ tracks/0/path = NodePath("Credits:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 6, 7, 8, 9, 14, 15, 17, 18, 23, 24, 25, 26, 31, 32),
-"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"times": PackedFloat32Array(0, 1, 6, 7, 8, 9, 14, 15, 17, 18, 23, 24, 25, 26, 31, 32, 33, 34, 39, 40),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -223,6 +223,54 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0.6, 0.02), Vector2(0.7, 0.02), Vector2(0.6, 0.02), Vector2(0.7, 0.02), Vector2(0.6, 0.02), Vector2(0.7, 0.02), Vector2(0.6, 0.02), Vector2(0.7, 0.02)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Credits/TitleVBox/Roles/MadeForLabel:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(33.5, 34.5, 38.5, 39.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Credits/TitleVBox/Roles/MadeForLabel:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(33, 39.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, 0), Vector2(40, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Credits/TitleVBox/Names/HawktoberHorrorsLabel:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(34, 35, 38.5, 39.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Credits/TitleVBox/Names/HawktoberHorrorsLabel:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(33, 39.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(290, 0), Vector2(260, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rnt6a"]
@@ -443,6 +491,54 @@ tracks/17/keys = {
 "update": 0,
 "values": [Vector2(0.6, 0.02)]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Credits/TitleVBox/Roles/MadeForLabel:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Credits/TitleVBox/Roles/MadeForLabel:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Credits/TitleVBox/Names/HawktoberHorrorsLabel:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Credits/TitleVBox/Names/HawktoberHorrorsLabel:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(420, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_774ph"]
 _data = {
@@ -542,6 +638,15 @@ offset_bottom = 30.0
 theme_override_font_sizes/font_size = 24
 text = "Music"
 
+[node name="MadeForLabel" type="Label" parent="Credits/TitleVBox/Roles"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_right = 160.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 24
+text = "Made for"
+
 [node name="Names" type="Control" parent="Credits/TitleVBox"]
 layout_mode = 2
 size_flags_vertical = 6
@@ -553,8 +658,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 420.0
-offset_right = 640.0
+offset_left = -220.0
 offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
@@ -567,8 +671,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 358.0
-offset_right = 640.0
+offset_left = -282.0
 offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
@@ -581,8 +684,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 420.0
-offset_right = 640.0
+offset_left = -220.0
 offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
@@ -595,12 +697,25 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 420.0
-offset_right = 640.0
+offset_left = -220.0
 offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
 text = "HideousHiss"
+horizontal_alignment = 2
+
+[node name="HawktoberHorrorsLabel" type="Label" parent="Credits/TitleVBox/Names"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_right = 182.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "Hawktober Horrors 2024"
 horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
