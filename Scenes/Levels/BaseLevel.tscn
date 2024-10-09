@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://mt7rpxeo4hf"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/Main.cs" id="1_f3jsa"]
+[ext_resource type="Script" path="res://Scripts/Levels/Main/Main.cs" id="1_f3jsa"]
 [ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_wxygr"]
 [ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_2.tres" id="3_qaeif"]
 [ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_3.tres" id="4_ssij8"]

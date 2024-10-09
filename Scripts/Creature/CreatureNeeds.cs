@@ -198,6 +198,7 @@ public partial class CreatureNeeds : Node3D
             {
                 failureStateTimerNode.Stop();
                 isFailureStateTimerStarted = false;
+                globalSignals.RaisePlayerAtRiskOfFailing(false);
             }
         }
         else
@@ -205,6 +206,7 @@ public partial class CreatureNeeds : Node3D
             if (!isFailureStateTimerStarted)
             {
                 BeginFailureCountdown();
+                globalSignals.RaisePlayerAtRiskOfFailing(true);
             }
         }
     }
@@ -331,7 +333,6 @@ public partial class CreatureNeeds : Node3D
         isFailureStateTimerStarted = true;
 
         // Build up some tense music
-        // Activate warning lights/alarms
         // Change creature's eye to red 
 
         GD.PrintErr("Failure timer started");

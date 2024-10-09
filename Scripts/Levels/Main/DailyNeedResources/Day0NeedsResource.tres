@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://cxrkhl2hkp54s"]
 
-[ext_resource type="Script" path="res://Scripts/Creature/DailyNeedResources/DailyNeedResource.cs" id="1_oqa12"]
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResources/DailyNeedResource.cs" id="1_oqa12"]
 
 [resource]
 script = ExtResource("1_oqa12")
@@ -8,7 +8,7 @@ TitleToDisplay = "Day 0
 Orientation"
 MinutesInDay = 5
 SlimeCollectionTarget = 100.0
-HungerDepletionRate = 0.0
+HungerDepletionRate = 20.0
 HappinessDepletionRate = 0.0
 CleanlinessDepletionRate = 0.0
 MaxHungerReplenishment = 100.0
