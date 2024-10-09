@@ -20,9 +20,16 @@
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+glow_bloom = 0.5
 fog_density = 0.005
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.81124, 1, 0.792306, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
@@ -265,9 +272,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1, 0)
 shape = SubResource("BoxShape3D_0orqy")
 
-[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
+[node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode", "computerStationNode", "creatureNeedsViewportNode")]
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../../../RovingCamera")
+computerStationNode = NodePath("ComputerStation")
+creatureNeedsViewportNode = NodePath("../CreatureNeedsScreen/CreatureNeedsViewport")
 
 [node name="ComputerStation" parent="Environment/Objects/Stations" index="0" instance=ExtResource("2_te2wr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.6, -0.029242, -2)
@@ -310,32 +319,47 @@ Storage >>>"
 
 [node name="OmniLight" type="OmniLight3D" parent="Lighting" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -1.3504)
-light_energy = 5.075
+light_color = Color(0.882353, 0.972549, 0.878431, 1)
+light_energy = 0.6
 shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
 omni_range = 22.279
 
 [node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, 8.35553)
-light_energy = 5.075
+light_color = Color(0.882353, 0.972549, 0.878431, 1)
+light_energy = 0.6
 shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
 omni_range = 22.279
 
 [node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -11.1275)
-light_energy = 5.075
+light_color = Color(0.882353, 0.972549, 0.878431, 1)
+light_energy = 0.6
 shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
 omni_range = 22.279
 
 [node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 7.0892, -14.1681)
-light_energy = 5.075
+light_color = Color(0.882353, 0.972549, 0.878431, 1)
+light_energy = 0.6
 shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
 omni_range = 22.279
 
 [node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="4"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 7.264, -4.71915)
-light_energy = 5.075
+light_color = Color(0.882353, 0.972549, 0.878431, 1)
+light_energy = 0.6
 shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
 omni_range = 22.279
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]

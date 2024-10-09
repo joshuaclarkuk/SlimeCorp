@@ -9,3 +9,15 @@ titleLabelNode = NodePath("VBoxContainer/Title")
 bodyLabelNode = NodePath("VBoxContainer/Body")
 bylineLabelNode = NodePath("VBoxContainer/Byline")
 dateReceivedLabelNode = NodePath("VBoxContainer/DateReceived")
+
+[node name="Title" parent="VBoxContainer" index="0"]
+theme_override_font_sizes/font_size = 30
+
+[node name="Body" parent="VBoxContainer" index="1"]
+theme_override_font_sizes/font_size = 18
+
+[node name="Byline" parent="VBoxContainer" index="2"]
+theme_override_font_sizes/font_size = 30
+
+[node name="DateReceived" parent="VBoxContainer" index="3"]
+theme_override_font_sizes/font_size = 18
