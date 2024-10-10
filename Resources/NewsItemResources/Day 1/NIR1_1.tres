@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://b4ohy2cqrf1l7"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_ihahb"]
+
+[resource]
+script = ExtResource("1_ihahb")
+ItemTitle = "Launch of New Facility"
+ItemBody = "Proud day yadda yadda"
+ItemByline = "Arthur Bloke"
+ItemDateReceived = "10/10/2024"

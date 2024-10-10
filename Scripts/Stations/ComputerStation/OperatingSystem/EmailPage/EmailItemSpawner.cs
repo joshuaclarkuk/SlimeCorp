@@ -1,7 +1,4 @@
-﻿using Godot;
-using System;
-
-public partial class EmailItemSpawner : ComputerItemSpawner
+﻿public partial class EmailItemSpawner : ComputerItemSpawner
 {
     public override void AddNewItemToScreen(ComputerItemResource resourceToAdd)
     {

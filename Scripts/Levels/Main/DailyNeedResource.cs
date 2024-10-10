@@ -15,7 +15,11 @@ public partial class DailyNeedResource : Resource
 
     [ExportCategory("Replenishment/Addition Rates")]
     [Export] public float MaxHungerReplenishment { get; private set; } = 100.0f;
-    [Export] public float MaxCleanlinessReplenishment { get; private set; } = 75.0f;
     [Export] public float MaxHappinessReplenishment { get; private set; } = 5.0f;
+    [Export] public float MaxCleanlinessReplenishment { get; private set; } = 75.0f;
     [Export] public float MaxWasteProductToAdd { get; private set; } = 10.0f;
+
+    [ExportCategory("Computer Items to Add")]
+    [Export] public ComputerItemResource[] EmailItemResources { get; private set; } = null;
+    [Export] public ComputerItemResource[] NewsItemResources { get; private set; } = null;
 }

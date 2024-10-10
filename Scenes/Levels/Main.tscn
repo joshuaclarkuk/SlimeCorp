@@ -1,15 +1,18 @@
-[gd_scene load_steps=39 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=42 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
-[ext_resource type="Resource" uid="uid://cxrkhl2hkp54s" path="res://Scripts/Levels/Main/DailyNeedResources/Day0NeedsResource.tres" id="2_42bof"]
+[ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
 [ext_resource type="PackedScene" uid="uid://cl66tnesuy5xc" path="res://Scenes/Stations/ComputerStation/ComputerStation.tscn" id="2_te2wr"]
 [ext_resource type="Material" uid="uid://2b8y15eqm4kc" path="res://Materials/MainLevel/M_WindowBlindQuads.tres" id="3_2tkmp"]
 [ext_resource type="PackedScene" uid="uid://7briymn8wcar" path="res://Scenes/Stations/CanisterStorageStation/CanisterStorageStation.tscn" id="3_gd6ql"]
-[ext_resource type="Resource" uid="uid://ccrbkvrbb7p00" path="res://Scripts/Levels/Main/DailyNeedResources/Day1NeedsResource.tres" id="3_mujvi"]
+[ext_resource type="Resource" uid="uid://ccrbkvrbb7p00" path="res://Resources/DailyNeedResources/Day1NeedsResource.tres" id="3_mujvi"]
 [ext_resource type="PackedScene" uid="uid://car5kk3p3s32x" path="res://Scenes/Creature/CreatureNeedsDisplay.tscn" id="3_qt08h"]
 [ext_resource type="PackedScene" uid="uid://lv3a7gtpt3cx" path="res://Scenes/Creature/CreatureNeeds.tscn" id="3_r5tf3"]
 [ext_resource type="PackedScene" uid="uid://ceveuvbbbq55n" path="res://Scenes/Stations/FeedingStation/FeedingStation.tscn" id="3_xnieq"]
-[ext_resource type="Resource" uid="uid://w47tw0ikkabw" path="res://Scripts/Levels/Main/DailyNeedResources/Day2NeedsResource.tres" id="4_drkrt"]
+[ext_resource type="Resource" uid="uid://w47tw0ikkabw" path="res://Resources/DailyNeedResources/Day2NeedsResource.tres" id="4_drkrt"]
+[ext_resource type="Resource" uid="uid://caumbit4jw6no" path="res://Resources/DailyNeedResources/Day3NeedsResource.tres" id="4_rx313"]
+[ext_resource type="Resource" uid="uid://b66otl1ubq1om" path="res://Resources/DailyNeedResources/Day4NeedsResource.tres" id="5_w5mc5"]
+[ext_resource type="Resource" uid="uid://drrcboygfk22" path="res://Resources/DailyNeedResources/Day5NeedsResource.tres" id="6_fybs3"]
 [ext_resource type="PackedScene" uid="uid://da6jju4cgm5ua" path="res://Scenes/Stations/ClockOutStation/ClockOutStation.tscn" id="7_5p5ij"]
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
@@ -90,7 +93,7 @@ introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
-dailyNeedResources = Array[Object]([ExtResource("2_42bof"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), null, null])
+dailyNeedResources = Array[Object]([ExtResource("2_dt6g4"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), ExtResource("4_rx313"), ExtResource("5_w5mc5"), ExtResource("6_fybs3")])
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
 nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
@@ -451,10 +454,15 @@ emailItemResources = Array[Object]([])
 [node name="IntroCredits" parent="." index="9" instance=ExtResource("16_88hgn")]
 
 [node name="DebugUI" parent="." index="10" instance=ExtResource("11_yopgj")]
-visible = false
 
 [node name="RovingCamera" parent="." index="11"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1, -2)
 
 [node name="BlackScreen" parent="." index="13"]
 visible = false
+
+[node name="Marker3D" type="Marker3D" parent="." index="14"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5, 1, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="." index="15"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5, 1, 1)

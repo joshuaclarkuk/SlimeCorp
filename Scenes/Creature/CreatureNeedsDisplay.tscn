@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://car5kk3p3s32x"]
+[gd_scene load_steps=5 format=3 uid="uid://car5kk3p3s32x"]
 
 [ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_a8527"]
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeedsDisplay.cs" id="2_lmnia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bcek"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25dpo"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="CreatureNeedsDisplay" type="Control" node_paths=PackedStringArray("hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "timeLeftText")]
 layout_mode = 3
@@ -80,6 +86,8 @@ text = "Waste Buildup"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_1bcek")
+theme_override_styles/fill = SubResource("StyleBoxFlat_25dpo")
 fill_mode = 1
 show_percentage = false
 

@@ -22,5 +22,5 @@ texture = ExtResource("4_x2g76")
 position = Vector2(16, 496)
 
 [node name="SpawnEnemyBlocksTimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 30.0
 one_shot = true

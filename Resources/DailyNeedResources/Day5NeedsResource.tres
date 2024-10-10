@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://drrcboygfk22"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_scrro"]
+
+[resource]
+script = ExtResource("1_scrro")
+TitleToDisplay = "Final Day
+Absolution"
+MinutesInDay = 5
+SlimeCollectionTarget = 1000.0
+HungerDepletionRate = 1.0
+HappinessDepletionRate = 0.9
+CleanlinessDepletionRate = 0.8
+MaxHungerReplenishment = 60.0
+MaxHappinessReplenishment = 2.0
+MaxCleanlinessReplenishment = 50.0
+MaxWasteProductToAdd = 20.0

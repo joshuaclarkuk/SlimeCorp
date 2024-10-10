@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bois17jug4yjt"]
+
+[ext_resource type="PackedScene" uid="uid://dpu2at23vdyb1" path="res://Scenes/Stations/ComputerStation/ComputerItem.tscn" id="1_q8vu7"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/NewsPage/NewsItem.cs" id="2_c1dki"]
+
+[node name="NewsItem" node_paths=PackedStringArray("titleLabelNode", "bodyLabelNode", "bylineLabelNode", "dateReceivedLabelNode") instance=ExtResource("1_q8vu7")]
+script = ExtResource("2_c1dki")
+titleLabelNode = NodePath("VBoxContainer/Title")
+bodyLabelNode = NodePath("VBoxContainer/Body")
+bylineLabelNode = NodePath("VBoxContainer/Byline")
+dateReceivedLabelNode = NodePath("VBoxContainer/DateReceived")
+
+[node name="Title" parent="VBoxContainer" index="0"]
+theme_override_font_sizes/font_size = 30
+
+[node name="Body" parent="VBoxContainer" index="1"]
+theme_override_font_sizes/font_size = 18
+
+[node name="Byline" parent="VBoxContainer" index="2"]
+theme_override_font_sizes/font_size = 20
+
+[node name="DateReceived" parent="VBoxContainer" index="3"]
+theme_override_font_sizes/font_size = 16

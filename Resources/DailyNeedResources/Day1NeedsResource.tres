@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=4 format=3 uid="uid://ccrbkvrbb7p00"]
+
+[ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Resources/EmailItemResources/Day 1/EIR1_1.tres" id="1_4vtx5"]
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_tr3na"]
+[ext_resource type="Resource" uid="uid://b4ohy2cqrf1l7" path="res://Resources/NewsItemResources/Day 1/NIR1_1.tres" id="2_qfdpu"]
+
+[resource]
+script = ExtResource("1_tr3na")
+TitleToDisplay = "Day 1
+Orientation"
+MinutesInDay = 5
+SlimeCollectionTarget = 100.0
+HungerDepletionRate = 1.0
+HappinessDepletionRate = 0.0
+CleanlinessDepletionRate = 0.0
+MaxHungerReplenishment = 100.0
+MaxHappinessReplenishment = 0.0
+MaxCleanlinessReplenishment = 0.0
+MaxWasteProductToAdd = 0.0
+EmailItemResources = Array[Object]([ExtResource("1_4vtx5")])
+NewsItemResources = Array[Object]([ExtResource("2_qfdpu")])

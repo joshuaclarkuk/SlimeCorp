@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://mt7rpxeo4hf"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main/Main.cs" id="1_f3jsa"]
-[ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_1.tres" id="2_wxygr"]
-[ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_2.tres" id="3_qaeif"]
-[ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_3.tres" id="4_ssij8"]
-[ext_resource type="Resource" uid="uid://dkihdhji3o6iy" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_4.tres" id="5_wdpwx"]
-[ext_resource type="Resource" uid="uid://c7bee0yqrpwrj" path="res://Scripts/Stations/ComputerStation/OperatingSystem/EmailPage/Resources/ER1_5.tres" id="6_1wb8d"]
+[ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Resources/EmailItemResources/Day 1/EIR1_1.tres" id="2_wxygr"]
+[ext_resource type="Resource" uid="uid://ey84vywvdut2" path="res://Resources/EmailItemResources/Day 1/EIR1_2.tres" id="3_qaeif"]
+[ext_resource type="Resource" uid="uid://bq63dmnsng7mi" path="res://Resources/EmailItemResources/Day 1/EIR1_3.tres" id="4_ssij8"]
+[ext_resource type="Resource" uid="uid://dkihdhji3o6iy" path="res://Resources/EmailItemResources/Day 1/EIR1_4.tres" id="5_wdpwx"]
+[ext_resource type="Resource" uid="uid://c7bee0yqrpwrj" path="res://Resources/EmailItemResources/Day 1/EIR1_5.tres" id="6_1wb8d"]
 [ext_resource type="PackedScene" uid="uid://delnh0co127wq" path="res://Scenes/UI/IntroScreens/TitleCard.tscn" id="8_2mmqg"]
 [ext_resource type="PackedScene" uid="uid://bqhcs568cuoek" path="res://Scenes/UI/IntroScreens/BlackScreen.tscn" id="9_06476"]
 

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://w47tw0ikkabw"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_pan3e"]
+
+[resource]
+script = ExtResource("1_pan3e")
+TitleToDisplay = "Day 2
+Extraction"
+MinutesInDay = 10
+SlimeCollectionTarget = 300.0
+HungerDepletionRate = 0.6
+HappinessDepletionRate = 0.8
+CleanlinessDepletionRate = 0.0
+MaxHungerReplenishment = 90.0
+MaxHappinessReplenishment = 5.0
+MaxCleanlinessReplenishment = 0.0
+MaxWasteProductToAdd = 0.0

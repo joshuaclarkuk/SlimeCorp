@@ -72,17 +72,11 @@ public partial class Stations : Node3D
             // Switch active camera to roving camera
             rovingCameraNode.MakeCurrent();
 
-            // Create and execute camera tweens
-            // Position
+            // Create and execute camera movement tween
             Tween moveCameraToStationPositionTween = GetTree().CreateTween();
             moveCameraToStationPositionTween.SetTrans(Tween.TransitionType.Sine);
-            moveCameraToStationPositionTween.TweenProperty(rovingCameraNode, "position", targetMarker.GlobalPosition, cameraTweenDuration);
+            moveCameraToStationPositionTween.TweenProperty(rovingCameraNode, "transform", targetMarker.GlobalTransform, cameraTweenDuration);
             moveCameraToStationPositionTween.Play();
-            // Rotation
-            Tween moveCameraToStationRotationTween = GetTree().CreateTween();
-            moveCameraToStationRotationTween.SetTrans(Tween.TransitionType.Sine);
-            moveCameraToStationRotationTween.TweenProperty(rovingCameraNode, "rotation", targetMarker.GlobalRotation, cameraTweenDuration);
-            moveCameraToStationRotationTween.Play();
         }
         else
         {

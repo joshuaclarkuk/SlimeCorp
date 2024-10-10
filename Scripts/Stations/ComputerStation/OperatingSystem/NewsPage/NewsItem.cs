@@ -13,7 +13,7 @@ public partial class NewsItem : ComputerItem
         ItemByline = resource.ItemByline;
         bylineLabelNode.Text = ItemByline;
 
-        ItemDateReceived = resource.ItemDateReceived;
+        ItemDateReceived = $"Published on: {resource.ItemDateReceived}";
         dateReceivedLabelNode.Text = ItemDateReceived;
     }
 }

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://caumbit4jw6no"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_s75du"]
+
+[resource]
+script = ExtResource("1_s75du")
+TitleToDisplay = "Day 3
+Obfuscation"
+MinutesInDay = 8
+SlimeCollectionTarget = 400.0
+HungerDepletionRate = 1.0
+HappinessDepletionRate = 0.9
+CleanlinessDepletionRate = 0.7
+MaxHungerReplenishment = 80.0
+MaxHappinessReplenishment = 2.0
+MaxCleanlinessReplenishment = 65.0
+MaxWasteProductToAdd = 15.0

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://b66otl1ubq1om"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_4y4jw"]
+
+[resource]
+script = ExtResource("1_4y4jw")
+TitleToDisplay = "Day 2
+Corrosion"
+MinutesInDay = 7
+SlimeCollectionTarget = 500.0
+HungerDepletionRate = 0.8
+HappinessDepletionRate = 0.9
+CleanlinessDepletionRate = 0.5
+MaxHungerReplenishment = 70.0
+MaxHappinessReplenishment = 1.0
+MaxCleanlinessReplenishment = 50.0
+MaxWasteProductToAdd = 20.0

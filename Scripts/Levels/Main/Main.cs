@@ -26,12 +26,11 @@ public partial class Main : Node3D
     [ExportCategory("Event Nodes")]
     [Export] private Node3D lightingHeaderNode = null;
 
-    [ExportCategory("Computer Items")]
-    [Export] private ComputerItemResource[] emailItemResources = null;
-    [Export] private ComputerItemResource[] newsItemResources = null;
-
     [ExportCategory("Debug UI")]
     [Export] private DebugUI debugUI = null;
+
+    [ExportCategory("Current Day")]
+    [Export] private int currentDayIndex = 1;
 
     // Globals
     private GlobalValues globalValues = null;
@@ -40,8 +39,6 @@ public partial class Main : Node3D
     private Player player = null;
 
     // Day counter
-    private int currentDayIndex = 0;
-    private int maxDays = 10;
 
     // Slime counter
     private float requestedSlimeAmountForDay = 0.0f;
@@ -62,12 +59,6 @@ public partial class Main : Node3D
 
         // Connect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
-
-        // Send initial stack of emails to computer
-        foreach (ComputerItemResource emailResource in emailItemResources)
-        {
-            globalSignals.RaiseEmailReceived(emailResource);
-        }
 
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
@@ -93,36 +84,36 @@ public partial class Main : Node3D
         {
             case 0:
                 // Day 0 logic here
-                StartNewDay(currentDayIndex, "Orientation", 3, 100.0f);
-                GenerateEmployeeNumber();
+                StartNewDay(currentDayIndex); // NO LONGER IN USE
                 break;
             case 1:
                 // Day 1 logic here
-                StartNewDay(currentDayIndex, "Day 1", 5, 300.0f);
+                StartNewDay(currentDayIndex);
+                GenerateEmployeeNumber();
                 break;
             case 2:
                 // Day 2 logic here
-                StartNewDay(currentDayIndex, "Day 2", 5, 300.0f);
+                StartNewDay(currentDayIndex);
                 break;
             case 3:
                 // Day 3 logic here
-                StartNewDay(currentDayIndex, "Day 3", 5, 300.0f);
+                StartNewDay(currentDayIndex);
                 break;
             case 4:
                 // Day 4 logic here
-                StartNewDay(currentDayIndex, "Day 4", 5, 300.0f);
+                StartNewDay(currentDayIndex);
                 break;
             case 5:
                 // Day 5 logic here
-                StartNewDay(currentDayIndex, "Day 5", 5, 300.0f);
+                StartNewDay(currentDayIndex);
                 break;
             case 6:
                 // Day 6 logic here
-                StartNewDay(currentDayIndex, "Day 6", 5, 300.0f);
+                StartNewDay(currentDayIndex);
                 break;
             case 7:
                 // Day 7 logic here
-                StartNewDay(currentDayIndex, "Final Day", 5, 300.0f);
+                StartNewDay(currentDayIndex);
                 break;
             default:
                 GD.PrintErr("Have gone past final day, exiting");
@@ -130,7 +121,7 @@ public partial class Main : Node3D
         }
     }
 
-    private void StartNewDay(int dayIndex, string titleToDisplay, int minutesInDay, float slimeCollectionTarget)
+    private void StartNewDay(int dayIndex)
     {
         if (dailyNeedResources[dayIndex] != null)
         {
@@ -144,6 +135,32 @@ public partial class Main : Node3D
                 dailyNeedResources[dayIndex].MaxCleanlinessReplenishment,
                 dailyNeedResources[dayIndex].MaxHappinessReplenishment,
                 dailyNeedResources[dayIndex].MaxWasteProductToAdd);
+
+            // Safely handle EmailItemResources
+            if (dailyNeedResources[dayIndex].EmailItemResources != null && dailyNeedResources[dayIndex].EmailItemResources.Length > 0)
+            {
+                foreach (ComputerItemResource resource in dailyNeedResources[dayIndex].EmailItemResources)
+                {
+                    globalSignals.RaiseEmailReceived(resource);
+                }
+            }
+            else
+            {
+                GD.PrintErr($"No EmailItemResources found for day {dayIndex}");
+            }
+
+            // Safely handle NewsItemResources
+            if (dailyNeedResources[dayIndex].NewsItemResources != null && dailyNeedResources[dayIndex].NewsItemResources.Length > 0)
+            {
+                foreach (ComputerItemResource resource in dailyNeedResources[dayIndex].NewsItemResources)
+                {
+                    globalSignals.RaiseNewsArticleReceived(resource);
+                }
+            }
+            else
+            {
+                GD.PrintErr($"No NewsItemResources found for day {dayIndex}");
+            }
 
             // Set up Title and outline daily parameters
             titleCardNode.UpdateTextAndDisplay(dailyNeedResources[dayIndex].TitleToDisplay);
@@ -194,18 +211,6 @@ public partial class Main : Node3D
         globalSignals.RaiseGenerateEmployeeNumber(employeeNumber);
 
         GD.Print($"Generated employee number: {string.Join("", employeeNumber)} vs Official employee number: {string.Join("", globalValues.EmployeeNumber)}");
-    }
-
-    private void AddNewsArticleToComputer(int articleIndex)
-    {
-        // Add news item to computer
-        // Pass in news article resource
-    }
-
-    private void AddEmailToComputer(int emailIndex)
-    {
-        // Add email to computer
-        // Pass in email resource
     }
 
     private void ResetSlimeCollectedAndSetNewTarget(float newTarget)

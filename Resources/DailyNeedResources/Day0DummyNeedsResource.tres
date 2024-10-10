@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://c2f0qfsd0q0jl"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_05f1j"]
+
+[resource]
+script = ExtResource("1_05f1j")
+TitleToDisplay = "Day 0
+Dummy"
+MinutesInDay = 5
+SlimeCollectionTarget = 100.0
+HungerDepletionRate = 0.0
+HappinessDepletionRate = 0.0
+CleanlinessDepletionRate = 0.0
+MaxHungerReplenishment = 0.0
+MaxCleanlinessReplenishment = 0.0
+MaxHappinessReplenishment = 0.0
+MaxWasteProductToAdd = 0.0
