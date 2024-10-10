@@ -150,6 +150,8 @@ public partial class CreatureNeeds : Node3D
         MakeCleaningRequestIfBelowThreshold();
 
         CheckIfFailingNeedsAndStartFailureTimer();
+
+        CheckIfShiftIsOver();
     }
 
     private void AddWasteProduct(float amountOfWaste)
@@ -208,6 +210,14 @@ public partial class CreatureNeeds : Node3D
                 BeginFailureCountdown();
                 globalSignals.RaisePlayerAtRiskOfFailing(true);
             }
+        }
+    }
+
+    private void CheckIfShiftIsOver()
+    {
+        if (currentTimeLeft <= 0.0f)
+        {
+            globalSignals.RaiseShiftIsOver();
         }
     }
 
@@ -349,7 +359,6 @@ public partial class CreatureNeeds : Node3D
         playerHasClockedIn = true;
         needsDisplayUpdateTimerNode.Start();
     }
-
 
     private void HandlePlayerClockedOut()
     {

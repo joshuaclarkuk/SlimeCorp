@@ -39,6 +39,8 @@ public partial class GlobalSignals : Node
     public event Action<E_StationType> OnPlayerExitStation;
     public event Action OnPlayerCanMoveAgain; // Prevents player moving before camera has returned
 
+    public event Action OnShiftIsOver;
+
     public event Action<bool> OnPlayerAtRiskOfFailing;
     public event Action OnPlayerFailureState;
     public event Action OnPlayerWinState;
@@ -77,6 +79,8 @@ public partial class GlobalSignals : Node
     public void RaisePlayerInteractWithStation(E_StationType stationType) { OnPlayerInteractWithStation?.Invoke(stationType); }
     public void RaisePlayerExitStation(E_StationType stationType) { OnPlayerExitStation?.Invoke(stationType); }
     public void RaisePlayerCanMoveAgain() { OnPlayerCanMoveAgain?.Invoke(); }
+
+    public void RaiseShiftIsOver() {  OnShiftIsOver?.Invoke(); }
 
     public void RaisePlayerAtRiskOfFailing(bool atRisk) { OnPlayerAtRiskOfFailing?.Invoke(atRisk); }
     public void RaisePlayerFailureState() { OnPlayerFailureState?.Invoke(); }

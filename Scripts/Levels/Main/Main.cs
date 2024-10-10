@@ -38,8 +38,6 @@ public partial class Main : Node3D
     private GlobalEvents globalEvents = null;
     private Player player = null;
 
-    // Day counter
-
     // Slime counter
     private float requestedSlimeAmountForDay = 0.0f;
     private float slimeCollectedInDay = 0.0f;
@@ -53,12 +51,17 @@ public partial class Main : Node3D
         player = GetNode<Player>("/root/Player");
 
         // Connect timeline signals
-        globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared; // Start new day
-        globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
-        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut; // End day
+        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared; // Start new day
+        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
+        globalSignals.OnShiftIsOver -= HandleShiftIsOver;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut; // End day
 
         // Connect station-based signals
-        globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
+        globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
+
+        // Connect win/failure states
+        globalSignals.OnPlayerFailureState -= HandlePlayerFailureState;
+        globalSignals.OnPlayerWinState -= HandlePlayerWinState;
 
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
@@ -72,10 +75,15 @@ public partial class Main : Node3D
         // Disconnect timeline signals
         globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
         globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
+        globalSignals.OnShiftIsOver -= HandleShiftIsOver;
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
 
         // Disconnect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
+
+        // Disconnect win/failure states
+        globalSignals.OnPlayerFailureState -= HandlePlayerFailureState;
+        globalSignals.OnPlayerWinState -= HandlePlayerWinState;
     }
 
     private void HandleBlackScreenDisappeared()
@@ -202,9 +210,29 @@ public partial class Main : Node3D
         nonDiegeticMusicNode.Play();
     }
 
+    private void HandleShiftIsOver()
+    {
+        GD.Print("Shift is over. Player needs to clock out");
+        // Lock stations
+        // Let timers run, need to make sure oil in canister ISN'T banked
+
+    }
+
     private void HandlePlayerClockedOut()
     {
         // End day logic here
+        if (HasPlayerBankedEnoughSlime())
+        {
+            ProgressToNextDay();
+        }
+        else
+        {
+            GD.PrintErr("Player has not collected enough slime. Bad ending");
+        }
+    }
+
+    private void ProgressToNextDay()
+    {
         blackScreenNode.DisplayBlackScreen();
         stationsHeaderNode.isTransitioningBetweenDays = true;
         currentDayIndex++;
@@ -239,6 +267,28 @@ public partial class Main : Node3D
         slimeCollectedInDay += slimeAmount;
         debugUI.UpdateTotalSlimeCollectedProgressBar(slimeCollectedInDay, requestedSlimeAmountForDay);
         GD.Print($"MAIN: Banked {slimeAmount} slime. Daily total: {slimeCollectedInDay}");
+    }
+
+    private bool HasPlayerBankedEnoughSlime()
+    {
+        if (slimeCollectedInDay >= requestedSlimeAmountForDay)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void HandlePlayerFailureState()
+    {
+        GD.PrintErr("Player did not meet creatures needs. Got fired.")
+    }
+
+    private void HandlePlayerWinState()
+    {
+        GD.PrintErr("Player destroyed facility. Win!");
     }
 
     private void EndGame()
