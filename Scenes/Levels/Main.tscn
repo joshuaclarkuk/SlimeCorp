@@ -449,7 +449,6 @@ custom_minimum_size = Vector2(600, 600)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-emailItemResources = Array[Object]([])
 
 [node name="IntroCredits" parent="." index="9" instance=ExtResource("16_88hgn")]
 
@@ -460,6 +459,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1
 
 [node name="BlackScreen" parent="." index="13"]
 visible = false
-
-[node name="Marker3D" type="Marker3D" parent="." index="14"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 2, 4)

@@ -20,6 +20,7 @@ public partial class DailyNeedResource : Resource
     [Export] public float MaxWasteProductToAdd { get; private set; } = 10.0f;
 
     [ExportCategory("Computer Items to Add")]
+    [Export] public ComputerItemResource[] ToDoItemResource { get; private set; } = null;
     [Export] public ComputerItemResource[] EmailItemResources { get; private set; } = null;
     [Export] public ComputerItemResource[] NewsItemResources { get; private set; } = null;
 }

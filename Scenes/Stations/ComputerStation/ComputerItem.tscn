@@ -16,25 +16,27 @@ layout_mode = 2
 [node name="Title" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "[CUSTOM TITLE HERE]"
 autowrap_mode = 2
 
 [node name="Body" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 18
 text = "[Custom Body Here]"
 autowrap_mode = 2
 
 [node name="Byline" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "[Custom Body Here]"
 autowrap_mode = 2
 
 [node name="DateReceived" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 18
 text = "[Custom Body Here]"
 autowrap_mode = 2

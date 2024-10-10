@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://gx0gj8xcvj44"]
+
+[ext_resource type="PackedScene" uid="uid://c5qku0urn50du" path="res://Scenes/Stations/ComputerStation/ComputerItemSpawner.tscn" id="1_f6wax"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ToDoPage/ToDoItemSpawner.cs" id="2_gf8x4"]
+
+[node name="ToDoItemSpawner" instance=ExtResource("1_f6wax")]
+script = ExtResource("2_gf8x4")

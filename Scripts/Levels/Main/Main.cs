@@ -136,7 +136,20 @@ public partial class Main : Node3D
                 dailyNeedResources[dayIndex].MaxHappinessReplenishment,
                 dailyNeedResources[dayIndex].MaxWasteProductToAdd);
 
-            // Safely handle EmailItemResources
+            // Load in to do resources
+            if (dailyNeedResources[dayIndex].ToDoItemResource != null && dailyNeedResources[dayIndex].ToDoItemResource.Length > 0)
+            {
+                foreach (ComputerItemResource resource in dailyNeedResources[dayIndex].ToDoItemResource)
+                {
+                    globalSignals.RaiseToDoItemReceived(resource);
+                }
+            }
+            else
+            {
+                GD.PrintErr($"No EmailItemResources found for day {dayIndex}");
+            }
+
+            // Load in email resources
             if (dailyNeedResources[dayIndex].EmailItemResources != null && dailyNeedResources[dayIndex].EmailItemResources.Length > 0)
             {
                 foreach (ComputerItemResource resource in dailyNeedResources[dayIndex].EmailItemResources)
@@ -149,7 +162,7 @@ public partial class Main : Node3D
                 GD.PrintErr($"No EmailItemResources found for day {dayIndex}");
             }
 
-            // Safely handle NewsItemResources
+            // Load in news item resources
             if (dailyNeedResources[dayIndex].NewsItemResources != null && dailyNeedResources[dayIndex].NewsItemResources.Length > 0)
             {
                 foreach (ComputerItemResource resource in dailyNeedResources[dayIndex].NewsItemResources)

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public partial class GlobalSignals : Node
 {
     public event Action OnBlackScreenDisappeared;
-    public event Action OnDayLoadedIn; // Used by Stations to determine whether or not to hand back control to Player after exiting a station
 
     public event Action<int[]> OnGenerateEmployeeNumber;
 
@@ -29,6 +28,7 @@ public partial class GlobalSignals : Node
     public event Action<bool> OnCreatureCleanRequestSatisfied; // Used to determine whether request should be cleared or not
     public event Action<bool> OnCreaturePlayRequestSatisfied; // Used to determine whether request should be cleared or not
 
+    public event Action<ComputerItemResource> OnToDoItemReceived;
     public event Action<ComputerItemResource> OnEmailReceived;
     public event Action OnEmailsRead;
     public event Action<ComputerItemResource> OnNewsArticleReceived;
@@ -63,6 +63,7 @@ public partial class GlobalSignals : Node
     public void RaiseCreatureCleanRequestSatisfied(bool isSatisfied) { OnCreatureCleanRequestSatisfied?.Invoke(isSatisfied); }
     public void RaiseCreaturePlayRequestSatisfied(bool isSatisfied) { OnCreaturePlayRequestSatisfied?.Invoke(isSatisfied); }
 
+    public void RaiseToDoItemReceived(ComputerItemResource toDoItemResource) { OnToDoItemReceived?.Invoke(toDoItemResource); }
     public void RaiseEmailReceived(ComputerItemResource emailResource) { OnEmailReceived?.Invoke(emailResource); }
     public void RaiseEmailsRead() { OnEmailsRead?.Invoke(); }
     public void RaiseNewsArticleReceived(ComputerItemResource articleResource) { OnNewsArticleReceived?.Invoke(articleResource); }

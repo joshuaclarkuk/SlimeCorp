@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://bbo8xnvyf2r2y"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_etqvk"]
+
+[resource]
+script = ExtResource("1_etqvk")
+ItemTitle = "Keep Machine Refuelled"
+ItemBody = "Use the Fuelling Station to respond to requests for fuel."
+ItemByline = "Numpad keys: Activated/Deactivate button
+Left-click and drag: Pull lever to confirm"
+ItemDateReceived = "Signed, Supervisor Phillips"

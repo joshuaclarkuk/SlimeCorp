@@ -7,12 +7,9 @@ public partial class OperatingSystem : Control
     [Export] private TabContainer tabContainerNode = null;
 
     [ExportCategory("Item Spawners")]
+    [Export] private ToDoItemSpawner toDoItemSpawnerNode = null;
     [Export] private EmailItemSpawner emailItemSpawnerNode = null;
     [Export] private NewsItemSpawner newsItemSpawnerNode = null;
-
-    [ExportCategory("Resources")]
-    [Export] private ComputerItemResource[] emailItemResources;
-    [Export] private ComputerItemResource[] newsItemResources;
 
     [ExportCategory("Behaviour")]
     [Export] private float fadeDuration = 0.3f;
@@ -36,6 +33,7 @@ public partial class OperatingSystem : Control
 
     private void SubscribeToSignals()
     {
+        globalSignals.OnToDoItemReceived += HandleToDoItemReceived;
         globalSignals.OnEmailReceived += HandleEmailReceived;
         globalSignals.OnNewsArticleReceived += HandleNewsArticleReceived;
         globalSignals.OnPlayerInteractWithStation += HandlePlayerInteractWithStation;
@@ -45,6 +43,7 @@ public partial class OperatingSystem : Control
 
     private void UnsubscribeFromSignals()
     {
+        globalSignals.OnToDoItemReceived -= HandleToDoItemReceived;
         globalSignals.OnEmailReceived -= HandleEmailReceived;
         globalSignals.OnNewsArticleReceived -= HandleNewsArticleReceived;
         globalSignals.OnPlayerInteractWithStation -= HandlePlayerInteractWithStation;
@@ -68,6 +67,9 @@ public partial class OperatingSystem : Control
 
     private void HandlePlayerInteractWithStation(E_StationType stationType)
     {
+        // Set active tab to be TO DO list
+        tabContainerNode.CurrentTab = 0;
+
         // Register mouse events
         MouseFilter = MouseFilterEnum.Stop;
 
@@ -80,6 +82,11 @@ public partial class OperatingSystem : Control
         MouseFilter = MouseFilterEnum.Ignore;
 
         if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(0.0f); }
+    }
+
+    private void HandleToDoItemReceived(ComputerItemResource resource)
+    {
+        toDoItemSpawnerNode.AddNewItemToScreen(resource);
     }
 
     private void HandleEmailReceived(ComputerItemResource resource)

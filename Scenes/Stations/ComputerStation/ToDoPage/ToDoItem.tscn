@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccmsn8f76rjyt"]
+
+[ext_resource type="PackedScene" uid="uid://dpu2at23vdyb1" path="res://Scenes/Stations/ComputerStation/ComputerItem.tscn" id="1_txg81"]
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ToDoPage/ToDoItem.cs" id="2_djyqb"]
+
+[node name="ToDoItem" node_paths=PackedStringArray("titleLabelNode", "bodyLabelNode", "bylineLabelNode", "dateReceivedLabelNode") instance=ExtResource("1_txg81")]
+script = ExtResource("2_djyqb")
+titleLabelNode = NodePath("VBoxContainer/Title")
+bodyLabelNode = NodePath("VBoxContainer/Body")
+bylineLabelNode = NodePath("VBoxContainer/Byline")
+dateReceivedLabelNode = NodePath("VBoxContainer/DateReceived")

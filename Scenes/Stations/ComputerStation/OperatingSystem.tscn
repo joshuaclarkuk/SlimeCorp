@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ntdmg6i2yq7u"]
+[gd_scene load_steps=7 format=3 uid="uid://ntdmg6i2yq7u"]
 
 [ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_474pk"]
 [ext_resource type="PackedScene" uid="uid://dnmbec4rdu0bu" path="res://Scenes/Stations/ComputerStation/EmailPage/EmailItemSpawner.tscn" id="2_3e601"]
 [ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/OperatingSystem.cs" id="2_vkddv"]
+[ext_resource type="PackedScene" uid="uid://gx0gj8xcvj44" path="res://Scenes/Stations/ComputerStation/ToDoPage/ToDoItemSpawner.tscn" id="3_bjpwx"]
+[ext_resource type="PackedScene" uid="uid://ccmsn8f76rjyt" path="res://Scenes/Stations/ComputerStation/ToDoPage/ToDoItem.tscn" id="4_xq8ua"]
 [ext_resource type="PackedScene" uid="uid://ctp0lj7xhqriu" path="res://Scenes/Stations/ComputerStation/NewsPage/NewsItemSpawner.tscn" id="5_rn2es"]
 
-[node name="OperatingSystem" type="Control" node_paths=PackedStringArray("tabContainerNode", "emailItemSpawnerNode", "newsItemSpawnerNode")]
+[node name="OperatingSystem" type="Control" node_paths=PackedStringArray("tabContainerNode", "toDoItemSpawnerNode", "emailItemSpawnerNode", "newsItemSpawnerNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +17,7 @@ grow_vertical = 2
 theme = ExtResource("1_474pk")
 script = ExtResource("2_vkddv")
 tabContainerNode = NodePath("MarginContainer/TabContainer")
+toDoItemSpawnerNode = NodePath("MarginContainer/TabContainer/TO DO/PanelContainer/MarginContainer/ScrollContainer/ToDoItemSpawner")
 emailItemSpawnerNode = NodePath("MarginContainer/TabContainer/Emails/PanelContainer/MarginContainer/ScrollContainer/EmailItemSpawner")
 newsItemSpawnerNode = NodePath("MarginContainer/TabContainer/News/PanelContainer/MarginContainer/ScrollContainer/NewsItemSpawner")
 
@@ -37,9 +40,10 @@ grow_vertical = 2
 
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
-current_tab = 0
+current_tab = 1
 
 [node name="TO DO" type="TabBar" parent="MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -57,8 +61,13 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/TO DO/PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="ToDoItemSpawner" parent="MarginContainer/TabContainer/TO DO/PanelContainer/MarginContainer/ScrollContainer" instance=ExtResource("3_bjpwx")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+packedSceneToInstantiate = ExtResource("4_xq8ua")
+
 [node name="Emails" type="TabBar" parent="MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
