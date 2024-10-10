@@ -75,13 +75,45 @@ public partial class Stations : Node3D
             // Create and execute camera movement tween
             Tween moveCameraToStationPositionTween = GetTree().CreateTween();
             moveCameraToStationPositionTween.SetTrans(Tween.TransitionType.Sine);
-            moveCameraToStationPositionTween.TweenProperty(rovingCameraNode, "transform", targetMarker.GlobalTransform, cameraTweenDuration);
+            moveCameraToStationPositionTween.TweenProperty(rovingCameraNode, "position", targetMarker.GlobalPosition, cameraTweenDuration);
             moveCameraToStationPositionTween.Play();
+
+            // Get the current and target Y-axis rotations (in degrees)
+            Vector3 currentRotation = rovingCameraNode.GlobalRotationDegrees;
+            Vector3 targetRotation = targetMarker.GlobalRotationDegrees;
+
+            // Calculate the shortest Y rotation (the other axes are handled normally)
+            float yRotationDifference = Mathf.Wrap(targetRotation.Y - currentRotation.Y, -180f, 180f);
+
+            // Set the target Y rotation, using the calculated shortest path
+            Vector3 shortestRotation = new Vector3(targetRotation.X, currentRotation.Y + yRotationDifference, targetRotation.Z);
+
+            // Create and execute camera rotation tween using the shortest path
+            Tween moveCameraToStationRotationTween = GetTree().CreateTween();
+            moveCameraToStationRotationTween.SetTrans(Tween.TransitionType.Sine);
+            moveCameraToStationRotationTween.TweenProperty(rovingCameraNode, "rotation_degrees", shortestRotation, cameraTweenDuration);
+            moveCameraToStationRotationTween.Play();
         }
         else
         {
             GD.PrintErr($"Station type {stationType} not found in camera position dictionary.");
         }
+    }
+
+    private void MoveCameraToPlayer()
+    {
+        // Create and execute camera tweens
+        // Position
+        Tween returnCameraPositionTween = GetTree().CreateTween();
+        returnCameraPositionTween.SetTrans(Tween.TransitionType.Sine);
+        returnCameraPositionTween.TweenProperty(rovingCameraNode, "position", playerCameraPivotNode.GlobalPosition, cameraTweenDuration);
+        returnCameraPositionTween.Play();
+        returnCameraPositionTween.Finished += HandleReturnCameraTweenFinished;
+        // Rotation
+        Tween returnCameraRotationTween = GetTree().CreateTween();
+        returnCameraRotationTween.SetTrans(Tween.TransitionType.Sine);
+        returnCameraRotationTween.TweenProperty(rovingCameraNode, "rotation", playerCameraPivotNode.GlobalRotation, cameraTweenDuration);
+        returnCameraRotationTween.Play();
     }
 
     private void ActivateRelevantStationInputs(E_StationType stationType)
@@ -108,22 +140,6 @@ public partial class Stations : Node3D
                 }
             }
         }
-    }
-
-    private void MoveCameraToPlayer()
-    {
-        // Create and execute camera tweens
-        // Position
-        Tween returnCameraPositionTween = GetTree().CreateTween();
-        returnCameraPositionTween.SetTrans(Tween.TransitionType.Sine);
-        returnCameraPositionTween.TweenProperty(rovingCameraNode, "position", playerCameraPivotNode.GlobalPosition, cameraTweenDuration);
-        returnCameraPositionTween.Play();
-        returnCameraPositionTween.Finished += HandleReturnCameraTweenFinished;
-        // Rotation
-        Tween returnCameraRotationTween = GetTree().CreateTween();
-        returnCameraRotationTween.SetTrans(Tween.TransitionType.Sine);
-        returnCameraRotationTween.TweenProperty(rovingCameraNode, "rotation", playerCameraPivotNode.GlobalRotation, cameraTweenDuration);
-        returnCameraRotationTween.Play();
     }
 
     private void ActivateStationInputs(Station station)
