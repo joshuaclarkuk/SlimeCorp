@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://3flflpbhhvpf"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_teyl4"]
+
+[resource]
+script = ExtResource("1_teyl4")
+ItemTitle = "Vent Waste Product"
+ItemBody = "Use the Cleaning Station to vent excess gas from the processing chamber as per the request on the screen. Lotta fuel means a lotta gas. Lotta gas means a lotta risk. Lotta risk means a lotta paperwork. And I don't like paperwork."
+ItemByline = "Numpad keys: Select sectors to vent
+Left-click and drag: Pull lever to confirm"
+ItemDateReceived = "Signed, Supervisor Phillips"

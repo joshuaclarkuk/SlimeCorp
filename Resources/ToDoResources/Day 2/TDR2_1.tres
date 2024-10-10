@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://dpenocb5viqa0"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_gof4p"]
+
+[resource]
+script = ExtResource("1_gof4p")
+ItemTitle = "Keep Machine Refuelled"
+ItemBody = "Been having problems with interlopers recently, so they've asked the night shift to step up security.
+
+Use the Security Station in the marked room to identify and eliminate anything that might pose a threat to the integrity of the facility. Badgers, and such. Definitely nothing bigger than that. No, Sir."
+ItemByline = "INSTRUCTIONS
+Numpad key 4: Move one unit left
+Numpad key 6: Move one unit right
+Numpad key 8: Eliminate identified threat"
+ItemDateReceived = "Supervisor Phillips"

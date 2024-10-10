@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bk22xfsc8r7bg"]
+
+[ext_resource type="Texture2D" uid="uid://cv8jospwgm1o2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Albedo.png" id="1_cjwuu"]
+[ext_resource type="Texture2D" uid="uid://4wwv8867w4g8" path="res://3D Folder/textures folder/Level folder/Walls/walls_glow.png" id="2_g00rx"]
+[ext_resource type="Texture2D" uid="uid://jbrr5abn5iq2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Metalness.png" id="3_r2nfh"]
+[ext_resource type="Texture2D" uid="uid://cext5h5fsy0cq" path="res://3D Folder/textures folder/Level folder/Walls/walls_Normal.png" id="4_mme7y"]
+[ext_resource type="Texture2D" uid="uid://c6cypv6gee06n" path="res://3D Folder/textures folder/Level folder/Walls/walls_Roughness.png" id="5_qqhld"]
+
+[resource]
+albedo_texture = ExtResource("1_cjwuu")
+metallic = 1.0
+metallic_texture = ExtResource("3_r2nfh")
+roughness_texture = ExtResource("5_qqhld")
+emission_enabled = true
+emission_texture = ExtResource("2_g00rx")
+normal_enabled = true
+normal_texture = ExtResource("4_mme7y")
+uv1_scale = Vector3(0.12, 0.215, 0.145)
+uv1_offset = Vector3(0.675, 0.5, 0)

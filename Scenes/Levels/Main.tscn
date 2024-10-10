@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=50 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -18,11 +18,17 @@
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 [ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
+[ext_resource type="Texture2D" uid="uid://cv8jospwgm1o2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Albedo.png" id="11_sgdfc"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
+[ext_resource type="Texture2D" uid="uid://4wwv8867w4g8" path="res://3D Folder/textures folder/Level folder/Walls/walls_glow.png" id="12_a3nhn"]
 [ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
 [ext_resource type="AudioStream" uid="uid://bv53q1m1rygu" path="res://Assets/Audio/Music/Main/Passenger.ogg" id="12_w8hik"]
+[ext_resource type="Texture2D" uid="uid://jbrr5abn5iq2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Metalness.png" id="13_y7214"]
+[ext_resource type="Texture2D" uid="uid://cext5h5fsy0cq" path="res://3D Folder/textures folder/Level folder/Walls/walls_Normal.png" id="14_oxp0q"]
+[ext_resource type="Texture2D" uid="uid://c6cypv6gee06n" path="res://3D Folder/textures folder/Level folder/Walls/walls_Roughness.png" id="15_bh40k"]
+[ext_resource type="Material" uid="uid://bk22xfsc8r7bg" path="res://Materials/MainLevel/M_MainLevelWallsScaled.tres" id="15_f811p"]
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
 [ext_resource type="PackedScene" uid="uid://b42ksxkrqndmw" path="res://Scenes/Events/Main/WarningSiren.tscn" id="16_u8xjs"]
 
@@ -50,6 +56,30 @@ size = Vector2(2.6, 2.6)
 [sub_resource type="QuadMesh" id="QuadMesh_m7wyb"]
 material = ExtResource("3_2tkmp")
 size = Vector2(5, 23)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv4cl"]
+albedo_texture = ExtResource("11_sgdfc")
+metallic = 1.0
+metallic_texture = ExtResource("13_y7214")
+roughness_texture = ExtResource("15_bh40k")
+emission_enabled = true
+emission_texture = ExtResource("12_a3nhn")
+normal_enabled = true
+normal_texture = ExtResource("14_oxp0q")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_offset = Vector3(0.53, 1.465, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohkyb"]
+albedo_texture = ExtResource("11_sgdfc")
+metallic = 1.0
+metallic_texture = ExtResource("13_y7214")
+roughness_texture = ExtResource("15_bh40k")
+emission_enabled = true
+emission_texture = ExtResource("12_a3nhn")
+normal_enabled = true
+normal_texture = ExtResource("14_oxp0q")
+uv1_scale = Vector3(-0.155, 0.215, 0.215)
+uv1_offset = Vector3(0.675, 0.5, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
@@ -149,6 +179,46 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.2, 10.3, -1.6)
 mesh = SubResource("QuadMesh_m7wyb")
 skeleton = NodePath("../..")
+
+[node name="SecurityRoomWalls" type="Node3D" parent="Environment/LevelMesh" index="2"]
+
+[node name="SecurityRoomWallNorth" type="CSGBox3D" parent="Environment/LevelMesh/SecurityRoomWalls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6, 5.3, 1)
+use_collision = true
+size = Vector3(10, 11, 1.2)
+material = SubResource("StandardMaterial3D_gv4cl")
+
+[node name="SecurityRoomWallEast1" type="CSGBox3D" parent="Environment/LevelMesh/SecurityRoomWalls" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 5.3, 8.6)
+use_collision = true
+size = Vector3(3, 11, 1.2)
+material = ExtResource("15_f811p")
+
+[node name="SecurityRoomWallEast3" type="CSGBox3D" parent="Environment/LevelMesh/SecurityRoomWalls" index="2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 6.9, 6.05)
+use_collision = true
+size = Vector3(2.1, 7.8, 1.2)
+material = ExtResource("15_f811p")
+
+[node name="SecurityRoomWallEast2" type="CSGBox3D" parent="Environment/LevelMesh/SecurityRoomWalls" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 5.3, 3.05)
+use_collision = true
+size = Vector3(3.9, 11, 1.2)
+material = ExtResource("15_f811p")
+
+[node name="BlankRoomWalls" type="Node3D" parent="Environment/LevelMesh" index="3"]
+
+[node name="BlankRoomWallSouth" type="CSGBox3D" parent="Environment/LevelMesh/BlankRoomWalls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6, 5.3, -4.7)
+use_collision = true
+size = Vector3(10, 11, 1.2)
+material = SubResource("StandardMaterial3D_gv4cl")
+
+[node name="SecurityRoomWallEast1" type="CSGBox3D" parent="Environment/LevelMesh/BlankRoomWalls" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 5.3, -9.4)
+use_collision = true
+size = Vector3(9, 11, 1.2)
+material = SubResource("StandardMaterial3D_ohkyb")
 
 [node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
@@ -359,7 +429,7 @@ debugUI = NodePath("../../../../DebugUI")
 transform = Transform3D(-1, 0, -1.60937e-07, 0, 1, 0, 1.60937e-07, 0, -1, -11.9, 0, 22)
 
 [node name="HappinessGameStation" parent="Environment/Objects/Stations" index="6" instance=ExtResource("10_jnwi1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.6, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.6, 0, 6)
 
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)
@@ -425,6 +495,14 @@ shadow_enabled = true
 shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
+
+[node name="SecurityRoom" type="Node3D" parent="Lighting" index="5"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting/SecurityRoom" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21, 4, 6)
+light_color = Color(0.947316, 0.846706, 0.44411, 1)
+spot_range = 7.0
+spot_angle = 37.5267
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 

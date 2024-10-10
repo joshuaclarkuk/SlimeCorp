@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://w47tw0ikkabw"]
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=5 format=3 uid="uid://w47tw0ikkabw"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_pan3e"]
+[ext_resource type="Resource" uid="uid://iblhq1hwy7k1" path="res://Resources/ToDoResources/Day 1/TDR1_1.tres" id="1_yyro5"]
+[ext_resource type="Resource" uid="uid://bbo8xnvyf2r2y" path="res://Resources/ToDoResources/Day 1/TDR1_2.tres" id="2_730ss"]
+[ext_resource type="Resource" uid="uid://cipkgxutbi6o7" path="res://Resources/ToDoResources/Day 1/TDR1_3.tres" id="3_j3kv2"]
+[ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="3_pqyyb"]
 
 [resource]
-script = ExtResource("1_pan3e")
+script = ExtResource("3_pqyyb")
 TitleToDisplay = "Day 2
 Extraction"
 MinutesInDay = 10
@@ -15,3 +18,6 @@ MaxHungerReplenishment = 90.0
 MaxHappinessReplenishment = 5.0
 MaxCleanlinessReplenishment = 0.0
 MaxWasteProductToAdd = 0.0
+ToDoItemResource = Array[Object]([ExtResource("1_yyro5"), ExtResource("2_730ss"), ExtResource("3_j3kv2"), null])
+EmailItemResources = null
+NewsItemResources = null

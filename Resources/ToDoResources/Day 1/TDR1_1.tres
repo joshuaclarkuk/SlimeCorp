@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://bbo8xnvyf2r2y"]
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://iblhq1hwy7k1"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_etqvk"]
 
 [resource]
 script = ExtResource("1_etqvk")
-ItemTitle = "Keep Machine Refuelled"
-ItemBody = "Use the Fuelling Station to respond to requests for fuel."
-ItemByline = "Numpad keys: Activated/Deactivate button
-Left-click and drag: Pull lever to confirm"
-ItemDateReceived = "Signed, Supervisor Phillips"
+ItemTitle = "Clock In To Start Shift, Clock Out To End It"
+ItemBody = "Use the Clock-In machine on the wall behind you to, well... clock-in, numb-nuts! You can't use the machinery until you do. You'll need to insert your punch card before you enter your employee ID number.
+
+Do the same again to clock back out. Make sure you've met your biofuel collection quota for the day before your shift ends, or there'll be Hell to pay. And Hell's meaner than I am. "
+ItemByline = "INSTRUCTIONS
+Left-click and drag: Insert punch card
+Numpad keys: Enter employee number
+"
+ItemDateReceived = "Supervisor Phillips"

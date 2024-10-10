@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://cipkgxutbi6o7"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_8dw4k"]
+
+[resource]
+script = ExtResource("1_8dw4k")
+ItemTitle = "Replace Biofuel Canisters When Full"
+ItemBody = "Unscrew the valve on the Collection Station to detach full canisters, then head for the Canister Storage Room, collect a new canister and attach it. Don't forget to close the valve again! I get tired of having to remind you guys! You'll hear it start back up when everything's attached correctly."
+ItemByline = "INSTRUCTIONS
+Left-click and drag up/down: Twist valve on Collection Station (drag up to release and down to close). 
+Left-click and drag down: release a new canister from Canister Storage Station"
+ItemDateReceived = "Supervisor Phillips"

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=5 format=3 uid="uid://ccrbkvrbb7p00"]
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=7 format=3 uid="uid://ccrbkvrbb7p00"]
 
 [ext_resource type="Resource" uid="uid://cepnpusbc381q" path="res://Resources/EmailItemResources/Day 1/EIR1_1.tres" id="1_r2h1w"]
 [ext_resource type="Resource" uid="uid://b4ohy2cqrf1l7" path="res://Resources/NewsItemResources/Day 1/NIR1_1.tres" id="2_dlh2h"]
-[ext_resource type="Resource" uid="uid://bbo8xnvyf2r2y" path="res://Resources/ToDoResources/Day 1/TDR1_1.tres" id="3_yblkf"]
+[ext_resource type="Resource" uid="uid://iblhq1hwy7k1" path="res://Resources/ToDoResources/Day 1/TDR1_1.tres" id="3_yblkf"]
 [ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="4_dmllj"]
+[ext_resource type="Resource" uid="uid://bbo8xnvyf2r2y" path="res://Resources/ToDoResources/Day 1/TDR1_2.tres" id="4_ehmlq"]
+[ext_resource type="Resource" uid="uid://cipkgxutbi6o7" path="res://Resources/ToDoResources/Day 1/TDR1_3.tres" id="5_bkah2"]
 
 [resource]
 script = ExtResource("4_dmllj")
@@ -18,6 +20,6 @@ MaxHungerReplenishment = 100.0
 MaxHappinessReplenishment = 0.0
 MaxCleanlinessReplenishment = 0.0
 MaxWasteProductToAdd = 0.0
-ToDoItemResource = Array[Object]([ExtResource("3_yblkf")])
+ToDoItemResource = Array[Object]([ExtResource("3_yblkf"), ExtResource("4_ehmlq"), ExtResource("5_bkah2")])
 EmailItemResources = Array[Object]([ExtResource("1_r2h1w")])
 NewsItemResources = Array[Object]([ExtResource("2_dlh2h")])
