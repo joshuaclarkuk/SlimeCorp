@@ -51,17 +51,17 @@ public partial class Main : Node3D
         player = GetNode<Player>("/root/Player");
 
         // Connect timeline signals
-        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared; // Start new day
-        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
-        globalSignals.OnShiftIsOver -= HandleShiftIsOver;
-        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut; // End day
+        globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared; // Start new day
+        globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
+        globalSignals.OnShiftIsOver += HandleShiftIsOver;
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut; // End day
 
         // Connect station-based signals
-        globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
+        globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
 
         // Connect win/failure states
-        globalSignals.OnPlayerFailureState -= HandlePlayerFailureState;
-        globalSignals.OnPlayerWinState -= HandlePlayerWinState;
+        globalSignals.OnPlayerFailureState += HandlePlayerFailureState;
+        globalSignals.OnPlayerWinState += HandlePlayerWinState;
 
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
@@ -283,7 +283,7 @@ public partial class Main : Node3D
 
     private void HandlePlayerFailureState()
     {
-        GD.PrintErr("Player did not meet creatures needs. Got fired.")
+        GD.PrintErr("Player did not meet creatures needs. Got fired.");
     }
 
     private void HandlePlayerWinState()

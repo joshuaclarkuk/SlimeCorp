@@ -11,7 +11,7 @@
 script = ExtResource("4_dmllj")
 TitleToDisplay = "Day 1
 Orientation"
-MinutesInDay = 5
+MinutesInDay = 3
 SlimeCollectionTarget = 100.0
 HungerDepletionRate = 1.0
 HappinessDepletionRate = 0.0
