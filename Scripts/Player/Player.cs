@@ -51,7 +51,6 @@ public partial class Player : CharacterBody3D
 
 		// Set intial visiblity variables
 		canisterCarrierNode.Visible = false;
-		newEmailNotificationNode.Visible = false;
 
 		// Make camera current (just in case Godot thinks Roving Camera should be current)
 		PlayerCameraNode.MakeCurrent();
@@ -222,8 +221,6 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnSlimeCanisterTakenFromStorage += HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation += HandleSlimeCanisterAddedToStation;
 		globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
-		globalSignals.OnEmailReceived += HandleEmailReceived;
-		globalSignals.OnEmailsRead += HandleEmailsRead;
 		interactRaycastTimerNode.Timeout += HandleInteractRaycastTimerTimeout;
 	}
 
@@ -236,8 +233,6 @@ public partial class Player : CharacterBody3D
 		globalSignals.OnSlimeCanisterTakenFromStorage -= HandleSlimeCanisterTakenFromStorage;
 		globalSignals.OnSlimeCanisterAddedToStation -= HandleSlimeCanisterAddedToStation;
 		globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
-		globalSignals.OnEmailReceived -= HandleEmailReceived;
-		globalSignals.OnEmailsRead -= HandleEmailsRead;
 		interactRaycastTimerNode.Timeout -= HandleInteractRaycastTimerTimeout;
 	}
 
@@ -308,16 +303,6 @@ public partial class Player : CharacterBody3D
 	{
 		PlayerCameraNode.MakeCurrent();
 		isRelinquishingControl = false;
-	}
-
-	private void HandleEmailReceived(ComputerItemResource resource)
-	{
-		newEmailNotificationNode.Visible = true;
-	}
-
-	private void HandleEmailsRead()
-	{
-		newEmailNotificationNode.Visible = false;
 	}
 
 	private void HandleInteractRaycastTimerTimeout()

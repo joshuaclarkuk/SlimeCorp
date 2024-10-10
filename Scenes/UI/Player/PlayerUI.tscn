@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://s2ambm42gk1q"]
+
+[ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="1_iu4ry"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerUI.cs" id="2_8v0cq"]
+[ext_resource type="Texture2D" uid="uid://w4n1gg6o03ld" path="res://Assets/Sprites/EmailIcon.png" id="3_32kwd"]
+[ext_resource type="PackedScene" uid="uid://drjb8g7d86rev" path="res://Scripts/UI/Player/ToDoListUI.tscn" id="4_uohay"]
+
+[node name="PlayerUI" type="Control" node_paths=PackedStringArray("NewEmailContainerNode")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_iu4ry")
+script = ExtResource("2_8v0cq")
+NewEmailContainerNode = NodePath("MarginContainer/NewEmailContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewEmailContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/NewEmailContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("3_32kwd")
+expand_mode = 5
+
+[node name="NewEmailLabel" type="Label" parent="MarginContainer/NewEmailContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "New Email"
+
+[node name="ToDoListUI" parent="MarginContainer" instance=ExtResource("4_uohay")]
+layout_mode = 2
