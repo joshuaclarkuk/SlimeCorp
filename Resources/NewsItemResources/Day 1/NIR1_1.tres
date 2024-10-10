@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("1_ihahb")
-ItemTitle = "Launch of New Facility"
-ItemBody = "Proud day yadda yadda"
+ItemTitle = "A Boon for Green (But Mostly Black) Energy!"
+ItemBody = "The much-anticipated grand opening of [REDACTED]'s brand-new energy facility is being hailed as a victory for clean, renewable power—assuming, of course, you ignore the unholy slime oozing from every drainpipe in a 10-mile radius. Residents of [REDACTED] are advised to avoid all forms of direct eye contact with puddles, which may or may not be sentient.
+
+A spokesperson for the facility insists that the slimy residue is “just a minor side effect of progress.” Meanwhile, local wildlife experts are baffled by the sudden appearance of neon-colored squirrels, which seem to levitate at will and whisper cryptic messages into the ears of passersby. “They mostly talk about dread,” said one eyewitness, “but occasionally, they just ask how you’re doing, which is worse.”"
 ItemByline = "Arthur Bloke"
-ItemDateReceived = "10/10/2024"
+ItemDateReceived = "02/10/2024"

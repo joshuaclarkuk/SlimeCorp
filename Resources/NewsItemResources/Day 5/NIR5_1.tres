@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://cvt1f45fj7cd8"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_aqxpk"]
+
+[resource]
+script = ExtResource("1_aqxpk")
+ItemTitle = "Annual Town Festival Tainted by Translucent Children"
+ItemBody = "The annual [REDACT] town festival was supposed to be a day of family fun, but things took a dark turn this year after an unexpected surge of energy from the local [REDACTED] facility. Festival-goers were treated to a spontaneous ‘slime storm,’ during which several participants claimed to hear distant chanting in a language not spoken for thousands of years.
+
+Children enjoyed the slime pits, though several parents expressed concerns when their offspring emerged with translucent skin and the ability to predict the stock market. A representative from the facility assured festival-goers that the incident was just “part of the fun” and that the side effects would wear off in time—or at least before the next quarter."
+ItemByline = "Arthur Bloke"
+ItemDateReceived = "17/09/2026"

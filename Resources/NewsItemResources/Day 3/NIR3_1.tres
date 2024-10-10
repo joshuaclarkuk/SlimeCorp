@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://cow343ksnsf1a"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_t1y2x"]
+
+[resource]
+script = ExtResource("1_t1y2x")
+ItemTitle = "Strange Weather Patterns Coincide with Energy Boom"
+ItemBody = "Local meteorologists have noted the onset of strange weather conditions following the activation of the town’s new [REDACTED] facility. Residents have reported an unsettling increase in ‘black rain,’ which falls upwards, coating the underside of overhangs and bottoms of treetops with what has been described as 'emotionally dampening slime.'
+
+The company assures us that these anomalies are “well within expected parameters,” though they declined to elaborate on what the expected parameters were.
+
+While some locals have taken to wearing foil hats and muttering about unseen horrors, the mayor still insists that there's no need for alarm. After all, where would we be without progress? Certainly not in the warm, pulsating grip of a benevolent ancient entity slowly wrapping its tendrils around our very souls"
+ItemByline = "Arthur Bloke"
+ItemDateReceived = "08/12/2025"

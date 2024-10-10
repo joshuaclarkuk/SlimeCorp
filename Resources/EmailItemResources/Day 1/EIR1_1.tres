@@ -4,15 +4,14 @@
 
 [resource]
 script = ExtResource("1_w128d")
-ItemTitle = "Welcome to Aeternum Energy"
-ItemBody = "Welcome to Aeternum Energy! We are delighted to have you join our dynamic and innovative team. As a company at the forefront of energy solutions, your role here will contribute to our continued success in delivering unparalleled service to our clients.
+ItemTitle = "Hello and welcome!"
+ItemBody = "Congratulations on your new role as our important [JOB TITLE] here at [FACILITY NAME]. We are so pleased to have you join us in contributing to a brighter future for our world. Apologies for not being there to greet you in person - many legal proceedings that require my attention, nothing to worry about, of course - but rest assured that while your role may be vital, it is also very simple:
 
-At Aeternum, we are driven by a commitment to sustainability and cutting-edge technologies, and we believe that your unique skills will play an integral part in our future growth. You will find that Aeternum provides a supportive and collaborative environment, with opportunities for personal and professional development.
+FOLLOW THE INSTRUCTIONS ON YOUR TERMINAL TO THE LETTER.
 
-We look forward to seeing the impact of your work. Should you have any questions during your onboarding, feel free to reach out to the HR department.
+If you have any questions, mistakes were clearly made during the interview process, but you're a competent employee, aren't you? [FACILITY NAME] doesn't make mistakes.
 
-Best regards,
-Richard Crowley
-Director of Human Resources"
-ItemByline = "From: Richard Crowley, Director of Human Resources"
-ItemDateReceived = "Date: October 7, 2026"
+Welcome to the family! Remember, at [FACILITY NAME], we are the future of humanity, and you are all valued members of our community in shaping what that looks like."
+ItemByline = "Sincerely,
+[FULL NAME], Human Resource Manager at [FACILITY NAME]"
+ItemDateReceived = "Received: October 7, 2026"

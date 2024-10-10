@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://du8qd147do8pg"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_mit6b"]
+
+[resource]
+script = ExtResource("1_mit6b")
+ItemTitle = "New Therapy Services Booming Thanks to [REDACTED] Facility"
+ItemBody = "The opening of the new energy facility has brought an economic boom to [Town Name], especially in the realm of mental health services. Since its debut, therapists and support groups have seen a sharp rise in cases of what experts are now calling “slime-induced ennui.”
+
+Symptoms include an overwhelming sense of impending doom, visions of tentacles curling out from under household furniture, and the growing suspicion that your reflection is watching you when you’re not looking. Therapists say it’s nothing that can’t be cured by a few sessions—or by accepting your inevitable fate at the hands of a malevolent, ancient slime god.
+The company assures us that these anomalies are “well within expected parameters,” though they declined to elaborate on what the expected parameters were.
+
+While some locals have taken to wearing foil hats and muttering about unseen horrors, the mayor still insists that there's no need for alarm. After all, where would we be without progress? Certainly not in the warm, pulsating grip of a benevolent ancient entity slowly wrapping its tendrils around our very souls"
+ItemByline = "Arthur Bloke"
+ItemDateReceived = "02/04/2026"
