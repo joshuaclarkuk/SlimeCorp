@@ -503,8 +503,11 @@ omni_range = 22.279
 [node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
 stream = ExtResource("12_w8hik")
 
-[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
+feedingStationNode = NodePath("../Environment/Objects/Stations/FeedingStation")
+happinessGameStationNode = NodePath("../Environment/Objects/Stations/HappinessGameStation")
+cleaningStationNode = NodePath("../Environment/Objects/Stations/CleaningStation")
 slimeCollectionStationNode = NodePath("../Environment/Objects/Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 

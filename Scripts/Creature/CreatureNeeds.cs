@@ -12,6 +12,9 @@ public partial class CreatureNeeds : Node3D
 
     [ExportCategory("External Nodes")]
     [Export] private CreatureNeedsDisplay creatureNeedsDisplayNode = null;
+    [Export] private FeedingStation feedingStationNode = null;
+    [Export] private HappinessGameStation happinessGameStationNode = null;
+    [Export] private CleaningStation cleaningStationNode = null;
     [Export] private SlimeCollectionStation slimeCollectionStationNode = null;
     [Export] private DebugUI debugUINode = null;
 
@@ -206,6 +209,9 @@ public partial class CreatureNeeds : Node3D
             newAngerPercentage = 0.0f;
         }            
         creatureNeedsDisplayNode.UpdateProgressBars(newHungerPercentage, newHappinessPercentage, newCleanlinessPercentage, newAngerPercentage, currentTimeLeft);
+        feedingStationNode.UpdateStationNeedsProgressBar(newHungerPercentage);
+        happinessGameStationNode.UpdateStationNeedsProgressBar(newHappinessPercentage);
+        cleaningStationNode.UpdateStationNeedsProgressBar(newCleanlinessPercentage);
         debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentAngerLevel, currentTimeLeft); // DEBUG TO REMOVE
     }
 

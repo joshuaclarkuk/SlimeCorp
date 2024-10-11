@@ -1,18 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dma5822r4j3lj"]
+[gd_scene load_steps=2 format=3 uid="uid://dma5822r4j3lj"]
 
-[ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation/BarrelFullComponent.cs" id="1_xmtjr"]
-[ext_resource type="AudioStream" uid="uid://8p16tajxffol" path="res://Assets/Audio/SFX/StationAlerts/BarrelFullBeep.ogg" id="2_okvvv"]
+[ext_resource type="Script" path="res://Scripts/Stations/_Components/StationAlertComponent.cs" id="1_xmtjr"]
 
-[node name="BarrelFullComponent" type="Node3D" node_paths=PackedStringArray("barrelFullLightNode", "barrelFullSoundNode")]
+[node name="StationAlertComponent" type="Node3D" node_paths=PackedStringArray("lightNode", "soundNode")]
 script = ExtResource("1_xmtjr")
-barrelFullLightNode = NodePath("BarrelFullLight")
-barrelFullSoundNode = NodePath("BarrelFullSound")
+lightNode = NodePath("Light")
+soundNode = NodePath("Sound")
 
-[node name="BarrelFullLight" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="."]
 light_color = Color(0, 1, 0, 1)
 omni_range = 3.0
 
-[node name="BarrelFullSound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_okvvv")
+[node name="Sound" type="AudioStreamPlayer3D" parent="."]
 volume_db = -15.0
 bus = &"Room Verb SFX"

@@ -5,6 +5,7 @@ public partial class HappinessGameStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private HappinessGameComponent happinessGameComponentNode = null;
     [Export] private Sprite3D screenNode = null;
+    [Export] private StationNeedsProgressBarComponent stationNeedsProgressBarComponent = null;
 
     [ExportCategory("Behaviour")]
     private float fadeDuration = 0.5f;
@@ -32,6 +33,16 @@ public partial class HappinessGameStation : Station
         FadeScreen(new Color(0.0f, 0.0f, 0.0f, 1.0f));
 
         GD.Print($"Calling ExitStation method on {Name}");
+    }
+
+    public void ResetMachine()
+    {
+        stationNeedsProgressBarComponent.ResetProgressBar();
+    }
+
+    public void UpdateStationNeedsProgressBar(float value)
+    {
+        stationNeedsProgressBarComponent.SetProgressBarValue(value);
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)

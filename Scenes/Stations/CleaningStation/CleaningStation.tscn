@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://b020e2hls2ace"]
+[gd_scene load_steps=7 format=3 uid="uid://b020e2hls2ace"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_ft1ox"]
 [ext_resource type="Script" path="res://Scripts/Stations/CleaningStation/CleaningStation.cs" id="2_7hmnt"]
 [ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="3_8614t"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_dr244"]
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="5_rhfc4"]
+[ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="6_gjauu"]
 
-[node name="CleaningStation" node_paths=PackedStringArray("leverNode", "flushingSystemTimerNode", "buttonsNode", "debugLabel") instance=ExtResource("1_ft1ox")]
+[node name="CleaningStation" node_paths=PackedStringArray("leverNode", "flushingSystemTimerNode", "stationNeedsProgressBarComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_ft1ox")]
 script = ExtResource("2_7hmnt")
 leverNode = NodePath("Lever")
 flushingSystemTimerNode = NodePath("FlushingSystemTimer")
+stationNeedsProgressBarComponent = NodePath("StationNeedsProgressBarComponent")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 3
@@ -40,5 +42,8 @@ material = ExtResource("3_8614t")
 
 [node name="FlushingSystemTimer" type="Timer" parent="." index="6"]
 one_shot = true
+
+[node name="StationNeedsProgressBarComponent" parent="." index="7" instance=ExtResource("6_gjauu")]
+transform = Transform3D(-8.74228e-09, -0.2, 0, 0.173205, -7.57103e-09, 0.1, -0.1, 4.37114e-09, 0.173205, -0.4, 1.4, -0.1)
 
 [editable path="Lever"]

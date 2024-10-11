@@ -6,7 +6,8 @@ public partial class SlimeCollectionStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Valve valveNode = null;
     [Export] private Node3D canisterMeshToAppear = null;
-    [Export] private BarrelFullComponent barrelfullComponentNode = null;
+    [Export] private StationNeedsProgressBarComponent stationNeedsProgressBarComponentNode = null;
+    [Export] private StationAlertComponent stationAlertComponentNode = null;
 
     [ExportCategory("AudioNodes")]
     [Export] private AudioStreamPlayer3D slimeCollectionAudioNode = null;
@@ -177,12 +178,13 @@ public partial class SlimeCollectionStation : Station
         currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister);
 
         // Update UI
+        stationNeedsProgressBarComponentNode.SetProgressBarValue(currentSlimeLevel);
         debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
 
         // If canister is full, trigger full event
         if (currentSlimeLevel >= maxSlimeInCanister)
         {
-            barrelfullComponentNode.BarrelFull();
+            stationAlertComponentNode.TriggerStationAlert();
         }
     }
 
@@ -230,7 +232,7 @@ public partial class SlimeCollectionStation : Station
             if (canisterInSlot)
             {
                 RemoveCanisterFromStationAndBankSlime();
-                barrelfullComponentNode.FullBarrelRemoved();
+                stationAlertComponentNode.SilenceStationAlert();
             }
         }
     }
@@ -253,6 +255,7 @@ public partial class SlimeCollectionStation : Station
         currentSlimeLevel = 0.0f;
 
         // Reset current slime display to zero
+        stationNeedsProgressBarComponentNode.ResetProgressBar();
         debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
 
         // Can play canister removal animation here

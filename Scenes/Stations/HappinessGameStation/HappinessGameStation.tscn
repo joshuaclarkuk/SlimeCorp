@@ -1,18 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvdnqemklskrt"]
+[gd_scene load_steps=8 format=3 uid="uid://dvdnqemklskrt"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_qae27"]
 [ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="2_7wcqi"]
 [ext_resource type="Script" path="res://Scripts/Stations/HappinessGameStation/HappinessGameStation.cs" id="2_vys67"]
 [ext_resource type="PackedScene" uid="uid://bapnc5v1qheh1" path="res://Scenes/Stations/HappinessGameStation/HappinessGameComponent.tscn" id="3_6lmv3"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_88ai8"]
+[ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="6_oghl3"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_d6eby"]
 viewport_path = NodePath("SubViewport")
 
-[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "screenNode", "buttonsNode", "debugLabel") instance=ExtResource("1_qae27")]
+[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "screenNode", "stationNeedsProgressBarComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_qae27")]
 script = ExtResource("2_vys67")
 happinessGameComponentNode = NodePath("SubViewport/HappinessGameComponent")
 screenNode = NodePath("Screen")
+stationNeedsProgressBarComponent = NodePath("StationNeedsProgressBarComponent")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 7
@@ -60,5 +62,8 @@ visible = false
 
 [node name="Button9" parent="Buttons" index="9"]
 visible = false
+
+[node name="StationNeedsProgressBarComponent" parent="." index="7" instance=ExtResource("6_oghl3")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.6, -0.7)
 
 [editable path="Buttons"]

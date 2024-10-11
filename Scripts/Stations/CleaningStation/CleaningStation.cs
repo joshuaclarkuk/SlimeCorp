@@ -7,6 +7,7 @@ public partial class CleaningStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Lever leverNode = null;
     [Export] private Timer flushingSystemTimerNode = null;
+    [Export] private StationNeedsProgressBarComponent stationNeedsProgressBarComponent = null;
 
     private List<E_AreasToClean> activeAreas = new List<E_AreasToClean>();
 
@@ -76,6 +77,11 @@ public partial class CleaningStation : Station
     {
         buttonsNode.ResetAndRaiseAllButtons();
         leverNode.ReturnToOriginalPosition();
+    }
+
+    public void UpdateStationNeedsProgressBar(float value)
+    {
+        stationNeedsProgressBarComponent.SetProgressBarValue(value);
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)

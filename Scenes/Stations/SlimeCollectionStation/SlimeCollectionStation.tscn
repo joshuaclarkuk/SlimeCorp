@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c81xuqyf4vlou"]
+[gd_scene load_steps=11 format=3 uid="uid://c81xuqyf4vlou"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_uotg4"]
 [ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation/SlimeCollectionStation.cs" id="2_2mdql"]
@@ -8,12 +8,15 @@
 [ext_resource type="AudioStream" uid="uid://bn5vnit1a02dv" path="res://Assets/Audio/SFX/Stations/SlimeCollectionStation/SlimeCollectionGrinding.ogg" id="6_6uxru"]
 [ext_resource type="AudioStream" uid="uid://d3vr0ddhtxm87" path="res://Assets/Audio/SFX/Stations/SlimeCollectionStation/BarrelRemoved.ogg" id="7_fb877"]
 [ext_resource type="PackedScene" uid="uid://dma5822r4j3lj" path="res://Scenes/Stations/SlimeCollectionStation/BarrelFullComponent.tscn" id="8_ougov"]
+[ext_resource type="AudioStream" uid="uid://8p16tajxffol" path="res://Assets/Audio/SFX/StationAlerts/BarrelFullBeep.ogg" id="9_fitfi"]
+[ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="10_j6n3r"]
 
-[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "canisterMeshToAppear", "barrelfullComponentNode", "slimeCollectionAudioNode", "barrelRemovedAudioNode", "buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
+[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "canisterMeshToAppear", "stationNeedsProgressBarComponentNode", "stationAlertComponentNode", "slimeCollectionAudioNode", "barrelRemovedAudioNode", "buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
 script = ExtResource("2_2mdql")
 valveNode = NodePath("Valve")
 canisterMeshToAppear = NodePath("Meshes/Canister")
-barrelfullComponentNode = NodePath("BarrelFullComponent")
+stationNeedsProgressBarComponentNode = NodePath("StationProgressBarComponent")
+stationAlertComponentNode = NodePath("StationAlertComponent")
 slimeCollectionAudioNode = NodePath("SlimeCollectionAudio")
 barrelRemovedAudioNode = NodePath("BarrelRemovedAudio")
 buttonsNode = NodePath("Buttons")
@@ -64,5 +67,10 @@ bus = &"Sound Effects"
 stream = ExtResource("7_fb877")
 bus = &"Room Verb SFX"
 
-[node name="BarrelFullComponent" parent="." index="8" instance=ExtResource("8_ougov")]
+[node name="StationAlertComponent" parent="." index="8" instance=ExtResource("8_ougov")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 2, 0)
+lightColor = Color(0, 1, 0, 1)
+soundToPlay = ExtResource("9_fitfi")
+
+[node name="StationProgressBarComponent" parent="." index="9" instance=ExtResource("10_j6n3r")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.8, 1.7, 0)

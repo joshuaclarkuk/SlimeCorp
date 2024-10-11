@@ -7,6 +7,7 @@ public partial class FeedingStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Lever leverNode = null;
     [Export] private Timer servingFoodTimerNode = null;
+    [Export] private StationNeedsProgressBarComponent stationNeedsProgressBarComponent = null;
 
     private List<E_IngredientList> activeIngredients = new List<E_IngredientList>();
 
@@ -76,6 +77,11 @@ public partial class FeedingStation : Station
     {
         buttonsNode.ResetAndRaiseAllButtons();
         leverNode.ReturnToOriginalPosition();
+    }
+
+    public void UpdateStationNeedsProgressBar(float value)
+    {
+        stationNeedsProgressBarComponent.SetProgressBarValue(value);
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)

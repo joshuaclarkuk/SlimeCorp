@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="1_oofwy"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/MainMenu.cs" id="2_eg5ks"]
-[ext_resource type="PackedScene" uid="uid://dyyccic1hr1ts" path="res://Scenes/Levels/Lobby.tscn" id="3_6l8sw"]
+[ext_resource type="PackedScene" uid="uid://6bsluq4t6i1h" path="res://Scenes/Levels/Main.tscn" id="3_qkpyi"]
 [ext_resource type="Material" uid="uid://bh7gq84vvd67g" path="res://Materials/Shaders/M_BlurScreenShader.tres" id="4_2ky1h"]
 [ext_resource type="PackedScene" uid="uid://v0ulbv20iqrk" path="res://Scenes/UI/MainMenu/OptionsPage.tscn" id="5_082tu"]
 
@@ -20,7 +20,7 @@ script = ExtResource("2_eg5ks")
 startGameButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/StartButton")
 optionsButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/OptionsButton")
 quitGameButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/QuitButton")
-firstLevelToLoad = ExtResource("3_6l8sw")
+firstLevelToLoad = ExtResource("3_qkpyi")
 startPageNode = NodePath("Pages/StartPage")
 optionsPageNode = NodePath("Pages/OptionsPage")
 
