@@ -9,15 +9,15 @@ public partial class DailyNeedResource : Resource
     [Export] public float SlimeCollectionTarget { get; private set; } = 100.0f;
 
     [ExportCategory("Depletion Rates")]
-    [Export] public float HungerDepletionRate { get; private set; } = 0.2f;
-    [Export] public float HappinessDepletionRate { get; private set; } = 0.15f;
-    [Export] public float CleanlinessDepletionRate { get; private set; } = 0.1f;
+    [Export] public float HungerDepletionRate { get; private set; } = 1.0f;
+    [Export] public float HappinessDepletionRate { get; private set; } = 1.0f;
+    [Export] public float CleanlinessDepletionRate { get; private set; } = 1.0f;
 
     [ExportCategory("Replenishment/Addition Rates")]
-    [Export] public float MaxHungerReplenishment { get; private set; } = 100.0f;
+    [Export] public float MaxHungerReplenishment { get; private set; } = 20.0f;
     [Export] public float MaxHappinessReplenishment { get; private set; } = 5.0f;
-    [Export] public float MaxCleanlinessReplenishment { get; private set; } = 75.0f;
-    [Export] public float MaxWasteProductToAdd { get; private set; } = 10.0f;
+    [Export] public float MaxCleanlinessReplenishment { get; private set; } = 20.0f;
+    [Export] public float MaxWasteProductToAdd { get; private set; } = 5.0f;
 
     [ExportCategory("Computer Items to Add")]
     [Export] public ComputerItemResource[] ToDoItemResource { get; private set; } = null;

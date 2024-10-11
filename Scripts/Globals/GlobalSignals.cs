@@ -11,11 +11,17 @@ public partial class GlobalSignals : Node
     public event Action OnPlayerClockedIn;
     public event Action OnPlayerClockedOut;
 
-    public event Action<Dictionary<E_IngredientList, bool>> OnCreatureFeedRequest;
-    public event Action<Dictionary<E_IngredientList, bool>> OnServeCreatureFood;
+    //public event Action<Dictionary<E_IngredientList, bool>> OnCreatureFeedRequest;
+    //public event Action<Dictionary<E_IngredientList, bool>> OnServeCreatureFood;
 
-    public event Action<Dictionary<E_AreasToClean, bool>> OnAreasToCleanRequest;
-    public event Action<Dictionary<E_AreasToClean, bool>> OnAreasToCleanCleaned;
+    public event Action<List<E_IngredientList>> OnCreatureFeedRequest;
+    public event Action<List<E_IngredientList>> OnServeCreatureFood;
+
+    //public event Action<Dictionary<E_AreasToClean, bool>> OnAreasToCleanRequest;
+    //public event Action<Dictionary<E_AreasToClean, bool>> OnAreasToCleanCleaned;
+
+    public event Action<List<E_AreasToClean>> OnAreasToCleanRequest;
+    public event Action<List<E_AreasToClean>> OnAreaCleaned;
 
     public event Action OnCreaturePlayRequest;
     public event Action OnCreaturePlayedWith;
@@ -52,11 +58,17 @@ public partial class GlobalSignals : Node
     public void RaisePlayerClockedIn() { OnPlayerClockedIn?.Invoke(); }
     public void RaisePlayerClockedOut() { OnPlayerClockedOut?.Invoke(); }
 
-    public void RaiseCreatureFeedRequest(Dictionary<E_IngredientList, bool> requestedIngredients) { OnCreatureFeedRequest?.Invoke(requestedIngredients); }
-    public void RaiseServeCreatureFood(Dictionary<E_IngredientList, bool> servedIngredients) { OnServeCreatureFood?.Invoke(servedIngredients); }
+    //public void RaiseCreatureFeedRequest(Dictionary<E_IngredientList, bool> requestedIngredients) { OnCreatureFeedRequest?.Invoke(requestedIngredients); }
+    //public void RaiseServeCreatureFood(Dictionary<E_IngredientList, bool> servedIngredients) { OnServeCreatureFood?.Invoke(servedIngredients); }
 
-    public void RaiseAreasToCleanRequest(Dictionary<E_AreasToClean, bool> areasToClean) { OnAreasToCleanRequest?.Invoke(areasToClean); }
-    public void RaiseAreasToCleanCleaned(Dictionary<E_AreasToClean, bool> areasCleaned) { OnAreasToCleanCleaned?.Invoke(areasCleaned); }
+    public void RaiseCreatureFeedRequest(List<E_IngredientList> requestedIngredient) { OnCreatureFeedRequest?.Invoke(requestedIngredient); }
+    public void RaiseServeCreatureFood(List<E_IngredientList> servedIngredients) { OnServeCreatureFood?.Invoke(servedIngredients); }
+
+    //public void RaiseAreasToCleanRequest(Dictionary<E_AreasToClean, bool> areasToClean) { OnAreasToCleanRequest?.Invoke(areasToClean); }
+    //public void RaiseAreasToCleanCleaned(Dictionary<E_AreasToClean, bool> areasCleaned) { OnAreasToCleanCleaned?.Invoke(areasCleaned); }
+
+    public void RaiseAreaToCleanRequest(List<E_AreasToClean> areaToClean) { OnAreasToCleanRequest?.Invoke(areaToClean); }
+    public void RaiseAreaCleaned(List<E_AreasToClean> areasCleaned) { OnAreaCleaned?.Invoke(areasCleaned); }
 
     public void RaiseCreaturePlayRequest() { OnCreaturePlayRequest?.Invoke(); }
     public void RaiseCreaturePlayedWith() { OnCreaturePlayedWith?.Invoke(); }

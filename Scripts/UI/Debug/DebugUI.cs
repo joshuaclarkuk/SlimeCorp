@@ -73,70 +73,56 @@ public partial class DebugUI : Control
         }
     }
 
+    public void UpdateFoodRequestList(List<E_IngredientList> list)
+    {
+        // Clear existing list
+        Godot.Collections.Array<Node> childNodes = foodRequestContainerNode.GetChildren();
+
+        for (int i = 1; i < foodRequestContainerNode.GetChildCount();  i++)
+        {
+            childNodes[i].QueueFree();
+        }
+
+        // Create new list with each request
+        foreach(E_IngredientList ingredient in list)
+        {
+            FoodRequest newFoodRequest = (FoodRequest)foodRequestScene.Instantiate();
+            newFoodRequest.AssignLabelValues(ingredient);
+            foodRequestContainerNode.AddChild(newFoodRequest);
+        }
+    }
+
+    public void UpdateCleaningRequestList(List<E_AreasToClean> list)
+    {
+        // Clear existing list
+        Godot.Collections.Array<Node> childNodes = areaCleanRequestContainerNode.GetChildren();
+
+        for (int i = 1; i < areaCleanRequestContainerNode.GetChildCount(); i++)
+        {
+            childNodes[i].QueueFree();
+        }
+
+        // Create new list with each request
+        foreach (E_AreasToClean area in list)
+        {
+            AreaCleanRequest newAreaCleanRequest = (AreaCleanRequest)areaCleanRequestScene.Instantiate();
+            newAreaCleanRequest.AssignLabelValues(area);
+            areaCleanRequestContainerNode.AddChild(newAreaCleanRequest);
+        }
+    }
+
     private void SubscribeToEvents()
     {
-        globalSignals.OnCreatureFeedRequest += HandleCreatureFeedRequest;
-        globalSignals.OnAreasToCleanRequest += HandleAreasToCleanRequest;
-        globalSignals.OnCreatureFeedRequestSatisfied += HandleCreatureFeedRequestSatisfied;
-        globalSignals.OnCreatureCleanRequestSatisfied += HandleCreatureCleanRequestSatisfied;
         globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
     }
 
     private void UnsubscribeFromEvents()
     {
-        globalSignals.OnCreatureFeedRequest -= HandleCreatureFeedRequest;
-        globalSignals.OnAreasToCleanRequest -= HandleAreasToCleanRequest;
-        globalSignals.OnCreatureFeedRequestSatisfied -= HandleCreatureFeedRequestSatisfied;
-        globalSignals.OnCreatureCleanRequestSatisfied -= HandleCreatureCleanRequestSatisfied;
         globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
     }
 
     private void HandleGenerateEmployeeNumber(int[] employeeNumber)
     {
         employeeNumberLabelNode.Text = string.Join("",employeeNumber);
-    }
-
-    private void HandleCreatureFeedRequest(Dictionary<E_IngredientList, bool> dictionary)
-    {
-        foreach (KeyValuePair<E_IngredientList, bool> keyValuePair in dictionary)
-        {
-            FoodRequest newFoodRequest = (FoodRequest)foodRequestScene.Instantiate();
-            newFoodRequest.AssignLabelValues(keyValuePair.Key, keyValuePair.Value);
-            foodRequestContainerNode.AddChild(newFoodRequest);
-        }
-    }
-
-    private void HandleAreasToCleanRequest(Dictionary<E_AreasToClean, bool> dictionary)
-    {
-        foreach (KeyValuePair<E_AreasToClean, bool> keyValuePair in dictionary)
-        {
-            AreaCleanRequest newAreaCleanRequest = (AreaCleanRequest)areaCleanRequestScene.Instantiate();
-            newAreaCleanRequest.AssignLabelValues(keyValuePair.Key, keyValuePair.Value);
-            areaCleanRequestContainerNode.AddChild(newAreaCleanRequest);
-        }
-    }
-
-    private void ClearRequestFromScreen(VBoxContainer containerToClear)
-    {
-        for (int i = 1; i < containerToClear.GetChildCount(); i++)
-        {
-            containerToClear.GetChild(i).QueueFree();
-        }
-    }
-
-    private void HandleCreatureFeedRequestSatisfied(bool isSatisfied)
-    {
-        if (isSatisfied)
-        {
-            ClearRequestFromScreen(foodRequestContainerNode);
-        }
-    }
-
-    private void HandleCreatureCleanRequestSatisfied(bool isSatisfied)
-    {
-        if (isSatisfied)
-        {
-            ClearRequestFromScreen(areaCleanRequestContainerNode);
-        }
     }
 }

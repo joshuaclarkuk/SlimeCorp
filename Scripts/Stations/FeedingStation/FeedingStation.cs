@@ -8,7 +8,7 @@ public partial class FeedingStation : Station
     [Export] private Lever leverNode = null;
     [Export] private Timer servingFoodTimerNode = null;
 
-    private Dictionary<E_IngredientList, bool> activeIngredients = new Dictionary<E_IngredientList, bool>();
+    private List<E_IngredientList> activeIngredients = new List<E_IngredientList>();
 
     public override void _Ready()
     {
@@ -179,10 +179,7 @@ public partial class FeedingStation : Station
 
     private void InitialiseIngredientDictionary(Array enumValues)
     {
-        for (int i = 0; i < enumValues.Length; i++)
-        {
-            activeIngredients.Add((E_IngredientList)enumValues.GetValue(i), false);
-        }
+        activeIngredients.Clear();
     }
 
     private void AssignDebugLabelValues(Array enumValues)
@@ -205,13 +202,19 @@ public partial class FeedingStation : Station
     private void AddIngredientToList(int ingredientIndex)
     {
         E_IngredientList ingredientEnum = (E_IngredientList)ingredientIndex;
-        activeIngredients[ingredientEnum] = true;
+        activeIngredients.Add(ingredientEnum);
+
+        GD.Print("Active ingredients:");
+        foreach (E_IngredientList ingredient in activeIngredients)
+        {
+            GD.Print(ingredient.ToString());
+        }
     }
 
     private void RemoveIngredientFromList(int ingredientIndex)
     {
         E_IngredientList ingredientEnum = (E_IngredientList)ingredientIndex;
-        activeIngredients[ingredientEnum] = false;
+        activeIngredients.Remove(ingredientEnum);
     }
 
     private void HandleLeverTargetReached()

@@ -8,7 +8,7 @@ public partial class CleaningStation : Station
     [Export] private Lever leverNode = null;
     [Export] private Timer flushingSystemTimerNode = null;
 
-    private Dictionary<E_AreasToClean, bool> areasToCleanDictionary = new Dictionary<E_AreasToClean, bool>();
+    private List<E_AreasToClean> activeAreas = new List<E_AreasToClean>();
 
     public override void _Ready()
     {
@@ -179,10 +179,7 @@ public partial class CleaningStation : Station
 
     private void InitialiseAreasToCleanDictionary(Array enumValues)
     {
-        for (int i = 0; i < enumValues.Length; i++)
-        {
-            areasToCleanDictionary.Add((E_AreasToClean)enumValues.GetValue(i), false);
-        }
+        activeAreas.Clear();
     }
 
     private void AssignDebugLabelValues(Array enumValues)
@@ -205,13 +202,13 @@ public partial class CleaningStation : Station
     private void AddAreaToCleanToList(int areaIndex)
     {
         E_AreasToClean areaEnum = (E_AreasToClean)areaIndex;
-        areasToCleanDictionary[areaEnum] = true;
+        activeAreas.Add(areaEnum);
     }
 
     private void RemoveAreaToCleanFromList(int areaIndex)
     {
         E_AreasToClean areaEnum = (E_AreasToClean)areaIndex;
-        areasToCleanDictionary[areaEnum] = false;
+        activeAreas.Remove(areaEnum);
     }
 
     private void HandleLeverTargetReached()
@@ -219,14 +216,8 @@ public partial class CleaningStation : Station
         GD.Print("Handling lever target reached on cleaning station");
         flushingSystemTimerNode.Start();
         canInteractWithStation = false;
-        globalSignals.RaiseAreasToCleanCleaned(areasToCleanDictionary);
+        globalSignals.RaiseAreaCleaned(activeAreas);
         globalSignals.RaisePlayerExitStation(StationType);
-
-        // Debug
-        foreach (E_AreasToClean area in areasToCleanDictionary.Keys)
-        {
-            GD.Print($"Area cleaned: {area} | {areasToCleanDictionary[area]}");
-        }
     }
 
     private void HandleFlushingSystemTimerTimeout()

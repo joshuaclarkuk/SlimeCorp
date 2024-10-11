@@ -133,7 +133,7 @@ public partial class Main : Node3D
     {
         if (dailyNeedResources[dayIndex] != null)
         {
-            // Initialise Creature Need depletion rates
+            // Initialise Creature Need depletion rates and set request timers
             creatureNeeds.SetCreatureNeedDepletionRatesFromResource(
                 dailyNeedResources[dayIndex].HungerDepletionRate, 
                 dailyNeedResources[dayIndex].HappinessDepletionRate, 
@@ -143,7 +143,8 @@ public partial class Main : Node3D
                 dailyNeedResources[dayIndex].MaxCleanlinessReplenishment,
                 dailyNeedResources[dayIndex].MaxHappinessReplenishment,
                 dailyNeedResources[dayIndex].MaxWasteProductToAdd);
-
+            creatureNeeds.SetRequestTimers();
+            creatureNeeds.SetMaxRequests();
             // Load in to do resources
             if (dailyNeedResources[dayIndex].ToDoItemResource != null && dailyNeedResources[dayIndex].ToDoItemResource.Length > 0)
             {

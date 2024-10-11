@@ -17,7 +17,7 @@ StationType = 2
 
 [node name="Desk" type="CSGBox3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-size = Vector3(3, 1, 1)
+size = Vector3(2, 1, 1)
 material = ExtResource("3_yxkfq")
 
 [node name="StationDebugLabel" parent="." index="3"]

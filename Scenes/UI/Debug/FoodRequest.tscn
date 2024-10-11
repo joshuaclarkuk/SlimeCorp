@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/Debug/FoodRequest.cs" id="1_b44t6"]
 
-[node name="FoodRequest" type="HBoxContainer" node_paths=PackedStringArray("ingredientLabelNode", "requestedLabelNode")]
+[node name="FoodRequest" type="HBoxContainer" node_paths=PackedStringArray("ingredientLabelNode")]
 script = ExtResource("1_b44t6")
 ingredientLabelNode = NodePath("IngredientLabel")
-requestedLabelNode = NodePath("RequestedLabel")
 
 [node name="IngredientLabel" type="Label" parent="."]
 layout_mode = 2

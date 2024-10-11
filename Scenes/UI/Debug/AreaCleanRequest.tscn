@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/Debug/AreaCleanRequest.cs" id="1_4gnt2"]
 
-[node name="AreaCleanRequest" type="HBoxContainer" node_paths=PackedStringArray("areaLabelNode", "requestedLabelNode")]
+[node name="AreaCleanRequest" type="HBoxContainer" node_paths=PackedStringArray("areaLabelNode")]
 script = ExtResource("1_4gnt2")
 areaLabelNode = NodePath("AreaLabel")
-requestedLabelNode = NodePath("RequestedLabel")
 
 [node name="AreaLabel" type="Label" parent="."]
 layout_mode = 2
