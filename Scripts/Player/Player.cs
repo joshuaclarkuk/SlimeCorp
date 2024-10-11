@@ -16,6 +16,7 @@ public partial class Player : CharacterBody3D
 	[ExportCategory("Player Movement")]
 	[Export] private float movementSpeed = 3.0f;
 	[Export] private float acceleration = 10.0f;
+	[Export] private float runMultiplier = 1.8f;
 	[Export] private float jumpHeight = 1.0f;
 	[Export] private float fallMultiplier = 2.5f;
 	[Export] private float mouseSensitivity = 0.003f;
@@ -27,6 +28,9 @@ public partial class Player : CharacterBody3D
 	// Global signals
 	private Options options;
 	private GlobalSignals globalSignals;
+
+	// Running
+	private bool isRunning = false;
 
 	// Mouse motion vector
 	private Vector2 mouseMotion = Vector2.Zero;
@@ -93,7 +97,17 @@ public partial class Player : CharacterBody3D
 		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
 		// Define the target velocity based on input
-		Vector3 targetVelocity = direction * movementSpeed;
+		float totalSpeed = 0.0f;
+		if (isRunning)
+		{
+			totalSpeed = movementSpeed * runMultiplier;
+		}
+		else
+		{
+			totalSpeed = movementSpeed;
+		}
+
+		Vector3 targetVelocity = direction * totalSpeed;
 
 		if (targetVelocity != Vector3.Zero)
 		{
@@ -121,6 +135,16 @@ public partial class Player : CharacterBody3D
 			{
 				mouseMotion = -motion.Relative * mouseSensitivity;
 			}
+		}
+
+		// RUN
+		if (Input.IsActionJustPressed(GlobalConstants.INPUT_RUN))
+		{
+			isRunning = true;
+		}
+		else if (Input.IsActionJustReleased(GlobalConstants.INPUT_RUN))
+		{
+			isRunning = false;
 		}
 
 		// INTERACT WITH STATION/INTERACTABLE

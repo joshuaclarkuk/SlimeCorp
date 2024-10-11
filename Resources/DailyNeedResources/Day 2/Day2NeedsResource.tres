@@ -7,15 +7,17 @@
 script = ExtResource("3_pqyyb")
 TitleToDisplay = "Day 2
 Extraction"
-MinutesInDay = 10
+MinutesInDay = 8
 SlimeCollectionTarget = 300.0
 HungerDepletionRate = 0.6
-HappinessDepletionRate = 0.8
-CleanlinessDepletionRate = 0.0
-MaxHungerReplenishment = 90.0
-MaxHappinessReplenishment = 5.0
-MaxCleanlinessReplenishment = 0.0
-MaxWasteProductToAdd = 0.0
+HappinessDepletionRate = 0.0
+CleanlinessDepletionRate = 0.4
+AngerDepletionRate = 0.8
+MaxHungerReplenishment = 20.0
+MaxHappinessReplenishment = 0.0
+MaxCleanlinessReplenishment = 20.0
+MaxWasteProductToAdd = 2.0
+MaxAngerToAdd = 3.0
 ToDoItemResource = Array[Object]([ExtResource("4_24f8b")])
 EmailItemResources = null
 NewsItemResources = null

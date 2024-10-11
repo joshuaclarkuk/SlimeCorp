@@ -408,6 +408,7 @@ shape = SubResource("BoxShape3D_0orqy")
 [node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
 script = ExtResource("8_8q08k")
 rovingCameraNode = NodePath("../../../RovingCamera")
+cameraTweenDuration = 0.3
 
 [node name="ComputerStation" parent="Environment/Objects/Stations" index="0" instance=ExtResource("2_te2wr")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -17.6, -0.029242, 2)
@@ -422,7 +423,7 @@ transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, -14.8,
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -9.2, 0, 1.2)
 
 [node name="SlimeCollectionStation" parent="Environment/Objects/Stations" index="4" node_paths=PackedStringArray("debugUI") instance=ExtResource("9_mb0pm")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.2, -0.2, 10)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.2, -0.2, 9.8)
 debugUI = NodePath("../../../../DebugUI")
 
 [node name="CanisterStorageStation" parent="Environment/Objects/Stations" index="5" instance=ExtResource("3_gd6ql")]
@@ -439,6 +440,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
 texture = SubResource("ViewportTexture_w0js7")
 
 [node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/Objects/CreatureNeedsScreen" index="1"]
+disable_3d = true
 size = Vector2i(1024, 1024)
 
 [node name="CreatureNeedsDisplay" parent="Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
@@ -495,14 +497,6 @@ shadow_enabled = true
 shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
-
-[node name="SecurityRoom" type="Node3D" parent="Lighting" index="5"]
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Lighting/SecurityRoom" index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -21, 4, 6)
-light_color = Color(0.947316, 0.846706, 0.44411, 1)
-spot_range = 7.0
-spot_angle = 37.5267
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 

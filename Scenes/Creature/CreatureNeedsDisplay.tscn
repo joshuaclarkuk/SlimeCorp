@@ -1,15 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://car5kk3p3s32x"]
+[gd_scene load_steps=9 format=3 uid="uid://car5kk3p3s32x"]
 
 [ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_a8527"]
 [ext_resource type="Script" path="res://Scripts/Creature/CreatureNeedsDisplay.cs" id="2_lmnia"]
+[ext_resource type="Shader" path="res://Materials/Shaders/CRTShader.gdshader" id="3_5288q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bcek"]
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25dpo"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
 
-[node name="CreatureNeedsDisplay" type="Control" node_paths=PackedStringArray("hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "timeLeftText")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne08r"]
+bg_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gbpx"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1x7jk"]
+shader = ExtResource("3_5288q")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="CreatureNeedsDisplay" type="Control" node_paths=PackedStringArray("hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "angerProgressBar", "timeLeftText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,8 +43,9 @@ grow_vertical = 2
 theme = ExtResource("1_a8527")
 script = ExtResource("2_lmnia")
 hungerProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/FuelProgress")
-happinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/HappinessProgress")
+happinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/PerimeterSecProgress")
 cleanlinessProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/WasteProgress")
+angerProgressBar = NodePath("MarginContainer/VBoxContainer/GridContainer/HumanErrorProgress")
 timeLeftText = NodePath("MarginContainer/VBoxContainer/GridContainer/TimeLeftInDayValue")
 
 [node name="BackgroundColour" type="ColorRect" parent="."]
@@ -64,18 +89,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 show_percentage = false
 
-[node name="HappinessLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_font_sizes/font_size = 50
-text = "Happiness"
-
-[node name="HappinessProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-show_percentage = false
-
 [node name="WasteLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 6
@@ -91,6 +104,35 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_25dpo")
 fill_mode = 1
 show_percentage = false
 
+[node name="PerimeterSecLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Perimeter Sec."
+
+[node name="PerimeterSecProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_1bcek")
+theme_override_styles/fill = SubResource("StyleBoxFlat_25dpo")
+fill_mode = 1
+show_percentage = false
+
+[node name="HumanErrorLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 50
+text = "Human Error"
+
+[node name="HumanErrorProgress" type="ProgressBar" parent="MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_ne08r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1gbpx")
+show_percentage = false
+
 [node name="TimeLeftInDayLabel" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 6
@@ -103,3 +145,12 @@ theme_override_font_sizes/font_size = 64
 text = "24:00"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="CRTShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_1x7jk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

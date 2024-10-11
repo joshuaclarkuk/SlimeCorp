@@ -6,6 +6,7 @@ public partial class SlimeCollectionStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Valve valveNode = null;
     [Export] private Node3D canisterMeshToAppear = null;
+    [Export] private BarrelFullComponent barrelfullComponentNode = null;
 
     [ExportCategory("AudioNodes")]
     [Export] private AudioStreamPlayer3D slimeCollectionAudioNode = null;
@@ -15,7 +16,7 @@ public partial class SlimeCollectionStation : Station
     [Export] private DebugUI debugUI = null;
 
     [ExportCategory("Slime Collection")]
-    [Export] private float baseSlimeCollectionRate = 0.2f;
+    [Export] private float baseSlimeCollectionRate = 0.4f;
     [Export] private float maxSlimeInCanister = 100.0f;
     [Export] private float feedingSlimeMultiplier = 2.0f;
     [Export] private float cleaningSlimeMultiplier = 2.0f;
@@ -155,84 +156,54 @@ public partial class SlimeCollectionStation : Station
         }
     }
 
-    public void AddSlimeToCanister(double delta, float creatureHungerLevel, float creatureMaxHungerLevel, float creatureCleanlinessLevel, float creatureMaxCleanlinessLevel, float creatureHappinessLevel, float creatureMaxHappinessLevel)
+    public void AddSlimeToCanister(double delta, float hungerLevel, float maxHunger, float cleanlinessLevel, float maxCleanliness, float happinessLevel, float maxHappiness)
     {
         if (!canisterInSlot || valveIsOpen) { return; }
 
-        // Play harvesting audio
+        // Start harvesting audio
         if (!hasStartedAudio)
         {
             slimeCollectionAudioNode.Play();
             hasStartedAudio = true;
         }
 
-        // Slime to add from food, cleanliness, and happiness
-        float slimeToAddFromFood = baseSlimeCollectionRate;
-        float slimeToAddFromCleanliness = baseSlimeCollectionRate;
-        float slimeToAddFromHappiness = baseSlimeCollectionRate;
+        // Calculate slime amounts based on hunger, cleanliness, and happiness
+        float slimeFromFood = AdjustSlimeRate(hungerLevel, maxHunger, feedingSlimeMultiplier);
+        float slimeFromCleanliness = AdjustSlimeRate(cleanlinessLevel, maxCleanliness, cleaningSlimeMultiplier);
+        float slimeFromHappiness = AdjustSlimeRate(happinessLevel, maxHappiness, happinessSlimeMultiplier);
 
-        float hungerPercentage = (creatureHungerLevel / creatureMaxHungerLevel) * 100.0f;
-        switch (hungerPercentage)
-        {
-            case > 100.0f:
-                slimeToAddFromFood *= feedingSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
-                break;
-            case >= 80.0f:
-                slimeToAddFromFood *= feedingSlimeMultiplier;  // Above 80%, multiply
-                break;
-            case < 20.0f:
-                slimeToAddFromFood *= 0.5f; // Below 20% incur penalty
-                break;
-            default:
-                slimeToAddFromFood *= 1.0f;  // Normal collection rate
-                break;
-        }
+        // Total slime added during this frame
+        float totalSlimeToAdd = (slimeFromFood + slimeFromCleanliness + slimeFromHappiness) * (float)delta;
+        currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister);
 
-        float cleanlinessPercentage = (creatureCleanlinessLevel / creatureMaxCleanlinessLevel) * 100.0f;
-        switch (cleanlinessPercentage)
-        {
-            case > 100.0f:
-                slimeToAddFromCleanliness *= cleaningSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
-                break;
-            case >= 80.0f:
-                slimeToAddFromCleanliness *= cleaningSlimeMultiplier;  // Above 80%, multiply
-                break;
-            case < 20.0f:
-                slimeToAddFromCleanliness *= 0.5f; // Below 20% incur penalty
-                break;
-            default:
-                slimeToAddFromCleanliness *= 1.0f;  // Normal collection rate
-                break;
-        }
-
-        float happinessPercentage = (creatureHappinessLevel / creatureMaxHappinessLevel) * 100.0f;
-        switch (happinessPercentage)
-        {
-            case > 100.0f:
-                slimeToAddFromHappiness *= happinessSlimeMultiplier * 1.2f;  // Above max hunger, add bonus
-                break;
-            case >= 80.0f:
-                slimeToAddFromHappiness *= happinessSlimeMultiplier;  // Above 80%, multiply
-                break;
-            case < 20.0f:
-                slimeToAddFromHappiness *= 0.5f; // Below 20% incur penalty
-                break;
-            default:
-                slimeToAddFromHappiness *= 1.0f;  // Normal collection rate
-                break;
-        }
-
-        float totalSlimeToAdd = (slimeToAddFromFood + slimeToAddFromCleanliness + slimeToAddFromHappiness) * (float)delta;
-        currentSlimeLevel = Mathf.Min(currentSlimeLevel + totalSlimeToAdd, maxSlimeInCanister); // Ensure it doesn't exceed max capacity
-
+        // Update UI
         debugUI.UpdateCurrentSlimeProgressBar(currentSlimeLevel);
 
-        // Check if canister is full
+        // If canister is full, trigger full event
         if (currentSlimeLevel >= maxSlimeInCanister)
         {
-            // SLIME CANISTER MAXED OUT
-            // Alert player to maxed out canister
+            barrelfullComponentNode.BarrelFull();
         }
+    }
+
+    private float AdjustSlimeRate(float level, float maxLevel, float multiplier)
+    {
+        float percentage = (level / maxLevel) * 100.0f;
+
+        if (percentage > 100.0f)
+        {
+            return baseSlimeCollectionRate * multiplier * 1.2f; // Bonus for exceeding the maximum
+        }
+        if (percentage >= 80.0f)
+        {
+            return baseSlimeCollectionRate * multiplier; // Boost when above 80%
+        }
+        if (percentage < 20.0f)
+        {
+            return baseSlimeCollectionRate * 0.5f; // Penalty when below 20%
+        }
+
+        return baseSlimeCollectionRate; // Normal rate
     }
 
     private void TryAddingBarrelToStation()
@@ -259,6 +230,7 @@ public partial class SlimeCollectionStation : Station
             if (canisterInSlot)
             {
                 RemoveCanisterFromStationAndBankSlime();
+                barrelfullComponentNode.FullBarrelRemoved();
             }
         }
     }

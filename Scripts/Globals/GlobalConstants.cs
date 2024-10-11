@@ -5,6 +5,7 @@ public class GlobalConstants
     public const string INPUT_WALK_BACKWARDS = "WalkBackwards";
     public const string INPUT_STRAFE_LEFT = "StrafeLeft";
     public const string INPUT_STRAFE_RIGHT = "StrafeRight";
+    public const string INPUT_RUN = "Run";
     public const string INPUT_INTERACT = "Interact";
     public const string INPUT_JUMP = "Jump";
 

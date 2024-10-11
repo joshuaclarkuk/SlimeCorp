@@ -13,6 +13,7 @@ public partial class DebugUI : Control
     [Export] private ProgressBar hungerProgressBar = null;
     [Export] private ProgressBar happinessProgressBar = null;
     [Export] private ProgressBar cleanlinessProgressBar = null;
+    [Export] private ProgressBar angerProgressBar = null;
     [Export] private Label timeLeftText = null;
 
     [ExportCategory("Slime Collected Nodes")]
@@ -43,11 +44,12 @@ public partial class DebugUI : Control
         UnsubscribeFromEvents();
     }
 
-    public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newTimeLeft)
+    public void UpdateProgressBars(float newHunger, float newHappiness, float newCleanliness, float newAnger, float newTimeLeft)
     {
         hungerProgressBar.Value = newHunger;
         happinessProgressBar.Value = newHappiness;
         cleanlinessProgressBar.Value = newCleanliness;
+        angerProgressBar.Value = newAnger;
         timeLeftText.Text = Mathf.RoundToInt(newTimeLeft).ToString();
     }
 

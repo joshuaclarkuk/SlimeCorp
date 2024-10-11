@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpxy4xuhf4j7f" path="res://Scenes/UI/Debug/FoodRequest.tscn" id="2_l5jpd"]
 [ext_resource type="PackedScene" uid="uid://dr5mbyn0i5622" path="res://Scenes/UI/Debug/AreaCleanRequest.tscn" id="3_q26yq"]
 
-[node name="DebugUI" type="Control" node_paths=PackedStringArray("employeeNumberLabelNode", "foodRequestContainerNode", "areaCleanRequestContainerNode", "hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "timeLeftText", "slimeRequiredLabelNode", "slimeCollectedProgressBarNode", "collectedSlimeTotalNode")]
+[node name="DebugUI" type="Control" node_paths=PackedStringArray("employeeNumberLabelNode", "foodRequestContainerNode", "areaCleanRequestContainerNode", "hungerProgressBar", "happinessProgressBar", "cleanlinessProgressBar", "angerProgressBar", "timeLeftText", "slimeRequiredLabelNode", "slimeCollectedProgressBarNode", "collectedSlimeTotalNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +19,7 @@ areaCleanRequestContainerNode = NodePath("DebugMenuContainer/AreaCleanRequestCon
 hungerProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/HungerProgress")
 happinessProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/HappinessProgress")
 cleanlinessProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/CleanlinessProgress")
+angerProgressBar = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/AngerProgress")
 timeLeftText = NodePath("CreatureNeedsContainer/CreatureNeedsGridContainer/TimeLeftInDayValue")
 slimeRequiredLabelNode = NodePath("SlimeCollectedVBox/SlimeRequiredContainer/SlimeRequiredValue")
 slimeCollectedProgressBarNode = NodePath("SlimeCollectedVBox/TotalSlimeContainer/TotalSlimeBar")
@@ -107,6 +108,14 @@ size_flags_vertical = 6
 text = "Cleanliness"
 
 [node name="CleanlinessProgress" type="ProgressBar" parent="CreatureNeedsContainer/CreatureNeedsGridContainer"]
+layout_mode = 2
+
+[node name="AngerLabel" type="Label" parent="CreatureNeedsContainer/CreatureNeedsGridContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Anger"
+
+[node name="AngerProgress" type="ProgressBar" parent="CreatureNeedsContainer/CreatureNeedsGridContainer"]
 layout_mode = 2
 
 [node name="TimeLeftInDayLabel" type="Label" parent="CreatureNeedsContainer/CreatureNeedsGridContainer"]

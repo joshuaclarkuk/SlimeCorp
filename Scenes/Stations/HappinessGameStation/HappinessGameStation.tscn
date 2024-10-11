@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bapnc5v1qheh1" path="res://Scenes/Stations/HappinessGameStation/HappinessGameComponent.tscn" id="3_6lmv3"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_88ai8"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w6j0f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_d6eby"]
 viewport_path = NodePath("SubViewport")
 
-[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "buttonsNode", "debugLabel") instance=ExtResource("1_qae27")]
+[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "screenNode", "buttonsNode", "debugLabel") instance=ExtResource("1_qae27")]
 script = ExtResource("2_vys67")
 happinessGameComponentNode = NodePath("SubViewport/HappinessGameComponent")
+screenNode = NodePath("Screen")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 7
@@ -28,12 +29,13 @@ size = Vector3(2, 1, 1)
 material = ExtResource("2_7wcqi")
 
 [node name="SubViewport" type="SubViewport" parent="." index="4"]
+disable_3d = true
 
 [node name="HappinessGameComponent" parent="SubViewport" index="0" instance=ExtResource("3_6lmv3")]
 
 [node name="Screen" type="Sprite3D" parent="." index="5"]
 transform = Transform3D(0.1, 0, 0, 0, 0.0707107, 0.0707107, 0, -0.0707107, 0.0707107, 0, 1.3, -0.282087)
-texture = SubResource("ViewportTexture_w6j0f")
+texture = SubResource("ViewportTexture_d6eby")
 
 [node name="Buttons" parent="." index="6" instance=ExtResource("5_88ai8")]
 transform = Transform3D(0.3, 0, 0, 0, 0.289778, -0.0776457, 0, 0.0776457, 0.289778, 0, 1.1, 0.1)

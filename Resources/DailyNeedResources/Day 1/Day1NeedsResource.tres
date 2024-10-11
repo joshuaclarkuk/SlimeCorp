@@ -11,15 +11,17 @@
 script = ExtResource("4_dmllj")
 TitleToDisplay = "Day 1
 Orientation"
-MinutesInDay = 3
+MinutesInDay = 5
 SlimeCollectionTarget = 100.0
-HungerDepletionRate = 0.2
+HungerDepletionRate = 0.6
 HappinessDepletionRate = 0.0
 CleanlinessDepletionRate = 0.0
-MaxHungerReplenishment = 10.0
+AngerDepletionRate = 1.0
+MaxHungerReplenishment = 20.0
 MaxHappinessReplenishment = 0.0
 MaxCleanlinessReplenishment = 0.0
 MaxWasteProductToAdd = 0.0
+MaxAngerToAdd = 5.0
 ToDoItemResource = Array[Object]([ExtResource("3_yblkf"), ExtResource("4_ehmlq"), ExtResource("5_bkah2")])
 EmailItemResources = Array[Object]([ExtResource("1_r2h1w")])
 NewsItemResources = Array[Object]([ExtResource("2_dlh2h")])

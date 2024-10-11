@@ -18,19 +18,14 @@ public partial class CreatureNeeds : Node3D
     [ExportCategory("Max Levels")]
     [Export] private float maxHungerLevel = 100.0f;
     [Export] private float maxHappinessLevel = 100.0f;
-    [Export] private float maxCleanlinessLevel = 100.0f;
     [Export] private float maxAngerLevel = 100.0f;
+    [Export] private float maxCleanlinessLevel = 100.0f;
 
     [ExportCategory("Depletion Rates")]
     [Export] private float hungerDepletionRate = 0.2f;
     [Export] private float happinessDepletionRate = 0.15f;
-    [Export] private float cleanlinessDepletionRate = 0.1f;
     [Export] private float angerDepletionRate = 0.1f;
-
-    [ExportCategory("Request Points (Percentage Left)")]
-    [Export] private float percentageMaxHungerBeforeFeedingRequestMade = 40.0f;
-    [Export] private float percentageMaxCleanlinessBeforeCleaningRequestMade = 30.0f;
-    [Export] private float percentageMaxHappinessBeforePlayRequestMade = 20.0f;
+    [Export] private float cleanlinessDepletionRate = 0.1f;
 
     [ExportCategory("Replenishment/Addition Rates")]
     [Export] private float maxHungerReplenishment = 20.0f;
@@ -167,8 +162,8 @@ public partial class CreatureNeeds : Node3D
         ResetAllCreatureNeeds();
         requestedIngredientList.Clear();
         requestedAreasList.Clear();
-        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft);
+        creatureNeedsDisplayNode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentAngerLevel, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentAngerLevel, currentTimeLeft);
     }
 
     private void SetNumberOfMinutesInDay(int minutes)
@@ -189,7 +184,7 @@ public partial class CreatureNeeds : Node3D
         currentHungerLevel = Mathf.Max(0, currentHungerLevel - hungerDepletionRate * (float)delta);
         currentHappinessLevel = Mathf.Max(0, currentHappinessLevel - happinessDepletionRate * (float)delta);
         currentCleanlinessLevel = Mathf.Max(0, currentCleanlinessLevel - cleanlinessDepletionRate * (float)delta);
-        angerDepletionRate = Mathf.Max(0, currentAngerLevel - angerDepletionRate * (float)delta);
+        currentAngerLevel = Mathf.Max(0, currentAngerLevel - angerDepletionRate * (float)delta);
         currentTimeLeft = Mathf.Max(0, currentTimeLeft - (float)delta);
 
         CheckIfFailingNeedsAndStartFailureTimer();
@@ -201,8 +196,17 @@ public partial class CreatureNeeds : Node3D
         float newHungerPercentage = currentHungerLevel / maxHungerLevel * 100.0f;
         float newHappinessPercentage = currentHappinessLevel / maxHappinessLevel * 100.0f;
         float newCleanlinessPercentage = currentCleanlinessLevel / maxCleanlinessLevel * 100.0f;
-        creatureNeedsDisplayNode.UpdateProgressBars(newHungerPercentage, newHappinessPercentage, newCleanlinessPercentage, currentTimeLeft);
-        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentTimeLeft); // DEBUG TO REMOVE
+        float newAngerPercentage = 0.0f;
+        if (currentAngerLevel > 0)
+        {
+            newAngerPercentage = currentAngerLevel / maxAngerLevel * 100.0f;
+        }
+        else
+        {
+            newAngerPercentage = 0.0f;
+        }            
+        creatureNeedsDisplayNode.UpdateProgressBars(newHungerPercentage, newHappinessPercentage, newCleanlinessPercentage, newAngerPercentage, currentTimeLeft);
+        debugUINode.UpdateProgressBars(currentHungerLevel, currentHappinessLevel, currentCleanlinessLevel, currentAngerLevel, currentTimeLeft); // DEBUG TO REMOVE
     }
 
     private void HandleFeedingRequestTimerTimeout()
@@ -264,7 +268,11 @@ public partial class CreatureNeeds : Node3D
             else
             {
                 // Bad outcome
-                currentAngerLevel += maxAngerPointsToAdd;
+                currentAngerLevel = Mathf.Min(currentAngerLevel + maxAngerPointsToAdd, maxAngerLevel);
+                if (currentAngerLevel >= maxAngerLevel)
+                {
+                    GD.PrintErr("Max anger level reached, game over...");
+                }
             }
         }
         debugUINode.UpdateFoodRequestList(requestedIngredientList);
@@ -282,7 +290,11 @@ public partial class CreatureNeeds : Node3D
             }
             else
             {
-                currentAngerLevel += maxAngerPointsToAdd;
+                currentAngerLevel = Mathf.Min(currentAngerLevel + maxAngerPointsToAdd, maxAngerLevel);
+                if (currentAngerLevel >= maxAngerLevel)
+                {
+                    GD.PrintErr("Max anger level reached, game over...");
+                }
             }
         }
         debugUINode.UpdateCleaningRequestList(areaCleaned);

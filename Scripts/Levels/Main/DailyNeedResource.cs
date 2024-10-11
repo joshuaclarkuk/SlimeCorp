@@ -12,12 +12,14 @@ public partial class DailyNeedResource : Resource
     [Export] public float HungerDepletionRate { get; private set; } = 1.0f;
     [Export] public float HappinessDepletionRate { get; private set; } = 1.0f;
     [Export] public float CleanlinessDepletionRate { get; private set; } = 1.0f;
+    [Export] public float AngerDepletionRate { get; private set; } = 1.0f;
 
     [ExportCategory("Replenishment/Addition Rates")]
     [Export] public float MaxHungerReplenishment { get; private set; } = 20.0f;
     [Export] public float MaxHappinessReplenishment { get; private set; } = 5.0f;
     [Export] public float MaxCleanlinessReplenishment { get; private set; } = 20.0f;
     [Export] public float MaxWasteProductToAdd { get; private set; } = 5.0f;
+    [Export] public float MaxAngerToAdd { get; private set; } = 5.0f;
 
     [ExportCategory("Computer Items to Add")]
     [Export] public ComputerItemResource[] ToDoItemResource { get; private set; } = null;

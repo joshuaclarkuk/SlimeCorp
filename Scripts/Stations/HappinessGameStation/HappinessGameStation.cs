@@ -4,10 +4,23 @@ public partial class HappinessGameStation : Station
 {
     [ExportCategory("Required Nodes")]
     [Export] private HappinessGameComponent happinessGameComponentNode = null;
+    [Export] private Sprite3D screenNode = null;
+
+    [ExportCategory("Behaviour")]
+    private float fadeDuration = 0.5f;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        screenNode.Modulate = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+    }
 
     public override void EnterStation()
     {
         base.EnterStation();
+
+        FadeScreen(new Color(1.0f, 1.0f, 1.0f, 1.0f));
 
         GD.Print($"Calling EnterStation method on {Name}");
     }
@@ -15,6 +28,8 @@ public partial class HappinessGameStation : Station
     public override void ExitStation()
     {
         base.ExitStation();
+
+        FadeScreen(new Color(0.0f, 0.0f, 0.0f, 1.0f));
 
         GD.Print($"Calling ExitStation method on {Name}");
     }
@@ -132,5 +147,13 @@ public partial class HappinessGameStation : Station
             case 9:
                 break;
         }
+    }
+
+    private void FadeScreen(Color finalValue)
+    {
+        Tween fadeTween = CreateTween();
+        fadeTween.SetTrans(Tween.TransitionType.Sine);
+        fadeTween.SetEase(Tween.EaseType.InOut);
+        fadeTween.TweenProperty(screenNode, "modulate", finalValue, fadeDuration);
     }
 }
