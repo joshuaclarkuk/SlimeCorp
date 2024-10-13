@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://db8ayysgph1a2"]
+[gd_scene load_steps=15 format=3 uid="uid://db8ayysgph1a2"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_iqhkd"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.cs" id="2_bty46"]
 [ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="2_prxc5"]
 [ext_resource type="Script" path="res://Scripts/Player/FootstepAudio.cs" id="3_48gdc"]
 [ext_resource type="AudioStream" uid="uid://b1y318ebamhc7" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_1.wav" id="4_n0lhe"]
@@ -34,6 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="PlayerCamera" type="Camera3D" parent="PlayerCameraPivot"]
 cull_mask = 1
+script = ExtResource("2_bty46")
 
 [node name="CanisterCameraRemoteTransform" type="RemoteTransform3D" parent="PlayerCameraPivot/PlayerCamera"]
 remote_path = NodePath("../CanisterSubviewportContainer/CanisterViewport/CanisterCamera")
