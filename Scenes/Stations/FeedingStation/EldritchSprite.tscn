@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhko65uevdu83"]
+[gd_scene load_steps=3 format=3 uid="uid://bhko65uevdu83"]
 
 [ext_resource type="Texture2D" uid="uid://deqv4edq1tlh4" path="res://Assets/Sprites/Eldritch Symbols by Freepik.png" id="1_gip6p"]
+[ext_resource type="Script" path="res://Scripts/Stations/FeedingStation/FoodSprites/EldritchSprite.cs" id="2_u843i"]
 
 [node name="EldritchSprite" type="Sprite3D"]
 texture = ExtResource("1_gip6p")
 region_enabled = true
 region_rect = Rect2(800, 824, 376, 392)
+script = ExtResource("2_u843i")

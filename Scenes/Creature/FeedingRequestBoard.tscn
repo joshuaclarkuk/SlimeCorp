@@ -1,0 +1,16 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwjgglhiccstc"]
+
+[ext_resource type="Script" path="res://Scripts/Creature/FeedingRequestBoard.cs" id="1_2htya"]
+[ext_resource type="PackedScene" uid="uid://bd16uip7lfuav" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteBrain.tscn" id="2_fmnx4"]
+[ext_resource type="PackedScene" uid="uid://bs4yu35at7kwg" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteEyeballs.tscn" id="3_0isle"]
+[ext_resource type="PackedScene" uid="uid://cy3m7axhv5cps" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteHeart.tscn" id="4_ipnbr"]
+[ext_resource type="PackedScene" uid="uid://b3ubfw1ymovc7" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteKidneys.tscn" id="5_b8nor"]
+[ext_resource type="PackedScene" uid="uid://b5s2j8oy71nvw" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteLiver.tscn" id="6_qxgyq"]
+[ext_resource type="PackedScene" uid="uid://dgq6tjg8qsqqg" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteLungs.tscn" id="7_fddxf"]
+[ext_resource type="PackedScene" uid="uid://d37kgapck0ns1" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteNails.tscn" id="8_0dfh0"]
+[ext_resource type="PackedScene" uid="uid://bxct7g2nvs8pn" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteSkin.tscn" id="9_3p8y5"]
+[ext_resource type="PackedScene" uid="uid://bnp8pcxvsfus7" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteStomach.tscn" id="10_4hwkh"]
+
+[node name="FeedingRequestBoard" type="Node3D"]
+script = ExtResource("1_2htya")
+eldritchSpritesScenes = Array[PackedScene]([ExtResource("2_fmnx4"), ExtResource("3_0isle"), ExtResource("4_ipnbr"), ExtResource("5_b8nor"), ExtResource("6_qxgyq"), ExtResource("7_fddxf"), ExtResource("8_0dfh0"), ExtResource("9_3p8y5"), ExtResource("10_4hwkh")])

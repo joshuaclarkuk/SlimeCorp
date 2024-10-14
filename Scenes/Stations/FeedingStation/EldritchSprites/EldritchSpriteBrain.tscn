@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd16uip7lfuav"]
+
+[ext_resource type="PackedScene" uid="uid://bhko65uevdu83" path="res://Scenes/Stations/FeedingStation/EldritchSprite.tscn" id="1_hkedh"]
+
+[node name="EldritchSpriteBrain" instance=ExtResource("1_hkedh")]
+region_rect = Rect2(208, 192, 376, 384)

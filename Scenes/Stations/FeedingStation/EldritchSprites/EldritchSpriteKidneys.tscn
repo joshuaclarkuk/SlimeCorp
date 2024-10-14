@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ubfw1ymovc7"]
+
+[ext_resource type="PackedScene" uid="uid://bhko65uevdu83" path="res://Scenes/Stations/FeedingStation/EldritchSprite.tscn" id="1_habkx"]
+
+[node name="EldritchSpriteKidneys" instance=ExtResource("1_habkx")]
+region_rect = Rect2(272, 1408, 248, 392)
+IngredientType = 6

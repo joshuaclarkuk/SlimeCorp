@@ -79,7 +79,6 @@ public partial class DebugUI : Control
     {
         // Clear existing list
         Godot.Collections.Array<Node> childNodes = foodRequestContainerNode.GetChildren();
-
         for (int i = 1; i < foodRequestContainerNode.GetChildCount();  i++)
         {
             childNodes[i].QueueFree();

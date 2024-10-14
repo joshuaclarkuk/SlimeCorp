@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5s2j8oy71nvw"]
+
+[ext_resource type="PackedScene" uid="uid://bhko65uevdu83" path="res://Scenes/Stations/FeedingStation/EldritchSprite.tscn" id="1_jm621"]
+
+[node name="EldritchSpriteLiver" instance=ExtResource("1_jm621")]
+IngredientType = 4

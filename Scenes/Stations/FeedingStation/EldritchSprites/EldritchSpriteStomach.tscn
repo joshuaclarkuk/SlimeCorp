@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnp8pcxvsfus7"]
+
+[ext_resource type="PackedScene" uid="uid://bhko65uevdu83" path="res://Scenes/Stations/FeedingStation/EldritchSprite.tscn" id="1_0r520"]
+
+[node name="EldritchSpriteStomach" instance=ExtResource("1_0r520")]
+region_rect = Rect2(1400, 824, 392, 392)
+IngredientType = 5
