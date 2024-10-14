@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7xlps7dv5dxv"]
+
+[ext_resource type="Script" path="res://Scripts/Creature/AreaButton.cs" id="1_lvfb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_puq0c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmbv5"]
+emission_enabled = true
+emission = Color(0.910907, 0.879183, 0.165406, 1)
+emission_energy_multiplier = 3.0
+
+[node name="AreaButton" type="CSGBox3D" node_paths=PackedStringArray("debugLabelNode")]
+script = ExtResource("1_lvfb7")
+debugLabelNode = NodePath("DebugLabel")
+defaultMaterial = SubResource("StandardMaterial3D_puq0c")
+lightUpMaterial = SubResource("StandardMaterial3D_kmbv5")
+
+[node name="DebugLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+text = "A1"

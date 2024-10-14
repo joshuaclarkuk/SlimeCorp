@@ -195,11 +195,11 @@ public partial class CleaningStation : Station
 
         // Assign buttons 1 - 9 to be results of loop through enum
         int enumIndex = 0;
-        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
+        for (int i = 1; i < buttonsNode.ButtonArray.Length; i++)
         {
             if (enumIndex < enumValues.Length)
             {
-                buttonsNode.ButtonArray[j].AssignDebugLabelText($"{j}\n{enumValues.GetValue(enumIndex)}");
+                buttonsNode.ButtonArray[i].AssignDebugLabelText($"{i}\n{enumValues.GetValue(enumIndex)}");
                 enumIndex++;
             }
         }

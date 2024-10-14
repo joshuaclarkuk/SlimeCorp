@@ -11,6 +11,13 @@ public partial class ClockOutStation : Station
     private bool cardInMachine = false;
     private bool clockedIn = false;
 
+    public override void _Ready()
+    {
+        base._Ready();
+
+        AssignDebugLabelValues();
+    }
+
     public override void EnterStation()
     {
         base.EnterStation();
@@ -139,6 +146,15 @@ public partial class ClockOutStation : Station
             default:
                 GD.Print("Unhandled button press");
                 break;
+        }
+    }
+
+    private void AssignDebugLabelValues()
+    {
+        // Assign buttons 0 - 9 to be results of loop through ints
+        for (int i = 0; i < buttonsNode.ButtonArray.Length; i++)
+        {
+            buttonsNode.ButtonArray[i].AssignDebugLabelText($"{i}");
         }
     }
 

@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmx3h8u2mqrcs"]
+
+[ext_resource type="Script" path="res://Scripts/Creature/AreaCleanRequestBoard.cs" id="1_irlwg"]
+[ext_resource type="PackedScene" uid="uid://c7xlps7dv5dxv" path="res://Scenes/Creature/AreaButton.tscn" id="2_s72yy"]
+
+[node name="AreaCleanRequestBoard" type="Node3D" node_paths=PackedStringArray("areaButtons")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_irlwg")
+areaButtons = [NodePath("AreaButton1"), NodePath("AreaButton2"), NodePath("AreaButton3"), NodePath("AreaButton4"), NodePath("AreaButton5"), NodePath("AreaButton6"), NodePath("AreaButton7"), NodePath("AreaButton8"), NodePath("AreaButton9")]
+
+[node name="AreaButton1" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="AreaButton2" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -2, 0)
+
+[node name="AreaButton3" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2, 0)
+
+[node name="AreaButton4" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="AreaButton5" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+
+[node name="AreaButton6" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="AreaButton7" parent="." instance=ExtResource("2_s72yy")]
+
+[node name="AreaButton8" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="AreaButton9" parent="." instance=ExtResource("2_s72yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)

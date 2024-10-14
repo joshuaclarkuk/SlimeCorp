@@ -12,5 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bnp8pcxvsfus7" path="res://Scenes/Stations/FeedingStation/EldritchSprites/EldritchSpriteStomach.tscn" id="10_4hwkh"]
 
 [node name="FeedingRequestBoard" type="Node3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_2htya")
 eldritchSpritesScenes = Array[PackedScene]([ExtResource("2_fmnx4"), ExtResource("3_0isle"), ExtResource("4_ipnbr"), ExtResource("5_b8nor"), ExtResource("6_qxgyq"), ExtResource("7_fddxf"), ExtResource("8_0dfh0"), ExtResource("9_3p8y5"), ExtResource("10_4hwkh")])

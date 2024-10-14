@@ -1,16 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://y48k5t3gmky0"]
+[gd_scene load_steps=4 format=3 uid="uid://y48k5t3gmky0"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/_Components/KeypadButton.cs" id="1_jkc86"]
 [ext_resource type="Material" uid="uid://bxewixndl50fn" path="res://Materials/Stations/M_BlankButtonMaterial.tres" id="1_l8lny"]
+[ext_resource type="Texture2D" uid="uid://deqv4edq1tlh4" path="res://Assets/Sprites/Eldritch Symbols by Freepik.png" id="3_45wpp"]
 
-[node name="Button" type="CSGCylinder3D" node_paths=PackedStringArray("debugLabelNode")]
+[node name="Button" type="CSGCylinder3D" node_paths=PackedStringArray("debugLabelNode", "ingredientSpriteNode")]
 radius = 0.1
 height = 0.1
 material = ExtResource("1_l8lny")
 script = ExtResource("1_jkc86")
 debugLabelNode = NodePath("DebugLabel")
+ingredientSpriteNode = NodePath("IngredientSprite")
 
 [node name="DebugLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, 0)
 pixel_size = 0.001
 text = "Test"
+
+[node name="IngredientSprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, -1.31134e-09, 0.03, 0, -0.03, -1.31134e-09, 0, 0.0636732, 0)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("3_45wpp")
+region_enabled = true

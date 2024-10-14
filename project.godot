@@ -23,6 +23,11 @@ GlobalValues="*res://Scripts/Globals/GlobalValues.cs"
 GlobalEvents="*res://Scripts/Globals/GlobalEvents.cs"
 Player="*res://Scenes/Player/Player.tscn"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [dotnet]
 
 project/assembly_name="SlimeCorp"

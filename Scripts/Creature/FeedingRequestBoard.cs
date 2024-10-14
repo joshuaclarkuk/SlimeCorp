@@ -9,6 +9,7 @@ public partial class FeedingRequestBoard : Node3D
 
     private EldritchSprite[] eldritchSprites = new EldritchSprite[9];
     private GlobalSignals globalSignals = null;
+    private List<E_IngredientList> activeIngredients = new List<E_IngredientList>();
 
     private float newSpriteOffsetX = -4.0f;
 
@@ -36,20 +37,29 @@ public partial class FeedingRequestBoard : Node3D
 
     private void HandleCreatureFeedRequest(List<E_IngredientList> list)
     {
+        activeIngredients.Clear();
+
+        foreach (E_IngredientList ingredient in list)
+        {
+            activeIngredients.Add(ingredient);
+        }
+
         ClearExistingList();
-        PopulateNewList(list);
+        PopulateNewList(activeIngredients);
     }
 
     private void HandleServeCreatureFood(List<E_IngredientList> list)
-    {        
-        foreach(Node3D child in GetChildren())
+    {
+        foreach (E_IngredientList ingredient in list)
         {
-            EldritchSprite eldritchSprite = child.GetChild<EldritchSprite>(0);
-            if (list.Contains(eldritchSprite.IngredientType))
+            if (activeIngredients.Contains(ingredient))
             {
-                child.QueueFree();
+                activeIngredients.Remove(ingredient);
             }
         }
+
+        ClearExistingList();
+        PopulateNewList(activeIngredients);
     }
 
     private void ClearExistingList()
@@ -62,11 +72,11 @@ public partial class FeedingRequestBoard : Node3D
 
     private void PopulateNewList(List<E_IngredientList> list)
     {
-        for (int i = 0; i < list.Count; i++)
+        for (int i = 0; i < activeIngredients.Count; i++)
         {
             for (int j = 0; j < eldritchSprites.Length; j++)
             {
-                if (eldritchSprites[j].IngredientType == list[i])
+                if (eldritchSprites[j] != null && eldritchSprites[j].IngredientType == activeIngredients[i])
                 {
                     Node3D newIngredientNode = new Node3D();
                     AddChild(newIngredientNode);
@@ -75,7 +85,6 @@ public partial class FeedingRequestBoard : Node3D
                     newIngredientNode.AddChild(newSpriteInstance);
 
                     newIngredientNode.Position = new Vector3(newSpriteOffsetX * i, 0.0f, 0.0f);
-
                     break;
                 }
             }

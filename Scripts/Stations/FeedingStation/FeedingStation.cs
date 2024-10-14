@@ -9,6 +9,10 @@ public partial class FeedingStation : Station
     [Export] private Timer servingFoodTimerNode = null;
     [Export] private StationNeedsProgressBarComponent stationNeedsProgressBarComponent = null;
 
+    [ExportCategory("Button Texture Region Values")]
+    [Export] private Vector2[] regionPosition = null;
+    [Export] private Vector2[] regionSize = null;
+
     private List<E_IngredientList> activeIngredients = new List<E_IngredientList>();
 
     public override void _Ready()
@@ -20,6 +24,9 @@ public partial class FeedingStation : Station
 
         // Initialise ingredient dictionary with all possible ingredients and set initial values to false
         InitialiseIngredientDictionary(enumValues);
+
+        // Assign images to buttons
+        AssignButtonSprites();
 
         // Assign button debug label values (leaves 0 clear for "Reset")
         AssignDebugLabelValues(enumValues);
@@ -195,13 +202,22 @@ public partial class FeedingStation : Station
 
         // Assign buttons 1 - 9 to be results of loop through enum
         int enumIndex = 0;
-        for (int j = 1; j < buttonsNode.ButtonArray.Length; j++)
+        for (int i = 1; i < buttonsNode.ButtonArray.Length; i++)
         {
             if (enumIndex < enumValues.Length)
             {
-                buttonsNode.ButtonArray[j].AssignDebugLabelText($"{j}\n{enumValues.GetValue(enumIndex)}");
+                buttonsNode.ButtonArray[i].AssignDebugLabelText($"{i}\n{enumValues.GetValue(enumIndex)}");
+                buttonsNode.ButtonArray[i].MakeDebugLabelTextInvisible();
                 enumIndex++;
             }
+        }
+    }
+
+    private void AssignButtonSprites()
+    {
+        for (int i = 1; i < buttonsNode.ButtonArray.Length; i++)
+        {
+            buttonsNode.ButtonArray[i].AssignButtonImage(new Rect2(regionPosition[i], regionSize[i]));
         }
     }
 

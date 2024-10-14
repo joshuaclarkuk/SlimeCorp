@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=51 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
 [ext_resource type="PackedScene" uid="uid://b42ksxkrqndmw" path="res://Scenes/Events/Main/WarningSiren.tscn" id="16_u8xjs"]
 [ext_resource type="PackedScene" uid="uid://bwjgglhiccstc" path="res://Scenes/Creature/FeedingRequestBoard.tscn" id="31_5uaei"]
+[ext_resource type="PackedScene" uid="uid://cmx3h8u2mqrcs" path="res://Scenes/Creature/AreaCleanRequestBoard.tscn" id="32_c5ejd"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -445,8 +446,27 @@ size = Vector2i(1024, 1024)
 
 [node name="CreatureNeedsDisplay" parent="Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
 
-[node name="WarningSiren" parent="Environment/Objects" index="2" instance=ExtResource("16_u8xjs")]
+[node name="CreatureNeedsScreen2" type="Node3D" parent="Environment/Objects" index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, -10.6)
+
+[node name="CreatureNeedsScreen" type="Sprite3D" parent="Environment/Objects/CreatureNeedsScreen2" index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.2, 0)
+texture = SubResource("ViewportTexture_w0js7")
+
+[node name="CreatureNeedsViewport" type="SubViewport" parent="Environment/Objects/CreatureNeedsScreen2" index="1"]
+disable_3d = true
+size = Vector2i(1024, 1024)
+
+[node name="CreatureNeedsDisplay" parent="Environment/Objects/CreatureNeedsScreen2/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
+
+[node name="WarningSiren" parent="Environment/Objects" index="3" instance=ExtResource("16_u8xjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6, 10, -1.9)
+
+[node name="FeedingRequestBoard" parent="Environment/Objects" index="4" instance=ExtResource("31_5uaei")]
+transform = Transform3D(2.26494e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, 2.26494e-08, -8, 2, -6)
+
+[node name="AreaCleanRequestBoard" parent="Environment/Objects" index="5" instance=ExtResource("32_c5ejd")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, -7.6, 2, 0.7)
 
 [node name="CanisterStorageRoomLabel" type="Label3D" parent="Environment/Signage" index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.426, 1, 10)
@@ -531,6 +551,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1
 
 [node name="BlackScreen" parent="." index="13"]
 visible = false
-
-[node name="FeedingRequestBoard" parent="." index="14" instance=ExtResource("31_5uaei")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8, 4, -2)

@@ -5,6 +5,7 @@ public partial class KeypadButton : CsgCylinder3D
 {
     [ExportCategory("Required Nodes")]
     [Export] private Label3D debugLabelNode = null;
+    [Export] private Sprite3D ingredientSpriteNode = null;
 
     public bool IsTravelling { get; private set; } = false;
     public bool IsDown { get; private set; } = false;
@@ -46,6 +47,16 @@ public partial class KeypadButton : CsgCylinder3D
     public void AssignDebugLabelText(string text)
     {
         debugLabelNode.Text = text;
+    }
+
+    public void MakeDebugLabelTextInvisible()
+    {
+        debugLabelNode.Visible = false;
+    }
+
+    public void AssignButtonImage(Rect2 regionValue)
+    {
+        ingredientSpriteNode.RegionRect = regionValue;
     }
 
     private void HandleAnimateButtonDownTweenFinished()
