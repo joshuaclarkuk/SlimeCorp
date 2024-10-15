@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=73 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -29,7 +29,20 @@
 [ext_resource type="Texture2D" uid="uid://c6cypv6gee06n" path="res://3D Folder/textures folder/Level folder/Walls/walls_Roughness.png" id="15_bh40k"]
 [ext_resource type="Material" uid="uid://bk22xfsc8r7bg" path="res://Materials/MainLevel/M_MainLevelWallsScaled.tres" id="15_f811p"]
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
+[ext_resource type="Material" uid="uid://bolxibgkujch8" path="res://Materials/M_TiledFloor.tres" id="16_ctw0p"]
 [ext_resource type="PackedScene" uid="uid://b42ksxkrqndmw" path="res://Scenes/Events/Main/WarningSiren.tscn" id="16_u8xjs"]
+[ext_resource type="Texture2D" uid="uid://bvxy7sy7vejln" path="res://Assets/Textures/Main/PaintedPlaster001_1K-JPG/PaintedPlaster001_1K-JPG_Color.jpg" id="17_yfhp8"]
+[ext_resource type="Texture2D" uid="uid://d4mm43qp7p060" path="res://Assets/Textures/Main/PaintedPlaster001_1K-JPG/PaintedPlaster001_1K-JPG_NormalDX.jpg" id="18_ghw4u"]
+[ext_resource type="Texture2D" uid="uid://myehat8gftfs" path="res://Assets/Textures/Main/OfficeCeiling001_1K-JPG/OfficeCeiling001_1K-JPG_Color.jpg" id="18_qwxmg"]
+[ext_resource type="Texture2D" uid="uid://dcljdlrdyw17y" path="res://Assets/Textures/Main/PaintedPlaster001_1K-JPG/PaintedPlaster001_1K-JPG_Roughness.jpg" id="19_7f77v"]
+[ext_resource type="Texture2D" uid="uid://dv3ns0jbgn2ru" path="res://Assets/Textures/Main/OfficeCeiling001_1K-JPG/OfficeCeiling001_1K-JPG_AmbientOcclusion.jpg" id="19_dnd4a"]
+[ext_resource type="Texture2D" uid="uid://c8k5v3xl4uufr" path="res://Assets/Textures/Main/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Color.jpg" id="20_1knd7"]
+[ext_resource type="Texture2D" uid="uid://d4ns22i6thfvc" path="res://Assets/Textures/Main/OfficeCeiling001_1K-JPG/OfficeCeiling001_1K-JPG_Emission.jpg" id="20_lsb5w"]
+[ext_resource type="Texture2D" uid="uid://bs2ja53pr70yp" path="res://Assets/Textures/Main/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_AmbientOcclusion.jpg" id="21_dhtmo"]
+[ext_resource type="Texture2D" uid="uid://dse66anvfqvfi" path="res://Assets/Textures/Main/OfficeCeiling001_1K-JPG/OfficeCeiling001_1K-JPG_Metalness.jpg" id="21_lc6eh"]
+[ext_resource type="Texture2D" uid="uid://dm1m8hmi5fi77" path="res://Assets/Textures/Main/OfficeCeiling001_1K-JPG/OfficeCeiling001_1K-JPG_NormalDX.jpg" id="22_kbq74"]
+[ext_resource type="Texture2D" uid="uid://tmlqkwpkbvjp" path="res://Assets/Textures/Main/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Roughness.jpg" id="22_x1i3p"]
+[ext_resource type="Texture2D" uid="uid://dyiqcu3nc712d" path="res://Assets/Textures/Main/OfficeCeiling001_1K-JPG/OfficeCeiling001_1K-JPG_Roughness.jpg" id="23_05vg5"]
 [ext_resource type="PackedScene" uid="uid://dk4tbvl22ya4w" path="res://Scenes/Stations/AbandonedRoomCodeStation/AbandonedRoomCodeStation.tscn" id="24_fwfmb"]
 [ext_resource type="PackedScene" uid="uid://bwjgglhiccstc" path="res://Scenes/Creature/FeedingRequestBoard.tscn" id="31_5uaei"]
 [ext_resource type="PackedScene" uid="uid://cmx3h8u2mqrcs" path="res://Scenes/Creature/AreaCleanRequestBoard.tscn" id="32_c5ejd"]
@@ -85,8 +98,49 @@ normal_texture = ExtResource("14_oxp0q")
 uv1_scale = Vector3(-0.155, 0.215, 0.215)
 uv1_offset = Vector3(0.675, 0.5, 0)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_4j8mc"]
+material = ExtResource("16_ctw0p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vht8e"]
+albedo_texture = ExtResource("17_yfhp8")
+roughness_texture = ExtResource("19_7f77v")
+normal_enabled = true
+normal_texture = ExtResource("18_ghw4u")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0itqa"]
+material = SubResource("StandardMaterial3D_vht8e")
+size = Vector2(2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysott"]
+albedo_texture = ExtResource("20_1knd7")
+roughness_texture = ExtResource("22_x1i3p")
+ao_enabled = true
+ao_texture = ExtResource("21_dhtmo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6drwm"]
+material = SubResource("StandardMaterial3D_ysott")
+size = Vector2(2, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2wlj"]
+albedo_texture = ExtResource("18_qwxmg")
+metallic = 1.0
+metallic_texture = ExtResource("21_lc6eh")
+roughness_texture = ExtResource("23_05vg5")
+emission_enabled = true
+emission_texture = ExtResource("20_lsb5w")
+normal_enabled = true
+normal_texture = ExtResource("22_kbq74")
+ao_enabled = true
+ao_texture = ExtResource("19_dnd4a")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7j1ad"]
+material = SubResource("StandardMaterial3D_s2wlj")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hi8ap"]
+size = Vector3(30, 1, 3.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgo4w"]
 size = Vector3(1, 3, 1.2)
@@ -347,6 +401,173 @@ use_collision = true
 collision_mask = 0
 size = Vector3(1.2, 0.6, 3.7)
 
+[node name="Entrance" type="Node3D" parent="Environment/LevelMesh" index="5"]
+
+[node name="Floor" type="Node3D" parent="Environment/LevelMesh/Entrance" index="0"]
+
+[node name="FloorTile1" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7, 0, -1.8)
+mesh = SubResource("PlaneMesh_4j8mc")
+skeleton = NodePath("../..")
+
+[node name="FloorTile2" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7, 0, -1.8)
+mesh = SubResource("PlaneMesh_4j8mc")
+skeleton = NodePath("../..")
+
+[node name="FloorTile3" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 0, -1.8)
+mesh = SubResource("PlaneMesh_4j8mc")
+skeleton = NodePath("../..")
+
+[node name="FloorTile4" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 0, -1.8)
+mesh = SubResource("PlaneMesh_4j8mc")
+skeleton = NodePath("../..")
+
+[node name="FloorTile5" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7, 0, -1.8)
+mesh = SubResource("PlaneMesh_4j8mc")
+skeleton = NodePath("../..")
+
+[node name="FloorTile6" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7, 0, -1.8)
+mesh = SubResource("PlaneMesh_4j8mc")
+skeleton = NodePath("../..")
+
+[node name="WallNorth" type="Node3D" parent="Environment/LevelMesh/Entrance" index="1"]
+
+[node name="WallMesh12" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="0"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -25.0333, 0.5, -0.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh25" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="1"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -27.0333, 0.5, -0.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh26" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="2"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -29.0333, 0.5, -0.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh27" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="3"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -31.0333, 0.5, -0.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh29" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="4"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -34.0333, 0.5, -0.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh30" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="5"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -36.0333, 0.5, -0.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh28" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="6"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -35.7, 0.5, -2.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh31" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="7"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -33.7, 0.5, -2.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh32" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="8"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -31.7, 0.5, -2.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh33" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="9"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -29.7, 0.5, -2.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh34" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="10"]
+transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -26.7, 0.5, -2.8)
+mesh = SubResource("PlaneMesh_0itqa")
+
+[node name="WallMesh14" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="11"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -26.7, 2.5, -2.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh15" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="12"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -29.7, 2.5, -2.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh16" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="13"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -31.7, 2.5, -2.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh17" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="14"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -33.7, 2.5, -2.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh18" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="15"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -35.7, 2.5, -2.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh19" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="16"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -36.0333, 2.5, -0.799999)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh20" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="17"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -34.0333, 2.5, -0.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh21" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="18"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -31.0333, 2.5, -0.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh22" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="19"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -29.0333, 2.5, -0.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh23" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="20"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -27.0333, 2.5, -0.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="WallMesh24" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="21"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -25.0333, 2.5, -0.8)
+mesh = SubResource("PlaneMesh_6drwm")
+
+[node name="CorridorWallPiece1" type="Node3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="22"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -24.7, 1.5, -2.8)
+
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth/CorridorWallPiece1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
+
+[node name="WallMesh13" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth/CorridorWallPiece1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("PlaneMesh_6drwm")
+skeleton = NodePath("../..")
+
+[node name="Ceiling" type="Node3D" parent="Environment/LevelMesh/Entrance" index="2"]
+
+[node name="CeilingTile1" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="0"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -24.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="CeilingTile2" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="1"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -26.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="CeilingTile3" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="2"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -28.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="CeilingTile4" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="3"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -30.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="CeilingTile5" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="4"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -32.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="CeilingTile6" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="5"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -34.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="CeilingTile7" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="6"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -36.7, 4, -1.8)
+mesh = SubResource("PlaneMesh_7j1ad")
+
 [node name="FloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.5, 5)
 collision_mask = 0
@@ -354,7 +575,15 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/FloorCollision" index="0"]
 shape = SubResource("BoxShape3D_8gho2")
 
-[node name="PillarCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="1"]
+[node name="EntranceFloorCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, -0.5, -2)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/EntranceFloorCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+shape = SubResource("BoxShape3D_hi8ap")
+
+[node name="PillarCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, 1)
 collision_mask = 0
 
@@ -362,7 +591,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="2"]
+[node name="PillarCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, 1)
 collision_mask = 0
 
@@ -370,7 +599,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision3" type="StaticBody3D" parent="Environment/LevelCollision" index="3"]
+[node name="PillarCollision3" type="StaticBody3D" parent="Environment/LevelCollision" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, 1)
 collision_mask = 0
 
@@ -378,7 +607,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision4" type="StaticBody3D" parent="Environment/LevelCollision" index="4"]
+[node name="PillarCollision4" type="StaticBody3D" parent="Environment/LevelCollision" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, -4.7)
 collision_mask = 0
 
@@ -386,7 +615,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision5" type="StaticBody3D" parent="Environment/LevelCollision" index="5"]
+[node name="PillarCollision5" type="StaticBody3D" parent="Environment/LevelCollision" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, -4.7)
 collision_mask = 0
 
@@ -394,7 +623,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision6" type="StaticBody3D" parent="Environment/LevelCollision" index="6"]
+[node name="PillarCollision6" type="StaticBody3D" parent="Environment/LevelCollision" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, -4.7)
 collision_mask = 0
 
@@ -402,7 +631,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision7" type="StaticBody3D" parent="Environment/LevelCollision" index="7"]
+[node name="PillarCollision7" type="StaticBody3D" parent="Environment/LevelCollision" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -10.4)
 collision_mask = 0
 
@@ -410,7 +639,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_mnv84")
 
-[node name="PillarCollision8" type="StaticBody3D" parent="Environment/LevelCollision" index="8"]
+[node name="PillarCollision8" type="StaticBody3D" parent="Environment/LevelCollision" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 7.2)
 collision_mask = 0
 
@@ -418,7 +647,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_mnv84")
 
-[node name="PillarCollision9" type="StaticBody3D" parent="Environment/LevelCollision" index="9"]
+[node name="PillarCollision9" type="StaticBody3D" parent="Environment/LevelCollision" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 3.9)
 collision_mask = 0
 
@@ -426,7 +655,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_gi2tj")
 
-[node name="PillarCollision10" type="StaticBody3D" parent="Environment/LevelCollision" index="10"]
+[node name="PillarCollision10" type="StaticBody3D" parent="Environment/LevelCollision" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -7.1)
 collision_mask = 0
 
@@ -434,98 +663,98 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_gi2tj")
 
-[node name="LandingCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="11"]
+[node name="LandingCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/LandingCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("BoxShape3D_d1hf1")
 
-[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="12"]
+[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="13"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -3.4, 0, -2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StairCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500002, 0, 0.15)
 shape = SubResource("BoxShape3D_8xaal")
 
-[node name="RailingCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="13"]
+[node name="RailingCollision1" type="StaticBody3D" parent="Environment/LevelCollision" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, -8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/RailingCollision1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_2s83a")
 
-[node name="RailingCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="14"]
+[node name="RailingCollision2" type="StaticBody3D" parent="Environment/LevelCollision" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, 6.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/RailingCollision2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_2s83a")
 
-[node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision" index="15"]
+[node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, -13.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionNorth1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionNorth2" type="StaticBody3D" parent="Environment/LevelCollision" index="16"]
+[node name="WallCollisionNorth2" type="StaticBody3D" parent="Environment/LevelCollision" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -13.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionNorth2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="17"]
+[node name="WallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, 10.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionSouth1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionSouth2" type="StaticBody3D" parent="Environment/LevelCollision" index="18"]
+[node name="WallCollisionSouth2" type="StaticBody3D" parent="Environment/LevelCollision" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 10.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionSouth2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="StorageWallCollisionEast" type="StaticBody3D" parent="Environment/LevelCollision" index="19"]
+[node name="StorageWallCollisionEast" type="StaticBody3D" parent="Environment/LevelCollision" index="20"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.6, 0.5, 17.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionEast" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
 shape = SubResource("BoxShape3D_eddos")
 
-[node name="StorageWallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="20"]
+[node name="StorageWallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="21"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8, 0.5, 17.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionWest1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
 shape = SubResource("BoxShape3D_eddos")
 
-[node name="StorageWallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="21"]
+[node name="StorageWallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision" index="22"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.8, 0.5, 24.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/StorageWallCollisionSouth1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
 shape = SubResource("BoxShape3D_migoq")
 
-[node name="WallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="22"]
+[node name="WallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision" index="23"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, -8.6)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionWest1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionWest2" type="StaticBody3D" parent="Environment/LevelCollision" index="23"]
+[node name="WallCollisionWest2" type="StaticBody3D" parent="Environment/LevelCollision" index="24"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, 5.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/WallCollisionWest2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="EyeWallCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="24"]
+[node name="EyeWallCollision" type="StaticBody3D" parent="Environment/LevelCollision" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/EyeWallCollision" index="0"]
