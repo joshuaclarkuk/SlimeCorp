@@ -13,9 +13,9 @@ TitleToDisplay = "Day 1
 Orientation"
 MinutesInDay = 5
 SlimeCollectionTarget = 100.0
-HungerDepletionRate = 1.0
+HungerDepletionRate = 0.6
 HappinessDepletionRate = 0.1
-CleanlinessDepletionRate = 1.0
+CleanlinessDepletionRate = 0.2
 AngerDepletionRate = 1.0
 MaxHungerReplenishment = 20.0
 MaxHappinessReplenishment = 5.0

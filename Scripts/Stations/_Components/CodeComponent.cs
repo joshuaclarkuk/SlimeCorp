@@ -3,6 +3,8 @@ using System;
 
 public partial class CodeComponent : Node3D
 {
+    public int[] correctCode = new int[4];
+
     [ExportCategory("Digit Nodes")]
     [Export] private Label3D[] digits = new Label3D[4];
     [Export] private Color defaultColour = new Color(1, 1, 1, 1);
@@ -35,6 +37,14 @@ public partial class CodeComponent : Node3D
     public override void _ExitTree()
     {
         codeResetTimer.Timeout -= HandleCodeResetTimerTimeout;
+    }
+
+    public void SetCorrectCode(int[] code)
+    {
+        for (int i = 0; i < code.Length; i++)
+        {
+            correctCode[i] = code[i];
+        }
     }
 
     public void EnterDigitToMachine(int digit)
@@ -72,7 +82,7 @@ public partial class CodeComponent : Node3D
 
         for (int i = 0; i < codeEntered.Length; i++)
         {
-            if (codeEntered[i] != globalValues.EmployeeNumber[i])
+            if (codeEntered[i] != correctCode[i])
             {
                 isCorrect = false;
                 break;

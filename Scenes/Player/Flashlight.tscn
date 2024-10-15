@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b215vn4inuiia"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Flashlight.cs" id="1_3d4uk"]
+
+[node name="FlashlightHolder" type="Node3D" node_paths=PackedStringArray("lightNode")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+top_level = true
+script = ExtResource("1_3d4uk")
+lightNode = NodePath("Flashlight")
+
+[node name="Flashlight" type="SpotLight3D" parent="."]
+spot_range = 10.0
+spot_angle = 15.0

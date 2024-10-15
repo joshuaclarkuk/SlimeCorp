@@ -5,6 +5,7 @@ public partial class Player : CharacterBody3D
 {
 	[ExportCategory("Required Nodes")]
     [Export] public Camera3D PlayerCameraNode { get; private set; } = null;
+	[Export] private Flashlight flashlightNode = null;
     [Export] private Node3D cameraPivotNode = null;
 	[Export] private Node3D canisterCarrierNode = null;
 	[Export] private RayCast3D interactRaycastNode = null;
@@ -31,6 +32,9 @@ public partial class Player : CharacterBody3D
 
 	// Running
 	private bool isRunning = false;
+
+	// Flashlight
+	private bool flashlightIsActive = false;
 
 	// Mouse motion vector
 	private Vector2 mouseMotion = Vector2.Zero;
@@ -64,6 +68,9 @@ public partial class Player : CharacterBody3D
 
 		// Stops player moving until black screen has disappeared
 		isRelinquishingControl = true;
+
+		// Set flashlight to off
+		flashlightNode.ToggleFlashlight(false);
 	}
 
 	public override void _ExitTree()
@@ -76,8 +83,9 @@ public partial class Player : CharacterBody3D
 		if (isRelinquishingControl) { return; }
 
 		HandleCameraRotation();
+        HandleFlashlightInterpolation(delta);
 
-		Vector3 velocity = Velocity;
+        Vector3 velocity = Velocity;
 
 		// Add the gravity.
 		if (!IsOnFloor())
@@ -125,7 +133,12 @@ public partial class Player : CharacterBody3D
 		MoveAndSlide();
 	}
 
-	public override void _UnhandledInput(InputEvent @event)
+    private void HandleFlashlightInterpolation(double delta)
+    {
+		flashlightNode.InterpLightWithCamera((float)delta, PlayerCameraNode);
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
 	{
 		// CAMERA LOOK
 		if (Input.MouseMode == Input.MouseModeEnum.Captured)
@@ -152,6 +165,21 @@ public partial class Player : CharacterBody3D
         {
             InteractWithStation();
             InteractWithInteractable();
+        }
+
+		// FLASHLIGHT
+		if (Input.IsActionJustPressed(GlobalConstants.INPUT_FLASHLIGHT))
+		{
+			if (!flashlightIsActive)
+			{
+				flashlightNode.ToggleFlashlight(true);
+				flashlightIsActive = true;
+            }
+			else
+			{
+                flashlightNode.ToggleFlashlight(false);
+                flashlightIsActive = false;
+            }
         }
 
         // SHOW CURSOR

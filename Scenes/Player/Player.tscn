@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://db8ayysgph1a2"]
+[gd_scene load_steps=16 format=3 uid="uid://db8ayysgph1a2"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_iqhkd"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.cs" id="2_bty46"]
@@ -12,16 +12,18 @@
 [ext_resource type="AudioStream" uid="uid://c03sixvvfsy7i" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_6.wav" id="9_b16fw"]
 [ext_resource type="AudioStream" uid="uid://cbqi7ohi7g0fx" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_7.wav" id="10_ysfvl"]
 [ext_resource type="PackedScene" uid="uid://s2ambm42gk1q" path="res://Scenes/UI/Player/PlayerUI.tscn" id="11_d1fi4"]
+[ext_resource type="PackedScene" uid="uid://b215vn4inuiia" path="res://Scenes/Player/Flashlight.tscn" id="13_g8l8u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_34n1q"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_s46c6"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCameraNode", "cameraPivotNode", "canisterCarrierNode", "interactRaycastNode", "interactRaycastTimerNode")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCameraNode", "flashlightNode", "cameraPivotNode", "canisterCarrierNode", "interactRaycastNode", "interactRaycastTimerNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_iqhkd")
 PlayerCameraNode = NodePath("PlayerCameraPivot/PlayerCamera")
+flashlightNode = NodePath("FlashlightHolder")
 cameraPivotNode = NodePath("PlayerCameraPivot")
 canisterCarrierNode = NodePath("PlayerCameraPivot/PlayerCamera/CanisterCarrier")
 interactRaycastNode = NodePath("InteractRaycast")
@@ -63,7 +65,7 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_cull_mask = 4293918720
-size = Vector2i(1920, 1080)
+size = Vector2i(1366, 768)
 render_target_update_mode = 4
 
 [node name="CanisterCamera" type="Camera3D" parent="PlayerCameraPivot/PlayerCamera/CanisterSubviewportContainer/CanisterViewport"]
@@ -98,3 +100,5 @@ collide_with_bodies = false
 [node name="InteractRaycastTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="FlashlightHolder" parent="." instance=ExtResource("13_g8l8u")]

@@ -8,7 +8,8 @@
     CLOCKOUT,
     CANISTERSTORAGE,
     HAPPINESS,
-    ELEVATORPANEL
+    ELEVATORPANEL,
+    ABANDONEDROOMCODE
 }
 
 public enum E_IngredientList

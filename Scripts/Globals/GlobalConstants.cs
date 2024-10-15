@@ -7,6 +7,7 @@ public class GlobalConstants
     public const string INPUT_STRAFE_RIGHT = "StrafeRight";
     public const string INPUT_RUN = "Run";
     public const string INPUT_INTERACT = "Interact";
+    public const string INPUT_FLASHLIGHT = "Flashlight";
     public const string INPUT_JUMP = "Jump";
 
     public const string INPUT_MOUSE_1 = "Mouse1";

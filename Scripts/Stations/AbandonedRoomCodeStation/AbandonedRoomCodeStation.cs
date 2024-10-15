@@ -1,30 +1,30 @@
-﻿using Godot;
+using Godot;
 using System;
 
-public partial class ClockOutStation : Station
+public partial class AbandonedRoomCodeStation : Station
 {
     [ExportCategory("Required Nodes")]
-    [Export] private Card punchCardNode = null;
     [Export] private CodeComponent codeComponent = null;
 
-    // Card behaviour
-    private bool cardInMachine = false;
-    private bool clockedIn = false;
+    [ExportCategory("Code")]
+    [Export] private int[] correctCode = null;
+
+    private bool isDoorOpen = false;
 
     public override void _Ready()
     {
         base._Ready();
 
-        globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
+        if (correctCode != null)
+        {
+            codeComponent.SetCorrectCode(correctCode);
+        }
+        else
+        {
+            codeComponent.SetCorrectCode(new int[] { 0, 0, 0, 0 });
+        }
 
         AssignDebugLabelValues();
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-
-        globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
     }
 
     public override void EnterStation()
@@ -32,7 +32,6 @@ public partial class ClockOutStation : Station
         base.EnterStation();
 
         // Link signals
-        punchCardNode.OnCardTargetReached += HandleCardTargetReached;
         codeComponent.OnCorrectCodeEntered += HandleCorrectCodeEntered;
 
         GD.Print($"Calling EnterStation method on {Name}");
@@ -43,26 +42,9 @@ public partial class ClockOutStation : Station
         base.ExitStation();
 
         // Unlink signals
-        punchCardNode.OnCardTargetReached -= HandleCardTargetReached;
         codeComponent.OnCorrectCodeEntered -= HandleCorrectCodeEntered;
 
-        // Reset machine
-        punchCardNode.ReturnToOriginalPosition();
-        cardInMachine = false;
-
         GD.Print($"Calling ExitStation method on {Name}");
-    }
-
-    public override void _UnhandledInput(InputEvent @event)
-    {
-        base._UnhandledInput( @event );
-
-        if (isMouseClicked)
-        {
-            if (cardInMachine) { return; } // Stops card being moved if it's locked in machine
-
-            punchCardNode.MovePhysicalCardWithMouseMotion(mouseDragMotion.Y, mouseDragSensitivity);
-        }
     }
 
     protected override void HandleButtonEngaged(int buttonIndex)
@@ -115,11 +97,8 @@ public partial class ClockOutStation : Station
         }
     }
 
-    // NOT REQUIRED FOR CLOCK IN STATION AS BUTTONS ARE NOT DESIGNED TO STAY PRESSED
     protected override void HandleButtonDisengaged(int buttonIndex)
     {
-        GD.Print($"Button {buttonIndex} was released in FeedingStation.");
-
         switch (buttonIndex)
         {
             case 0:
@@ -167,40 +146,25 @@ public partial class ClockOutStation : Station
         }
     }
 
-    private void HandleGenerateEmployeeNumber(int[] code)
-    {
-        GD.Print("HandleGenerateEmployeeNumber: Received code - ", string.Join(",", code)); // Debugging log
-        codeComponent.SetCorrectCode(code);
-    }
-
     private void EnterDigitToMachine(int digit)
     {
-        if (!cardInMachine) { return; } // Only allows code entry when card is inserted
-
         codeComponent.EnterDigitToMachine(digit);
-    }
-
-    private void HandleCardTargetReached()
-    {
-        GD.Print("Card target reached");
-        cardInMachine = true;
     }
 
     private void HandleCorrectCodeEntered(bool correct)
     {
-        if (!correct) { return; }
-
-        if (!clockedIn)
+        if (correct)
         {
-            clockedIn = true;
-            globalSignals.RaisePlayerClockedIn();
-            globalSignals.RaisePlayerExitStation(StationType);
-        }
-        else
-        {
-            clockedIn = false;
-            globalSignals.RaisePlayerClockedOut();
-            globalSignals.RaisePlayerExitStation(StationType);
+            if (!isDoorOpen)
+            {
+                GD.Print("OPENING DOOR");
+                isDoorOpen = true;
+            }
+            else
+            {
+                GD.Print("CLOSING DOOR");
+                isDoorOpen = false;
+            }
         }
     }
 }

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk4tbvl22ya4w"]
+
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_iimmh"]
+[ext_resource type="Script" path="res://Scripts/Stations/AbandonedRoomCodeStation/AbandonedRoomCodeStation.cs" id="2_n4v6q"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="2_op6q6"]
+[ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="3_ail5q"]
+
+[node name="AbandonedRoomCodeStation" node_paths=PackedStringArray("codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_iimmh")]
+script = ExtResource("2_n4v6q")
+codeComponent = NodePath("CodeComponent")
+correctCode = PackedInt32Array(1, 2, 3, 4)
+buttonsNode = NodePath("Buttons")
+debugLabel = NodePath("StationDebugLabel")
+StationType = 9
+
+[node name="CameraLocation" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 1)
+
+[node name="StationDebugLabel" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Mesh" type="CSGBox3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(0.5, 0.5, 0.3)
+
+[node name="Buttons" parent="." index="4" instance=ExtResource("2_op6q6")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 1, 0.178202)
+
+[node name="CodeComponent" parent="." index="5" instance=ExtResource("3_ail5q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
