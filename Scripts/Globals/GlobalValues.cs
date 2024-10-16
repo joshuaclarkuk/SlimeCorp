@@ -5,6 +5,8 @@ public partial class GlobalValues : Node
 {
     public bool HasEmployeeCard { get; private set; } = false;
     public bool HasSupervisorCard { get; private set; } = false;
+    public bool HasPoisonInjector { get; private set; } = false;
+    public bool HasPlayerInjectedCreature { get; private set; } = false;
 
     public int[] EmployeeNumber { get; private set; } = new int[] { 0, 0, 0, 0 };
 
@@ -40,6 +42,18 @@ public partial class GlobalValues : Node
     public void SetHasSupervisorCard(bool hasSupervisorCard)
     {
         HasSupervisorCard = hasSupervisorCard;
+        GD.Print($"Has supervisor card: {HasSupervisorCard}");
+    }
+
+    public void SetHasPoisonInjector(bool hasPoisonInjector)
+    {
+        HasPoisonInjector = hasPoisonInjector;
+        GD.Print($"Has poison injector: {HasPoisonInjector}");
+    }
+
+    public void SetHasPlayerInjectedCreature(bool hasPlayerInjectedCreature)
+    {
+        HasPlayerInjectedCreature = hasPlayerInjectedCreature;
     }
 
     public void SetEmployeeNumber(int[] employeeNumber)

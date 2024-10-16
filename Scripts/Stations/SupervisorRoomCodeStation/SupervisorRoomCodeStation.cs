@@ -35,7 +35,6 @@ public partial class SupervisorRoomCodeStation : Station
 
         if (globalValues.HasSupervisorCard)
         {
-            GD.Print("Display swipe card");
             punchCardNode.Visible = true;
         }
         else

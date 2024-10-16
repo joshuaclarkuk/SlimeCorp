@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=94 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bwjgglhiccstc" path="res://Scenes/Creature/FeedingRequestBoard.tscn" id="31_5uaei"]
 [ext_resource type="PackedScene" uid="uid://cmx3h8u2mqrcs" path="res://Scenes/Creature/AreaCleanRequestBoard.tscn" id="32_c5ejd"]
 [ext_resource type="PackedScene" uid="uid://dso61x4as2gui" path="res://Scenes/Stations/SupervisorRoomCodeStation/SupervisorRoomCodeStation.tscn" id="39_cqewj"]
+[ext_resource type="PackedScene" uid="uid://c7tqs3aaalahn" path="res://Scenes/Stations/PoisonCreatureStation/PoisonCreatureStation.tscn" id="41_sbv07"]
 [ext_resource type="PackedScene" uid="uid://b4dcad0w5rqpd" path="res://Scenes/Stations/SupervisorCardPickupStation/SupervisorCardPickupStation.tscn" id="42_ur6oi"]
 [ext_resource type="PackedScene" uid="uid://ov4cjhhfxc74" path="res://Scenes/Interactables/RotatingDoor.tscn" id="43_p7imb"]
 [ext_resource type="PackedScene" uid="uid://bsntbl8rgj0ts" path="res://Scenes/Interactables/SlidingDoor.tscn" id="45_p2dxe"]
@@ -1653,6 +1654,9 @@ transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 
 
 [node name="SupervisorRoomCodeStation" parent="Environment/Objects/Stations" index="9" instance=ExtResource("39_cqewj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.8, 0, -18)
+
+[node name="PoisonCreatureStation" parent="Environment/Objects/Stations" index="10" instance=ExtResource("41_sbv07")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 3, -18)
 
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)

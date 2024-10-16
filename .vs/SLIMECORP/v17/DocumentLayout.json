@@ -1,38 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\",
+  "WorkspaceRootPath": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\supervisorroomcodestation\\supervisorroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\supervisorroomcodestation\\supervisorroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\supervisorcardstation\\supervisorcardpickupstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\supervisorcardstation\\supervisorcardpickupstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\abandonedroomcodestation\\abandonedroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\abandonedroomcodestation\\abandonedroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\interactables\\rotatingdoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\interactables\\rotatingdoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\globalenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshu\\repos\\godot\\slimecorp\\scripts\\globals\\globalenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\_components\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\_components\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshu\\repos\\godot\\slimecorp\\scripts\\stations\\poisoncreaturestation\\poisoncreaturestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\poisoncreaturestation\\poisoncreaturestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\interactables\\slidingdoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\interactables\\slidingdoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshu\\repos\\godot\\slimecorp\\scripts\\globals\\globalvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalvalues.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshu\\repos\\godot\\slimecorp\\scripts\\stations\\supervisorroomcodestation\\supervisorroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\supervisorroomcodestation\\supervisorroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,100 +31,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GlobalEnums.cs",
+              "DocumentMoniker": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalEnums.cs",
+              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalEnums.cs",
+              "ToolTip": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalEnums.cs",
+              "RelativeToolTip": "Scripts\\Globals\\GlobalEnums.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA4AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-16T15:33:25.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PoisonCreatureStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs",
+              "DocumentMoniker": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs",
               "RelativeDocumentMoniker": "Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs",
+              "ToolTip": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs",
               "RelativeToolTip": "Scripts\\Stations\\PoisonCreatureStation\\PoisonCreatureStation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADgAAABYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-16T15:01:57.37Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SlidingDoor.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Interactables\\SlidingDoor.cs",
-              "RelativeDocumentMoniker": "Scripts\\Interactables\\SlidingDoor.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Interactables\\SlidingDoor.cs",
-              "RelativeToolTip": "Scripts\\Interactables\\SlidingDoor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T13:41:35.005Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RotatingDoor.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Interactables\\RotatingDoor.cs",
-              "RelativeDocumentMoniker": "Scripts\\Interactables\\RotatingDoor.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Interactables\\RotatingDoor.cs",
-              "RelativeToolTip": "Scripts\\Interactables\\RotatingDoor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T11:42:42.93Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GlobalEnums.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalEnums.cs",
-              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalEnums.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalEnums.cs",
-              "RelativeToolTip": "Scripts\\Globals\\GlobalEnums.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T13:27:45.265Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Card.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\Card.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\_Components\\Card.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\_Components\\Card.cs",
-              "RelativeToolTip": "Scripts\\Stations\\_Components\\Card.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T13:22:53.116Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "SupervisorRoomCodeStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
+              "DocumentMoniker": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
               "RelativeDocumentMoniker": "Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
+              "ToolTip": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
               "RelativeToolTip": "Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowFsAAAA6AAAAAAAAAA==",
+              "ViewState": "AQIAAEYAAAAAmpmZmZkRwEsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T12:22:45.623Z",
+              "WhenOpened": "2024-10-16T15:13:28.216Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AbandonedRoomCodeStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\AbandonedRoomCodeStation\\AbandonedRoomCodeStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\AbandonedRoomCodeStation\\AbandonedRoomCodeStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\AbandonedRoomCodeStation\\AbandonedRoomCodeStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\AbandonedRoomCodeStation\\AbandonedRoomCodeStation.cs",
-              "ViewState": "AgIAAI4AAAAAAAAAAAAhwLQAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T11:31:37.081Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "SupervisorCardPickupStation.cs",
-              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorCardStation\\SupervisorCardPickupStation.cs",
-              "RelativeDocumentMoniker": "Scripts\\Stations\\SupervisorCardStation\\SupervisorCardPickupStation.cs",
-              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorCardStation\\SupervisorCardPickupStation.cs",
-              "RelativeToolTip": "Scripts\\Stations\\SupervisorCardStation\\SupervisorCardPickupStation.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAA0AAAAAAAAAA==",
+              "Title": "GlobalValues.cs",
+              "DocumentMoniker": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalValues.cs",
+              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalValues.cs",
+              "ToolTip": "C:\\Users\\joshu\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalValues.cs",
+              "RelativeToolTip": "Scripts\\Globals\\GlobalValues.cs",
+              "ViewState": "AQIAACkAAABAZmZmZmY5wDcAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T10:14:32.075Z"
+              "WhenOpened": "2024-10-16T15:14:51.053Z",
+              "EditorCaption": ""
             }
           ]
         }
