@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/Interactables/SlidingDoor.cs" id="1_dno2v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5kmit"]
-size = Vector3(1.6, 1.9, 0.1)
+size = Vector3(2, 1.9, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_npueb"]
-size = Vector3(1.6, 1.9, 0.1)
+size = Vector3(2, 1.9, 0.1)
 
 [sub_resource type="Animation" id="Animation_38rue"]
 resource_name = "OpenDoor"
