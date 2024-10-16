@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://71cte2ofr661"]
+
+[ext_resource type="Texture2D" uid="uid://b6h8a1myh2uqq" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Albedo.png" id="1_exuv5"]
+[ext_resource type="Texture2D" uid="uid://b4ygtomlkcftd" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Emission.png" id="2_qligu"]
+[ext_resource type="Texture2D" uid="uid://yefruebwvrbu" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Metalness.png" id="3_0t6ur"]
+[ext_resource type="Texture2D" uid="uid://n6shplns7jxv" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Normal.png" id="4_ypn8x"]
+[ext_resource type="Texture2D" uid="uid://6kqhpgtt6tkr" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Roughness.png" id="5_wj0u7"]
+
+[resource]
+albedo_texture = ExtResource("1_exuv5")
+metallic = 1.0
+metallic_texture = ExtResource("3_0t6ur")
+roughness_texture = ExtResource("5_wj0u7")
+emission_enabled = true
+emission_energy_multiplier = 2.17
+emission_texture = ExtResource("2_qligu")
+normal_enabled = true
+normal_texture = ExtResource("4_ypn8x")

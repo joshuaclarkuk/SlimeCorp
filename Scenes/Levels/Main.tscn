@@ -18,15 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
 [ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
-[ext_resource type="Texture2D" uid="uid://cv8jospwgm1o2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Albedo.png" id="11_sgdfc"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
-[ext_resource type="Texture2D" uid="uid://4wwv8867w4g8" path="res://3D Folder/textures folder/Level folder/Walls/walls_glow.png" id="12_a3nhn"]
 [ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
-[ext_resource type="Texture2D" uid="uid://jbrr5abn5iq2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Metalness.png" id="13_y7214"]
-[ext_resource type="Texture2D" uid="uid://cext5h5fsy0cq" path="res://3D Folder/textures folder/Level folder/Walls/walls_Normal.png" id="14_oxp0q"]
-[ext_resource type="Texture2D" uid="uid://c6cypv6gee06n" path="res://3D Folder/textures folder/Level folder/Walls/walls_Roughness.png" id="15_bh40k"]
 [ext_resource type="Material" uid="uid://bk22xfsc8r7bg" path="res://Materials/MainLevel/M_MainLevelWallsScaled.tres" id="15_f811p"]
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
 [ext_resource type="Material" uid="uid://bolxibgkujch8" path="res://Materials/M_TiledFloor.tres" id="16_ctw0p"]
@@ -80,27 +75,42 @@ size = Vector2(2.6, 2.6)
 material = ExtResource("3_2tkmp")
 size = Vector2(5, 23)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8pg50"]
+load_path = "res://.godot/imported/walls_Albedo.png-95870f49a8fe265a9c1e7f02295c1999.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k1vwy"]
+load_path = "res://.godot/imported/walls_glow.png-f6e4d5e58be3111c9e6f4e561d93357f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sclon"]
+load_path = "res://.godot/imported/walls_Metalness.png-adf7d76b257944d0811f1b2027bd7e60.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4o23f"]
+load_path = "res://.godot/imported/walls_Normal.png-6aa2317e7993848491480d800ceb6502.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gpr1v"]
+load_path = "res://.godot/imported/walls_Roughness.png-18ea3c9d1cc0c37aed6b0086d23fc624.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv4cl"]
-albedo_texture = ExtResource("11_sgdfc")
+albedo_texture = SubResource("CompressedTexture2D_8pg50")
 metallic = 1.0
-metallic_texture = ExtResource("13_y7214")
-roughness_texture = ExtResource("15_bh40k")
+metallic_texture = SubResource("CompressedTexture2D_sclon")
+roughness_texture = SubResource("CompressedTexture2D_gpr1v")
 emission_enabled = true
-emission_texture = ExtResource("12_a3nhn")
+emission_texture = SubResource("CompressedTexture2D_k1vwy")
 normal_enabled = true
-normal_texture = ExtResource("14_oxp0q")
+normal_texture = SubResource("CompressedTexture2D_4o23f")
 uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_offset = Vector3(0.53, 1.465, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohkyb"]
-albedo_texture = ExtResource("11_sgdfc")
+albedo_texture = SubResource("CompressedTexture2D_8pg50")
 metallic = 1.0
-metallic_texture = ExtResource("13_y7214")
-roughness_texture = ExtResource("15_bh40k")
+metallic_texture = SubResource("CompressedTexture2D_sclon")
+roughness_texture = SubResource("CompressedTexture2D_gpr1v")
 emission_enabled = true
-emission_texture = ExtResource("12_a3nhn")
+emission_texture = SubResource("CompressedTexture2D_k1vwy")
 normal_enabled = true
-normal_texture = ExtResource("14_oxp0q")
+normal_texture = SubResource("CompressedTexture2D_4o23f")
 uv1_scale = Vector3(-0.155, 0.215, 0.215)
 uv1_offset = Vector3(0.675, 0.5, 0)
 

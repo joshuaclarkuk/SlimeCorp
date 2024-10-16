@@ -1,17 +1,16 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://hh02vpdqhhad"]
 
-[ext_resource type="Texture2D" uid="uid://cv8jospwgm1o2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Albedo.png" id="1_3f6pf"]
-[ext_resource type="Texture2D" uid="uid://4wwv8867w4g8" path="res://3D Folder/textures folder/Level folder/Walls/walls_glow.png" id="2_i1f8v"]
-[ext_resource type="Texture2D" uid="uid://jbrr5abn5iq2" path="res://3D Folder/textures folder/Level folder/Walls/walls_Metalness.png" id="3_0l7yg"]
-[ext_resource type="Texture2D" uid="uid://cext5h5fsy0cq" path="res://3D Folder/textures folder/Level folder/Walls/walls_Normal.png" id="4_txrjo"]
-[ext_resource type="Texture2D" uid="uid://c6cypv6gee06n" path="res://3D Folder/textures folder/Level folder/Walls/walls_Roughness.png" id="5_118rk"]
+[ext_resource type="Texture2D" uid="uid://dhtpea0axr00g" path="res://3D Folder/materials folder/2K Wall Textures/walls_Albedo.png" id="1_s1454"]
+[ext_resource type="Texture2D" uid="uid://bnyyd6q6oq5y4" path="res://3D Folder/materials folder/2K Wall Textures/walls_Emission.png" id="2_4sox1"]
+[ext_resource type="Texture2D" uid="uid://cu1jx0qjlyiyc" path="res://3D Folder/materials folder/2K Wall Textures/walls_Metalness.png" id="3_u5453"]
+[ext_resource type="Texture2D" uid="uid://d26gpf40w8wum" path="res://3D Folder/materials folder/2K Wall Textures/walls_Normal.png" id="4_lntfr"]
+[ext_resource type="Texture2D" uid="uid://dbjk38mfik71g" path="res://3D Folder/materials folder/2K Wall Textures/walls_Roughness.png" id="5_ar5o7"]
 
 [resource]
-albedo_texture = ExtResource("1_3f6pf")
-metallic = 1.0
-metallic_texture = ExtResource("3_0l7yg")
-roughness_texture = ExtResource("5_118rk")
+albedo_texture = ExtResource("1_s1454")
+metallic_texture = ExtResource("3_u5453")
+roughness_texture = ExtResource("5_ar5o7")
 emission_enabled = true
-emission_texture = ExtResource("2_i1f8v")
+emission_texture = ExtResource("2_4sox1")
 normal_enabled = true
-normal_texture = ExtResource("4_txrjo")
+normal_texture = ExtResource("4_lntfr")
