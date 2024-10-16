@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7tqs3aaalahn"]
+[gd_scene load_steps=7 format=3 uid="uid://c7tqs3aaalahn"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_i5myk"]
 [ext_resource type="Script" path="res://Scripts/Stations/PoisonCreatureStation/PoisonCreatureStation.cs" id="2_dbmny"]
@@ -10,6 +10,11 @@ top_radius = 0.2
 bottom_radius = 0.2
 height = 1.0
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_k7wfy"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 3.0
+
 [node name="PoisonCreatureStation" node_paths=PackedStringArray("punchCardNode", "buttonsNode", "debugLabel") instance=ExtResource("1_i5myk")]
 script = ExtResource("2_dbmny")
 punchCardNode = NodePath("Card")
@@ -17,11 +22,22 @@ buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 12
 
+[node name="CameraLocation" parent="." index="0"]
+transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -0.5, 1.5, 0.8)
+
+[node name="InteractCollider" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 1)
+
 [node name="Mesh" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0.3)
 mesh = SubResource("CylinderMesh_kery3")
 
-[node name="Card" parent="." index="4" instance=ExtResource("3_e1gf4")]
+[node name="Mesh2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.8, 1.2, 0.3)
+mesh = SubResource("CylinderMesh_k7wfy")
 
-[node name="Buttons" parent="." index="5" instance=ExtResource("4_je3sk")]
+[node name="Card" parent="." index="5" instance=ExtResource("3_e1gf4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.7, 0)
+
+[node name="Buttons" parent="." index="6" instance=ExtResource("4_je3sk")]
 visible = false

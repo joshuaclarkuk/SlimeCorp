@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4dcad0w5rqpd"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_jq2i3"]
-[ext_resource type="Script" path="res://Scripts/Stations/SupervisorCardStation/SupervisorCardPickupStation.cs" id="2_qljnt"]
+[ext_resource type="Script" path="res://Scripts/Stations/SupervisorCardPickupStation/SupervisorCardPickupStation.cs" id="2_w73vk"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="3_ejtnj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wothx"]
@@ -10,7 +10,7 @@ font_size = 181
 [sub_resource type="BoxMesh" id="BoxMesh_wgacp"]
 
 [node name="SupervisorCardPickupStation" node_paths=PackedStringArray("pickupUINode", "buttonsNode", "debugLabel") instance=ExtResource("1_jq2i3")]
-script = ExtResource("2_qljnt")
+script = ExtResource("2_w73vk")
 pickupUINode = NodePath("PickupUI")
 buttonsNode = NodePath("Buttons")
 debugLabel = NodePath("StationDebugLabel")

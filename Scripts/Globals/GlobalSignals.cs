@@ -47,6 +47,9 @@ public partial class GlobalSignals : Node
 
     public event Action OnShiftIsOver;
 
+    public event Action OnPlayerAccessedSupervisorOffice;
+    public event Action OnPlayerHasInjectedCreatureWithPoison;
+
     public event Action<bool> OnPlayerAtRiskOfFailing;
     public event Action OnPlayerFailureState;
     public event Action OnPlayerWinState;
@@ -93,6 +96,9 @@ public partial class GlobalSignals : Node
     public void RaisePlayerCanMoveAgain() { OnPlayerCanMoveAgain?.Invoke(); }
 
     public void RaiseShiftIsOver() {  OnShiftIsOver?.Invoke(); }
+
+    public void RaisePlayerAccessedSupervisorOffice() { OnPlayerAccessedSupervisorOffice?.Invoke();}
+    public void RaisePlayerHasInjectedCreatureWithPoison() { OnPlayerHasInjectedCreatureWithPoison?.Invoke(); }
 
     public void RaisePlayerAtRiskOfFailing(bool atRisk) { OnPlayerAtRiskOfFailing?.Invoke(atRisk); }
     public void RaisePlayerFailureState() { OnPlayerFailureState?.Invoke(); }

@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp72xgtpdcq7x"]
+
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_mglja"]
+[ext_resource type="Script" path="res://Scripts/Stations/PoisonInjectorPickupStation/PoisonInjectorPickupStation.cs" id="2_tbltd"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="3_rpgxg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5oiv"]
+font_size = 101
+
+[sub_resource type="BoxMesh" id="BoxMesh_1nlmv"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="PoisonInjectorPickupStation" node_paths=PackedStringArray("collisionShapeNode", "pickupUINode", "buttonsNode", "debugLabel") instance=ExtResource("1_mglja")]
+script = ExtResource("2_tbltd")
+collisionShapeNode = NodePath("InteractCollider/CollisionShape3D")
+pickupUINode = NodePath("PickupUI")
+buttonsNode = NodePath("Buttons")
+debugLabel = NodePath("StationDebugLabel")
+StationType = 13
+
+[node name="CameraLocation" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 0.7, 0.5)
+
+[node name="CollisionShape3D" parent="InteractCollider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, -0.25)
+
+[node name="StationDebugLabel" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.5)
+
+[node name="Buttons" parent="." index="3" instance=ExtResource("3_rpgxg")]
+visible = false
+
+[node name="PickupUI" type="Control" parent="." index="4"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TestLabel" type="Label" parent="PickupUI" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_a5oiv")
+
+[node name="Mesh" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_1nlmv")

@@ -1,7 +1,7 @@
 ﻿using Godot;
 using System;
 
-public abstract partial class Station : Node
+public abstract partial class Station : Node3D
 {
     [ExportCategory("Required Nodes")]
     [Export] protected KeypadButtons buttonsNode = null;

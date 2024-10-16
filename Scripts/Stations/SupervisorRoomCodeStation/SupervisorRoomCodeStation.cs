@@ -8,6 +8,7 @@ public partial class SupervisorRoomCodeStation : Station
     [Export] private Timer doorOpenLockoutTimerNode = null;
 
     private bool isDoorOpen = false;
+    private bool hasAlreadyBeenAccessed = false;
 
     public event Action<bool> OnToggleDoorOpen;
 
@@ -73,6 +74,13 @@ public partial class SupervisorRoomCodeStation : Station
 
     private void HandleCardTargetReached()
     {
+        // Used to activate poison injector pickup
+        if (!hasAlreadyBeenAccessed)
+        {
+            globalSignals.RaisePlayerAccessedSupervisorOffice();
+            hasAlreadyBeenAccessed = true;
+        }
+
         if (doorOpenLockoutTimerNode.TimeLeft > 0.0f) { return; }
 
         GD.Print("Card target reached");

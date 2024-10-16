@@ -60,7 +60,9 @@ public partial class PoisonCreatureStation : Station
     private void HandleCardTargetReached()
     {
         globalValues.SetHasPlayerInjectedCreature(true);
+        globalSignals.RaisePlayerHasInjectedCreatureWithPoison();
         globalSignals.RaisePlayerExitStation(StationType);
+        GD.Print("Injected creature with poison. Clock out to WIN!");
     }
 
     protected override void HandleButtonDisengaged(int buttonIndex)
