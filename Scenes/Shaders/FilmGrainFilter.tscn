@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://2bqpsqp3xjgw"]
+
+[ext_resource type="Shader" path="res://Materials/Shaders/FilmGrain.gdshader" id="1_lsqj6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ad77y"]
+shader = ExtResource("1_lsqj6")
+shader_parameter/grain_amount = 0.02
+shader_parameter/grain_size = 0.6
+
+[node name="FilmGrainFilter" type="ColorRect"]
+material = SubResource("ShaderMaterial_ad77y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

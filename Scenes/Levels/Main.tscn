@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=74 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -43,6 +43,7 @@
 [ext_resource type="Material" uid="uid://dlfdr3gpoefvo" path="res://Materials/M_WoodFlooring.tres" id="30_p016w"]
 [ext_resource type="PackedScene" uid="uid://bwjgglhiccstc" path="res://Scenes/Creature/FeedingRequestBoard.tscn" id="31_5uaei"]
 [ext_resource type="PackedScene" uid="uid://cmx3h8u2mqrcs" path="res://Scenes/Creature/AreaCleanRequestBoard.tscn" id="32_c5ejd"]
+[ext_resource type="PackedScene" uid="uid://2bqpsqp3xjgw" path="res://Scenes/Shaders/FilmGrainFilter.tscn" id="44_oxmxv"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -1286,11 +1287,8 @@ omni_range = 22.279
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 
-[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
-feedingStationNode = NodePath("../Environment/Objects/Stations/FeedingStation")
-happinessGameStationNode = NodePath("../Environment/Objects/Stations/HappinessGameStation")
-cleaningStationNode = NodePath("../Environment/Objects/Stations/CleaningStation")
 slimeCollectionStationNode = NodePath("../Environment/Objects/Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 
@@ -1317,3 +1315,5 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1
 
 [node name="BlackScreen" parent="." index="13"]
 visible = false
+
+[node name="FilmGrainFilter" parent="." index="14" instance=ExtResource("44_oxmxv")]
