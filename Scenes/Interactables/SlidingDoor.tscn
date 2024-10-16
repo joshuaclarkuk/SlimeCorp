@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsntbl8rgj0ts"]
+
+[ext_resource type="Script" path="res://Scripts/Interactables/SlidingDoor.cs" id="1_dno2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5kmit"]
+size = Vector3(1.6, 1.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_npueb"]
+size = Vector3(1.6, 1.9, 0.1)
+
+[sub_resource type="Animation" id="Animation_38rue"]
+resource_name = "OpenDoor"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.6, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.6, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_17mif"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2c5up"]
+_data = {
+"OpenDoor": SubResource("Animation_38rue"),
+"RESET": SubResource("Animation_17mif")
+}
+
+[node name="SlidingDoor" type="StaticBody3D" node_paths=PackedStringArray("animationPlayerNode")]
+script = ExtResource("1_dno2v")
+animationPlayerNode = NodePath("AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5kmit")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_npueb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2c5up")
+}

@@ -178,6 +178,7 @@ public partial class AbandonedRoomCodeStation : Station
                 OnToggleDoorOpen?.Invoke(false);
                 isDoorOpen = false;
             }
+            globalSignals.RaisePlayerExitStation(StationType);
         }
     }
 
