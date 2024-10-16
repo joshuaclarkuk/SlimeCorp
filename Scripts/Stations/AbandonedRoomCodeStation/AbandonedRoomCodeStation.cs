@@ -11,9 +11,13 @@ public partial class AbandonedRoomCodeStation : Station
 
     private bool isDoorOpen = false;
 
+    public event Action<bool> OnToggleDoorOpen;
+
     public override void _Ready()
     {
         base._Ready();
+
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
 
         if (correctCode != null)
         {
@@ -25,6 +29,13 @@ public partial class AbandonedRoomCodeStation : Station
         }
 
         AssignDebugLabelValues();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
     }
 
     public override void EnterStation()
@@ -158,13 +169,22 @@ public partial class AbandonedRoomCodeStation : Station
             if (!isDoorOpen)
             {
                 GD.Print("OPENING DOOR");
+                OnToggleDoorOpen?.Invoke(true);
                 isDoorOpen = true;
             }
             else
             {
                 GD.Print("CLOSING DOOR");
+                OnToggleDoorOpen?.Invoke(false);
                 isDoorOpen = false;
             }
         }
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        GD.Print("CLOSING DOOR");
+        OnToggleDoorOpen?.Invoke(false);
+        isDoorOpen = false;
     }
 }

@@ -4,6 +4,7 @@ using System;
 public partial class GlobalValues : Node
 {
     public bool HasEmployeeCard { get; private set; } = false;
+    public bool HasSupervisorCard { get; private set; } = false;
 
     public int[] EmployeeNumber { get; private set; } = new int[] { 0, 0, 0, 0 };
 
@@ -34,6 +35,11 @@ public partial class GlobalValues : Node
     {
         HasEmployeeCard = hasCard;
         GD.Print($"Has employee card: {HasEmployeeCard}");
+    }
+
+    public void SetHasSupervisorCard(bool hasSupervisorCard)
+    {
+        HasSupervisorCard = hasSupervisorCard;
     }
 
     public void SetEmployeeNumber(int[] employeeNumber)

@@ -17,6 +17,7 @@ public partial class ClockOutStation : Station
 
         globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
 
+        punchCardNode.Visible = false;
         AssignDebugLabelValues();
     }
 
@@ -35,6 +36,8 @@ public partial class ClockOutStation : Station
         punchCardNode.OnCardTargetReached += HandleCardTargetReached;
         codeComponent.OnCorrectCodeEntered += HandleCorrectCodeEntered;
 
+        punchCardNode.Visible = true;
+
         GD.Print($"Calling EnterStation method on {Name}");
     }
 
@@ -47,6 +50,8 @@ public partial class ClockOutStation : Station
         codeComponent.OnCorrectCodeEntered -= HandleCorrectCodeEntered;
 
         // Reset machine
+        punchCardNode.Visible = false;
+
         punchCardNode.ReturnToOriginalPosition();
         cardInMachine = false;
 

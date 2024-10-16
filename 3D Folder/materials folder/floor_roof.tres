@@ -1,18 +1,18 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c6dgvfcgfkb5c"]
 
-[ext_resource type="Texture2D" uid="uid://ss2p3rns7bih" path="res://3D Folder/textures folder/Level folder/Floor/floor_lamp and roof_Albedo.png" id="1_qxhx7"]
-[ext_resource type="Texture2D" uid="uid://bhojybmnq5jyf" path="res://3D Folder/textures folder/Level folder/Floor/floor_lamp and roof_Emission.png" id="2_qiltx"]
-[ext_resource type="Texture2D" uid="uid://dor7suy41wurh" path="res://3D Folder/textures folder/Level folder/Floor/floor_lamp and roof_Metalness.png" id="3_5v48m"]
-[ext_resource type="Texture2D" uid="uid://cy6ii1uovlyud" path="res://3D Folder/textures folder/Level folder/Floor/floor_lamp and roof_Normal.png" id="4_pamnm"]
-[ext_resource type="Texture2D" uid="uid://ctdccof2c5bil" path="res://3D Folder/textures folder/Level folder/Floor/floor_lamp and roof_Roughness.png" id="5_htrwa"]
+[ext_resource type="Texture2D" uid="uid://b6h8a1myh2uqq" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Albedo.png" id="1_3m075"]
+[ext_resource type="Texture2D" uid="uid://b4ygtomlkcftd" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Emission.png" id="2_t4mbs"]
+[ext_resource type="Texture2D" uid="uid://yefruebwvrbu" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Metalness.png" id="3_4dvfk"]
+[ext_resource type="Texture2D" uid="uid://n6shplns7jxv" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Normal.png" id="4_1kfeb"]
+[ext_resource type="Texture2D" uid="uid://6kqhpgtt6tkr" path="res://3D Folder/materials folder/2K Lamp Textures/floor_lamp and roof_Roughness.png" id="5_feir8"]
 
 [resource]
-albedo_texture = ExtResource("1_qxhx7")
+albedo_texture = ExtResource("1_3m075")
 metallic = 1.0
-metallic_texture = ExtResource("3_5v48m")
-roughness_texture = ExtResource("5_htrwa")
+metallic_texture = ExtResource("3_4dvfk")
+roughness_texture = ExtResource("5_feir8")
 emission_enabled = true
 emission_energy_multiplier = 2.17
-emission_texture = ExtResource("2_qiltx")
+emission_texture = ExtResource("2_t4mbs")
 normal_enabled = true
-normal_texture = ExtResource("4_pamnm")
+normal_texture = ExtResource("4_1kfeb")

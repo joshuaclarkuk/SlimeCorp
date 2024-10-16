@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b54nwfcy2a6nd"]
+[gd_scene load_steps=5 format=3 uid="uid://b54nwfcy2a6nd"]
 
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="1_0vs7j"]
-[ext_resource type="PackedScene" uid="uid://2bqpsqp3xjgw" path="res://Scenes/Shaders/FilmGrainFilter.tscn" id="5_atryo"]
 [ext_resource type="AudioStream" uid="uid://ccechesqp2j3s" path="res://Assets/Audio/Music/MainMenu/Vision.ogg" id="9_3hvo4"]
 [ext_resource type="PackedScene" uid="uid://t4vquhmibbj2" path="res://Scenes/UI/MainMenu/MainMenu.tscn" id="10_hu2ji"]
 [ext_resource type="Script" path="res://Scripts/Player/Handicam.cs" id="15_1s8h5"]
@@ -59,5 +58,3 @@ stream = ExtResource("9_3hvo4")
 autoplay = true
 
 [node name="MainMenu" parent="." instance=ExtResource("10_hu2ji")]
-
-[node name="FilmGrainFilter" parent="." instance=ExtResource("5_atryo")]

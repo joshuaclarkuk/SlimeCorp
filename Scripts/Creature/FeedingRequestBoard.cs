@@ -18,6 +18,7 @@ public partial class FeedingRequestBoard : Node3D
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnCreatureFeedRequest += HandleCreatureFeedRequest;
         globalSignals.OnServeCreatureFood += HandleServeCreatureFood;
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
 
         // Populate eldritch sprites array
         for (int i = 0; i < eldritchSpritesScenes.Length; i++)
@@ -33,6 +34,7 @@ public partial class FeedingRequestBoard : Node3D
     {
         globalSignals.OnCreatureFeedRequest -= HandleCreatureFeedRequest;
         globalSignals.OnServeCreatureFood -= HandleServeCreatureFood;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
     }
 
     private void HandleCreatureFeedRequest(List<E_IngredientList> list)
@@ -89,5 +91,11 @@ public partial class FeedingRequestBoard : Node3D
                 }
             }
         }
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        ClearExistingList();
+        activeIngredients.Clear();
     }
 }

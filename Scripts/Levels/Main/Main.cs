@@ -145,6 +145,7 @@ public partial class Main : Node3D
                 dailyNeedResources[dayIndex].MaxWasteProductToAdd);
             creatureNeeds.SetRequestTimers();
             creatureNeeds.SetMaxRequests();
+
             // Load in to do resources
             if (dailyNeedResources[dayIndex].ToDoItemResource != null && dailyNeedResources[dayIndex].ToDoItemResource.Length > 0)
             {

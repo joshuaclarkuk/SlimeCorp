@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=81 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -31,19 +31,24 @@
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
 [ext_resource type="Material" uid="uid://bolxibgkujch8" path="res://Materials/M_TiledFloor.tres" id="16_ctw0p"]
 [ext_resource type="PackedScene" uid="uid://b42ksxkrqndmw" path="res://Scenes/Events/Main/WarningSiren.tscn" id="16_u8xjs"]
-[ext_resource type="Texture2D" uid="uid://bvxy7sy7vejln" path="res://Assets/Textures/Main/PaintedPlaster001_1K-JPG/PaintedPlaster001_1K-JPG_Color.jpg" id="17_yfhp8"]
-[ext_resource type="Texture2D" uid="uid://d4mm43qp7p060" path="res://Assets/Textures/Main/PaintedPlaster001_1K-JPG/PaintedPlaster001_1K-JPG_NormalDX.jpg" id="18_ghw4u"]
-[ext_resource type="Texture2D" uid="uid://dcljdlrdyw17y" path="res://Assets/Textures/Main/PaintedPlaster001_1K-JPG/PaintedPlaster001_1K-JPG_Roughness.jpg" id="19_7f77v"]
-[ext_resource type="Texture2D" uid="uid://c8k5v3xl4uufr" path="res://Assets/Textures/Main/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Color.jpg" id="20_1knd7"]
-[ext_resource type="Texture2D" uid="uid://bs2ja53pr70yp" path="res://Assets/Textures/Main/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_AmbientOcclusion.jpg" id="21_dhtmo"]
-[ext_resource type="Texture2D" uid="uid://tmlqkwpkbvjp" path="res://Assets/Textures/Main/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Roughness.jpg" id="22_x1i3p"]
+[ext_resource type="Material" uid="uid://dcep8nkxgx7mv" path="res://Materials/M_PaintedRedPlaster.tres" id="17_yrwyy"]
+[ext_resource type="Texture2D" uid="uid://c8k5v3xl4uufr" path="res://Assets/Textures/Main/Walls/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Color.jpg" id="20_1knd7"]
+[ext_resource type="Texture2D" uid="uid://bs2ja53pr70yp" path="res://Assets/Textures/Main/Walls/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_AmbientOcclusion.jpg" id="21_dhtmo"]
+[ext_resource type="Texture2D" uid="uid://tmlqkwpkbvjp" path="res://Assets/Textures/Main/Walls/PaintedPlaster012_1K-JPG/PaintedPlaster012_1K-JPG_Roughness.jpg" id="22_x1i3p"]
 [ext_resource type="Material" uid="uid://ctinv206nhvnm" path="res://Materials/M_CeilingTiles.tres" id="23_22ote"]
+[ext_resource type="Texture2D" uid="uid://bx7sxaf1komnx" path="res://Assets/Textures/Main/Floors/Concrete044D_1K-JPG/Concrete044D_1K-JPG_Color.jpg" id="24_7wwty"]
 [ext_resource type="PackedScene" uid="uid://dk4tbvl22ya4w" path="res://Scenes/Stations/AbandonedRoomCodeStation/AbandonedRoomCodeStation.tscn" id="24_fwfmb"]
-[ext_resource type="Material" uid="uid://d4dgskoldlbgi" path="res://Materials/M_PaintedPlaster.tres" id="29_vqm60"]
-[ext_resource type="Material" uid="uid://dlfdr3gpoefvo" path="res://Materials/M_WoodFlooring.tres" id="30_p016w"]
+[ext_resource type="Texture2D" uid="uid://ti33qigwdseb" path="res://Assets/Textures/Main/Floors/Concrete044D_1K-JPG/Concrete044D_1K-JPG_AmbientOcclusion.jpg" id="25_u3iev"]
+[ext_resource type="Texture2D" uid="uid://dml8ylmsfxypx" path="res://Assets/Textures/Main/Floors/Concrete044D_1K-JPG/Concrete044D_1K-JPG_Metalness.jpg" id="26_tpnq2"]
+[ext_resource type="Material" uid="uid://ci7jjb23xedq" path="res://Materials/M_BareBrick3x2.tres" id="27_fdapj"]
+[ext_resource type="Texture2D" uid="uid://3546nsn1exfe" path="res://Assets/Textures/Main/Floors/Concrete044D_1K-JPG/Concrete044D_1K-JPG_NormalDX.jpg" id="27_orxoe"]
+[ext_resource type="Texture2D" uid="uid://d4e333vlnbw8o" path="res://Assets/Textures/Main/Floors/Concrete044D_1K-JPG/Concrete044D_1K-JPG_Roughness.jpg" id="28_nln6y"]
+[ext_resource type="Material" uid="uid://c1jfi0fw57n7a" path="res://Materials/M_ConcreteSteps.tres" id="28_sjabb"]
 [ext_resource type="PackedScene" uid="uid://bwjgglhiccstc" path="res://Scenes/Creature/FeedingRequestBoard.tscn" id="31_5uaei"]
 [ext_resource type="PackedScene" uid="uid://cmx3h8u2mqrcs" path="res://Scenes/Creature/AreaCleanRequestBoard.tscn" id="32_c5ejd"]
-[ext_resource type="PackedScene" uid="uid://2bqpsqp3xjgw" path="res://Scenes/Shaders/FilmGrainFilter.tscn" id="44_oxmxv"]
+[ext_resource type="PackedScene" uid="uid://dso61x4as2gui" path="res://Scenes/Stations/SupervisorRoomCodeStation/SupervisorRoomCodeStation.tscn" id="39_cqewj"]
+[ext_resource type="PackedScene" uid="uid://b4dcad0w5rqpd" path="res://Scenes/Stations/SupervisorCardPickupStation/SupervisorCardPickupStation.tscn" id="42_ur6oi"]
+[ext_resource type="PackedScene" uid="uid://ov4cjhhfxc74" path="res://Scenes/Interactables/RotatingDoor.tscn" id="43_p7imb"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -99,14 +104,8 @@ uv1_offset = Vector3(0.675, 0.5, 0)
 [sub_resource type="PlaneMesh" id="PlaneMesh_4j8mc"]
 material = ExtResource("16_ctw0p")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vht8e"]
-albedo_texture = ExtResource("17_yfhp8")
-roughness_texture = ExtResource("19_7f77v")
-normal_enabled = true
-normal_texture = ExtResource("18_ghw4u")
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_0itqa"]
-material = SubResource("StandardMaterial3D_vht8e")
+material = ExtResource("17_yrwyy")
 size = Vector2(2, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysott"]
@@ -122,14 +121,29 @@ size = Vector2(2, 3)
 [sub_resource type="PlaneMesh" id="PlaneMesh_7j1ad"]
 material = ExtResource("23_22ote")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_etyp6"]
-material = ExtResource("30_p016w")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s52cm"]
+albedo_texture = ExtResource("24_7wwty")
+metallic = 1.0
+metallic_texture = ExtResource("26_tpnq2")
+roughness_texture = ExtResource("28_nln6y")
+normal_enabled = true
+normal_texture = ExtResource("27_orxoe")
+ao_enabled = true
+ao_texture = ExtResource("25_u3iev")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_fpv57"]
-material = ExtResource("29_vqm60")
+[sub_resource type="PlaneMesh" id="PlaneMesh_etyp6"]
+material = SubResource("StandardMaterial3D_s52cm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c6ifc"]
+material = ExtResource("27_fdapj")
+size = Vector2(2, 3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ltb2a"]
 material = ExtResource("23_22ote")
+
+[sub_resource type="BoxMesh" id="BoxMesh_t1vkm"]
+material = ExtResource("28_sjabb")
+size = Vector3(0.2, 0.2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gho2"]
 size = Vector3(30, 1, 39)
@@ -168,7 +182,10 @@ size = Vector3(0.7, 3, 24)
 size = Vector3(30, 1, 3.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_31jxn"]
-size = Vector3(11, 1, 16)
+size = Vector3(16, 1, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_equgc"]
+size = Vector3(2.5, 1, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
@@ -471,187 +488,259 @@ mesh = SubResource("PlaneMesh_etyp6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1, 0, -26.5)
 mesh = SubResource("PlaneMesh_etyp6")
 
+[node name="FloorTile16" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Floor" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1, 0, -22.5)
+mesh = SubResource("PlaneMesh_etyp6")
+
+[node name="FloorTile17" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Floor" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1, 0, -24.5)
+mesh = SubResource("PlaneMesh_etyp6")
+
+[node name="FloorTile18" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Floor" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1, 0, -26.5)
+mesh = SubResource("PlaneMesh_etyp6")
+
+[node name="FloorTile19" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Floor" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1, 0, -22.5)
+mesh = SubResource("PlaneMesh_etyp6")
+
+[node name="FloorTile20" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Floor" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1, 0, -24.5)
+mesh = SubResource("PlaneMesh_etyp6")
+
+[node name="FloorTile21" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Floor" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1, 0, -26.5)
+mesh = SubResource("PlaneMesh_etyp6")
+
 [node name="Walls" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room" index="1"]
 
-[node name="PlasteredWallTile" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="0"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -14.1, 3, -21.5)
+[node name="WallMesh" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1, 3, -22.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile2" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="1"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -14.1, 1, -21.5)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile2" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh2" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1, 3, -24.5)
 
-[node name="PlasteredWallTile3" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="2"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -16.1, 3, -21.5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh2" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile3" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh2" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile4" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="3"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -16.1, 1, -21.5)
+[node name="WallMesh3" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1, 3, -26.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile4" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh3" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile5" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="4"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -18.1, 3, -21.5)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh3" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile5" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh4" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.1, 3, -27.5)
 
-[node name="PlasteredWallTile6" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="5"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -18.1, 1, -21.5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh4" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile6" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh4" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile7" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="6"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -20.1, 3, -21.5)
+[node name="WallMesh5" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.1, 3, -27.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile7" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh5" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile8" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="7"]
-transform = Transform3D(1, -7.35137e-08, -4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -7.35137e-08, -1, 1.91069e-15, -20.1, 1, -21.5)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh5" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile8" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh6" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.1, 3, -27.5)
 
-[node name="PlasteredWallTile9" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="8"]
-transform = Transform3D(2.98023e-08, 1, 0, 4.37114e-08, -1.3027e-15, 1, 1, -2.98023e-08, -4.37114e-08, -21.1, 3, -22.5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh6" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile9" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh6" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile10" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="9"]
-transform = Transform3D(2.98023e-08, 1, 0, 4.37114e-08, -1.3027e-15, 1, 1, -2.98023e-08, -4.37114e-08, -21.1, 1, -22.5)
+[node name="WallMesh7" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.1, 3, -27.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile10" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh7" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile11" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="10"]
-transform = Transform3D(2.98023e-08, 1, 0, 4.37114e-08, -1.3027e-15, 1, 1, -2.98023e-08, -4.37114e-08, -21.1, 3, -24.5)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh7" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile11" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh8" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.1, 3, -27.5)
 
-[node name="PlasteredWallTile12" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="11"]
-transform = Transform3D(2.98023e-08, 1, 0, 4.37114e-08, -1.3027e-15, 1, 1, -2.98023e-08, -4.37114e-08, -21.1, 1, -24.5)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh8" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile12" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh8" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile13" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="12"]
-transform = Transform3D(2.98023e-08, 1, 0, 4.37114e-08, -1.3027e-15, 1, 1, -2.98023e-08, -4.37114e-08, -21.1, 3, -26.5)
+[node name="WallMesh9" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.1, 3, -27.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile13" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh9" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile14" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="13"]
-transform = Transform3D(2.98023e-08, 1, 0, 4.37114e-08, -1.3027e-15, 1, 1, -2.98023e-08, -4.37114e-08, -21.1, 1, -26.5)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh9" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile14" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh10" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="9"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.1, 3, -27.5)
 
-[node name="PlasteredWallTile15" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="14"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -20.1, 3, -27.4)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh10" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile15" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh10" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile16" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="15"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -20.1, 1, -27.4)
+[node name="WallMesh11" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="10"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.1, 3, -26.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile16" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh11" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile17" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="16"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -18.1, 3, -27.4)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh11" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile17" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh12" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="11"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.1, 3, -24.5)
 
-[node name="PlasteredWallTile18" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="17"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -18.1, 1, -27.4)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh12" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile18" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh12" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile19" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="18"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -16.1, 3, -27.4)
+[node name="WallMesh13" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="12"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -25.1, 3, -22.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile19" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh13" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile20" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="19"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -16.1, 1, -27.4)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh13" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile20" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh14" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="13"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -24.1, 3, -21.5)
 
-[node name="PlasteredWallTile21" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="20"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -14.1, 3, -27.4)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh14" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile21" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh14" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile22" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="21"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -14.1, 1, -27.4)
+[node name="WallMesh15" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="14"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -22.1, 3, -21.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile22" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh15" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile23" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="22"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -12.1, 3, -27.4)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh15" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile23" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh16" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="15"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -20.1, 3, -21.5)
 
-[node name="PlasteredWallTile24" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="23"]
-transform = Transform3D(-1, -1.39091e-08, 4.37114e-08, 4.37114e-08, -1.3027e-15, 1, -1.39091e-08, 1, 1.91069e-15, -12.1, 1, -27.4)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh16" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile24" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh16" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile25" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="24"]
-transform = Transform3D(5.76205e-08, -1, -3.82137e-15, 4.37114e-08, -1.3027e-15, 1, -1, -5.76205e-08, 4.37114e-08, -11.1, 3, -26.4)
+[node name="WallMesh17" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="16"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -18.1, 3, -21.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile25" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh17" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile26" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="25"]
-transform = Transform3D(5.76205e-08, -1, -3.82137e-15, 4.37114e-08, -1.3027e-15, 1, -1, -5.76205e-08, 4.37114e-08, -11.1, 1, -26.4)
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh17" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile26" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh18" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="17"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -16.1, 3, -21.5)
 
-[node name="PlasteredWallTile27" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="26"]
-transform = Transform3D(5.76205e-08, -1, -3.82137e-15, 4.37114e-08, -1.3027e-15, 1, -1, -5.76205e-08, 4.37114e-08, -11.1, 3, -24.4)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh18" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile27" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh18" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
-[node name="PlasteredWallTile28" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="27"]
-transform = Transform3D(5.76205e-08, -1, -3.82137e-15, 4.37114e-08, -1.3027e-15, 1, -1, -5.76205e-08, 4.37114e-08, -11.1, 1, -24.4)
+[node name="WallMesh19" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="18"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -14.1, 3, -21.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile28" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh19" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, -0.5, 0)
+mesh = SubResource("PlaneMesh_c6ifc")
 
-[node name="PlasteredWallTile29" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="28"]
-transform = Transform3D(5.76205e-08, -1, -3.82137e-15, 4.37114e-08, -1.3027e-15, 1, -1, -5.76205e-08, 4.37114e-08, -11.1, 3, -22.4)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile29" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
-
-[node name="PlasteredWallTile30" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls" index="29"]
-transform = Transform3D(5.76205e-08, -1, -3.82137e-15, 4.37114e-08, -1.3027e-15, 1, -1, -5.76205e-08, 4.37114e-08, -11.1, 1, -22.4)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/PlasteredWallTile30" index="0"]
-mesh = SubResource("PlaneMesh_fpv57")
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Walls/WallMesh19" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, -2.5, 0)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
 
 [node name="Ceiling" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/Room" index="2"]
 
@@ -671,130 +760,77 @@ mesh = SubResource("PlaneMesh_ltb2a")
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -18.1, 4, -26.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile5" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="4"]
+[node name="CeilingTile6" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="4"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -20.1, 4, -26.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile6" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="5"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -20.1, 4, -26.5)
-mesh = SubResource("PlaneMesh_ltb2a")
-
-[node name="CeilingTile7" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="6"]
+[node name="CeilingTile7" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="5"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -12.1, 4, -24.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile8" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="7"]
+[node name="CeilingTile8" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="6"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -14.1, 4, -24.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile9" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="8"]
+[node name="CeilingTile9" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="7"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -16.1, 4, -24.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile10" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="9"]
+[node name="CeilingTile10" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="8"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -18.1, 4, -24.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile11" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="10"]
+[node name="CeilingTile12" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="9"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -20.1, 4, -24.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile12" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="11"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -20.1, 4, -24.5)
-mesh = SubResource("PlaneMesh_ltb2a")
-
-[node name="CeilingTile13" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="12"]
+[node name="CeilingTile13" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="10"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -12.1, 4, -22.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile14" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="13"]
+[node name="CeilingTile14" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="11"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -14.1, 4, -22.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile15" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="14"]
+[node name="CeilingTile15" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="12"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -16.1, 4, -22.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile16" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="15"]
+[node name="CeilingTile16" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="13"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -18.1, 4, -22.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile17" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="16"]
+[node name="CeilingTile17" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="14"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -20.1, 4, -22.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
-[node name="CeilingTile18" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="17"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -20.1, 4, -22.5)
+[node name="CeilingTile11" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="15"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -22.1, 4, -26.5)
+mesh = SubResource("PlaneMesh_ltb2a")
+
+[node name="CeilingTile18" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="16"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -22.1, 4, -24.5)
+mesh = SubResource("PlaneMesh_ltb2a")
+
+[node name="CeilingTile19" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="17"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -22.1, 4, -22.5)
+mesh = SubResource("PlaneMesh_ltb2a")
+
+[node name="CeilingTile20" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="18"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -24.1, 4, -26.5)
+mesh = SubResource("PlaneMesh_ltb2a")
+
+[node name="CeilingTile21" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="19"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -24.1, 4, -24.5)
+mesh = SubResource("PlaneMesh_ltb2a")
+
+[node name="CeilingTile22" type="MeshInstance3D" parent="Environment/LevelMesh/AbandonedRoom/Room/Ceiling" index="20"]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -24.1, 4, -22.5)
 mesh = SubResource("PlaneMesh_ltb2a")
 
 [node name="SupervisorsOffice" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom" index="2"]
 
-[node name="Floor" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 0.4, -17.7)
-use_collision = true
-collision_mask = 0
-size = Vector3(6, 1, 6.4)
-
-[node name="Ceiling" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7, 5.4, -17.7)
-collision_mask = 0
-size = Vector3(6, 1, 6.4)
-
-[node name="WallWest" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.9, -18.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(0.4, 4, 4.8)
-
-[node name="WallNorth" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.7, 2.9, -20.7)
-use_collision = true
-collision_mask = 0
-size = Vector3(0.4, 4, 5.2)
-
-[node name="WallSouth" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="4"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.9, 2.9, -14.7)
-use_collision = true
-collision_mask = 0
-size = Vector3(0.4, 4, 5.6)
-
-[node name="WallEast" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 2.9, -17.7)
-use_collision = true
-collision_mask = 0
-size = Vector3(0.4, 4, 6.4)
-
-[node name="Corridor" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="6"]
-
-[node name="LowerLanding" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice/Corridor" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, -0.6, -15.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(1, 1, 1.2)
-
-[node name="Stairs" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice/Corridor" index="1"]
-transform = Transform3D(0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0, 0, 1, -7.96031, -0.0579799, -15.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(3, 1, 1.2)
-
-[node name="WallSouth" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice/Corridor" index="2"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.55, 2.85, -14.7)
-use_collision = true
-collision_mask = 0
-size = Vector3(0.4, 6.1, 4.9)
-
-[node name="WallSouth2" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice/Corridor" index="3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.55, 2.85, -16.3)
-use_collision = true
-collision_mask = 0
-size = Vector3(0.4, 6.1, 4.9)
-
-[node name="Ceiling" type="CSGBox3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice/Corridor" index="4"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.55, 5.6, -15.5)
-use_collision = true
-collision_mask = 0
-size = Vector3(1.2, 0.6, 3.7)
+[node name="Corridor" type="Node3D" parent="Environment/LevelMesh/AbandonedRoom/SupervisorsOffice" index="0"]
 
 [node name="Entrance" type="Node3D" parent="Environment/LevelMesh" index="5"]
 
@@ -962,6 +998,63 @@ mesh = SubResource("PlaneMesh_7j1ad")
 [node name="CeilingTile7" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="6"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -36.7, 4, -1.8)
 mesh = SubResource("PlaneMesh_7j1ad")
+
+[node name="SupervisorOffice" type="Node3D" parent="Environment/LevelMesh" index="6"]
+
+[node name="StepCorridor" type="Node3D" parent="Environment/LevelMesh/SupervisorOffice" index="0"]
+
+[node name="Step1" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0.1, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step2" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="1"]
+transform = Transform3D(-1, 0, 8.74228e-08, -1.39911e-09, 0.999872, -0.016004, -8.74116e-08, -0.016004, -0.999872, -10.8, 0.3, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step3" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6, 0.5, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step4" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.999987, -0.00506143, 0, 0.00506143, 0.999987, -10.4, 0.7, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step5" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="4"]
+transform = Transform3D(0.999935, 0, 0.0113968, 0, 1, 0, -0.0113968, 0, 0.999935, -10.2, 0.9, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step6" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="5"]
+transform = Transform3D(-0.999984, 0, -0.00572455, 0, 1, 0, 0.00572455, 0, -0.999984, -10, 1.1, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step7" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="6"]
+transform = Transform3D(0.999938, 0, -0.0111175, 0, 1, 0, 0.0111175, 0, 0.999938, -9.8, 1.3, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="Step8" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 1.5, -16.5)
+mesh = SubResource("BoxMesh_t1vkm")
+skeleton = NodePath("")
+
+[node name="CorridorWallPiece9" type="Node3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor" index="8"]
+transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, -10.1, 1.5, -15.5)
+
+[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor/CorridorWallPiece9" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+mesh = SubResource("PlaneMesh_0itqa")
+skeleton = NodePath("../..")
+
+[node name="WallMesh13" type="MeshInstance3D" parent="Environment/LevelMesh/SupervisorOffice/StepCorridor/CorridorWallPiece9" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = SubResource("PlaneMesh_6drwm")
+skeleton = NodePath("../..")
 
 [node name="Main" type="Node3D" parent="Environment/LevelCollision" index="0"]
 
@@ -1167,8 +1260,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.5, -21)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/AbandonedRoom/FloorCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 1)
 shape = SubResource("BoxShape3D_31jxn")
+
+[node name="SupervisorOffice" type="Node3D" parent="Environment/LevelCollision" index="3"]
+
+[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision/SupervisorOffice" index="0"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -10, 0.6, -16.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/SupervisorOffice/StairCollision" index="0"]
+shape = SubResource("BoxShape3D_equgc")
 
 [node name="Stations" type="Node3D" parent="Environment/Objects" index="0" node_paths=PackedStringArray("rovingCameraNode")]
 script = ExtResource("8_8q08k")
@@ -1199,6 +1300,12 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.1, 0,
 
 [node name="AbandonedRoomCodeStation" parent="Environment/Objects/Stations" index="7" instance=ExtResource("24_fwfmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0, -13.3)
+
+[node name="SupervisorCardPickupStation" parent="Environment/Objects/Stations" index="8" instance=ExtResource("42_ur6oi")]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -24, 0, -26)
+
+[node name="SupervisorRoomCodeStation" parent="Environment/Objects/Stations" index="9" instance=ExtResource("39_cqewj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.8, 0, -18)
 
 [node name="CreatureNeedsScreen" type="Node3D" parent="Environment/Objects" index="1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 7.5, 7)
@@ -1239,6 +1346,12 @@ transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.426, 1, 10)
 text = "Biofuel Canister
 Storage >>>"
+
+[node name="Doors" type="Node3D" parent="Environment" index="4"]
+
+[node name="RotatingDoor" parent="Environment/Doors" index="0" node_paths=PackedStringArray("abandonedRoomCodeStationNode") instance=ExtResource("43_p7imb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9, 0.96, -13.5)
+abandonedRoomCodeStationNode = NodePath("../../Objects/Stations/AbandonedRoomCodeStation")
 
 [node name="OmniLight" type="OmniLight3D" parent="Lighting" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -1.3504)
@@ -1287,8 +1400,11 @@ omni_range = 22.279
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 
-[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
+[node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
+feedingStationNode = NodePath("../Environment/Objects/Stations/FeedingStation")
+happinessGameStationNode = NodePath("../Environment/Objects/Stations/HappinessGameStation")
+cleaningStationNode = NodePath("../Environment/Objects/Stations/CleaningStation")
 slimeCollectionStationNode = NodePath("../Environment/Objects/Stations/SlimeCollectionStation")
 debugUINode = NodePath("../DebugUI")
 
@@ -1315,5 +1431,3 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1
 
 [node name="BlackScreen" parent="." index="13"]
 visible = false
-
-[node name="FilmGrainFilter" parent="." index="14" instance=ExtResource("44_oxmxv")]

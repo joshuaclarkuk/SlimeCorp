@@ -16,6 +16,7 @@ public partial class AreaCleanRequestBoard : Node3D
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnAreasToCleanRequest += HandleAreasToCleanRequest;
         globalSignals.OnAreaCleaned += HandleAreasCleaned;
+        globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut;
 
         // Initialise array
         areaEnumValues = (E_AreasToClean[])Enum.GetValues(typeof(E_AreasToClean));
@@ -36,6 +37,7 @@ public partial class AreaCleanRequestBoard : Node3D
     {
         globalSignals.OnAreasToCleanRequest -= HandleAreasToCleanRequest;
         globalSignals.OnAreaCleaned -= HandleAreasCleaned;
+        globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
     }
 
     private void HandleAreasToCleanRequest(List<E_AreasToClean> list)
@@ -87,6 +89,15 @@ public partial class AreaCleanRequestBoard : Node3D
                     button.ActivateButton();
                 }
             }
+        }
+    }
+
+    private void HandlePlayerClockedOut()
+    {
+        activeAreasToClean.Clear();
+        foreach (AreaButton button in areaButtons)
+        {
+            button.DeactivateButton();
         }
     }
 }

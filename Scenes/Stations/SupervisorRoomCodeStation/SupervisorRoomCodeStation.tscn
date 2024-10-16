@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dso61x4as2gui"]
+
+[ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_mbvhr"]
+[ext_resource type="Script" path="res://Scripts/Stations/SupervisorRoomCodeStation/SupervisorRoomCodeStation.cs" id="2_r7u8r"]
+[ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="3_nkj6n"]
+[ext_resource type="PackedScene" uid="uid://ubnxatxfab8o" path="res://Scenes/Stations/Card.tscn" id="4_3u3lr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_le51j"]
+size = Vector3(0.4, 0.45, 0.2)
+
+[node name="SupervisorRoomCodeStation" node_paths=PackedStringArray("punchCardNode", "buttonsNode", "debugLabel") instance=ExtResource("1_mbvhr")]
+script = ExtResource("2_r7u8r")
+punchCardNode = NodePath("Card")
+buttonsNode = NodePath("Buttons")
+debugLabel = NodePath("StationDebugLabel")
+StationType = 11
+
+[node name="StationDebugLabel" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.5)
+
+[node name="Buttons" parent="." index="3" instance=ExtResource("3_nkj6n")]
+visible = false
+
+[node name="Card" parent="." index="4" instance=ExtResource("4_3u3lr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 2.1, 0.4)
+startLocation = 2.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.4)
+mesh = SubResource("BoxMesh_le51j")

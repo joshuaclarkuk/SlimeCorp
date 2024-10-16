@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://d4dgskoldlbgi"]
 
-[ext_resource type="Texture2D" uid="uid://nb1t058ap37h" path="res://Assets/Textures/Main/PaintedPlaster010_1K-JPG/PaintedPlaster010_1K-JPG_Color.jpg" id="1_dslyj"]
-[ext_resource type="Texture2D" uid="uid://dmhyujkc6cjmu" path="res://Assets/Textures/Main/PaintedPlaster010_1K-JPG/PaintedPlaster010_1K-JPG_NormalDX.jpg" id="2_53337"]
-[ext_resource type="Texture2D" uid="uid://bv1drlygd4jqc" path="res://Assets/Textures/Main/PaintedPlaster010_1K-JPG/PaintedPlaster010_1K-JPG_Roughness.jpg" id="3_kahhk"]
+[ext_resource type="Texture2D" uid="uid://nb1t058ap37h" path="res://Assets/Textures/Main/Walls/PaintedPlaster010_1K-JPG/PaintedPlaster010_1K-JPG_Color.jpg" id="1_dslyj"]
+[ext_resource type="Texture2D" uid="uid://dmhyujkc6cjmu" path="res://Assets/Textures/Main/Walls/PaintedPlaster010_1K-JPG/PaintedPlaster010_1K-JPG_NormalDX.jpg" id="2_53337"]
+[ext_resource type="Texture2D" uid="uid://bv1drlygd4jqc" path="res://Assets/Textures/Main/Walls/PaintedPlaster010_1K-JPG/PaintedPlaster010_1K-JPG_Roughness.jpg" id="3_kahhk"]
 
 [resource]
 albedo_texture = ExtResource("1_dslyj")

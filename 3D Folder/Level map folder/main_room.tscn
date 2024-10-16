@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bw2ft07b4b6f"]
+[gd_scene load_steps=11 format=3 uid="uid://bw2ft07b4b6f"]
 
 [ext_resource type="PackedScene" uid="uid://5hpf4pdlbge7" path="res://3D Folder/3D models/Level/Main room.fbx" id="1_78tyb"]
 [ext_resource type="Texture2D" uid="uid://dm8qo7u5eng1m" path="res://3D Folder/textures folder/Level folder/Pipes/Pipes_Base_color.png" id="2_k6so0"]
+[ext_resource type="Texture2D" uid="uid://dt4pbrj5wyiih" path="res://3D Folder/materials folder/2K Pipe Textures/Pipes_Height.png" id="3_0woo4"]
 [ext_resource type="Texture2D" uid="uid://brortopuv2j44" path="res://3D Folder/textures folder/Level folder/Pipes/Pipes_Metallic.png" id="3_xfxgr"]
 [ext_resource type="Texture2D" uid="uid://dt541ajpyc5bs" path="res://3D Folder/textures folder/Level folder/Pipes/Pipes_Normal.png" id="4_ya7ll"]
 [ext_resource type="Texture2D" uid="uid://cp7o8pggnjnpt" path="res://3D Folder/textures folder/Level folder/Pipes/Pipes_Roughness.png" id="5_rkrlh"]
@@ -16,6 +17,8 @@ metallic_texture = ExtResource("3_xfxgr")
 roughness_texture = ExtResource("5_rkrlh")
 normal_enabled = true
 normal_texture = ExtResource("4_ya7ll")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_0woo4")
 
 [node name="Main room" instance=ExtResource("1_78tyb")]
 
