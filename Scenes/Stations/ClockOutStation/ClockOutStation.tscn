@@ -7,14 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://ubnxatxfab8o" path="res://Scenes/Stations/Card.tscn" id="5_jswnp"]
 [ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="6_326oi"]
 
-[node name="ClockOutStation" node_paths=PackedStringArray("punchCardNode", "codeComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
+[node name="ClockOutStation" node_paths=PackedStringArray("punchCardNode", "codeComponent", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
 script = ExtResource("2_5adtr")
 punchCardNode = NodePath("Card")
 codeComponent = NodePath("CodeComponent")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 mouseDragSensitivity = 0.04
 StationType = 5
+hasMouseDrag = true
+hasNumPad = true
 
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 1)

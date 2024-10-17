@@ -8,13 +8,16 @@
 [sub_resource type="BoxMesh" id="BoxMesh_le51j"]
 size = Vector3(0.4, 0.45, 0.2)
 
-[node name="SupervisorRoomCodeStation" node_paths=PackedStringArray("punchCardNode", "doorOpenLockoutTimerNode", "buttonsNode", "debugLabel") instance=ExtResource("1_mbvhr")]
+[node name="SupervisorRoomCodeStation" node_paths=PackedStringArray("punchCardNode", "doorOpenLockoutTimerNode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_mbvhr")]
 script = ExtResource("2_r7u8r")
 punchCardNode = NodePath("Card")
 doorOpenLockoutTimerNode = NodePath("DoorOpenLockoutTimer")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 11
+hasMouseDrag = true
+hasNumPad = true
 
 [node name="StationDebugLabel" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)

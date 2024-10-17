@@ -1,0 +1,28 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://c8cmbl0jkl6kv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8pg50"]
+load_path = "res://.godot/imported/walls_Albedo.png-95870f49a8fe265a9c1e7f02295c1999.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k1vwy"]
+load_path = "res://.godot/imported/walls_glow.png-f6e4d5e58be3111c9e6f4e561d93357f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sclon"]
+load_path = "res://.godot/imported/walls_Metalness.png-adf7d76b257944d0811f1b2027bd7e60.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4o23f"]
+load_path = "res://.godot/imported/walls_Normal.png-6aa2317e7993848491480d800ceb6502.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gpr1v"]
+load_path = "res://.godot/imported/walls_Roughness.png-18ea3c9d1cc0c37aed6b0086d23fc624.s3tc.ctex"
+
+[resource]
+albedo_texture = SubResource("CompressedTexture2D_8pg50")
+metallic = 1.0
+metallic_texture = SubResource("CompressedTexture2D_sclon")
+roughness_texture = SubResource("CompressedTexture2D_gpr1v")
+emission_enabled = true
+emission_texture = SubResource("CompressedTexture2D_k1vwy")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_4o23f")
+uv1_scale = Vector3(-0.155, 0.215, 0.215)
+uv1_offset = Vector3(0.675, 0.5, 0)

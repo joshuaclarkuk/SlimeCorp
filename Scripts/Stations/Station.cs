@@ -5,6 +5,7 @@ public abstract partial class Station : Node3D
 {
     [ExportCategory("Required Nodes")]
     [Export] protected KeypadButtons buttonsNode = null;
+    [Export] protected StationControlInstructions stationControlInstructionsNode = null;
     [Export] private Label3D debugLabel = null;
 
     [ExportCategory("Mouse Settings")]
@@ -13,6 +14,11 @@ public abstract partial class Station : Node3D
     [ExportCategory("Station Type")]
     [Export] public E_StationType StationType { get; private set; }
 
+    [ExportCategory("Tutorial Prompts")]
+    [Export] protected bool hasNumPad = false;
+    [Export] protected bool isHappinessGame = false;
+    [Export] protected bool hasMouseDrag = false;
+
     protected GlobalSignals globalSignals = null;
     protected GlobalValues globalValues = null;
     private Area3D interactColliderNode = null;
@@ -20,6 +26,8 @@ public abstract partial class Station : Node3D
     protected Vector2 mouseDragMotion = Vector2.Zero;
     protected bool isMouseClicked = false;
     protected bool canInteractWithStation = true; // Use to lock a station out from interaction (after serving food, for example)
+
+    private bool hasBeenVisitedBefore = false;
 
     public override void _Ready()
     {
@@ -36,6 +44,8 @@ public abstract partial class Station : Node3D
 
         interactColliderNode.BodyEntered += HandleInteractColliderNodeAreaEntered;
         interactColliderNode.BodyExited += HandleInteractColliderNodeAreaExited;
+
+        DisableStationControlInstructions();
     }
 
     public override void _ExitTree()
@@ -47,12 +57,24 @@ public abstract partial class Station : Node3D
     public virtual void EnterStation()
     {
         Input.MouseMode = Input.MouseModeEnum.Visible;
+
+        stationControlInstructionsNode.SetMouseDragIconVisible(hasMouseDrag);
+        stationControlInstructionsNode.SetHappinessGameIconsVisible(isHappinessGame);
+        stationControlInstructionsNode.SetNumPadIconsVisible(hasNumPad);
+
+        if (!hasBeenVisitedBefore)
+        {
+            stationControlInstructionsNode.ActivateTutorialNode(StationType);
+            hasBeenVisitedBefore = true;
+        }
     }
 
     public virtual void ExitStation()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
         isMouseClicked = false;
+
+        DisableStationControlInstructions();
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -97,6 +119,15 @@ public abstract partial class Station : Node3D
         {
             globalSignals.RaisePlayerEnterStationCollider(StationType);
         }        
+    }
+
+    private void DisableStationControlInstructions()
+    {
+        stationControlInstructionsNode.SetMouseDragIconVisible(false);
+        stationControlInstructionsNode.SetHappinessGameIconsVisible(false);
+        stationControlInstructionsNode.SetNumPadIconsVisible(false);
+
+        stationControlInstructionsNode.DisableAllTutorialNodes();
     }
 
     private void PushButton(int buttonToPush)

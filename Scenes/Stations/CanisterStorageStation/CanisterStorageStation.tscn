@@ -6,12 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="3_56ibf"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_x8dbq"]
 
-[node name="CanisterStorageStation" node_paths=PackedStringArray("leverNode", "buttonsNode", "debugLabel") instance=ExtResource("1_baisc")]
+[node name="CanisterStorageStation" node_paths=PackedStringArray("leverNode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_baisc")]
 script = ExtResource("1_bcu1w")
 leverNode = NodePath("Lever")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 6
+hasMouseDrag = true
 
 [node name="Mesh" type="CSGBox3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

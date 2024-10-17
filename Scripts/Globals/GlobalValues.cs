@@ -10,6 +10,8 @@ public partial class GlobalValues : Node
 
     public int[] EmployeeNumber { get; private set; } = new int[] { 0, 0, 0, 0 };
 
+    public E_EndState EndState { get; private set; } = E_EndState.FIRED;
+
     private GlobalSignals globalSignals = null;
 
     public override void _Ready()
@@ -54,6 +56,11 @@ public partial class GlobalValues : Node
     public void SetHasPlayerInjectedCreature(bool hasPlayerInjectedCreature)
     {
         HasPlayerInjectedCreature = hasPlayerInjectedCreature;
+    }
+
+    public void SetEndState(E_EndState state)
+    {
+        EndState = state;
     }
 
     public void SetEmployeeNumber(int[] employeeNumber)

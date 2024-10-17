@@ -1,37 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://bw2ft07b4b6f"]
+[gd_scene load_steps=6 format=3 uid="uid://bw2ft07b4b6f"]
 
 [ext_resource type="PackedScene" uid="uid://5hpf4pdlbge7" path="res://3D Folder/3D models/Level/Main room.fbx" id="1_78tyb"]
-[ext_resource type="Texture2D" uid="uid://cgof14f8fmd5s" path="res://3D Folder/materials folder/2K Pipe Textures/Pipes_Base_color.png" id="2_66xe2"]
-[ext_resource type="Texture2D" uid="uid://dt4pbrj5wyiih" path="res://3D Folder/materials folder/2K Pipe Textures/Pipes_Height.png" id="3_0woo4"]
-[ext_resource type="Texture2D" uid="uid://cjbhuswgq5w8h" path="res://3D Folder/materials folder/2K Pipe Textures/Pipes_Metallic.png" id="4_2jjy4"]
-[ext_resource type="Texture2D" uid="uid://dj7r5wtg4h0df" path="res://3D Folder/materials folder/2K Pipe Textures/Pipes_Normal.png" id="5_78qsp"]
-[ext_resource type="Texture2D" uid="uid://dpbsry8tg7oj7" path="res://3D Folder/materials folder/2K Pipe Textures/Pipes_Roughness.png" id="6_0my3o"]
-[ext_resource type="Material" uid="uid://dy4gvxlt7h57t" path="res://3D Folder/materials folder/walls.tres" id="6_vr38r"]
-[ext_resource type="Material" uid="uid://bd6ijjqnhneik" path="res://3D Folder/materials folder/elevation.tres" id="7_dotq6"]
-[ext_resource type="Material" uid="uid://c6dgvfcgfkb5c" path="res://3D Folder/materials folder/floor_roof.tres" id="8_tlicf"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bvc7"]
-albedo_texture = ExtResource("2_66xe2")
-metallic = 1.0
-metallic_texture = ExtResource("4_2jjy4")
-roughness_texture = ExtResource("6_0my3o")
-normal_enabled = true
-normal_texture = ExtResource("5_78qsp")
-heightmap_enabled = true
-heightmap_texture = ExtResource("3_0woo4")
+[ext_resource type="Material" uid="uid://de5ute7jdinar" path="res://Materials/MainLevel/M_2KPipes.tres" id="2_e0ty1"]
+[ext_resource type="Material" uid="uid://ddmde7v3ncfth" path="res://Materials/MainLevel/M_2KWalls.tres" id="3_pdv1v"]
+[ext_resource type="Material" uid="uid://b10krmht7vq5y" path="res://Materials/MainLevel/M_2KFloor.tres" id="4_i01mn"]
+[ext_resource type="Material" uid="uid://71cte2ofr661" path="res://Materials/MainLevel/M_2KCeiling.tres" id="5_xxyjo"]
 
 [node name="Main room" instance=ExtResource("1_78tyb")]
 
 [node name="modular_industrial_pipes_01_pipe01_006" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_4bvc7")
+surface_material_override/0 = ExtResource("2_e0ty1")
 
 [node name="walls and room" parent="." index="4"]
-surface_material_override/0 = ExtResource("6_vr38r")
-surface_material_override/1 = ExtResource("7_dotq6")
-surface_material_override/2 = ExtResource("8_tlicf")
+surface_material_override/0 = ExtResource("3_pdv1v")
+surface_material_override/1 = ExtResource("4_i01mn")
+surface_material_override/2 = ExtResource("5_xxyjo")
 
 [node name="roof" parent="." index="5"]
-surface_material_override/0 = ExtResource("8_tlicf")
+surface_material_override/0 = ExtResource("5_xxyjo")
 
 [node name="walls and room_001" parent="." index="7"]
-surface_material_override/0 = ExtResource("8_tlicf")
+surface_material_override/0 = ExtResource("5_xxyjo")

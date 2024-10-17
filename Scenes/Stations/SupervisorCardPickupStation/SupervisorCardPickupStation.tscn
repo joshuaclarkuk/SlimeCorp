@@ -9,10 +9,11 @@ font_size = 181
 
 [sub_resource type="BoxMesh" id="BoxMesh_wgacp"]
 
-[node name="SupervisorCardPickupStation" node_paths=PackedStringArray("pickupUINode", "buttonsNode", "debugLabel") instance=ExtResource("1_jq2i3")]
+[node name="SupervisorCardPickupStation" node_paths=PackedStringArray("pickupUINode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_jq2i3")]
 script = ExtResource("2_w73vk")
 pickupUINode = NodePath("PickupUI")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 10
 

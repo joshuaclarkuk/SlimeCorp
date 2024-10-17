@@ -8,9 +8,10 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gjhuv"]
 size = Vector2(512, 512)
 
-[node name="ComputerStation" node_paths=PackedStringArray("buttonsNode", "debugLabel") instance=ExtResource("1_l2scn")]
+[node name="ComputerStation" node_paths=PackedStringArray("buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_l2scn")]
 script = ExtResource("2_0tb71")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 1
 
@@ -36,3 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0.5)
 
 [node name="Buttons" parent="." index="5" instance=ExtResource("5_0qnvq")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3, 1, 0.2)
+visible = false

@@ -10,11 +10,13 @@ font_size = 101
 [sub_resource type="BoxMesh" id="BoxMesh_1nlmv"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[node name="PoisonInjectorPickupStation" node_paths=PackedStringArray("collisionShapeNode", "pickupUINode", "buttonsNode", "debugLabel") instance=ExtResource("1_mglja")]
+[node name="PoisonInjectorPickupStation" node_paths=PackedStringArray("collisionShapeNode", "injectorMeshNode", "pickupUINode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_mglja")]
 script = ExtResource("2_tbltd")
 collisionShapeNode = NodePath("InteractCollider/CollisionShape3D")
+injectorMeshNode = NodePath("Mesh")
 pickupUINode = NodePath("PickupUI")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 13
 

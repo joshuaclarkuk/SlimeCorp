@@ -10,14 +10,16 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_d6eby"]
 viewport_path = NodePath("SubViewport")
 
-[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "screenNode", "stationNeedsProgressBarComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_qae27")]
+[node name="HappinessGameStation" node_paths=PackedStringArray("happinessGameComponentNode", "screenNode", "stationNeedsProgressBarComponent", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_qae27")]
 script = ExtResource("2_vys67")
 happinessGameComponentNode = NodePath("SubViewport/HappinessGameComponent")
 screenNode = NodePath("Screen")
 stationNeedsProgressBarComponent = NodePath("StationNeedsProgressBarComponent")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 7
+isHappinessGame = true
 
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.7, 0.5)

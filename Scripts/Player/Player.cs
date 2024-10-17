@@ -228,7 +228,7 @@ public partial class Player : CharacterBody3D
         // If carrying a slime canister, allow only SLIMECOLLECTION interactions
         if (isCarryingSlimeCanister)
         {
-			if (activeStationCollider == E_StationType.SLIMECOLLECTION)
+			if (activeStationCollider == E_StationType.SLIME_COLLECTION)
 			{
 				InteractWithCurrentStation();
 			}

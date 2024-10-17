@@ -19,16 +19,23 @@ script = ExtResource("1_mycak")
 
 [node name="ToDoTitle" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "To Do"
 
 [node name="CheckEmailsLabel" type="Label" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
 text = "1. Check Emails"
 script = ExtResource("2_ktihs")
 textToReveal = "1. Check Emails"
 
 [node name="ClockInLabel" type="Label" parent="."]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
 text = "2. Clock In"
 script = ExtResource("2_ktihs")
 textToReveal = "2. Clock In"

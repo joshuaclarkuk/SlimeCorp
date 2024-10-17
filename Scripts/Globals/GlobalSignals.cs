@@ -53,6 +53,7 @@ public partial class GlobalSignals : Node
     public event Action<bool> OnPlayerAtRiskOfFailing;
     public event Action OnPlayerFailureState;
     public event Action OnPlayerWinState;
+    public event Action OnCreatureWinState;
 
     public void RaiseOnBlackScreenDisappeared() { OnBlackScreenDisappeared?.Invoke(); }
 
@@ -103,4 +104,5 @@ public partial class GlobalSignals : Node
     public void RaisePlayerAtRiskOfFailing(bool atRisk) { OnPlayerAtRiskOfFailing?.Invoke(atRisk); }
     public void RaisePlayerFailureState() { OnPlayerFailureState?.Invoke(); }
     public void RaisePlayerWinState() { OnPlayerWinState?.Invoke(); }
+    public void RaiseCreatureWinState() { OnCreatureWinState?.Invoke(); }
 }

@@ -7,14 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="5_rhfc4"]
 [ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="6_gjauu"]
 
-[node name="CleaningStation" node_paths=PackedStringArray("leverNode", "flushingSystemTimerNode", "stationNeedsProgressBarComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_ft1ox")]
+[node name="CleaningStation" node_paths=PackedStringArray("leverNode", "flushingSystemTimerNode", "stationNeedsProgressBarComponent", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_ft1ox")]
 script = ExtResource("2_7hmnt")
 leverNode = NodePath("Lever")
 flushingSystemTimerNode = NodePath("FlushingSystemTimer")
 stationNeedsProgressBarComponent = NodePath("StationNeedsProgressBarComponent")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 3
+hasMouseDrag = true
+hasNumPad = true
 
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 1.5)

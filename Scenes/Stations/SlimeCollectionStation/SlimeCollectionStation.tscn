@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://8p16tajxffol" path="res://Assets/Audio/SFX/StationAlerts/BarrelFullBeep.ogg" id="9_fitfi"]
 [ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="10_j6n3r"]
 
-[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "canisterMeshToAppear", "stationNeedsProgressBarComponentNode", "stationAlertComponentNode", "slimeCollectionAudioNode", "barrelRemovedAudioNode", "buttonsNode", "debugLabel") instance=ExtResource("1_uotg4")]
+[node name="SlimeCollectionStation" node_paths=PackedStringArray("valveNode", "canisterMeshToAppear", "stationNeedsProgressBarComponentNode", "stationAlertComponentNode", "slimeCollectionAudioNode", "barrelRemovedAudioNode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_uotg4")]
 script = ExtResource("2_2mdql")
 valveNode = NodePath("Valve")
 canisterMeshToAppear = NodePath("Meshes/Canister")
@@ -20,8 +20,10 @@ stationAlertComponentNode = NodePath("StationAlertComponent")
 slimeCollectionAudioNode = NodePath("SlimeCollectionAudio")
 barrelRemovedAudioNode = NodePath("BarrelRemovedAudio")
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 4
+hasMouseDrag = true
 
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1.2, 0.8)

@@ -31,6 +31,7 @@ public partial class Main : Node3D
 
     [ExportCategory("Current Day")]
     [Export] private int currentDayIndex = 1;
+    [Export] private int maxDays = 5;
 
     // Globals
     private GlobalValues globalValues = null;
@@ -62,6 +63,7 @@ public partial class Main : Node3D
         // Connect win/failure states
         globalSignals.OnPlayerFailureState += HandlePlayerFailureState;
         globalSignals.OnPlayerWinState += HandlePlayerWinState;
+        globalSignals.OnCreatureWinState += HandleCreatureWinState;
 
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
@@ -84,6 +86,7 @@ public partial class Main : Node3D
         // Disconnect win/failure states
         globalSignals.OnPlayerFailureState -= HandlePlayerFailureState;
         globalSignals.OnPlayerWinState -= HandlePlayerWinState;
+        globalSignals.OnCreatureWinState -= HandleCreatureWinState;
     }
 
     private void HandleBlackScreenDisappeared()
@@ -222,6 +225,17 @@ public partial class Main : Node3D
 
     private void HandlePlayerClockedOut()
     {
+        if (globalValues.HasPlayerInjectedCreature)
+        {
+            globalSignals.RaisePlayerWinState();
+            return;
+        }
+
+        if (currentDayIndex == maxDays && !globalValues.HasPlayerInjectedCreature)
+        {
+            globalSignals.RaiseCreatureWinState();
+        }
+
         // End day logic here
         if (HasPlayerBankedEnoughSlime())
         {
@@ -229,7 +243,7 @@ public partial class Main : Node3D
         }
         else
         {
-            GD.PrintErr("Player has not collected enough slime. Bad ending");
+            globalSignals.RaisePlayerFailureState();
         }
     }
 
@@ -286,15 +300,21 @@ public partial class Main : Node3D
     private void HandlePlayerFailureState()
     {
         GD.PrintErr("Player did not meet creatures needs. Got fired.");
+        globalValues.SetEndState(E_EndState.FIRED);
+        GetTree().ChangeSceneToFile("res://Scenes/Levels/EndScreen.tscn");
     }
 
     private void HandlePlayerWinState()
     {
         GD.PrintErr("Player destroyed facility. Win!");
+        globalValues.SetEndState(E_EndState.PLAYER_WIN);
+        GetTree().ChangeSceneToFile("res://Scenes/Levels/EndScreen.tscn");
     }
 
-    private void EndGame()
+    private void HandleCreatureWinState()
     {
-        // Initiate final sequence
+        GD.PrintErr("Creature destroyed Earth. Lose!");
+        globalValues.SetEndState(E_EndState.CREATURE_WIN);
+        GetTree().ChangeSceneToFile("res://Scenes/Levels/EndScreen.tscn");
     }
 }

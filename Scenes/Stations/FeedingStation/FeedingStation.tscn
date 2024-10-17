@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://pe11xipsaham" path="res://Assets/Audio/SFX/Stations/FeedingStation/MachineHumLotsOfBeepsSeamless.ogg" id="6_ilh1w"]
 [ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="7_ysadx"]
 
-[node name="FeedingStation" node_paths=PackedStringArray("leverNode", "servingFoodTimerNode", "stationNeedsProgressBarComponent", "buttonsNode", "debugLabel") instance=ExtResource("1_5275c")]
+[node name="FeedingStation" node_paths=PackedStringArray("leverNode", "servingFoodTimerNode", "stationNeedsProgressBarComponent", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
 leverNode = NodePath("Lever")
 servingFoodTimerNode = NodePath("ServingFoodTimer")
@@ -16,8 +16,11 @@ stationNeedsProgressBarComponent = NodePath("StationNeedsProgressBarComponent")
 regionPosition = PackedVector2Array(0, 0, 208, 192, 840, 192, 1408, 200, 208, 824, 800, 824, 1400, 824, 272, 1408, 816, 1408, 1400, 1440)
 regionSize = PackedVector2Array(0, 0, 376, 384, 304, 392, 384, 368, 376, 392, 376, 392, 392, 392, 248, 392, 344, 408, 400, 312)
 buttonsNode = NodePath("Buttons")
+stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 2
+hasMouseDrag = true
+hasNumPad = true
 
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.5, 0.8)

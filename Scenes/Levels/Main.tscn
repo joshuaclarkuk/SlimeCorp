@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=94 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -17,12 +17,12 @@
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
+[ext_resource type="Material" uid="uid://c8cmbl0jkl6kv" path="res://Materials/MainLevel/M_WallsStretched.tres" id="10_7qnqv"]
 [ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bw2ft07b4b6f" path="res://3D Folder/Level map folder/main_room.tscn" id="12_84x2v"]
 [ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
-[ext_resource type="Material" uid="uid://bk22xfsc8r7bg" path="res://Materials/MainLevel/M_MainLevelWallsScaled.tres" id="15_f811p"]
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
 [ext_resource type="Material" uid="uid://bolxibgkujch8" path="res://Materials/M_TiledFloor.tres" id="16_ctw0p"]
 [ext_resource type="PackedScene" uid="uid://b42ksxkrqndmw" path="res://Scenes/Events/Main/WarningSiren.tscn" id="16_u8xjs"]
@@ -102,18 +102,6 @@ normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_4o23f")
 uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_offset = Vector3(0.53, 1.465, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohkyb"]
-albedo_texture = SubResource("CompressedTexture2D_8pg50")
-metallic = 1.0
-metallic_texture = SubResource("CompressedTexture2D_sclon")
-roughness_texture = SubResource("CompressedTexture2D_gpr1v")
-emission_enabled = true
-emission_texture = SubResource("CompressedTexture2D_k1vwy")
-normal_enabled = true
-normal_texture = SubResource("CompressedTexture2D_4o23f")
-uv1_scale = Vector3(-0.155, 0.215, 0.215)
-uv1_offset = Vector3(0.675, 0.5, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4j8mc"]
 material = ExtResource("16_ctw0p")
@@ -313,19 +301,19 @@ material = SubResource("StandardMaterial3D_gv4cl")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 5.3, 8.6)
 use_collision = true
 size = Vector3(3, 11, 1.2)
-material = ExtResource("15_f811p")
+material = ExtResource("10_7qnqv")
 
 [node name="SecurityRoomWallEast3" type="CSGBox3D" parent="Environment/LevelMesh/SecurityRoomWalls" index="2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 6.9, 6.05)
 use_collision = true
 size = Vector3(2.1, 7.8, 1.2)
-material = ExtResource("15_f811p")
+material = ExtResource("10_7qnqv")
 
 [node name="SecurityRoomWallEast2" type="CSGBox3D" parent="Environment/LevelMesh/SecurityRoomWalls" index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 5.3, 3.05)
 use_collision = true
 size = Vector3(3.9, 11, 1.2)
-material = ExtResource("15_f811p")
+material = ExtResource("10_7qnqv")
 
 [node name="BlankRoomWalls" type="Node3D" parent="Environment/LevelMesh" index="3"]
 
@@ -339,7 +327,7 @@ material = SubResource("StandardMaterial3D_gv4cl")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 5.3, -9.4)
 use_collision = true
 size = Vector3(9, 11, 1.2)
-material = SubResource("StandardMaterial3D_ohkyb")
+material = ExtResource("10_7qnqv")
 
 [node name="AbandonedRoom" type="Node3D" parent="Environment/LevelMesh" index="4"]
 

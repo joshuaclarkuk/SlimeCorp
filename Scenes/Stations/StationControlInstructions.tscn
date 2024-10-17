@@ -1,0 +1,386 @@
+[gd_scene load_steps=15 format=3 uid="uid://bpy0py6d28ixt"]
+
+[ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="1_q3pk4"]
+[ext_resource type="Script" path="res://Scripts/Stations/StationControlInstructions.cs" id="1_u602g"]
+[ext_resource type="Texture2D" uid="uid://cqa26rgwgcwe6" path="res://Assets/Sprites/UI Prompts/keyboard_0_outline.png" id="3_n30hr"]
+[ext_resource type="Texture2D" uid="uid://bh7budw877jpg" path="res://Assets/Sprites/UI Prompts/keyboard_1_outline.png" id="4_ygo42"]
+[ext_resource type="Texture2D" uid="uid://bx07gkdcy6opk" path="res://Assets/Sprites/UI Prompts/keyboard_2_outline.png" id="5_yh3b3"]
+[ext_resource type="Texture2D" uid="uid://bb85bx04quhf6" path="res://Assets/Sprites/UI Prompts/keyboard_3_outline.png" id="6_rpujl"]
+[ext_resource type="Texture2D" uid="uid://dqvy3mlfkqbap" path="res://Assets/Sprites/UI Prompts/keyboard_4_outline.png" id="7_gqmr7"]
+[ext_resource type="Texture2D" uid="uid://bl3ercxd2skdf" path="res://Assets/Sprites/UI Prompts/keyboard_5_outline.png" id="8_s0xup"]
+[ext_resource type="Texture2D" uid="uid://dx8y4gi0w31h1" path="res://Assets/Sprites/UI Prompts/keyboard_6_outline.png" id="9_khebb"]
+[ext_resource type="Texture2D" uid="uid://b82f8a2c78q2b" path="res://Assets/Sprites/UI Prompts/keyboard_7_outline.png" id="10_7g0d7"]
+[ext_resource type="Texture2D" uid="uid://djnmed88dooex" path="res://Assets/Sprites/UI Prompts/keyboard_8_outline.png" id="11_o8oyr"]
+[ext_resource type="Texture2D" uid="uid://cofg4h5pn1jl2" path="res://Assets/Sprites/UI Prompts/keyboard_9_outline.png" id="12_uew1s"]
+[ext_resource type="Texture2D" uid="uid://fmrwjijec7tw" path="res://Assets/Sprites/UI Prompts/mouse_vertical.png" id="13_sl2iu"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/StationTutorialLabel.cs" id="14_i45fl"]
+
+[node name="StationControlInstructions" type="Control" node_paths=PackedStringArray("numPadIconsNode", "happinessGameIconsNode", "mouseDragIconNode", "tutorialLabelNodes")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q3pk4")
+script = ExtResource("1_u602g")
+numPadIconsNode = NodePath("NumpadIcons")
+happinessGameIconsNode = NodePath("HappinessGameIcons")
+mouseDragIconNode = NodePath("MouseDragIcon")
+tutorialLabelNodes = [NodePath("IndividualStationTutorials/MarginContainer/AbandonedRoomCodeStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/CanisterStorageStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/CleaningStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/ClockOutStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/FeedingStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/HappinessGameStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/PoisonCreatureStation"), NodePath("IndividualStationTutorials/MarginContainer/SlimeCollectionStationTutorial"), NodePath("IndividualStationTutorials/MarginContainer/SupervisorRoomCodeStationTutorial")]
+
+[node name="NumpadIcons" type="Control" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -294.0
+offset_right = 106.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="NumpadIcons"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -275.0
+offset_bottom = 275.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/v_separation = -10
+columns = 2
+
+[node name="NumTex0" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_n30hr")
+
+[node name="NumLabel0" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Reset"
+
+[node name="NumTex1" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_ygo42")
+
+[node name="NumLabel1" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 1"
+
+[node name="NumTex2" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_yh3b3")
+
+[node name="NumLabel2" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 2"
+
+[node name="NumTex3" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_rpujl")
+
+[node name="NumLabel3" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 3"
+
+[node name="NumTex4" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_gqmr7")
+
+[node name="NumLabel4" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 4"
+
+[node name="NumTex5" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_s0xup")
+
+[node name="NumLabel5" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 5"
+
+[node name="NumTex6" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_khebb")
+
+[node name="NumLabel6" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 6"
+
+[node name="NumTex7" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_7g0d7")
+
+[node name="NumLabel7" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 7"
+
+[node name="NumTex8" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_o8oyr")
+
+[node name="NumLabel8" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 8"
+
+[node name="NumTex9" type="TextureRect" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_uew1s")
+
+[node name="NumLabel9" type="Label" parent="NumpadIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Button 9"
+
+[node name="HappinessGameIcons" type="Control" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -400.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="HappinessGameIcons"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -11.6667
+offset_top = -65.0
+offset_right = 188.333
+offset_bottom = 485.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/v_separation = -10
+columns = 2
+
+[node name="NumTex4" type="TextureRect" parent="HappinessGameIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_gqmr7")
+
+[node name="NumLabel4" type="Label" parent="HappinessGameIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Move Left"
+
+[node name="NumTex6" type="TextureRect" parent="HappinessGameIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_khebb")
+
+[node name="NumLabel6" type="Label" parent="HappinessGameIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Move Right"
+
+[node name="NumTex8" type="TextureRect" parent="HappinessGameIcons/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_o8oyr")
+
+[node name="NumLabel8" type="Label" parent="HappinessGameIcons/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Fire"
+
+[node name="MouseDragIcon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MouseDragIcon"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -229.0
+offset_top = -32.0
+offset_right = -165.0
+offset_bottom = 32.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("13_sl2iu")
+
+[node name="IndividualStationTutorials" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="IndividualStationTutorials"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="AbandonedRoomCodeStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Use numpad to enter code"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 9
+
+[node name="CanisterStorageStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Left-click and drag mouse to pull lever and dispense a barrel"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 6
+
+[node name="CleaningStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Use numpad to select sectors to clean as highlighted
+Left-click and drag mouse to pull lever and confirm selection."
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 3
+
+[node name="ClockOutStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Left-click and drag mouse to insert punch card into machine
+Use numpad to enter correct employee number and clock in/clock out"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 5
+
+[node name="FeedingStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Use numpad to match symbols to request
+Left-click and drag mouse to pull lever and confirm selection."
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 2
+
+[node name="HappinessGameStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Use numpad 4 and numpad 6 keys to move sentry
+Use numpad 8 to fire"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 7
+
+[node name="PoisonCreatureStation" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Left-click and drag mouse to contaminate food supply"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 12
+
+[node name="SlimeCollectionStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Left-click and drag mouse to operate valve
+Open valve to store collected biofuel
+Close valve after attaching a new barrel to begin collecting again
+"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 4
+
+[node name="SupervisorRoomCodeStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Left-click and drag mouse to swipe card
+"
+autowrap_mode = 3
+script = ExtResource("14_i45fl")
+StationType = 11
