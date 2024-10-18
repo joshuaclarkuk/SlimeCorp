@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://crsa45gpc38xi"]
+
+[ext_resource type="PackedScene" uid="uid://c2q5ncr6g0nfi" path="res://Assets/Models/UpdatedMainRoom/Main roomV2.fbx" id="1_nvquf"]
+[ext_resource type="Material" uid="uid://de5ute7jdinar" path="res://Materials/MainLevel/M_2KPipes.tres" id="2_0bws8"]
+[ext_resource type="Material" uid="uid://b10krmht7vq5y" path="res://Materials/MainLevel/M_2KFloor.tres" id="3_52oaj"]
+[ext_resource type="Material" uid="uid://ddmde7v3ncfth" path="res://Materials/MainLevel/M_2KWalls.tres" id="4_p8kt5"]
+[ext_resource type="Material" uid="uid://71cte2ofr661" path="res://Materials/MainLevel/M_2KCeiling.tres" id="5_vp3ht"]
+
+[node name="Main roomV2" instance=ExtResource("1_nvquf")]
+
+[node name="modular_industrial_pipes_01_pipe01_006" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_004" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_008" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_009" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_010" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_011" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_012" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_013" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_014" parent="." index="8"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_015" parent="." index="9"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_016" parent="." index="10"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_017" parent="." index="11"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_018" parent="." index="12"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_019" parent="." index="13"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_020" parent="." index="14"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_021" parent="." index="15"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_022" parent="." index="16"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_023" parent="." index="17"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="modular_industrial_pipes_01_pipe01_024" parent="." index="18"]
+surface_material_override/0 = ExtResource("2_0bws8")
+
+[node name="Verhgoging" parent="." index="19"]
+surface_material_override/0 = ExtResource("3_52oaj")
+
+[node name="walls and room" parent="." index="23"]
+surface_material_override/0 = ExtResource("3_52oaj")
+surface_material_override/1 = ExtResource("4_p8kt5")
+surface_material_override/2 = ExtResource("5_vp3ht")
+
+[node name="roof" parent="." index="24"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="walls and room_001" parent="." index="26"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="walls and room_002" parent="." index="27"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="walls and room_003" parent="." index="28"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="verhoging met trap_001" parent="." index="29"]
+surface_material_override/0 = ExtResource("3_52oaj")
+
+[node name="Verhgoging_004" parent="." index="30"]
+surface_material_override/0 = ExtResource("3_52oaj")
+
+[node name="Lamp_007" parent="." index="37"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="Lamp_008" parent="." index="38"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="Lamp_009" parent="." index="39"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="walls and room_004" parent="." index="40"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_001" parent="." index="41"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_002" parent="." index="42"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_003" parent="." index="43"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_004" parent="." index="44"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_005" parent="." index="45"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_006" parent="." index="46"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Lamp_013" parent="." index="47"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="Lamp_014" parent="." index="48"]
+surface_material_override/0 = ExtResource("5_vp3ht")
+
+[node name="Pillar round_007" parent="." index="51"]
+surface_material_override/0 = ExtResource("4_p8kt5")
+
+[node name="Pillar round_008" parent="." index="52"]
+surface_material_override/0 = ExtResource("4_p8kt5")

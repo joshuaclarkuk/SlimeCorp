@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://blt6ocdvmpx82"]
+
+[ext_resource type="Texture2D" uid="uid://bpykevgps45kw" path="res://Assets/Models/SlimeCollectionStation/oil barrel texuers/Barrel_Base_Color.png" id="1_6rf77"]
+[ext_resource type="Texture2D" uid="uid://dgp81vppt67uq" path="res://Assets/Models/SlimeCollectionStation/oil barrel texuers/Barrel_Mixed_AO.png" id="2_j7xcr"]
+[ext_resource type="Texture2D" uid="uid://cnt3xenx1ics3" path="res://Assets/Models/SlimeCollectionStation/oil barrel texuers/Barrel_Metallic.png" id="3_slq5w"]
+[ext_resource type="Texture2D" uid="uid://cw22bv08jja7c" path="res://Assets/Models/SlimeCollectionStation/oil barrel texuers/Barrel_Normal_OpenGL.png" id="4_c806i"]
+[ext_resource type="Texture2D" uid="uid://dss8g885ypwyj" path="res://Assets/Models/SlimeCollectionStation/oil barrel texuers/Barrel_Roughness.png" id="5_acdrg"]
+
+[resource]
+albedo_texture = ExtResource("1_6rf77")
+metallic = 1.0
+metallic_texture = ExtResource("3_slq5w")
+roughness_texture = ExtResource("5_acdrg")
+normal_enabled = true
+normal_texture = ExtResource("4_c806i")
+ao_enabled = true
+ao_texture = ExtResource("2_j7xcr")

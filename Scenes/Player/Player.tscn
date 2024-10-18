@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://db8ayysgph1a2"]
+[gd_scene load_steps=15 format=3 uid="uid://db8ayysgph1a2"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_iqhkd"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerCamera.cs" id="2_bty46"]
-[ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="2_prxc5"]
 [ext_resource type="Script" path="res://Scripts/Player/FootstepAudio.cs" id="3_48gdc"]
+[ext_resource type="PackedScene" uid="uid://dlqvi07hribq2" path="res://Scenes/Stations/Barrel.tscn" id="3_ue4ym"]
 [ext_resource type="AudioStream" uid="uid://b1y318ebamhc7" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_1.wav" id="4_n0lhe"]
 [ext_resource type="AudioStream" uid="uid://cfnjno47w80gr" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_2.wav" id="5_c35bk"]
 [ext_resource type="AudioStream" uid="uid://bcn07hpiv2s8l" path="res://Assets/Audio/SFX/Footsteps/Concrete/Stone_Footstep_3.wav" id="6_6b1av"]
@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://b215vn4inuiia" path="res://Scenes/Player/Flashlight.tscn" id="13_g8l8u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_34n1q"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_s46c6"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerCameraNode", "flashlightNode", "cameraPivotNode", "canisterCarrierNode", "interactRaycastNode", "interactRaycastTimerNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -47,11 +45,10 @@ remote_path = NodePath("../../../InteractRaycast")
 
 [node name="CanisterCarrier" type="Node3D" parent="PlayerCameraPivot/PlayerCamera"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.8, -1.3)
-visible = false
 
-[node name="Canister" type="CSGCylinder3D" parent="PlayerCameraPivot/PlayerCamera/CanisterCarrier"]
+[node name="Barrel" parent="PlayerCameraPivot/PlayerCamera/CanisterCarrier" instance=ExtResource("3_ue4ym")]
+transform = Transform3D(56.5901, 15.1633, 5.5133e-06, -2.47363e-06, -1.207e-05, 58.5864, 15.1633, -56.5901, -1.10185e-05, 0.1, -0.6, 0.625)
 layers = 2
-material = ExtResource("2_prxc5")
 
 [node name="CanisterSubviewportContainer" type="SubViewportContainer" parent="PlayerCameraPivot/PlayerCamera"]
 anchors_preset = 15
@@ -71,11 +68,6 @@ render_target_update_mode = 4
 [node name="CanisterCamera" type="Camera3D" parent="PlayerCameraPivot/PlayerCamera/CanisterSubviewportContainer/CanisterViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 cull_mask = 2
-
-[node name="PlayerMesh" type="MeshInstance3D" parent="."]
-visible = false
-cast_shadow = 0
-mesh = SubResource("CapsuleMesh_s46c6")
 
 [node name="FootstepAudio" type="Node3D" parent="." node_paths=PackedStringArray("concreteFootstepPlayerNode", "playerNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

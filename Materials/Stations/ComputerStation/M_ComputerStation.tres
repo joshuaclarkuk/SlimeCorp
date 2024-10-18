@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://djkkwoxmloyn8"]
+
+[ext_resource type="Texture2D" uid="uid://vhftat38ueoi" path="res://Assets/Models/ComputerStation/desk and pc texuers/DefaultMaterial_Base_Color.png" id="1_6n8sa"]
+[ext_resource type="Texture2D" uid="uid://b4c0q20bdslr7" path="res://Assets/Models/ComputerStation/desk and pc texuers/DefaultMaterial_Metallic.png" id="2_ts4jd"]
+[ext_resource type="Texture2D" uid="uid://cygc36tui5ax2" path="res://Assets/Models/ComputerStation/desk and pc texuers/DefaultMaterial_Normal_DirectX.png" id="3_feqps"]
+[ext_resource type="Texture2D" uid="uid://bc5c55n3xyw6d" path="res://Assets/Models/ComputerStation/desk and pc texuers/DefaultMaterial_Roughness.png" id="4_yrc0u"]
+
+[resource]
+albedo_texture = ExtResource("1_6n8sa")
+metallic = 1.0
+metallic_texture = ExtResource("2_ts4jd")
+roughness_texture = ExtResource("4_yrc0u")
+normal_enabled = true
+normal_texture = ExtResource("3_feqps")
