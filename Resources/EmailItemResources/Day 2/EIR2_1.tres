@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://caj0avsq7ml23"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_88mjl"]
+
+[resource]
+script = ExtResource("1_88mjl")
+ItemTitle = "Work Event from HR"
+ItemBody = "To all employees,
+
+We’ll be hosting a mandatory team-building event on the last Friday of next month in Non-Euclidean Seminar Room C (the small door at the northern end of Sub-Basement Level 7). Please remember your work-issued flashlights (“F” to activate) and attach a long piece of string to the door as you enter. As those of you that returned from the last one will know: it can be a little tricky to find your way back to the exit.
+
+The event will feature activities designed to promote trust, collaboration, and a strong resistance to psychological distress.
+
+Snacks and drinks will be provided, though it’s important not to look directly at any of the offerings before consumption. 
+
+Looking forward to seeing everyone there—together we are stronger (and more resilient to the whispers)."
+ItemByline = "Linda Kraft,
+Director of Human Resources
+Esoteric Energy
+Unleash the Power of the Abyss!"
+ItemDateReceived = "Received: October 8, 2026"

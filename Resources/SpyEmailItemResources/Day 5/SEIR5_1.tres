@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://mnxj3f34j63c"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_mtd2s"]
+
+[resource]
+script = ExtResource("1_mtd2s")
+ItemTitle = "Last Chance! Deal with Home Security Issues Before it’s Too Late!"
+ItemBody = "Dear reader,
+
+Now is the time. Tomorrow will be too late. You need to heed the advice of our team and utilise the knowledge that has been passed to you.
+
+End it. We implore you."
+ItemByline = "Sincerely, Randolph Armitage
+Your handler at Elder Sign Security Solutions"
+ItemDateReceived = "Received: October 11, 2026"

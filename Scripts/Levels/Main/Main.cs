@@ -17,6 +17,10 @@ public partial class Main : Node3D
     [ExportCategory("Creature Need Resources")]
     [Export] private DailyNeedResource[] dailyNeedResources = null;
 
+    [ExportCategory("Spy Emails")]
+    [Export] private Timer spyEmailTimerNode = null;
+    [Export] private ComputerItemResource[] spyEmailItemResources = null;
+
     [ExportCategory("Stations")]
     [Export] private Stations stationsHeaderNode = null;
 
@@ -57,6 +61,9 @@ public partial class Main : Node3D
         globalSignals.OnShiftIsOver += HandleShiftIsOver;
         globalSignals.OnPlayerClockedOut += HandlePlayerClockedOut; // End day
 
+        // Connect spy email timer
+        spyEmailTimerNode.Timeout += HandleSpyEmailTimerTimeout;
+
         // Connect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
 
@@ -79,6 +86,9 @@ public partial class Main : Node3D
         globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
         globalSignals.OnShiftIsOver -= HandleShiftIsOver;
         globalSignals.OnPlayerClockedOut -= HandlePlayerClockedOut;
+
+        // Disconnect spy email timer
+        spyEmailTimerNode.Timeout -= HandleSpyEmailTimerTimeout;
 
         // Disconnect station-based signals
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
@@ -188,6 +198,9 @@ public partial class Main : Node3D
                 GD.PrintErr($"No NewsItemResources found for day {dayIndex}");
             }
 
+            // Set spy email timer to a fifth of max time in day
+            spyEmailTimerNode.WaitTime = dailyNeedResources[dayIndex].MinutesInDay * 0.01f;
+
             // Set up Title and outline daily parameters
             titleCardNode.UpdateTextAndDisplay(dailyNeedResources[dayIndex].TitleToDisplay);
             creatureNeeds.SetUpForNewDay(dailyNeedResources[dayIndex].MinutesInDay);
@@ -210,6 +223,9 @@ public partial class Main : Node3D
         {
             introCreditsNode.PlayIntroCreditsAnimation();
         }
+
+        // Start timer counting to send spy email 
+        spyEmailTimerNode.Start();
 
         // Start music
         nonDiegeticMusicNode.Play();
@@ -268,6 +284,18 @@ public partial class Main : Node3D
         globalSignals.RaiseGenerateEmployeeNumber(employeeNumber);
 
         GD.Print($"Generated employee number: {string.Join("", employeeNumber)} vs Official employee number: {string.Join("", globalValues.EmployeeNumber)}");
+    }
+
+    private void HandleSpyEmailTimerTimeout()
+    {
+        if (spyEmailItemResources[currentDayIndex] != null)
+        {
+            globalSignals.RaiseEmailReceived(spyEmailItemResources[currentDayIndex]);
+        }
+        else
+        {
+            GD.PrintErr("No valid spy email set for today");
+        }
     }
 
     private void ResetSlimeCollectedAndSetNewTarget(float newTarget)

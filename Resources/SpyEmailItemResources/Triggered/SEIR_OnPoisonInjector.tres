@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://deyg8841ewj0"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_jel55"]
+
+[resource]
+script = ExtResource("1_jel55")
+ItemTitle = "Congratulations on Your First Place Prize!"
+ItemBody = "Dear reader,
+
+A huge congratulations from us for redeeming your four digit code.
+
+Your prize has been delivered to your designated safe zone: the NorthEast corner of your workroom.
+
+Please collect it as soon as you are able and deliver it to your designated neighbour at the address: Supervisor’s Room.
+
+Act now or risk losing everything!"
+ItemByline = "Randolph Armitage,
+Elder Sign Security Solutions"
+ItemDateReceived = ""

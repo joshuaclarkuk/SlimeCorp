@@ -4,14 +4,16 @@
 
 [resource]
 script = ExtResource("1_w128d")
-ItemTitle = "Hello and welcome!"
-ItemBody = "Congratulations on your new role as our important [JOB TITLE] here at [FACILITY NAME]. We are so pleased to have you join us in contributing to a brighter future for our world. Apologies for not being there to greet you in person - many legal proceedings that require my attention, nothing to worry about, of course - but rest assured that while your role may be vital, it is also very simple:
+ItemTitle = "Welcome!"
+ItemBody = "Dear employee,
 
-FOLLOW THE INSTRUCTIONS ON YOUR TERMINAL TO THE LETTER.
+Welcome! The work you do here is vital to ensuring the continued production of our patented DeepOil(™) energy product.
 
-If you have any questions, mistakes were clearly made during the interview process, but you're a competent employee, aren't you? [FACILITY NAME] doesn't make mistakes.
+Your 974-page induction pack should have answered any questions you might have had, so please clock in at the provided station and begin carrying out your assigned tasks.
 
-Welcome to the family! Remember, at [FACILITY NAME], we are the future of humanity, and you are all valued members of our community in shaping what that looks like."
-ItemByline = "Sincerely,
-[FULL NAME], Human Resource Manager at [FACILITY NAME]"
+It is vital that you speak to no one else at the facility. This role is yours, and yours alone.
+
+Welcome to the family"
+ItemByline = "Howard Marsh, CEO Esoteric Energy
+Unleash the Power of the Abyss!"
 ItemDateReceived = "Received: October 7, 2026"

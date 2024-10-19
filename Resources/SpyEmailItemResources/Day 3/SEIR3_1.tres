@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://sp7e8r1ikm6a"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_jtnsj"]
+
+[resource]
+script = ExtResource("1_jtnsj")
+ItemTitle = "Essential Tools in an Emergency"
+ItemBody = "Dear reader,
+
+Locked yourself out of the house? Fear not! There are only TWO tools you’ll need to find a way back in: a screwdriver, and a hammer!
+
+Unscrew the troublesome handle with the screwdriver and, once removed, insert the end of the screwdriver into the square hollow and twist!
+
+And if all else fails, there’s always the hammer. A little BRUTE FORCE never hurts as a LAST resort."
+ItemByline = "Randolph Armitage,
+Elder Sign Security Solutions"
+ItemDateReceived = "Received: October 9, 2026"

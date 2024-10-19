@@ -1,18 +1,18 @@
-[gd_scene load_steps=10 format=4 uid="uid://ubnxatxfab8o"]
+[gd_scene load_steps=9 format=4 uid="uid://ubnxatxfab8o"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/_Components/Card.cs" id="1_q4a57"]
-[ext_resource type="Texture2D" uid="uid://cqgthjbwotnnf" path="res://Assets/Models/ClockInStation/cardtextures/carte_step_my_super_nicE-carte_BaseColor.png" id="2_d56rf"]
-[ext_resource type="Texture2D" uid="uid://vl733oje2rft" path="res://Assets/Models/ClockInStation/cardtextures/carte_step_my_super_nicE-carte_Metallic.png" id="3_ios3b"]
-[ext_resource type="Texture2D" uid="uid://dl81afjdy8q63" path="res://Assets/Models/ClockInStation/cardtextures/carte_step_my_super_nicE-carte_Normal.png" id="4_ji6te"]
-[ext_resource type="Texture2D" uid="uid://cd74dg48lw4ui" path="res://Assets/Models/ClockInStation/cardtextures/carte_step_my_super_nicE-carte_Roughness.png" id="5_vsnth"]
+[ext_resource type="Texture2D" uid="uid://cmdloags4xw7g" path="res://Assets/Models/ClockInStation/IDcardtextures/carte_step_my_super_nicE-carte_BaseColor.png" id="2_j6xe3"]
+[ext_resource type="Texture2D" uid="uid://vwfh7mwnnr7g" path="res://Assets/Models/ClockInStation/IDcardtextures/carte_step_my_super_nicE-carte_Metallic.png" id="3_8rj3g"]
+[ext_resource type="Texture2D" uid="uid://dt8o2nb8vs50q" path="res://Assets/Models/ClockInStation/IDcardtextures/carte_step_my_super_nicE-carte_Normal.png" id="4_c2sxw"]
+[ext_resource type="Texture2D" uid="uid://bkmqmgpv56wr5" path="res://Assets/Models/ClockInStation/IDcardtextures/carte_step_my_super_nicE-carte_Roughness.png" id="5_rb1p6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7h6n"]
-albedo_texture = ExtResource("2_d56rf")
+albedo_texture = ExtResource("2_j6xe3")
 metallic = 1.0
-metallic_texture = ExtResource("3_ios3b")
-roughness_texture = ExtResource("5_vsnth")
+metallic_texture = ExtResource("3_8rj3g")
+roughness_texture = ExtResource("5_rb1p6")
 normal_enabled = true
-normal_texture = ExtResource("4_ji6te")
+normal_texture = ExtResource("4_c2sxw")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5emt8"]
 _surfaces = [{
@@ -48,8 +48,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5emt8")
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p5ca4"]
-
 [node name="Card" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 script = ExtResource("1_q4a57")
@@ -60,12 +58,3 @@ targetLocation = 1.2
 transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wfopt")
 skeleton = NodePath("")
-
-[node name="IDNumber" type="Node3D" parent="."]
-visible = false
-
-[node name="Background" type="Sprite3D" parent="IDNumber"]
-texture = SubResource("PlaceholderTexture2D_p5ca4")
-
-[node name="NumberLabel" type="Label3D" parent="IDNumber"]
-text = "ID: 0000"

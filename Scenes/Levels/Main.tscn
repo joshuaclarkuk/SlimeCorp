@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=93 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -17,9 +17,14 @@
 [ext_resource type="Script" path="res://Scripts/Stations/Stations.cs" id="8_8q08k"]
 [ext_resource type="PackedScene" uid="uid://crsa45gpc38xi" path="res://Scenes/Models/RoomModels/MainRoomV2.tscn" id="8_bmayx"]
 [ext_resource type="PackedScene" uid="uid://b020e2hls2ace" path="res://Scenes/Stations/CleaningStation/CleaningStation.tscn" id="8_jl626"]
+[ext_resource type="Resource" uid="uid://bvro2doh4nbmq" path="res://Resources/SpyEmailItemResources/Day 1/SEIR1_1.tres" id="8_uag8f"]
 [ext_resource type="PackedScene" uid="uid://c81xuqyf4vlou" path="res://Scenes/Stations/SlimeCollectionStation/SlimeCollectionStation.tscn" id="9_mb0pm"]
+[ext_resource type="Resource" uid="uid://dawb5plu8u778" path="res://Resources/SpyEmailItemResources/Day 2/SEIR2_1.tres" id="9_v10n3"]
 [ext_resource type="PackedScene" uid="uid://dvdnqemklskrt" path="res://Scenes/Stations/HappinessGameStation/HappinessGameStation.tscn" id="10_jnwi1"]
+[ext_resource type="Resource" uid="uid://sp7e8r1ikm6a" path="res://Resources/SpyEmailItemResources/Day 3/SEIR3_1.tres" id="10_wdimg"]
+[ext_resource type="Resource" uid="uid://b5by3j8frjxor" path="res://Resources/SpyEmailItemResources/Day 4/SEIR4_1.tres" id="11_q0khq"]
 [ext_resource type="PackedScene" uid="uid://bg2l7oxrw1wlj" path="res://Scenes/UI/Debug/DebugUI.tscn" id="11_yopgj"]
+[ext_resource type="Resource" uid="uid://mnxj3f34j63c" path="res://Resources/SpyEmailItemResources/Day 5/SEIR5_1.tres" id="12_3gogr"]
 [ext_resource type="PackedScene" uid="uid://ntdmg6i2yq7u" path="res://Scenes/Stations/ComputerStation/OperatingSystem.tscn" id="12_81ppp"]
 [ext_resource type="PackedScene" uid="uid://bg2lr17dky85a" path="res://Scenes/Events/Main/MainKillLightsEvent.tscn" id="12_stswd"]
 [ext_resource type="PackedScene" uid="uid://bwm5d713s3ief" path="res://Scenes/UI/IntroScreens/IntroCredits.tscn" id="16_88hgn"]
@@ -198,13 +203,15 @@ size = Vector3(1.4, 4, 0.5)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "debugUI") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
 creatureNeeds = NodePath("CreatureNeeds")
 dailyNeedResources = Array[Object]([ExtResource("2_dt6g4"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), ExtResource("4_rx313"), ExtResource("5_w5mc5"), ExtResource("6_fybs3")])
+spyEmailTimerNode = NodePath("SpyEmailTimer")
+spyEmailItemResources = Array[Object]([ExtResource("8_uag8f"), ExtResource("8_uag8f"), ExtResource("9_v10n3"), ExtResource("10_wdimg"), ExtResource("11_q0khq"), ExtResource("12_3gogr")])
 stationsHeaderNode = NodePath("Environment/Objects/Stations")
 nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
@@ -1594,6 +1601,7 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.1, 0,
 
 [node name="AbandonedRoomCodeStation" parent="Environment/Objects/Stations" index="7" instance=ExtResource("24_fwfmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0, -13.3)
+correctCode = PackedInt32Array(1, 9, 2, 6)
 
 [node name="SupervisorCardPickupStation" parent="Environment/Objects/Stations" index="8" instance=ExtResource("42_ur6oi")]
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, -24, 0, -26)
@@ -1704,6 +1712,11 @@ omni_range = 22.279
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 
+[node name="Creature" type="Node3D" parent="WorldAudio/Diegetic" index="0"]
+
+[node name="CreatureAudioBed" type="AudioStreamPlayer3D" parent="WorldAudio/Diegetic/Creature" index="0"]
+autoplay = true
+
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")
 feedingStationNode = NodePath("../Environment/Objects/Stations/FeedingStation")
@@ -1735,3 +1748,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21, 1
 
 [node name="BlackScreen" parent="." index="13"]
 visible = false
+
+[node name="SpyEmailTimer" type="Timer" parent="." index="14"]
+one_shot = true

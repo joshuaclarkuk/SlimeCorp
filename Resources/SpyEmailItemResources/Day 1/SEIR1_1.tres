@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://bvro2doh4nbmq"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_dusk7"]
+
+[resource]
+script = ExtResource("1_dusk7")
+ItemTitle = "Your Subscription to Elder Sign Security Solutions"
+ItemBody = "Dear reader,
+
+A huge thank you for subscribing to our daily newsletter. Be sure to check back each day for useful security tips.
+
+First up: did you know that the single best way to keep a precious item hidden is with the use of ONE padlock. That’s right, ONE padlock!
+
+Who knew the key to a sophisticated security setup started with such a simple first step!
+
+More tomorrow…"
+ItemByline = "Randolph Armitage,
+Elder Sign Security Solutions"
+ItemDateReceived = "Received: October 7, 2026"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://b5by3j8frjxor"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_c8eod"]
+
+[resource]
+script = ExtResource("1_c8eod")
+ItemTitle = "The Full Picture: Act Now!"
+ItemBody = "Dear reader,
+
+Thanks to our previous correspondence you should be armed with all the knowledge required to solve any pesky security situation, but for those that need a reminder, here are those handy hints again:
+ONE trusty padlock
+NINE steps to complete home security
+TWO tools to bypass any lock
+And finally, for those that preferred not to use BRUTE FORCE, please stay tuned for SIX more tips and tricks, though be advised that life is short! You just never know when the world might come to a sudden and terrifying end! Our advice would be to use the wisdom imparted to you before time runs out!"
+ItemByline = "Randolph Armitage,
+Elder Sign Security Solutions"
+ItemDateReceived = "Received: October 10, 2026"

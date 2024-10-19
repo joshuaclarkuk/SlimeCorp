@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://dawb5plu8u778"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_3tbvc"]
+
+[resource]
+script = ExtResource("1_3tbvc")
+ItemTitle = "Total Home Security in Just NINE Steps"
+ItemBody = "Dear reader,
+
+Here are some more tips in our ongoing series on how to achieve complete home security in just NINE steps:
+Doors locked tighter than a secret well kept
+A security panel that faces the rising sun
+A keen eye on our daily newsletter
+
+More tomorrow…"
+ItemByline = "Randolph Armitage,
+Elder Sign Security Solutions"
+ItemDateReceived = "Received: October 8, 2026"
