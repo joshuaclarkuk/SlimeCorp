@@ -13,6 +13,8 @@ public partial class ToDoListUI : VBoxContainer
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
         globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
         globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
+
+        Visible = false;
     }
 
     public override void _ExitTree()

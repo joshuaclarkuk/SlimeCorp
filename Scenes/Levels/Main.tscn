@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=94 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://b4dcad0w5rqpd" path="res://Scenes/Stations/SupervisorCardPickupStation/SupervisorCardPickupStation.tscn" id="42_ur6oi"]
 [ext_resource type="PackedScene" uid="uid://ov4cjhhfxc74" path="res://Scenes/Interactables/RotatingDoor.tscn" id="43_p7imb"]
 [ext_resource type="PackedScene" uid="uid://bsntbl8rgj0ts" path="res://Scenes/Interactables/SlidingDoor.tscn" id="45_p2dxe"]
+[ext_resource type="AudioStream" uid="uid://o4mt6t54nanf" path="res://Assets/Audio/Ambience/Main/MainAmbience.ogg" id="49_8ki5y"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -1716,6 +1717,9 @@ omni_range = 22.279
 
 [node name="CreatureAudioBed" type="AudioStreamPlayer3D" parent="WorldAudio/Diegetic/Creature" index="0"]
 autoplay = true
+
+[node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
+stream = ExtResource("49_8ki5y")
 
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")

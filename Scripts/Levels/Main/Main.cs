@@ -199,7 +199,7 @@ public partial class Main : Node3D
             }
 
             // Set spy email timer to a fifth of max time in day
-            spyEmailTimerNode.WaitTime = dailyNeedResources[dayIndex].MinutesInDay * 0.01f;
+            spyEmailTimerNode.WaitTime = (dailyNeedResources[dayIndex].MinutesInDay * 0.2f) * 60.0f; // Need to multiply by 60 due to minutes in day being an int representing mins
 
             // Set up Title and outline daily parameters
             titleCardNode.UpdateTextAndDisplay(dailyNeedResources[dayIndex].TitleToDisplay);
@@ -241,6 +241,8 @@ public partial class Main : Node3D
 
     private void HandlePlayerClockedOut()
     {
+        nonDiegeticMusicNode.Stop();
+
         if (globalValues.HasPlayerInjectedCreature)
         {
             globalSignals.RaisePlayerWinState();

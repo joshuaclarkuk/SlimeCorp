@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://t4vquhmibbj2"]
+[gd_scene load_steps=8 format=3 uid="uid://t4vquhmibbj2"]
 
 [ext_resource type="Theme" uid="uid://bfwmmvq7todhb" path="res://Themes/MainMenuTheme.tres" id="1_oofwy"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/MainMenu.cs" id="2_eg5ks"]
 [ext_resource type="PackedScene" uid="uid://6bsluq4t6i1h" path="res://Scenes/Levels/Main.tscn" id="3_qkpyi"]
 [ext_resource type="Material" uid="uid://bh7gq84vvd67g" path="res://Materials/Shaders/M_BlurScreenShader.tres" id="4_2ky1h"]
 [ext_resource type="PackedScene" uid="uid://v0ulbv20iqrk" path="res://Scenes/UI/MainMenu/OptionsPage.tscn" id="5_082tu"]
+[ext_resource type="Texture2D" uid="uid://bt5yeynawfm6q" path="res://Assets/Sprites/SlimeCorpLogo/slime_corplogo_white.png" id="5_rfubq"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_yuhrx"]
 
@@ -17,9 +18,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_oofwy")
 script = ExtResource("2_eg5ks")
-startGameButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/StartButton")
-optionsButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/OptionsButton")
-quitGameButtonNode = NodePath("Pages/StartPage/MarginContainer/VBoxContainer/Fields/QuitButton")
+startGameButtonNode = NodePath("Pages/StartPage/VBoxContainer/Fields/StartButton")
+optionsButtonNode = NodePath("Pages/StartPage/VBoxContainer/Fields/OptionsButton")
+quitGameButtonNode = NodePath("Pages/StartPage/VBoxContainer/Fields/QuitButton")
 firstLevelToLoad = ExtResource("3_qkpyi")
 startPageNode = NodePath("Pages/StartPage")
 optionsPageNode = NodePath("Pages/OptionsPage")
@@ -50,45 +51,61 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Pages/StartPage"]
+[node name="SlimeCorpLogo" type="TextureRect" parent="Pages/StartPage"]
+modulate = Color(1, 1, 1, 0.32549)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -237.0
+offset_top = 70.0
+offset_right = 237.0
+offset_bottom = 544.0
 grow_horizontal = 2
-grow_vertical = 2
+texture = ExtResource("5_rfubq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Pages/StartPage/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/StartPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.5
+offset_top = 439.0
+offset_right = 150.5
+offset_bottom = 606.0
+grow_horizontal = 2
+size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="GameTitle" type="Label" parent="Pages/StartPage/MarginContainer/VBoxContainer"]
+[node name="GameTitle" type="Label" parent="Pages/StartPage/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Night Shift at Slime Corp"
 
-[node name="Fields" type="VBoxContainer" parent="Pages/StartPage/MarginContainer/VBoxContainer"]
+[node name="Fields" type="VBoxContainer" parent="Pages/StartPage/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_vertical = 0
+alignment = 1
 
-[node name="StartButton" type="Button" parent="Pages/StartPage/MarginContainer/VBoxContainer/Fields"]
+[node name="StartButton" type="Button" parent="Pages/StartPage/VBoxContainer/Fields"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "Start Game"
 
-[node name="OptionsButton" type="Button" parent="Pages/StartPage/MarginContainer/VBoxContainer/Fields"]
+[node name="OptionsButton" type="Button" parent="Pages/StartPage/VBoxContainer/Fields"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="Pages/StartPage/MarginContainer/VBoxContainer/Fields"]
+[node name="QuitButton" type="Button" parent="Pages/StartPage/VBoxContainer/Fields"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 text = "Quit Game"
 
