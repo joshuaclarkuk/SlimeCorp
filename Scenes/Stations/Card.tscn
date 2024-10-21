@@ -55,6 +55,6 @@ startLocation = 1.7
 targetLocation = 1.2
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 0, 0, 0)
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wfopt")
 skeleton = NodePath("")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7tqs3aaalahn"]
+[gd_scene load_steps=8 format=3 uid="uid://c7tqs3aaalahn"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_i5myk"]
 [ext_resource type="Script" path="res://Scripts/Stations/PoisonCreatureStation/PoisonCreatureStation.cs" id="2_dbmny"]
 [ext_resource type="PackedScene" uid="uid://ubnxatxfab8o" path="res://Scenes/Stations/Card.tscn" id="3_e1gf4"]
+[ext_resource type="Material" uid="uid://n1ggh2hlt183" path="res://Materials/M_PrototypeYellow.tres" id="4_gwnum"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_je3sk"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kery3"]
@@ -25,7 +26,7 @@ StationType = 12
 hasMouseDrag = true
 
 [node name="CameraLocation" parent="." index="0"]
-transform = Transform3D(0.819152, 0, -0.573576, 0, 1, 0, 0.573576, 0, 0.819152, -0.5, 1.5, 0.8)
+transform = Transform3D(0.956304, -0.130456, -0.261653, 0, 0.894934, -0.446198, 0.292372, 0.426701, 0.85583, 0.07, 1.115, 1.065)
 
 [node name="InteractCollider" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 1)
@@ -39,7 +40,19 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.8, 1
 mesh = SubResource("CylinderMesh_k7wfy")
 
 [node name="Card" parent="." index="5" instance=ExtResource("3_e1gf4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 2.4, 0)
+startLocation = 2.4
+targetLocation = 1.4
+
+[node name="Mesh" parent="Card" index="0"]
+visible = false
+
+[node name="CSGMesh" type="CSGCylinder3D" parent="Card" index="1"]
+radius = 0.1
+height = 0.6
+material = ExtResource("4_gwnum")
 
 [node name="Buttons" parent="." index="6" instance=ExtResource("4_je3sk")]
 visible = false
+
+[editable path="Card"]

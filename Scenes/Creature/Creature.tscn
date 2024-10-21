@@ -1,16 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckk0fssse8rjf"]
+[gd_scene load_steps=6 format=3 uid="uid://ckk0fssse8rjf"]
 
 [ext_resource type="Material" uid="uid://bjxkxa265lkj0" path="res://Materials/Creature/M_Monster.tres" id="1_oc2sw"]
 [ext_resource type="PackedScene" uid="uid://crupk3j4ps468" path="res://Assets/Models/Creature/Animated monster.fbx" id="1_qa33r"]
+[ext_resource type="Script" path="res://Scripts/Creature/Creature.cs" id="2_moam7"]
 [ext_resource type="Material" uid="uid://d3j5qgft8ubvt" path="res://Materials/Creature/M_DoorSides.tres" id="3_wpgpq"]
 [ext_resource type="Material" uid="uid://b5fntu1ldou7j" path="res://Materials/Creature/M_CreatureDoor.tres" id="4_qdmw5"]
 
-[node name="Animated monster" instance=ExtResource("1_qa33r")]
+[node name="Animated monster" node_paths=PackedStringArray("eyeMeshNode", "animPlayerNode") instance=ExtResource("1_qa33r")]
+script = ExtResource("2_moam7")
+eyeMeshNode = NodePath("Armature/Skeleton3D/monster_001")
+animPlayerNode = NodePath("AnimationPlayer")
 
 [node name="Skeleton3D" parent="Armature" index="0"]
 bones/1/position = Vector3(-0.00862873, 0.00439187, -9.02636e-05)
 bones/1/rotation = Quaternion(-0.00537042, -0.00537037, 0.715082, 0.698999)
-bones/1/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(-0.658676, 0.247992, 0.255393, 0.662888)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-3.01226e-10, 0.00896438, 1.88985e-09)

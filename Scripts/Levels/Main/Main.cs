@@ -29,6 +29,7 @@ public partial class Main : Node3D
 
     [ExportCategory("Event Nodes")]
     [Export] private Node3D lightingHeaderNode = null;
+    [Export] private MeshInstance3D creatureCurtainMeshNode = null;
 
     [ExportCategory("Debug UI")]
     [Export] private DebugUI debugUI = null;
@@ -74,6 +75,9 @@ public partial class Main : Node3D
 
         // Set player to player start
         player.GlobalTransform = playerStartNode.GlobalTransform;
+
+        // Set creature curtain mesh to visible
+        creatureCurtainMeshNode.Visible = true;
 
         // Capture mouse
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -211,6 +215,9 @@ public partial class Main : Node3D
             GD.PrintErr("No daily resource found for this day");
         }
 
+        // Turn off lights
+        lightingHeaderNode.Visible = false;
+
         // Initialise player camera and movement
         player.MakeCameraCurrent();
         stationsHeaderNode.isTransitioningBetweenDays = false;
@@ -224,8 +231,14 @@ public partial class Main : Node3D
             introCreditsNode.PlayIntroCreditsAnimation();
         }
 
+        // Turn on lights
+        lightingHeaderNode.Visible = true;
+
         // Start timer counting to send spy email 
         spyEmailTimerNode.Start();
+
+        // Reveal creature
+        creatureCurtainMeshNode.QueueFree();
 
         // Start music
         nonDiegeticMusicNode.Play();

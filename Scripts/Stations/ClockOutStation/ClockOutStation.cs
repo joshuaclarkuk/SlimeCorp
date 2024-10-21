@@ -6,6 +6,9 @@ public partial class ClockOutStation : Station
     [ExportCategory("Required Nodes")]
     [Export] private Card punchCardNode = null;
     [Export] private CodeComponent codeComponent = null;
+    [Export] private StationAlertComponent alertComponent = null;
+    [Export] private SpotLight3D spotlightNode = null;
+    [Export] private AudioStreamPlayer3D cartridgeClickSoundNode = null;
 
     // Card behaviour
     private bool cardInMachine = false;
@@ -16,9 +19,13 @@ public partial class ClockOutStation : Station
         base._Ready();
 
         globalSignals.OnGenerateEmployeeNumber += HandleGenerateEmployeeNumber;
+        globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
+        globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
 
         punchCardNode.Visible = false;
         AssignDebugLabelValues();
+
+        alertComponent.TriggerStationAlert();
     }
 
     public override void _ExitTree()
@@ -26,6 +33,8 @@ public partial class ClockOutStation : Station
         base._ExitTree();
 
         globalSignals.OnGenerateEmployeeNumber -= HandleGenerateEmployeeNumber;
+        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
+        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
     }
 
     public override void EnterStation()
@@ -188,6 +197,7 @@ public partial class ClockOutStation : Station
     private void HandleCardTargetReached()
     {
         GD.Print("Card target reached");
+        cartridgeClickSoundNode.Play();
         cardInMachine = true;
     }
 
@@ -200,12 +210,24 @@ public partial class ClockOutStation : Station
             clockedIn = true;
             globalSignals.RaisePlayerClockedIn();
             globalSignals.RaisePlayerExitStation(StationType);
+            alertComponent.SilenceStationAlert();
         }
         else
         {
             clockedIn = false;
             globalSignals.RaisePlayerClockedOut();
             globalSignals.RaisePlayerExitStation(StationType);
+            alertComponent.TriggerStationAlert();
         }
+    }
+
+    private void HandleBlackScreenDisappeared()
+    {
+        spotlightNode.Visible = true;
+    }
+
+    private void HandlePlayerClockedIn()
+    {
+        spotlightNode.Visible = false;
     }
 }

@@ -1,10 +1,27 @@
-[gd_scene load_steps=9 format=4 uid="uid://da6jju4cgm5ua"]
+[gd_scene load_steps=17 format=4 uid="uid://da6jju4cgm5ua"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_2uuoq"]
 [ext_resource type="Script" path="res://Scripts/Stations/ClockOutStation/ClockOutStation.cs" id="2_5adtr"]
+[ext_resource type="Texture2D" uid="uid://b8xseylshxeqx" path="res://Assets/Models/ClockInStation/clock in hardware/base_Base_color.png" id="3_p3qwf"]
+[ext_resource type="Texture2D" uid="uid://b8udesf2hrh8f" path="res://Assets/Models/ClockInStation/clock in hardware/base_Emissive.png" id="4_24khx"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="4_u8e5p"]
+[ext_resource type="Texture2D" uid="uid://dlgcx34mjp1ni" path="res://Assets/Models/ClockInStation/clock in hardware/base_Metallic.png" id="5_am50g"]
 [ext_resource type="PackedScene" uid="uid://ubnxatxfab8o" path="res://Scenes/Stations/Card.tscn" id="5_jswnp"]
+[ext_resource type="Texture2D" uid="uid://fe7cdig5iguj" path="res://Assets/Models/ClockInStation/clock in hardware/base_Normal.png" id="6_58wgr"]
 [ext_resource type="PackedScene" uid="uid://b7mjrwc8070tk" path="res://Scenes/Stations/CodeComponent.tscn" id="6_326oi"]
+[ext_resource type="Texture2D" uid="uid://bwujpa3k8bwwa" path="res://Assets/Models/ClockInStation/clock in hardware/base_Roughness.png" id="7_bhw7p"]
+[ext_resource type="PackedScene" uid="uid://dma5822r4j3lj" path="res://Scenes/Stations/StationAlertComponent.tscn" id="11_tbcqk"]
+[ext_resource type="AudioStream" uid="uid://d1pljefo6sx2t" path="res://Assets/Audio/SFX/Cartridge/cartridge_01-converted.ogg" id="12_6n3sj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdas3"]
+albedo_texture = ExtResource("3_p3qwf")
+metallic = 1.0
+metallic_texture = ExtResource("5_am50g")
+roughness_texture = ExtResource("7_bhw7p")
+emission_enabled = true
+emission_texture = ExtResource("4_24khx")
+normal_enabled = true
+normal_texture = ExtResource("6_58wgr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kapnu"]
 resource_name = "base"
@@ -47,10 +64,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h832l")
 
-[node name="ClockOutStation" node_paths=PackedStringArray("punchCardNode", "codeComponent", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
+[node name="ClockOutStation" node_paths=PackedStringArray("punchCardNode", "codeComponent", "alertComponent", "spotlightNode", "cartridgeClickSoundNode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_2uuoq")]
 script = ExtResource("2_5adtr")
 punchCardNode = NodePath("Card")
 codeComponent = NodePath("CodeComponent")
+alertComponent = NodePath("StationAlertComponent")
+spotlightNode = NodePath("SpotLight3D")
+cartridgeClickSoundNode = NodePath("CartridgeClickSound")
 buttonsNode = NodePath("Buttons")
 stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
@@ -60,10 +80,11 @@ hasNumPad = true
 hasMouseDrag = true
 
 [node name="CameraLocation" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 1)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.705, 0.84)
 
 [node name="ClockInStationMesh" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(-4.37114e-06, 100, 4.37114e-06, 0, -4.37114e-06, 100, 100, 4.37114e-06, 1.91069e-13, -0.2, 1.1, 0.2)
+material_override = SubResource("StandardMaterial3D_fdas3")
 mesh = SubResource("ArrayMesh_iei6j")
 skeleton = NodePath("")
 
@@ -74,6 +95,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.5)
 transform = Transform3D(0.4, 0, 0, 0, 0.103528, -0.38637, 0, 0.38637, 0.103528, 0, 1, 0.3)
 
 [node name="Card" parent="." index="5" instance=ExtResource("5_jswnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+targetLocation = 1.1
 
 [node name="CodeComponent" parent="." index="6" instance=ExtResource("6_326oi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="StationAlertComponent" parent="." index="8" instance=ExtResource("11_tbcqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.2)
+lightColor = Color(0, 1, 0, 1)
+
+[node name="Light" parent="StationAlertComponent" index="0"]
+omni_range = 1.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.80174, 0.4)
+spot_range = 3.0
+spot_angle = 29.8017
+
+[node name="CartridgeClickSound" type="AudioStreamPlayer3D" parent="." index="10"]
+stream = ExtResource("12_6n3sj")
+bus = &"Room Verb SFX"
+
+[editable path="StationAlertComponent"]

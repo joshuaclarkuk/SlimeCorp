@@ -8,6 +8,7 @@
 font_size = 181
 
 [sub_resource type="BoxMesh" id="BoxMesh_wgacp"]
+size = Vector3(0.3, 0.1, 0.1)
 
 [node name="SupervisorCardPickupStation" node_paths=PackedStringArray("pickupUINode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_jq2i3")]
 script = ExtResource("2_w73vk")
@@ -16,6 +17,9 @@ buttonsNode = NodePath("Buttons")
 stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
 StationType = 10
+
+[node name="CameraLocation" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.66262, 0.748956, 0, -0.748956, 0.66262, 0, 1.115, 0.32)
 
 [node name="Buttons" parent="." index="3" instance=ExtResource("3_ejtnj")]
 visible = false

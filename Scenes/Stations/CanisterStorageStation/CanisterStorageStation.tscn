@@ -17,11 +17,12 @@ hasMouseDrag = true
 
 [node name="Mesh" type="CSGBox3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+use_collision = true
 size = Vector3(4, 3, 2)
 material = ExtResource("1_jor6s")
 
 [node name="CameraLocation" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2)
+transform = Transform3D(1, 0, 0, 0, 0.91706, -0.398749, 0, 0.398749, 0.91706, 0, 1.21, 1.825)
 
 [node name="InteractCollider" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.5)

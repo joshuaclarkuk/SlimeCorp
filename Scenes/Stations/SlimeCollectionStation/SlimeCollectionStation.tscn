@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c81xuqyf4vlou"]
+[gd_scene load_steps=14 format=4 uid="uid://dyuc27snlvymt"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_uotg4"]
 [ext_resource type="Script" path="res://Scripts/Stations/SlimeCollectionStation/SlimeCollectionStation.cs" id="2_2mdql"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_gh8vd"]
 [ext_resource type="AudioStream" uid="uid://bn5vnit1a02dv" path="res://Assets/Audio/SFX/Stations/SlimeCollectionStation/SlimeCollectionGrinding.ogg" id="6_6uxru"]
 [ext_resource type="AudioStream" uid="uid://d3vr0ddhtxm87" path="res://Assets/Audio/SFX/Stations/SlimeCollectionStation/BarrelRemoved.ogg" id="7_fb877"]
-[ext_resource type="PackedScene" uid="uid://dma5822r4j3lj" path="res://Scenes/Stations/SlimeCollectionStation/BarrelFullComponent.tscn" id="8_ougov"]
+[ext_resource type="PackedScene" uid="uid://dma5822r4j3lj" path="res://Scenes/Stations/StationAlertComponent.tscn" id="8_ougov"]
 [ext_resource type="AudioStream" uid="uid://8p16tajxffol" path="res://Assets/Audio/SFX/StationAlerts/BarrelFullBeep.ogg" id="9_fitfi"]
 [ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="10_j6n3r"]
 
@@ -63,6 +63,9 @@ hasMouseDrag = true
 [node name="CameraLocation" parent="." index="0"]
 transform = Transform3D(0.84756, 0.298561, -0.438753, -0.0776563, 0.887616, 0.453991, 0.524988, -0.350712, 0.775493, 0.045, 2.145, 1.235)
 
+[node name="InteractCollider" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 1, 1)
+
 [node name="Meshes" type="Node3D" parent="." index="2"]
 
 [node name="Barrel" parent="Meshes" index="0" instance=ExtResource("3_mnq2q")]
@@ -98,4 +101,4 @@ lightColor = Color(0, 1, 0, 1)
 soundToPlay = ExtResource("9_fitfi")
 
 [node name="StationProgressBarComponent" parent="." index="9" instance=ExtResource("10_j6n3r")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.8, 1.7, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.7, 2.2, 0.4)

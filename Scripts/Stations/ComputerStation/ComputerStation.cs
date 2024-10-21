@@ -3,6 +3,25 @@ using System;
 
 public partial class ComputerStation : Station
 {
+    [ExportCategory("Required Nodes")]
+    [Export] private SpotLight3D spotlightNode = null;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        globalSignals.OnBlackScreenDisappeared += HandleBlackScreenDisappeared;
+        globalSignals.OnPlayerClockedIn += HandlePlayerClockedIn;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        globalSignals.OnBlackScreenDisappeared -= HandleBlackScreenDisappeared;
+        globalSignals.OnPlayerClockedIn -= HandlePlayerClockedIn;
+    }
+
     public override void EnterStation()
     {
         base.EnterStation();
@@ -104,5 +123,15 @@ public partial class ComputerStation : Station
                 GD.Print("Unhandled button press");
                 break;
         }
+    }
+
+    private void HandleBlackScreenDisappeared()
+    {
+        spotlightNode.Visible = true;
+    }
+
+    private void HandlePlayerClockedIn()
+    {
+        spotlightNode.Visible = false;
     }
 }

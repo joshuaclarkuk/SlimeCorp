@@ -133,7 +133,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SlimeCollectedVBox" type="VBoxContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
 anchors_preset = 2
@@ -157,6 +156,7 @@ layout_mode = 2
 text = "0000"
 
 [node name="TotalSlimeContainer" type="HBoxContainer" parent="SlimeCollectedVBox"]
+visible = false
 layout_mode = 2
 
 [node name="TotalSlimeLabel" type="Label" parent="SlimeCollectedVBox/TotalSlimeContainer"]

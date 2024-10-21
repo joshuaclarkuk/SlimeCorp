@@ -281,8 +281,7 @@ theme_override_constants/margin_bottom = 30
 [node name="AbandonedRoomCodeStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Use numpad to enter code"
 autowrap_mode = 3
@@ -292,8 +291,7 @@ StationType = 9
 [node name="CanisterStorageStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Left-click and drag mouse to pull lever and dispense a barrel"
 autowrap_mode = 3
@@ -303,8 +301,7 @@ StationType = 6
 [node name="CleaningStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Use numpad to select sectors to clean as highlighted
 Left-click and drag mouse to pull lever and confirm selection."
@@ -315,8 +312,7 @@ StationType = 3
 [node name="ClockOutStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Left-click and drag mouse to insert punch card into machine
 Use numpad to enter correct employee number and clock in/clock out"
@@ -327,8 +323,7 @@ StationType = 5
 [node name="FeedingStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Use numpad to match symbols to request
 Left-click and drag mouse to pull lever and confirm selection."
@@ -339,8 +334,7 @@ StationType = 2
 [node name="HappinessGameStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Use numpad 4 and numpad 6 keys to move sentry
 Use numpad 8 to fire"
@@ -351,8 +345,7 @@ StationType = 7
 [node name="PoisonCreatureStation" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Left-click and drag mouse to contaminate food supply"
 autowrap_mode = 3
@@ -362,8 +355,7 @@ StationType = 12
 [node name="SlimeCollectionStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Left-click and drag mouse to operate valve
 Open valve to store collected biofuel
@@ -376,8 +368,7 @@ StationType = 4
 [node name="SupervisorRoomCodeStationTutorial" type="Label" parent="IndividualStationTutorials/MarginContainer"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 20
 text = "Left-click and drag mouse to swipe card
 "
