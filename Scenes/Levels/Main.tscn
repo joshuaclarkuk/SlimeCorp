@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=95 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://b4dcad0w5rqpd" path="res://Scenes/Stations/SupervisorCardPickupStation/SupervisorCardPickupStation.tscn" id="42_ur6oi"]
 [ext_resource type="PackedScene" uid="uid://ov4cjhhfxc74" path="res://Scenes/Interactables/RotatingDoor.tscn" id="43_p7imb"]
 [ext_resource type="PackedScene" uid="uid://bsntbl8rgj0ts" path="res://Scenes/Interactables/SlidingDoor.tscn" id="45_p2dxe"]
+[ext_resource type="PackedScene" uid="uid://ckk0fssse8rjf" path="res://Scenes/Creature/Creature.tscn" id="48_c4qed"]
 [ext_resource type="AudioStream" uid="uid://o4mt6t54nanf" path="res://Assets/Audio/Ambience/Main/MainAmbience.ogg" id="49_8ki5y"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
@@ -1666,6 +1667,9 @@ abandonedRoomCodeStationNode = NodePath("../../Objects/Stations/AbandonedRoomCod
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.1, 0.9, -16.5)
 supervisorRoomCodeStationNode = NodePath("../../Objects/Stations/SupervisorRoomCodeStation")
 
+[node name="Animated monster" parent="Environment" index="5" instance=ExtResource("48_c4qed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, 0)
+
 [node name="OmniLight" type="OmniLight3D" parent="Lighting" index="0"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -1.3504)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
@@ -1675,7 +1679,16 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="1"]
+[node name="OmniLight5" type="OmniLight3D" parent="Lighting" index="1"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.04789, 6.9646, -1.3504)
+light_color = Color(0.882353, 0.972549, 0.878431, 1)
+light_energy = 0.6
+shadow_enabled = true
+shadow_opacity = 0.7
+shadow_blur = 2.0
+omni_range = 22.279
+
+[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, 8.35553)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1684,7 +1697,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="2"]
+[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -11.1275)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1693,7 +1706,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="3"]
+[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="4"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 7.0892, -14.1681)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1702,7 +1715,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="4"]
+[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="5"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 7.264, -4.71915)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6

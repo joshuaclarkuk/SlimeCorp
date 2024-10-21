@@ -1,19 +1,88 @@
-[gd_scene load_steps=2 format=3 uid="uid://bysfbejlrbryl"]
+[gd_scene load_steps=5 format=3 uid="uid://bysfbejlrbryl"]
 
+[ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_6joy8"]
 [ext_resource type="Script" path="res://Scripts/Levels/EndScreen.cs" id="1_i53aa"]
+[ext_resource type="Shader" path="res://Materials/Shaders/CRTShader.gdshader" id="3_70esb"]
 
-[node name="EndScreen" type="Control" node_paths=PackedStringArray("endingTextNode")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sef50"]
+shader = ExtResource("3_70esb")
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("endingTextNode", "quitButtonNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6joy8")
 script = ExtResource("1_i53aa")
 endingTextNode = NodePath("MarginContainer/PanelContainer/MarginContainer/EndingText")
-firedEndingText = "Player Fired"
-playerWinEndingText = "Player Wins"
-creatureWinEndingText = "Creature Wins"
+quitButtonNode = NodePath("MarginContainer/PanelContainer/MarginContainer/Button")
+firedEndingText = "Dear employee,
+
+Your failure to meet the basic needs of our cosmic benefactor has placed us in a perilous position.
+
+You have been reassigned to the worshipping chamber, where you will spend your days praying to the Old Ones for forgiveness.
+
+Should your prayers fall on unsympathetic ears you will be subsumed, and your essence fed into the fuel supply for the good of the company.
+
+Your exit door access has been revoked, effective immediately, and any scheduled leave has been rescinded.
+
+Thank you for your continued contribution to Slime Corp.
+
+May the gods have mercy on your soul.
+
+Linda Kraft,
+Director of Human Resources, Slime Corp"
+playerWinEndingText = "Just after midnight on October 24th reports began flooding in of sweeping power outages hitting homes and businesses across the area.
+
+Slime Corp, the company responsible for providing power to the region, released a statement citing “attacks from outside forces” as the reason for the facility’s sudden drop in power production.
+
+Slime Corp CEO Howard Marsh hasn’t been seen since the event, and with no word from the organisation on when they expect to be up and running again, Mayor Patrick announced an immediate transfer of funding from Slime Corp to Elder Sign Renewables to provide power to the area. 
+
+Elder Sign Renewables CEO Jim Ward vowed to clear the toxic smog that has settled over the town since the establishment of the Slime Corp facility, and made a promise to build a new solar farm once the sun was visible again.
+
+“The local flora and fauna have already begun to bounce back since the shutting down of the Slime Corp facility,” said an anonymous government source, “and the sheriff’s office is reporting a precipitous fall in reports of tentacled beings emerging from the lake at night. I don’t know what Slime Corp were doing at that facility, but I’m glad it’s over.”
+
+Z. Allen, Senior Reporter at the Arkham Enquirer"
+creatureWinEndingText = "Just after midnight on October 24th a series of localised earthquakes rippled outwards from what used to be the site of the Slime Corp Energy facility.
+
+Witnesses described seeing monstrous figures flying silently overhead, “tearing away the sky” as they went, leaving behind nothing but “a vast ocean of emptiness, a window to the cosmic beyond”.
+
+“It’s coming for us,” said one witness, “the great Old One will appear from the vacuum of space and destroy all that we have known.” 
+
+He continued: “It was that damned Slime Corp facility. My brother-in-law’s second cousin used to work there. He got tanked one night and told me they were keeping something in there. Something living. Feeding it, and harvesting its waste for energy production. I thought it was the booze, but now…” he said, before trailing off and staring silently at the sky, mouthing the words “so many eyes” over and over again.
+
+The sheriff’s office had reported an increase in unexplained creature sightings at the local lake leading up to the night of the earthquakes, but had dismissed them as more hallucinations from a town whose collective consciousness had been slowly unravelling in the months since the Slime Corp Energy Facility opened its doors (metaphorically speaking).
+
+The future is unclear, but it is this reporter’s belief that it never hurts to prepare for the worst, and so will be ending my reporting here, so that I may join the other townsfolk in praying to whatever entity may or may not be travelling to our world, to bring us salvation or wipe us out entirely.
+
+I wish us all the very best of luck.
+
+Z. Allen, Senior Reporter at the Arkham Enquirer"
+
+[node name="BlackBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -39,3 +108,34 @@ theme_override_constants/margin_bottom = 60
 
 [node name="EndingText" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Test text test text test text.
+
+Test text test text test text.
+
+Test text test text test text.
+
+Test text test text test text.
+
+Test text test text test text.
+
+Test text test text test text.
+
+Test text test text test text."
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 40
+text = "Quit Game"
+
+[node name="CRTShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sef50")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

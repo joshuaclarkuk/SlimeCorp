@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckk0fssse8rjf"]
+
+[ext_resource type="Material" uid="uid://bjxkxa265lkj0" path="res://Materials/Creature/M_Monster.tres" id="1_oc2sw"]
+[ext_resource type="PackedScene" uid="uid://crupk3j4ps468" path="res://Assets/Models/Creature/Animated monster.fbx" id="1_qa33r"]
+[ext_resource type="Material" uid="uid://d3j5qgft8ubvt" path="res://Materials/Creature/M_DoorSides.tres" id="3_wpgpq"]
+[ext_resource type="Material" uid="uid://b5fntu1ldou7j" path="res://Materials/Creature/M_CreatureDoor.tres" id="4_qdmw5"]
+
+[node name="Animated monster" instance=ExtResource("1_qa33r")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(-0.00862873, 0.00439187, -9.02636e-05)
+bones/1/rotation = Quaternion(-0.00537042, -0.00537037, 0.715082, 0.698999)
+bones/1/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.658676, 0.247992, 0.255393, 0.662888)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-3.01226e-10, 0.00896438, 1.88985e-09)
+bones/4/rotation = Quaternion(0.272661, 0.113655, -0.250985, 0.921816)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-6.22129e-10, 0.00448219, -6.09591e-09)
+bones/5/rotation = Quaternion(0.417683, 0.234826, -0.0433411, 0.876652)
+bones/7/position = Vector3(-0.017328, 0.00460437, 0.0136979)
+bones/7/rotation = Quaternion(-0.240665, 0.69969, 0.628713, 0.239237)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(1.49526e-09, 0.00896438, 1.89899e-09)
+bones/8/rotation = Quaternion(-7.87016e-09, 2.13021e-08, 0.343123, 0.939291)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-1.78835e-09, 0.00448218, -1.37582e-09)
+bones/9/rotation = Quaternion(0.233263, -0.134265, -0.053957, 0.961587)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(-0.0197633, -0.00675423, -0.00477348)
+bones/11/rotation = Quaternion(-0.68326, 0.00566238, 0.35327, 0.639002)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-2.39048e-10, 0.00896438, -4.6193e-10)
+bones/12/rotation = Quaternion(-0.0638428, 0.0456107, -0.235715, 0.96865)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(1.09081e-09, 0.00448219, -1.37657e-09)
+bones/13/rotation = Quaternion(0.203561, 0.220506, -0.166675, 0.939233)
+bones/15/position = Vector3(-0.0199763, -0.0066764, 0.00710214)
+bones/15/rotation = Quaternion(0.0229015, 0.595183, 0.720111, 0.355912)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(4.53162e-10, 0.00896438, 7.39972e-10)
+bones/16/rotation = Quaternion(0.0691048, -0.0387749, 0.426584, 0.90097)
+bones/17/position = Vector3(-8.46017e-10, 0.00448219, -1.39416e-09)
+bones/17/rotation = Quaternion(0.026291, -0.0231578, -0.082674, 0.995961)
+bones/17/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(-0.0344516, 0.000482617, 0.00380437)
+
+[node name="monster" parent="Armature/Skeleton3D" index="0"]
+material_override = ExtResource("1_oc2sw")
+
+[node name="monster_001" parent="Armature/Skeleton3D" index="1"]
+material_override = ExtResource("1_oc2sw")
+
+[node name="Sides" parent="." index="1"]
+material_override = ExtResource("3_wpgpq")
+
+[node name="Door" parent="." index="2"]
+material_override = ExtResource("4_qdmw5")

@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://d3j5qgft8ubvt"]
+
+[ext_resource type="Texture2D" uid="uid://bdlgr50yyv53n" path="res://Assets/Models/Creature/Monster and door texuer/Doorside_Base_color.png" id="1_yv0d3"]
+[ext_resource type="Texture2D" uid="uid://00mqgnyoip2r" path="res://Assets/Models/Creature/Monster and door texuer/Doorside_Mixed_AO.png" id="2_qkbsb"]
+[ext_resource type="Texture2D" uid="uid://crf6icnakoybj" path="res://Assets/Models/Creature/Monster and door texuer/Doorside_Height.png" id="3_bbpvh"]
+[ext_resource type="Texture2D" uid="uid://d4nqrrf7vn2qy" path="res://Assets/Models/Creature/Monster and door texuer/Doorside_Metallic.png" id="4_suguw"]
+[ext_resource type="Texture2D" uid="uid://cvtm7ki6p8lyt" path="res://Assets/Models/Creature/Monster and door texuer/Doorside_Normal.png" id="5_buine"]
+[ext_resource type="Texture2D" uid="uid://bvuctik4uvkja" path="res://Assets/Models/Creature/Monster and door texuer/Doorside_Roughness.png" id="6_dswqg"]
+
+[resource]
+albedo_texture = ExtResource("1_yv0d3")
+metallic = 1.0
+metallic_texture = ExtResource("4_suguw")
+roughness_texture = ExtResource("6_dswqg")
+normal_enabled = true
+normal_texture = ExtResource("5_buine")
+ao_enabled = true
+ao_texture = ExtResource("2_qkbsb")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_bbpvh")
