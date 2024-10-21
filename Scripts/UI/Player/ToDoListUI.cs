@@ -25,7 +25,7 @@ public partial class ToDoListUI : VBoxContainer
 
     private void HandleBlackScreenDisappeared()
     {
-        Visible = true;
+        //Visible = true;
 
         foreach (Node child in GetChildren())
         {

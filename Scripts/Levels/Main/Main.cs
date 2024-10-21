@@ -225,8 +225,8 @@ public partial class Main : Node3D
 
     private void HandlePlayerClockedIn()
     {
-        // Play intro credits scrawl if it's day zero
-        if (currentDayIndex == 0)
+        // Play intro credits scrawl if it's day one
+        if (currentDayIndex == 1)
         {
             introCreditsNode.PlayIntroCreditsAnimation();
         }

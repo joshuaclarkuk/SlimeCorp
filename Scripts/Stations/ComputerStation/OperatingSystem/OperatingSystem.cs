@@ -73,7 +73,7 @@ public partial class OperatingSystem : Control
         // Register mouse events
         MouseFilter = MouseFilterEnum.Stop;
 
-        if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(1.0f); }
+        if (stationType == E_StationType.COMPUTER_STATION) { FadeComputerScreen(1.0f); }
     }
 
     private void HandlePlayerExitStation(E_StationType stationType)
@@ -81,7 +81,7 @@ public partial class OperatingSystem : Control
         // Ignore mouse events
         MouseFilter = MouseFilterEnum.Ignore;
 
-        if (stationType == E_StationType.COMPUTER) { FadeComputerScreen(0.0f); }
+        if (stationType == E_StationType.COMPUTER_STATION) { FadeComputerScreen(0.0f); }
     }
 
     private void HandleToDoItemReceived(ComputerItemResource resource)

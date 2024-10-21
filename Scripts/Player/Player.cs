@@ -214,7 +214,7 @@ public partial class Player : CharacterBody3D
         // If player is not clocked in, allow only CLOCKOUT or COMPUTER interactions
         if (!isClockedIn)
         {
-            if (activeStationCollider == E_StationType.CLOCKOUT || activeStationCollider == E_StationType.COMPUTER)
+            if (activeStationCollider == E_StationType.CLOCK_IN_STATION || activeStationCollider == E_StationType.COMPUTER_STATION)
             {
                 InteractWithCurrentStation();
             }
@@ -228,7 +228,7 @@ public partial class Player : CharacterBody3D
         // If carrying a slime canister, allow only SLIMECOLLECTION interactions
         if (isCarryingSlimeCanister)
         {
-			if (activeStationCollider == E_StationType.SLIME_COLLECTION)
+			if (activeStationCollider == E_StationType.SLIME_COLLECTION_STATION)
 			{
 				InteractWithCurrentStation();
 			}
