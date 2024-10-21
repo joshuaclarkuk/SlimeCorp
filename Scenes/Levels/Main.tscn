@@ -215,7 +215,7 @@ size = Vector3(1.4, 4, 0.5)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "debugUI") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
@@ -228,6 +228,7 @@ stationsHeaderNode = NodePath("Environment/Objects/Stations")
 nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
 creatureCurtainMeshNode = NodePath("Environment/LevelMesh/CreatureCurtain")
+creatureCurtainCollisionNode = NodePath("Environment/LevelMesh/CreatureCurtain/StaticBody3D/CollisionShape3D")
 debugUI = NodePath("DebugUI")
 
 [node name="DirectionalLight3D" parent="." index="0"]

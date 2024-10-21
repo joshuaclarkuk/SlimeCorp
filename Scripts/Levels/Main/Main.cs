@@ -30,6 +30,7 @@ public partial class Main : Node3D
     [ExportCategory("Event Nodes")]
     [Export] private Node3D lightingHeaderNode = null;
     [Export] private MeshInstance3D creatureCurtainMeshNode = null;
+    [Export] private CollisionShape3D creatureCurtainCollisionNode = null;
 
     [ExportCategory("Debug UI")]
     [Export] private DebugUI debugUI = null;
@@ -47,6 +48,9 @@ public partial class Main : Node3D
     // Slime counter
     private float requestedSlimeAmountForDay = 0.0f;
     private float slimeCollectedInDay = 0.0f;
+
+    // Creature curtain
+    private bool hasRevealedCreature = false;
 
     public override void _Ready()
     {
@@ -238,7 +242,12 @@ public partial class Main : Node3D
         spyEmailTimerNode.Start();
 
         // Reveal creature
-        creatureCurtainMeshNode.QueueFree();
+        if (!hasRevealedCreature)
+        {
+            creatureCurtainMeshNode.Visible = false;
+            creatureCurtainCollisionNode.Disabled = true;
+            hasRevealedCreature = true;
+        }
 
         // Start music
         nonDiegeticMusicNode.Play();
