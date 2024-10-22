@@ -23,7 +23,7 @@ hasNumPad = true
 hasMouseDrag = true
 
 [node name="CameraLocation" parent="." index="0"]
-transform = Transform3D(0.920505, 0.0678498, -0.384795, 0, 0.984808, 0.173648, 0.390731, -0.159844, 0.90652, -0.21, 1.7, 0.8)
+transform = Transform3D(0.984808, 0.00757443, -0.173483, 0, 0.999048, 0.0436194, 0.173648, -0.0429567, 0.98387, -0.21, 1.505, 0.8)
 
 [node name="Desk" type="CSGBox3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -57,6 +57,6 @@ max_distance = 6.0
 bus = &"Sound Effects"
 
 [node name="StationNeedsProgressBarComponent" parent="." index="8" instance=ExtResource("7_ysadx")]
-transform = Transform3D(-8.74228e-09, -0.2, 2.83036e-16, 0.141421, -6.18172e-09, 0.141421, -0.141421, 6.18172e-09, 0.141421, -0.2, 1.3, 0.0999999)
+transform = Transform3D(-8.74228e-09, -0.2, 2.83036e-16, 0.141421, -6.18172e-09, 0.141421, -0.141421, 6.18172e-09, 0.141421, -0.57, 1.3, 0.1)
 
 [editable path="Lever"]

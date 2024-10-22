@@ -12,5 +12,5 @@ light_color = Color(0, 1, 0, 1)
 omni_range = 3.0
 
 [node name="Sound" type="AudioStreamPlayer3D" parent="."]
-volume_db = -15.0
+volume_db = -22.0
 bus = &"Room Verb SFX"

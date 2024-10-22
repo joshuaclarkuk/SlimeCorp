@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bysfbejlrbryl"]
+[gd_scene load_steps=6 format=3 uid="uid://bysfbejlrbryl"]
 
 [ext_resource type="Theme" uid="uid://w1n0c3fk5nfk" path="res://Themes/ComputerTheme.tres" id="1_6joy8"]
 [ext_resource type="Script" path="res://Scripts/Levels/EndScreen.cs" id="1_i53aa"]
 [ext_resource type="Shader" path="res://Materials/Shaders/CRTShader.gdshader" id="3_70esb"]
+[ext_resource type="AudioStream" uid="uid://dw1iubphq1olh" path="res://Assets/Audio/Music/Endings/the end.ogg" id="4_ix1dt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sef50"]
 shader = ExtResource("3_70esb")
@@ -21,7 +22,7 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
-[node name="EndScreen" type="Control" node_paths=PackedStringArray("endingTextNode", "quitButtonNode")]
+[node name="EndScreen" type="Control" node_paths=PackedStringArray("endingTextNode", "quitButtonNode", "endingMusicNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +33,7 @@ theme = ExtResource("1_6joy8")
 script = ExtResource("1_i53aa")
 endingTextNode = NodePath("MarginContainer/PanelContainer/MarginContainer/EndingText")
 quitButtonNode = NodePath("MarginContainer/PanelContainer/MarginContainer/Button")
+endingMusicNode = NodePath("EndingMusic")
 firedEndingText = "Dear employee,
 
 Your failure to meet the basic needs of our cosmic benefactor has placed us in a perilous position.
@@ -139,3 +141,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="EndingMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ix1dt")
+volume_db = -6.0

@@ -12,8 +12,8 @@ public partial class OneShotAudioComponent : Node3D
     [ExportCategory("Behaviour")]
     [Export] private float minPitchRange = 0.9f;
     [Export] private float maxPitchRange = 1.1f;
-    [Export] private float minVolumeDb = -6.0f;
-    [Export] private float maxVolumeDb = -2.0f;
+    [Export] private float minVolumeDb = -28.0f;
+    [Export] private float maxVolumeDb = -24.0f;
 
     private AudioStream lastStream = null;
 

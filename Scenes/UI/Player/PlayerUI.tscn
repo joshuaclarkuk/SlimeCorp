@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://w4n1gg6o03ld" path="res://Assets/Sprites/EmailIcon.png" id="3_32kwd"]
 [ext_resource type="PackedScene" uid="uid://drjb8g7d86rev" path="res://Scripts/UI/Player/ToDoListUI.tscn" id="4_uohay"]
 
-[node name="PlayerUI" type="Control" node_paths=PackedStringArray("NewEmailContainerNode")]
+[node name="PlayerUI" type="Control" node_paths=PackedStringArray("NewEmailContainerNode", "interactLabelNode")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +16,7 @@ mouse_filter = 2
 theme = ExtResource("1_iu4ry")
 script = ExtResource("2_8v0cq")
 NewEmailContainerNode = NodePath("MarginContainer/NewEmailContainer")
+interactLabelNode = NodePath("InteractLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -50,3 +51,19 @@ text = "New Email"
 visible = false
 layout_mode = 2
 size_flags_vertical = 8
+
+[node name="InteractLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 93.0
+offset_right = 20.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press \"E\" to interact"

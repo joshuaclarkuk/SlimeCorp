@@ -10,9 +10,11 @@ public partial class Main : Node3D
     [Export] private IntroCredits introCreditsNode = null;
     [Export] private BlackScreen blackScreenNode = null;
     [Export] private TitleCard titleCardNode = null;
+    [Export] private AudioStreamPlayer newDayAudioNode = null;
 
     [ExportCategory("Creature")]
     [Export] private CreatureNeeds creatureNeeds = null;
+    [Export] private AudioStreamPlayer3D creatureAudioBedNode = null;
 
     [ExportCategory("Creature Need Resources")]
     [Export] private DailyNeedResource[] dailyNeedResources = null;
@@ -31,6 +33,7 @@ public partial class Main : Node3D
     [Export] private Node3D lightingHeaderNode = null;
     [Export] private MeshInstance3D creatureCurtainMeshNode = null;
     [Export] private CollisionShape3D creatureCurtainCollisionNode = null;
+    [Export] private AudioStreamPlayer monsterAppearsStingerNode = null;
 
     [ExportCategory("Debug UI")]
     [Export] private DebugUI debugUI = null;
@@ -246,7 +249,13 @@ public partial class Main : Node3D
         {
             creatureCurtainMeshNode.Visible = false;
             creatureCurtainCollisionNode.Disabled = true;
+            monsterAppearsStingerNode.Play(1.50f);
+            creatureAudioBedNode.Play();
             hasRevealedCreature = true;
+        }
+        else
+        {
+            newDayAudioNode.Play();
         }
 
         // Start music

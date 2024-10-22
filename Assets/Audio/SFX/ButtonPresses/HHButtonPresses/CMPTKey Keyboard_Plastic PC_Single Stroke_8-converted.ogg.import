@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cxpfgwt3f3s1b"
+path="res://.godot/imported/CMPTKey Keyboard_Plastic PC_Single Stroke_8-converted.ogg-2083f2b6c18db3aa519d2c5e529540cc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_8-converted.ogg"
+dest_files=["res://.godot/imported/CMPTKey Keyboard_Plastic PC_Single Stroke_8-converted.ogg-2083f2b6c18db3aa519d2c5e529540cc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

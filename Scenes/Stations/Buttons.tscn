@@ -1,16 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://wp8155nwu4mq"]
+[gd_scene load_steps=10 format=3 uid="uid://wp8155nwu4mq"]
 
 [ext_resource type="Script" path="res://Scripts/Stations/_Components/KeypadButtons.cs" id="1_2ibfs"]
 [ext_resource type="PackedScene" uid="uid://y48k5t3gmky0" path="res://Scenes/Stations/Button.tscn" id="2_wpuw2"]
 [ext_resource type="PackedScene" uid="uid://ckk613qbhotxt" path="res://Scenes/Audio/OneShotAudioComponent.tscn" id="3_uaa3p"]
-[ext_resource type="AudioStream" uid="uid://bfg2r1g0862qu" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress1.wav" id="4_fmucy"]
-[ext_resource type="AudioStream" uid="uid://chvnqciixhnco" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress2.wav" id="5_ub6ct"]
-[ext_resource type="AudioStream" uid="uid://b0h1hqd3xres0" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress3.wav" id="6_wavd8"]
-[ext_resource type="AudioStream" uid="uid://bcm2rf3h8b816" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress4.wav" id="7_26ta3"]
-[ext_resource type="AudioStream" uid="uid://c1i0xqx61yxs8" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress5.wav" id="8_n2nmp"]
-[ext_resource type="AudioStream" uid="uid://dg3kcgobbylsn" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress6.wav" id="9_adq3v"]
-[ext_resource type="AudioStream" uid="uid://2hfgeyosgob4" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress7.wav" id="10_0ai0k"]
-[ext_resource type="AudioStream" uid="uid://cx71ltgantq0g" path="res://Assets/Audio/SFX/ButtonPresses/ButtonPress8.wav" id="11_p7bj2"]
+[ext_resource type="AudioStream" uid="uid://dsu6im3x3hbsy" path="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_1-converted.ogg" id="4_lgq26"]
+[ext_resource type="AudioStream" uid="uid://bb42nlkyemre0" path="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_2-converted.ogg" id="5_36f64"]
+[ext_resource type="AudioStream" uid="uid://bv1dvtob777us" path="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_3-converted.ogg" id="6_ptu1v"]
+[ext_resource type="AudioStream" uid="uid://cbnkxwlw1y0a5" path="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_4-converted.ogg" id="7_ad4pl"]
+[ext_resource type="AudioStream" uid="uid://dswvgv5vbjdp8" path="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_5-converted.ogg" id="8_xenal"]
+[ext_resource type="AudioStream" uid="uid://b88vj1cl7sei2" path="res://Assets/Audio/SFX/ButtonPresses/HHButtonPresses/CMPTKey Keyboard_Plastic PC_Single Stroke_6-converted.ogg" id="9_tja8f"]
 
 [node name="Buttons" type="Node3D" node_paths=PackedStringArray("ButtonArray", "oneShotAudioComponentNode")]
 script = ExtResource("1_2ibfs")
@@ -48,6 +46,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.3)
 
 [node name="OneShotAudioComponent" parent="." instance=ExtResource("3_uaa3p")]
-audioStreams = Array[AudioStream]([ExtResource("4_fmucy"), ExtResource("5_ub6ct"), ExtResource("6_wavd8"), ExtResource("7_26ta3"), ExtResource("8_n2nmp"), ExtResource("9_adq3v"), ExtResource("10_0ai0k"), ExtResource("11_p7bj2")])
-minVolumeDb = -2.0
-maxVolumeDb = 0.0
+audioStreams = Array[AudioStream]([ExtResource("4_lgq26"), ExtResource("5_36f64"), ExtResource("6_ptu1v"), ExtResource("7_ad4pl"), ExtResource("8_xenal"), ExtResource("9_tja8f")])

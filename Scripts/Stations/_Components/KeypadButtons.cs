@@ -33,7 +33,10 @@ public partial class KeypadButtons : Node3D
         if (!ButtonArray[buttonNumber].IsDown)
         {
             ButtonArray[buttonNumber].DepressButton(travelAmount, buttonPressDuration);
-            oneShotAudioComponentNode.PlayAudioClip();
+            if (Visible)
+            {
+                oneShotAudioComponentNode.PlayAudioClip();
+            }
         }
         else
         {

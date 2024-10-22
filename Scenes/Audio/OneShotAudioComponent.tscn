@@ -5,5 +5,7 @@
 [node name="OneShotAudioComponent" type="Node3D" node_paths=PackedStringArray("audioPlayerNode")]
 script = ExtResource("1_ix1i1")
 audioPlayerNode = NodePath("AudioStreamPlayer")
+audioStreams = Array[AudioStream]([])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"Room Verb SFX"

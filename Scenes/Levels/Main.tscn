@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=102 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -53,7 +53,10 @@
 [ext_resource type="PackedScene" uid="uid://ov4cjhhfxc74" path="res://Scenes/Interactables/RotatingDoor.tscn" id="43_p7imb"]
 [ext_resource type="PackedScene" uid="uid://bsntbl8rgj0ts" path="res://Scenes/Interactables/SlidingDoor.tscn" id="45_p2dxe"]
 [ext_resource type="PackedScene" uid="uid://ckk0fssse8rjf" path="res://Scenes/Creature/Creature.tscn" id="48_c4qed"]
-[ext_resource type="AudioStream" uid="uid://o4mt6t54nanf" path="res://Assets/Audio/Ambience/Main/MainAmbience.ogg" id="49_8ki5y"]
+[ext_resource type="AudioStream" uid="uid://1k4nc3vmqxbg" path="res://Assets/Audio/Ambience/Creature/monster.ogg" id="50_kvn04"]
+[ext_resource type="AudioStream" uid="uid://cudd3vnglndbn" path="res://Assets/Audio/Music/Main/bg_track_main.ogg" id="50_nnnhx"]
+[ext_resource type="AudioStream" uid="uid://10i32nn0l0a5" path="res://Assets/Audio/Music/Main/monster appears.ogg" id="51_w6a0l"]
+[ext_resource type="AudioStream" uid="uid://c3akqvqsc011g" path="res://Assets/Audio/Music/Main/new day.ogg" id="52_xqpyt"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -177,7 +180,10 @@ size = Vector3(0.7, 3, 24)
 size = Vector3(1, 4, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hi8ap"]
-size = Vector3(30, 1, 3.8)
+size = Vector3(18, 1, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7xdas"]
+size = Vector3(16, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_31jxn"]
 size = Vector3(16, 1, 16)
@@ -215,12 +221,14 @@ size = Vector3(1.4, 4, 0.5)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "debugUI") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "newDayAudioNode", "creatureNeeds", "creatureAudioBedNode", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "monsterAppearsStingerNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
+newDayAudioNode = NodePath("WorldAudio/Non-Diegetic/NewDayNode")
 creatureNeeds = NodePath("CreatureNeeds")
+creatureAudioBedNode = NodePath("WorldAudio/Diegetic/Creature/CreatureAudioBed")
 dailyNeedResources = Array[Object]([ExtResource("2_dt6g4"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), ExtResource("4_rx313"), ExtResource("5_w5mc5"), ExtResource("6_fybs3")])
 spyEmailTimerNode = NodePath("SpyEmailTimer")
 spyEmailItemResources = Array[Object]([ExtResource("8_uag8f"), ExtResource("8_uag8f"), ExtResource("9_v10n3"), ExtResource("10_wdimg"), ExtResource("11_q0khq"), ExtResource("12_3gogr")])
@@ -229,6 +237,7 @@ nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
 creatureCurtainMeshNode = NodePath("Environment/LevelMesh/CreatureCurtain")
 creatureCurtainCollisionNode = NodePath("Environment/LevelMesh/CreatureCurtain/StaticBody3D/CollisionShape3D")
+monsterAppearsStingerNode = NodePath("WorldAudio/Non-Diegetic/MonsterAppearsStinger")
 debugUI = NodePath("DebugUI")
 
 [node name="DirectionalLight3D" parent="." index="0"]
@@ -1106,171 +1115,6 @@ skeleton = NodePath("../../../StepCorridor")
 
 [node name="Entrance" type="Node3D" parent="Environment/LevelMesh" index="4"]
 
-[node name="Floor" type="Node3D" parent="Environment/LevelMesh/Entrance" index="0"]
-
-[node name="FloorTile1" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7, 0, -1.8)
-mesh = SubResource("PlaneMesh_4j8mc")
-skeleton = NodePath("../..")
-
-[node name="FloorTile2" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7, 0, -1.8)
-mesh = SubResource("PlaneMesh_4j8mc")
-skeleton = NodePath("../..")
-
-[node name="FloorTile3" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.7, 0, -1.8)
-mesh = SubResource("PlaneMesh_4j8mc")
-skeleton = NodePath("../..")
-
-[node name="FloorTile4" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.7, 0, -1.8)
-mesh = SubResource("PlaneMesh_4j8mc")
-skeleton = NodePath("../..")
-
-[node name="FloorTile5" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.7, 0, -1.8)
-mesh = SubResource("PlaneMesh_4j8mc")
-skeleton = NodePath("../..")
-
-[node name="FloorTile6" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Floor" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7, 0, -1.8)
-mesh = SubResource("PlaneMesh_4j8mc")
-skeleton = NodePath("../..")
-
-[node name="WallNorth" type="Node3D" parent="Environment/LevelMesh/Entrance" index="1"]
-
-[node name="WallMesh12" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="0"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -25.0333, 0.5, -0.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh25" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="1"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -27.0333, 0.5, -0.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh26" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="2"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -29.0333, 0.5, -0.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh27" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="3"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -31.0333, 0.5, -0.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh29" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="4"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -34.0333, 0.5, -0.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh30" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="5"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -36.0333, 0.5, -0.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh28" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="6"]
-transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -35.7, 0.5, -2.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh31" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="7"]
-transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -33.7, 0.5, -2.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh32" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="8"]
-transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -31.7, 0.5, -2.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh33" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="9"]
-transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -29.7, 0.5, -2.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh34" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="10"]
-transform = Transform3D(1, 1.74846e-07, -7.64274e-15, 0, -4.37114e-08, -1, -1.74846e-07, 1, -4.37114e-08, -26.7, 0.5, -2.8)
-mesh = SubResource("PlaneMesh_0itqa")
-
-[node name="WallMesh14" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="11"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -26.7, 2.5, -2.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh15" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="12"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -29.7, 2.5, -2.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh16" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="13"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -31.7, 2.5, -2.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh17" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="14"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -33.7, 2.5, -2.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh18" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="15"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -35.7, 2.5, -2.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh19" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="16"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -36.0333, 2.5, -0.799999)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh20" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="17"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -34.0333, 2.5, -0.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh21" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="18"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -31.0333, 2.5, -0.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh22" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="19"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -29.0333, 2.5, -0.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh23" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="20"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -27.0333, 2.5, -0.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="WallMesh24" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="21"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -25.0333, 2.5, -0.8)
-mesh = SubResource("PlaneMesh_6drwm")
-
-[node name="CorridorWallPiece1" type="Node3D" parent="Environment/LevelMesh/Entrance/WallNorth" index="22"]
-transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -24.7, 1.5, -2.8)
-
-[node name="WallMesh35" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth/CorridorWallPiece1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-mesh = SubResource("PlaneMesh_0itqa")
-skeleton = NodePath("../..")
-
-[node name="WallMesh13" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/WallNorth/CorridorWallPiece1" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-mesh = SubResource("PlaneMesh_6drwm")
-skeleton = NodePath("../..")
-
-[node name="Ceiling" type="Node3D" parent="Environment/LevelMesh/Entrance" index="2"]
-
-[node name="CeilingTile1" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="0"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -24.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
-[node name="CeilingTile2" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="1"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -26.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
-[node name="CeilingTile3" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="2"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -28.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
-[node name="CeilingTile4" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="3"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -30.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
-[node name="CeilingTile5" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="4"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -32.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
-[node name="CeilingTile6" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="5"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -34.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
-[node name="CeilingTile7" type="MeshInstance3D" parent="Environment/LevelMesh/Entrance/Ceiling" index="6"]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -36.7, 4, -1.8)
-mesh = SubResource("PlaneMesh_7j1ad")
-
 [node name="CreatureCurtain" type="MeshInstance3D" parent="Environment/LevelMesh" index="5"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.9, 5, -1.9)
 mesh = SubResource("PlaneMesh_k0wf5")
@@ -1483,12 +1327,33 @@ shape = SubResource("BoxShape3D_77uio")
 [node name="Entrance" type="Node3D" parent="Environment/LevelCollision" index="1"]
 
 [node name="EntranceFloorCollision" type="StaticBody3D" parent="Environment/LevelCollision/Entrance" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, -0.5, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5, -0.5, -2)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Entrance/EntranceFloorCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.4)
 shape = SubResource("BoxShape3D_hi8ap")
+
+[node name="WallWest" type="StaticBody3D" parent="Environment/LevelCollision/Entrance" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, -4.4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Entrance/WallWest" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+shape = SubResource("BoxShape3D_7xdas")
+
+[node name="WallEast" type="StaticBody3D" parent="Environment/LevelCollision/Entrance" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, 0.9)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Entrance/WallEast" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+shape = SubResource("BoxShape3D_7xdas")
+
+[node name="WallSouth" type="StaticBody3D" parent="Environment/LevelCollision/Entrance" index="3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39.7, 0, -1.8)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Entrance/WallSouth" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+shape = SubResource("BoxShape3D_7xdas")
 
 [node name="AbandonedRoom" type="Node3D" parent="Environment/LevelCollision" index="2"]
 
@@ -1701,16 +1566,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight5" type="OmniLight3D" parent="Lighting" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.04789, 6.9646, -1.3504)
-light_color = Color(0.882353, 0.972549, 0.878431, 1)
-light_energy = 0.6
-shadow_enabled = true
-shadow_opacity = 0.7
-shadow_blur = 2.0
-omni_range = 22.279
-
-[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="2"]
+[node name="OmniLight1" type="OmniLight3D" parent="Lighting" index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, 8.35553)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1719,7 +1575,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="3"]
+[node name="OmniLight2" type="OmniLight3D" parent="Lighting" index="2"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.04789, 6.9646, -11.1275)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1728,7 +1584,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="4"]
+[node name="OmniLight3" type="OmniLight3D" parent="Lighting" index="3"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8839, 7.0892, -14.1681)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1737,7 +1593,7 @@ shadow_opacity = 0.7
 shadow_blur = 2.0
 omni_range = 22.279
 
-[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="5"]
+[node name="OmniLight4" type="OmniLight3D" parent="Lighting" index="4"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -22.8703, 7.264, -4.71915)
 light_color = Color(0.882353, 0.972549, 0.878431, 1)
 light_energy = 0.6
@@ -1751,11 +1607,17 @@ omni_range = 22.279
 [node name="Creature" type="Node3D" parent="WorldAudio/Diegetic" index="0"]
 
 [node name="CreatureAudioBed" type="AudioStreamPlayer3D" parent="WorldAudio/Diegetic/Creature" index="0"]
-autoplay = true
+stream = ExtResource("50_kvn04")
+max_distance = 20.0
 
 [node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
-stream = ExtResource("49_8ki5y")
-volume_db = 12.0
+stream = ExtResource("50_nnnhx")
+
+[node name="MonsterAppearsStinger" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic" index="2"]
+stream = ExtResource("51_w6a0l")
+
+[node name="NewDayNode" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic" index="3"]
+stream = ExtResource("52_xqpyt")
 
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")

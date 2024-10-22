@@ -6,6 +6,7 @@ public partial class EndScreen : Control
     [ExportCategory("Required Nodes")]
     [Export] private Label endingTextNode = null;
     [Export] private Button quitButtonNode = null;
+    [Export] private AudioStreamPlayer endingMusicNode = null;
 
     [ExportCategory("Ending Text")]
     [Export(PropertyHint.MultilineText)] private string firedEndingText = null;
@@ -28,6 +29,7 @@ public partial class EndScreen : Control
         quitButtonNode.Pressed += HandleQuitButtonPressed;
 
         player.QueueFree();
+        endingMusicNode.Play();
         PlayEndingScroll();
     }
 
