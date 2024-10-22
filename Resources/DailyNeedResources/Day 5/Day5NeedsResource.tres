@@ -1,22 +1,23 @@
-[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://drrcboygfk22"]
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=3 format=3 uid="uid://drrcboygfk22"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_scrro"]
+[ext_resource type="Resource" uid="uid://cvt1f45fj7cd8" path="res://Resources/NewsItemResources/Day 5/NIR5_1.tres" id="1_vgpxg"]
 
 [resource]
 script = ExtResource("1_scrro")
 TitleToDisplay = "Final Day
 Absolution"
 MinutesInDay = 10
-SlimeCollectionTarget = 800.0
+SlimeCollectionTarget = 600.0
 HungerDepletionRate = 0.9
 HappinessDepletionRate = 0.9
 CleanlinessDepletionRate = 0.8
 AngerDepletionRate = 0.2
 MaxHungerReplenishment = 15.0
-MaxHappinessReplenishment = 3.0
-MaxCleanlinessReplenishment = 15.0
-MaxWasteProductToAdd = 10.0
+MaxHappinessReplenishment = 5.0
+MaxCleanlinessReplenishment = 20.0
+MaxWasteProductToAdd = 5.0
 MaxAngerToAdd = 5.0
 ToDoItemResource = null
 EmailItemResources = null
-NewsItemResources = null
+NewsItemResources = Array[Object]([ExtResource("1_vgpxg")])

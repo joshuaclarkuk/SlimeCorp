@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=2 format=3 uid="uid://b66otl1ubq1om"]
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=3 format=3 uid="uid://b66otl1ubq1om"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="1_4y4jw"]
+[ext_resource type="Resource" uid="uid://du8qd147do8pg" path="res://Resources/NewsItemResources/Day 4/NIR4_1.tres" id="1_r3ega"]
 
 [resource]
 script = ExtResource("1_4y4jw")
@@ -14,9 +15,9 @@ CleanlinessDepletionRate = 0.6
 AngerDepletionRate = 0.4
 MaxHungerReplenishment = 15.0
 MaxHappinessReplenishment = 4.0
-MaxCleanlinessReplenishment = 15.0
+MaxCleanlinessReplenishment = 25.0
 MaxWasteProductToAdd = 5.0
 MaxAngerToAdd = 10.0
 ToDoItemResource = null
 EmailItemResources = null
-NewsItemResources = null
+NewsItemResources = Array[Object]([ExtResource("1_r3ega")])

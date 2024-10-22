@@ -239,6 +239,7 @@ creatureCurtainMeshNode = NodePath("Environment/LevelMesh/CreatureCurtain")
 creatureCurtainCollisionNode = NodePath("Environment/LevelMesh/CreatureCurtain/StaticBody3D/CollisionShape3D")
 monsterAppearsStingerNode = NodePath("WorldAudio/Non-Diegetic/MonsterAppearsStinger")
 debugUI = NodePath("DebugUI")
+currentDayIndex = 5
 
 [node name="DirectionalLight3D" parent="." index="0"]
 visible = false

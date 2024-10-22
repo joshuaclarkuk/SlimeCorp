@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DailyNeedResource" load_steps=3 format=3 uid="uid://w47tw0ikkabw"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="3_pqyyb"]
-[ext_resource type="Resource" uid="uid://dpenocb5viqa0" path="res://Resources/ToDoResources/Day 2/TDR2_1.tres" id="4_24f8b"]
+[ext_resource type="Resource" uid="uid://3flflpbhhvpf" path="res://Resources/ToDoResources/Day 2/TDR2_1.tres" id="4_24f8b"]
 
 [resource]
 script = ExtResource("3_pqyyb")
@@ -15,7 +15,7 @@ CleanlinessDepletionRate = 0.4
 AngerDepletionRate = 0.8
 MaxHungerReplenishment = 20.0
 MaxHappinessReplenishment = 0.0
-MaxCleanlinessReplenishment = 20.0
+MaxCleanlinessReplenishment = 25.0
 MaxWasteProductToAdd = 2.0
 MaxAngerToAdd = 3.0
 ToDoItemResource = Array[Object]([ExtResource("4_24f8b")])
