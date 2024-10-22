@@ -56,20 +56,20 @@ Slime Corp, the company responsible for providing power to the region, released 
 
 Slime Corp CEO Howard Marsh hasn’t been seen since the event, and with no word from the organisation on when they expect to be up and running again, Mayor Patrick announced an immediate transfer of funding from Slime Corp to Elder Sign Renewables to provide power to the area. 
 
-Elder Sign Renewables CEO Jim Ward vowed to clear the toxic smog that has settled over the town since the establishment of the Slime Corp facility, and made a promise to build a new solar farm once the sun was visible again.
+Elder Sign CEO Jim Ward vowed to clear the toxic smog that has settled over the town since the establishment of the Slime Corp facility, and made a promise to build a new solar farm once the sun was visible again.
 
 “The local flora and fauna have already begun to bounce back since the shutting down of the Slime Corp facility,” said an anonymous government source, “and the sheriff’s office is reporting a precipitous fall in reports of tentacled beings emerging from the lake at night. I don’t know what Slime Corp were doing at that facility, but I’m glad it’s over.”
 
 Z. Allen, Senior Reporter at the Arkham Enquirer"
 creatureWinEndingText = "Just after midnight on October 24th a series of localised earthquakes rippled outwards from what used to be the site of the Slime Corp Energy facility.
 
-Witnesses described seeing monstrous figures flying silently overhead, “tearing away the sky” as they went, leaving behind nothing but “a vast ocean of emptiness, a window to the cosmic beyond”.
+Witnesses described seeing monstrous figures flying silently overhead, “tearing away the sky” as they went, and leaving behind nothing but “a vast ocean of emptiness, a window to the cosmic beyond”.
 
 “It’s coming for us,” said one witness, “the great Old One will appear from the vacuum of space and destroy all that we have known.” 
 
 He continued: “It was that damned Slime Corp facility. My brother-in-law’s second cousin used to work there. He got tanked one night and told me they were keeping something in there. Something living. Feeding it, and harvesting its waste for energy production. I thought it was the booze, but now…” he said, before trailing off and staring silently at the sky, mouthing the words “so many eyes” over and over again.
 
-The sheriff’s office had reported an increase in unexplained creature sightings at the local lake leading up to the night of the earthquakes, but had dismissed them as more hallucinations from a town whose collective consciousness had been slowly unravelling in the months since the Slime Corp Energy Facility opened its doors (metaphorically speaking).
+The sheriff’s office had reported an increase in unexplained phenomena at the local lake leading up to the night of the earthquakes, but had dismissed them as mere hallucinations from a town whose collective consciousness had been slowly unravelling in the months since the Slime Corp Energy Facility opened its doors.
 
 The future is unclear, but it is this reporter’s belief that it never hurts to prepare for the worst, and so will be ending my reporting here, so that I may join the other townsfolk in praying to whatever entity may or may not be travelling to our world, to bring us salvation or wipe us out entirely.
 
@@ -109,6 +109,7 @@ theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 60
 
 [node name="EndingText" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Test text test text test text.
@@ -124,6 +125,7 @@ Test text test text test text.
 Test text test text test text.
 
 Test text test text test text."
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2

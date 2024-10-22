@@ -1,0 +1,161 @@
+[gd_scene load_steps=6 format=3 uid="uid://8qh34rjkhhjg"]
+
+[ext_resource type="PackedScene" uid="uid://cffjmxek1h20k" path="res://Assets/Models/UpdatedMainRoom/Main roomV3.fbx" id="1_d2j6h"]
+[ext_resource type="Material" uid="uid://de5ute7jdinar" path="res://Materials/MainLevel/M_2KPipes.tres" id="2_8c6qm"]
+[ext_resource type="Material" uid="uid://b10krmht7vq5y" path="res://Materials/MainLevel/M_2KFloor.tres" id="3_8wtyc"]
+[ext_resource type="Material" uid="uid://ddmde7v3ncfth" path="res://Materials/MainLevel/M_2KWalls.tres" id="4_6fh8u"]
+[ext_resource type="Material" uid="uid://71cte2ofr661" path="res://Materials/MainLevel/M_2KCeiling.tres" id="5_rr8fy"]
+
+[node name="Main roomV3" instance=ExtResource("1_d2j6h")]
+
+[node name="modular_industrial_pipes_01_pipe01_002" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_006" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_004" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_008" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_009" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_010" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_011" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_012" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_013" parent="." index="8"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_014" parent="." index="9"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_015" parent="." index="10"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_016" parent="." index="11"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_017" parent="." index="12"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_018" parent="." index="13"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_019" parent="." index="14"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_020" parent="." index="15"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_021" parent="." index="16"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_022" parent="." index="17"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_023" parent="." index="18"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_01_pipe01_024" parent="." index="19"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="modular_industrial_pipes_weel" parent="." index="20"]
+surface_material_override/0 = ExtResource("2_8c6qm")
+
+[node name="Cube_075" parent="." index="21"]
+visible = false
+
+[node name="Verhgoging" parent="." index="22"]
+material_override = ExtResource("3_8wtyc")
+
+[node name="walls and room" parent="." index="23"]
+surface_material_override/0 = ExtResource("3_8wtyc")
+surface_material_override/1 = ExtResource("4_6fh8u")
+surface_material_override/2 = ExtResource("5_rr8fy")
+
+[node name="roof" parent="." index="24"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="walls and room_001" parent="." index="26"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="walls and room_002" parent="." index="27"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="walls and room_003" parent="." index="28"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="verhoging met trap_001" parent="." index="29"]
+material_override = ExtResource("3_8wtyc")
+
+[node name="Verhgoging_004" parent="." index="30"]
+material_override = ExtResource("3_8wtyc")
+
+[node name="Lamp_007" parent="." index="35"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="Lamp_008" parent="." index="36"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="Lamp_009" parent="." index="37"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="walls and room_004" parent="." index="38"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_001" parent="." index="39"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_002" parent="." index="40"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_003" parent="." index="41"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_004" parent="." index="42"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_005" parent="." index="43"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_006" parent="." index="44"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Lamp_013" parent="." index="45"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="Lamp_014" parent="." index="46"]
+material_override = ExtResource("5_rr8fy")
+
+[node name="Pillar round_007" parent="." index="47"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Pillar round_008" parent="." index="48"]
+material_override = ExtResource("4_6fh8u")
+
+[node name="Plane_015_Plane_021" parent="." index="49"]
+visible = false
+
+[node name="barrel2" parent="." index="50"]
+visible = false
+
+[node name="carte_step_stp" parent="." index="51"]
+visible = false
+
+[node name="Cube_013" parent="." index="52"]
+visible = false
+
+[node name="Cube_015" parent="." index="53"]
+visible = false
+
+[node name="player_001" parent="." index="54"]
+visible = false

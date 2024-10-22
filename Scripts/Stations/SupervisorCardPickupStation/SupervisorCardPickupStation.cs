@@ -5,6 +5,9 @@ public partial class SupervisorCardPickupStation : Station
 {
     [ExportCategory("Required Nodes")]
     [Export] private Control pickupUINode = null;
+    [Export] private MeshInstance3D meshNode = null;
+    [Export] private CollisionShape3D colliderNode = null;
+    [Export] private ComputerItemResource poisonInjectorEmailResource = null;
 
     private bool hasPickedUpKeycard = false;
 
@@ -34,7 +37,9 @@ public partial class SupervisorCardPickupStation : Station
         }
 
         pickupUINode.Visible = false;
-
+        meshNode.Visible = false;
+        colliderNode.Disabled = true;
+        globalSignals.RaiseEmailReceived(poisonInjectorEmailResource);
     }
 
     protected override void HandleButtonDisengaged(int buttonIndex)

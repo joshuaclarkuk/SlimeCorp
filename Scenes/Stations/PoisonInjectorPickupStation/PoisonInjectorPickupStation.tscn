@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp72xgtpdcq7x"]
+[gd_scene load_steps=7 format=3 uid="uid://dp72xgtpdcq7x"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_mglja"]
 [ext_resource type="Script" path="res://Scripts/Stations/PoisonInjectorPickupStation/PoisonInjectorPickupStation.cs" id="2_tbltd"]
@@ -7,7 +7,12 @@
 [sub_resource type="LabelSettings" id="LabelSettings_a5oiv"]
 font_size = 101
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ql1la"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_1nlmv"]
+material = SubResource("StandardMaterial3D_ql1la")
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="PoisonInjectorPickupStation" node_paths=PackedStringArray("collisionShapeNode", "injectorMeshNode", "pickupUINode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_mglja")]
@@ -53,7 +58,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Test"
+text = "You have collected:
+Poison Injector"
 label_settings = SubResource("LabelSettings_a5oiv")
 
 [node name="Mesh" type="MeshInstance3D" parent="." index="5"]

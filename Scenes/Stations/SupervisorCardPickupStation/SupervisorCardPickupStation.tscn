@@ -1,18 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4dcad0w5rqpd"]
+[gd_scene load_steps=8 format=3 uid="uid://b4dcad0w5rqpd"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_jq2i3"]
 [ext_resource type="Script" path="res://Scripts/Stations/SupervisorCardPickupStation/SupervisorCardPickupStation.cs" id="2_w73vk"]
+[ext_resource type="Resource" uid="uid://deyg8841ewj0" path="res://Resources/SpyEmailItemResources/Triggered/SEIR_OnPoisonInjector.tres" id="3_85jxr"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="3_ejtnj"]
+[ext_resource type="Material" uid="uid://66l3ycpdgppj" path="res://Materials/Pickups/M_GlowingSupervisorCard.tres" id="4_8i7d6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wothx"]
 font_size = 181
 
 [sub_resource type="BoxMesh" id="BoxMesh_wgacp"]
+material = ExtResource("4_8i7d6")
 size = Vector3(0.3, 0.1, 0.1)
 
-[node name="SupervisorCardPickupStation" node_paths=PackedStringArray("pickupUINode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_jq2i3")]
+[node name="SupervisorCardPickupStation" node_paths=PackedStringArray("pickupUINode", "meshNode", "colliderNode", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_jq2i3")]
 script = ExtResource("2_w73vk")
 pickupUINode = NodePath("PickupUI")
+meshNode = NodePath("Mesh")
+colliderNode = NodePath("InteractCollider/CollisionShape3D")
+poisonInjectorEmailResource = ExtResource("3_85jxr")
 buttonsNode = NodePath("Buttons")
 stationControlInstructionsNode = NodePath("StationControlInstructions")
 debugLabel = NodePath("StationDebugLabel")
@@ -46,8 +52,11 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "TEST"
+text = "Collected:
+Supervisor Office
+Access Card"
 label_settings = SubResource("LabelSettings_wothx")
+horizontal_alignment = 1
 
 [node name="Mesh" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
