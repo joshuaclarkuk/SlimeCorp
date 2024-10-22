@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceveuvbbbq55n"]
+[gd_scene load_steps=9 format=3 uid="uid://ceveuvbbbq55n"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_5275c"]
 [ext_resource type="Script" path="res://Scripts/Stations/FeedingStation/FeedingStation.cs" id="2_jxwy1"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cluil6r6xlmbe" path="res://Scenes/Stations/Lever.tscn" id="5_7kvbw"]
 [ext_resource type="AudioStream" uid="uid://pe11xipsaham" path="res://Assets/Audio/SFX/Stations/FeedingStation/MachineHumLotsOfBeepsSeamless.ogg" id="6_ilh1w"]
 [ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="7_ysadx"]
+[ext_resource type="FontFile" uid="uid://bbnlhq6st60nb" path="res://Assets/Fonts/Lexend-VariableFont_wght.ttf" id="8_7r33j"]
 
 [node name="FeedingStation" node_paths=PackedStringArray("leverNode", "servingFoodTimerNode", "stationNeedsProgressBarComponent", "buttonsNode", "stationControlInstructionsNode", "debugLabel") instance=ExtResource("1_5275c")]
 script = ExtResource("2_jxwy1")
@@ -58,5 +59,10 @@ bus = &"Sound Effects"
 
 [node name="StationNeedsProgressBarComponent" parent="." index="8" instance=ExtResource("7_ysadx")]
 transform = Transform3D(-8.74228e-09, -0.2, 2.83036e-16, 0.141421, -6.18172e-09, 0.141421, -0.141421, 6.18172e-09, 0.141421, -0.57, 1.3, 0.1)
+
+[node name="StationTitle" type="Label3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.511717)
+text = "Fuel Station"
+font = ExtResource("8_7r33j")
 
 [editable path="Lever"]

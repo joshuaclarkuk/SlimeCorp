@@ -9,6 +9,7 @@
 [node name="Main roomV3" instance=ExtResource("1_d2j6h")]
 
 [node name="modular_industrial_pipes_01_pipe01_002" parent="." index="0"]
+visible = false
 surface_material_override/0 = ExtResource("2_8c6qm")
 
 [node name="modular_industrial_pipes_01_pipe01_006" parent="." index="1"]
@@ -69,6 +70,7 @@ surface_material_override/0 = ExtResource("2_8c6qm")
 surface_material_override/0 = ExtResource("2_8c6qm")
 
 [node name="modular_industrial_pipes_weel" parent="." index="20"]
+visible = false
 surface_material_override/0 = ExtResource("2_8c6qm")
 
 [node name="Cube_075" parent="." index="21"]

@@ -374,6 +374,10 @@ public partial class CreatureNeeds : Node3D
 
     private void HandlePlayerClockedIn()
     {
+        // Reset requests
+        activeCleaningRequests = 0;
+        activeFeedingRequests = 0;
+
         playerHasClockedIn = true;
         needsDisplayUpdateTimerNode.Start();
         feedingRequestTimerNode.Start();

@@ -33,6 +33,7 @@ public partial class SupervisorCardPickupStation : Station
         {
             hasPickedUpKeycard = true;
             globalValues.SetHasSupervisorCard(true);
+            globalSignals.RaisePlayerHasSupervisorCard();
             GD.Print("Has picked up keycard");
         }
 

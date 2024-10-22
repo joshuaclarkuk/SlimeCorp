@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_gof4p")
-ItemTitle = "Keep Machine Refuelled"
+ItemTitle = "Secure the Perimeter"
 ItemBody = "Been having problems with interlopers recently, so they've asked the night shift to step up security.
 
 Use the Security Station in the marked room to identify and eliminate anything that might pose a threat to the integrity of the facility. Badgers, and such. Definitely nothing bigger than that. No, Sir."
@@ -12,4 +12,4 @@ ItemByline = "INSTRUCTIONS
 Numpad key 4: Move one unit left
 Numpad key 6: Move one unit right
 Numpad key 8: Eliminate identified threat"
-ItemDateReceived = "Supervisor Phillips"
+ItemDateReceived = "Signed, Supervisor Phillips"

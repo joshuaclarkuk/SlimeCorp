@@ -5,17 +5,17 @@
 
 [resource]
 script = ExtResource("1_4y4jw")
-TitleToDisplay = "Day 2
+TitleToDisplay = "Day 4
 Corrosion"
 MinutesInDay = 8
 SlimeCollectionTarget = 400.0
 HungerDepletionRate = 0.8
-HappinessDepletionRate = 0.8
-CleanlinessDepletionRate = 0.6
+HappinessDepletionRate = 0.7
+CleanlinessDepletionRate = 0.5
 AngerDepletionRate = 0.4
-MaxHungerReplenishment = 15.0
+MaxHungerReplenishment = 20.0
 MaxHappinessReplenishment = 4.0
-MaxCleanlinessReplenishment = 25.0
+MaxCleanlinessReplenishment = 30.0
 MaxWasteProductToAdd = 5.0
 MaxAngerToAdd = 10.0
 ToDoItemResource = null

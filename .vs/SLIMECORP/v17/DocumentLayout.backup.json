@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\supervisorroomcodestation\\supervisorroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\supervisorroomcodestation\\supervisorroomcodestation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\levels\\main\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\levels\\main\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\poisoninjectorpickupstation\\poisoninjectorpickupstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\poisoninjectorpickupstation\\poisoninjectorpickupstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\stations\\supervisorcardpickupstation\\supervisorcardpickupstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\stations\\supervisorcardpickupstation\\supervisorcardpickupstation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\globals\\globalsignals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|c:\\users\\joshua\\repos\\godot\\slimecorp\\scripts\\player\\playerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{38C461D6-37BD-4D7A-A1AE-C1650DEFFC9F}|SlimeCorp.csproj|solutionrelative:scripts\\player\\playerui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +39,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SupervisorRoomCodeStation.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
+              "RelativeDocumentMoniker": "Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
+              "RelativeToolTip": "Scripts\\Stations\\SupervisorRoomCodeStation\\SupervisorRoomCodeStation.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAIAwwEsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T19:54:03.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "SupervisorCardPickupStation.cs",
               "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorCardPickupStation\\SupervisorCardPickupStation.cs",
               "RelativeDocumentMoniker": "Scripts\\Stations\\SupervisorCardPickupStation\\SupervisorCardPickupStation.cs",
               "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\SupervisorCardPickupStation\\SupervisorCardPickupStation.cs",
               "RelativeToolTip": "Scripts\\Stations\\SupervisorCardPickupStation\\SupervisorCardPickupStation.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACkAAABGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T15:34:37.996Z",
+              "WhenOpened": "2024-10-22T19:51:54.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GlobalSignals.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
+              "RelativeDocumentMoniker": "Scripts\\Globals\\GlobalSignals.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Globals\\GlobalSignals.cs",
+              "RelativeToolTip": "Scripts\\Globals\\GlobalSignals.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAmwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T19:51:27.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Levels\\Main\\Main.cs",
+              "RelativeDocumentMoniker": "Scripts\\Levels\\Main\\Main.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Levels\\Main\\Main.cs",
+              "RelativeToolTip": "Scripts\\Levels\\Main\\Main.cs",
+              "ViewState": "AgIAAOwAAAAAAAAAAAApwPoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T19:28:19.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PoisonInjectorPickupStation.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonInjectorPickupStation\\PoisonInjectorPickupStation.cs",
+              "RelativeDocumentMoniker": "Scripts\\Stations\\PoisonInjectorPickupStation\\PoisonInjectorPickupStation.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Stations\\PoisonInjectorPickupStation\\PoisonInjectorPickupStation.cs",
+              "RelativeToolTip": "Scripts\\Stations\\PoisonInjectorPickupStation\\PoisonInjectorPickupStation.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAWwBIAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T19:48:39.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerUI.cs",
+              "DocumentMoniker": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\PlayerUI.cs",
+              "RelativeDocumentMoniker": "Scripts\\Player\\PlayerUI.cs",
+              "ToolTip": "C:\\Users\\Joshua\\Repos\\Godot\\SlimeCorp\\Scripts\\Player\\PlayerUI.cs",
+              "RelativeToolTip": "Scripts\\Player\\PlayerUI.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwDQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T19:21:04.195Z",
               "EditorCaption": ""
             }
           ]

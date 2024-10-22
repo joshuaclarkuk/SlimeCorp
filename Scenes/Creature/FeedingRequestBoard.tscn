@@ -15,3 +15,8 @@
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("1_2htya")
 eldritchSpritesScenes = Array[PackedScene]([ExtResource("2_fmnx4"), ExtResource("3_0isle"), ExtResource("4_ipnbr"), ExtResource("5_b8nor"), ExtResource("6_qxgyq"), ExtResource("7_fddxf"), ExtResource("8_0dfh0"), ExtResource("9_3p8y5"), ExtResource("10_4hwkh")])
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.33333, 0)
+pixel_size = 0.03
+text = "Fuel Requests"

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cnfdgkgwv6cbx" path="res://Assets/Models/ComputerStation/desk and pc texuers/pc_glow_02_1.png" id="4_w3o5w"]
 [ext_resource type="Texture2D" uid="uid://b1sf17wjl6ouv" path="res://Assets/Models/ComputerStation/desk and pc texuers/pc_ROUGHNESS_01_0.png" id="5_hhjom"]
 [ext_resource type="PackedScene" uid="uid://dlqvi07hribq2" path="res://Scenes/Stations/Barrel.tscn" id="6_6m8cq"]
-[ext_resource type="AudioStream" uid="uid://ce5b0pd00mgau" path="res://Assets/Audio/Music/MainMenu/sc.ogg" id="7_exlh3"]
+[ext_resource type="AudioStream" uid="uid://cpupb4j3bvysh" path="res://Assets/Audio/Music/MainMenu/menu.ogg" id="7_nd0jj"]
 [ext_resource type="PackedScene" uid="uid://t4vquhmibbj2" path="res://Scenes/UI/MainMenu/MainMenu.tscn" id="10_hu2ji"]
 [ext_resource type="Script" path="res://Scripts/Player/Handicam.cs" id="15_1s8h5"]
 
@@ -155,7 +155,7 @@ cull_mask = 1
 script = ExtResource("15_1s8h5")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_exlh3")
+stream = ExtResource("7_nd0jj")
 autoplay = true
 
 [node name="MainMenu" parent="." instance=ExtResource("10_hu2ji")]

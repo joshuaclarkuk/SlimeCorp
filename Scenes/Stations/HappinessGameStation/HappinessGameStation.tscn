@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvdnqemklskrt"]
+[gd_scene load_steps=9 format=3 uid="uid://dvdnqemklskrt"]
 
 [ext_resource type="PackedScene" uid="uid://b7nk6uprev8nf" path="res://Scenes/Stations/Station.tscn" id="1_qae27"]
 [ext_resource type="Material" uid="uid://blk77lsysxd2e" path="res://Materials/M_PrototypeBlue.tres" id="2_7wcqi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bapnc5v1qheh1" path="res://Scenes/Stations/HappinessGameStation/HappinessGameComponent.tscn" id="3_6lmv3"]
 [ext_resource type="PackedScene" uid="uid://wp8155nwu4mq" path="res://Scenes/Stations/Buttons.tscn" id="5_88ai8"]
 [ext_resource type="PackedScene" uid="uid://dw6c380tn15wd" path="res://Scenes/Stations/StationNeedsProgressBarComponent.tscn" id="6_oghl3"]
+[ext_resource type="FontFile" uid="uid://bbnlhq6st60nb" path="res://Assets/Fonts/Lexend-VariableFont_wght.ttf" id="7_8r0vk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_d6eby"]
 viewport_path = NodePath("SubViewport")
@@ -28,7 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 0.951056, 0.309017, 0, -0.309017, 0.951056, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.1)
 
 [node name="Mesh" type="CSGBox3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 size = Vector3(2, 1, 1)
 material = ExtResource("2_7wcqi")
@@ -68,5 +69,11 @@ visible = false
 
 [node name="StationNeedsProgressBarComponent" parent="." index="7" instance=ExtResource("6_oghl3")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.6, -0.7)
+
+[node name="StationTitle" type="Label3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.511717)
+pixel_size = 0.004
+text = "Perimeter Sec. Station"
+font = ExtResource("7_8r0vk")
 
 [editable path="Buttons"]

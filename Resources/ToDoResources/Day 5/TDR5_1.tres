@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ComputerItemResource" load_steps=2 format=3 uid="uid://ekyp5yeaeh8v"]
+
+[ext_resource type="Script" path="res://Scripts/Stations/ComputerStation/OperatingSystem/ComputerItemResource.cs" id="1_tnt2c"]
+
+[resource]
+script = ExtResource("1_tnt2c")
+ItemTitle = "Lights Are Out"
+ItemBody = "Blasted lights have gone out.
+
+Use the flashlight they gave you while I try and squeeze a few dollars out of the higher-ups to get 'em fixed."
+ItemByline = ""
+ItemDateReceived = "Signed, Supervisor Phillips"

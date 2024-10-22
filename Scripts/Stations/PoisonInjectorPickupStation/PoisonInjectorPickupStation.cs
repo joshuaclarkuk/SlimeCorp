@@ -16,7 +16,7 @@ public partial class PoisonInjectorPickupStation : Station
     {
         base._Ready();
 
-        globalSignals.OnPlayerAccessedSupervisorOffice += HandlePlayerAccessedSupervisorOffice;
+        globalSignals.OnPlayerHasSupervisorCard += HandlePlayerHasSupervisorCard;
 
         DisableStation();
     }
@@ -25,7 +25,7 @@ public partial class PoisonInjectorPickupStation : Station
     {
         base._ExitTree();
 
-        globalSignals.OnPlayerAccessedSupervisorOffice -= HandlePlayerAccessedSupervisorOffice;
+        globalSignals.OnPlayerHasSupervisorCard -= HandlePlayerHasSupervisorCard;
     }
 
     public override void EnterStation()
@@ -63,7 +63,7 @@ public partial class PoisonInjectorPickupStation : Station
         collisionShapeNode.Disabled = true;
     }
 
-    private void HandlePlayerAccessedSupervisorOffice()
+    private void HandlePlayerHasSupervisorCard()
     {
         EnableStation();
     }

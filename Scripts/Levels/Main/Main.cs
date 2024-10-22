@@ -34,6 +34,7 @@ public partial class Main : Node3D
     [Export] private MeshInstance3D creatureCurtainMeshNode = null;
     [Export] private CollisionShape3D creatureCurtainCollisionNode = null;
     [Export] private AudioStreamPlayer monsterAppearsStingerNode = null;
+    [Export] private AudioStreamPlayer creaturePoisonedAudioNode = null;
 
     [ExportCategory("Debug UI & Pause Menu")]
     [Export] private DebugUI debugUI = null;
@@ -77,6 +78,7 @@ public partial class Main : Node3D
         globalSignals.OnSlimeCanisterRemovedFromStation += HandleSlimeCanisterRemovedFromStation;
 
         // Connect win/failure states
+        globalSignals.OnPlayerHasInjectedCreatureWithPoison += HandlePlayerHasInjectedCreatureWithPoison;
         globalSignals.OnPlayerFailureState += HandlePlayerFailureState;
         globalSignals.OnPlayerWinState += HandlePlayerWinState;
         globalSignals.OnCreatureWinState += HandleCreatureWinState;
@@ -106,6 +108,7 @@ public partial class Main : Node3D
         globalSignals.OnSlimeCanisterRemovedFromStation -= HandleSlimeCanisterRemovedFromStation;
 
         // Disconnect win/failure states
+        globalSignals.OnPlayerHasInjectedCreatureWithPoison -= HandlePlayerHasInjectedCreatureWithPoison;
         globalSignals.OnPlayerFailureState -= HandlePlayerFailureState;
         globalSignals.OnPlayerWinState -= HandlePlayerWinState;
         globalSignals.OnCreatureWinState -= HandleCreatureWinState;
@@ -248,7 +251,10 @@ public partial class Main : Node3D
         }
 
         // Turn on lights
-        lightingHeaderNode.Visible = true;
+        if (currentDayIndex < maxDays)
+        {
+            lightingHeaderNode.Visible = true;
+        }
 
         // Start timer counting to send spy email 
         spyEmailTimerNode.Start();
@@ -258,7 +264,7 @@ public partial class Main : Node3D
         {
             creatureCurtainMeshNode.Visible = false;
             creatureCurtainCollisionNode.Disabled = true;
-            monsterAppearsStingerNode.Play(1.50f);
+            monsterAppearsStingerNode.Play(2.50f);
             creatureNode.ActivateCreatureAudioBed();
             hasRevealedCreature = true;
         }
@@ -274,6 +280,7 @@ public partial class Main : Node3D
     private void HandleShiftIsOver()
     {
         GD.Print("Shift is over. Player needs to clock out");
+        globalSignals.RaisePlayerFailureState();
         // Lock stations
         // Let timers run, need to make sure oil in canister ISN'T banked
 
@@ -365,6 +372,12 @@ public partial class Main : Node3D
         {
             return false;
         }
+    }
+
+    private void HandlePlayerHasInjectedCreatureWithPoison()
+    {
+        creaturePoisonedAudioNode.Play();
+        nonDiegeticMusicNode.Stop();
     }
 
     private void HandlePlayerFailureState()

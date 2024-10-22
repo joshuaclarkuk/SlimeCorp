@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=109 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -56,6 +56,7 @@
 [ext_resource type="AudioStream" uid="uid://cudd3vnglndbn" path="res://Assets/Audio/Music/Main/bg_track_main.ogg" id="50_nnnhx"]
 [ext_resource type="AudioStream" uid="uid://10i32nn0l0a5" path="res://Assets/Audio/Music/Main/monster appears.ogg" id="51_w6a0l"]
 [ext_resource type="AudioStream" uid="uid://c3akqvqsc011g" path="res://Assets/Audio/Music/Main/new day.ogg" id="52_xqpyt"]
+[ext_resource type="AudioStream" uid="uid://dncoclvjwv8c0" path="res://Assets/Audio/Music/Main/CreaturePoisoned.ogg" id="53_5wmbo"]
 [ext_resource type="PackedScene" uid="uid://12bclbi6y7d6" path="res://Scenes/UI/PauseMenu/PauseMenu.tscn" id="58_70xdp"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
@@ -173,6 +174,9 @@ size = Vector3(2.9, 1, 4.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2s83a"]
 size = Vector3(0.3, 1, 10)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_japx0"]
+size = Vector3(0.3, 1, 14.4)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2uhm1"]
 size = Vector3(12, 3, 1)
 
@@ -236,12 +240,14 @@ size = Vector3(1.6, 1.9, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_yu84k"]
 size = Vector3(1.6, 1.9, 0.1)
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "debugUI") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "newDayAudioNode", "creatureNeeds", "creatureNode", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "monsterAppearsStingerNode", "creaturePoisonedAudioNode", "debugUI", "pauseMenuNode") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
+newDayAudioNode = NodePath("WorldAudio/Non-Diegetic/NewDayNode")
 creatureNeeds = NodePath("CreatureNeeds")
+creatureNode = NodePath("Environment/Animated monster")
 dailyNeedResources = Array[Object]([ExtResource("2_dt6g4"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), ExtResource("4_rx313"), ExtResource("5_w5mc5"), ExtResource("6_fybs3")])
 spyEmailTimerNode = NodePath("SpyEmailTimer")
 spyEmailItemResources = Array[Object]([ExtResource("8_uag8f"), ExtResource("8_uag8f"), ExtResource("9_v10n3"), ExtResource("10_wdimg"), ExtResource("11_q0khq"), ExtResource("12_3gogr")])
@@ -250,7 +256,10 @@ nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
 creatureCurtainMeshNode = NodePath("Environment/LevelMesh/CreatureCurtain")
 creatureCurtainCollisionNode = NodePath("Environment/LevelMesh/CreatureCurtain/StaticBody3D/CollisionShape3D")
+monsterAppearsStingerNode = NodePath("WorldAudio/Non-Diegetic/MonsterAppearsStinger")
+creaturePoisonedAudioNode = NodePath("WorldAudio/Non-Diegetic/CreaturePoisonedAudio")
 debugUI = NodePath("DebugUI")
+pauseMenuNode = NodePath("PauseMenu")
 
 [node name="DirectionalLight3D" parent="." index="0"]
 visible = false
@@ -1260,8 +1269,8 @@ shape = SubResource("BoxShape3D_2s83a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, 6.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/RailingCollision2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-shape = SubResource("BoxShape3D_2s83a")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2)
+shape = SubResource("BoxShape3D_japx0")
 
 [node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, -13.8)
@@ -1507,7 +1516,7 @@ debugUI = NodePath("../../../../DebugUI")
 transform = Transform3D(-1, 0, -1.60937e-07, 0, 1, 0, 1.60937e-07, 0, -1, -11.9, 0, 22)
 
 [node name="HappinessGameStation" parent="Environment/Objects/Stations" index="6" instance=ExtResource("10_jnwi1")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -8.1, 0, -2)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -7.7, 0, -2)
 
 [node name="AbandonedRoomCodeStation" parent="Environment/Objects/Stations" index="7" instance=ExtResource("24_fwfmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9, 0, -13.3)
@@ -1579,6 +1588,10 @@ text = "Swipe Supervisor Card"
 transform = Transform3D(0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871558, -3.2, 3.8, -17)
 text = "Creature Food Access
 (DO NOT TAMPER)"
+
+[node name="KeepOutSign" type="Label3D" parent="Environment/Signage" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1, 2.4, -13.5)
+text = "KEEP OUT"
 
 [node name="Doors" type="Node3D" parent="Environment" index="4"]
 
@@ -1660,6 +1673,9 @@ stream = ExtResource("51_w6a0l")
 
 [node name="NewDayNode" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic" index="3"]
 stream = ExtResource("52_xqpyt")
+
+[node name="CreaturePoisonedAudio" type="AudioStreamPlayer" parent="WorldAudio/Non-Diegetic" index="4"]
+stream = ExtResource("53_5wmbo")
 
 [node name="CreatureNeeds" parent="." index="7" node_paths=PackedStringArray("creatureNeedsDisplayNode", "feedingStationNode", "happinessGameStationNode", "cleaningStationNode", "slimeCollectionStationNode", "debugUINode") instance=ExtResource("3_r5tf3")]
 creatureNeedsDisplayNode = NodePath("../Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport/CreatureNeedsDisplay")

@@ -6,6 +6,7 @@ public partial class PlayerUI : Control
     [ExportCategory("Required Nodes")]
     [Export] public HBoxContainer NewEmailContainerNode { get; private set; } = null;
     [Export] private Label interactLabelNode = null;
+    [Export] private AudioStreamPlayer emailNotificationSoundNode = null;
 
     private GlobalSignals globalSignals;
 
@@ -49,6 +50,7 @@ public partial class PlayerUI : Control
     private void HandleEmailReceived(ComputerItemResource resource)
     {
         NewEmailContainerNode.Visible = true;
+        emailNotificationSoundNode.Play();
     }
 
     private void HandleEmailsRead()
