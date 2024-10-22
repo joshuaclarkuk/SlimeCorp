@@ -62,8 +62,11 @@ public partial class CreatureNeeds : Node3D
     private bool playerHasClockedIn = false;
     private bool isFailureStateTimerStarted = false;
 
+    private GlobalValues globalValues = null;
+
     public override void _Ready()
     {
+        globalValues = GetNode<GlobalValues>("/root/GlobalValues");
         globalSignals = GetNode<GlobalSignals>("/root/GlobalSignals");
 
         SubscribeToEvents();
@@ -277,7 +280,8 @@ public partial class CreatureNeeds : Node3D
                 currentAngerLevel = Mathf.Min(currentAngerLevel + maxAngerPointsToAdd, maxAngerLevel);
                 if (currentAngerLevel >= maxAngerLevel)
                 {
-                    GD.PrintErr("Max anger level reached, game over...");
+                    GD.PrintErr("Player failed");
+                    globalSignals.RaisePlayerFailureState();
                 }
             }
         }
@@ -299,7 +303,8 @@ public partial class CreatureNeeds : Node3D
                 currentAngerLevel = Mathf.Min(currentAngerLevel + maxAngerPointsToAdd, maxAngerLevel);
                 if (currentAngerLevel >= maxAngerLevel)
                 {
-                    GD.PrintErr("Max anger level reached, game over...");
+                    GD.PrintErr("Player failed");
+                    globalSignals.RaisePlayerFailureState();
                 }
             }
         }
