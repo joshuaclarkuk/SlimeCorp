@@ -236,14 +236,12 @@ size = Vector3(1.6, 1.9, 0.1)
 [sub_resource type="BoxMesh" id="BoxMesh_yu84k"]
 size = Vector3(1.6, 1.9, 0.1)
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "newDayAudioNode", "creatureNeeds", "creatureNode", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "monsterAppearsStingerNode", "debugUI", "pauseMenuNode") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "creatureNeeds", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "debugUI") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
-newDayAudioNode = NodePath("WorldAudio/Non-Diegetic/NewDayNode")
 creatureNeeds = NodePath("CreatureNeeds")
-creatureNode = NodePath("Environment/Animated monster")
 dailyNeedResources = Array[Object]([ExtResource("2_dt6g4"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), ExtResource("4_rx313"), ExtResource("5_w5mc5"), ExtResource("6_fybs3")])
 spyEmailTimerNode = NodePath("SpyEmailTimer")
 spyEmailItemResources = Array[Object]([ExtResource("8_uag8f"), ExtResource("8_uag8f"), ExtResource("9_v10n3"), ExtResource("10_wdimg"), ExtResource("11_q0khq"), ExtResource("12_3gogr")])
@@ -252,9 +250,7 @@ nonDiegeticMusicNode = NodePath("WorldAudio/Non-Diegetic/Music")
 lightingHeaderNode = NodePath("Lighting")
 creatureCurtainMeshNode = NodePath("Environment/LevelMesh/CreatureCurtain")
 creatureCurtainCollisionNode = NodePath("Environment/LevelMesh/CreatureCurtain/StaticBody3D/CollisionShape3D")
-monsterAppearsStingerNode = NodePath("WorldAudio/Non-Diegetic/MonsterAppearsStinger")
 debugUI = NodePath("DebugUI")
-pauseMenuNode = NodePath("PauseMenu")
 
 [node name="DirectionalLight3D" parent="." index="0"]
 visible = false
