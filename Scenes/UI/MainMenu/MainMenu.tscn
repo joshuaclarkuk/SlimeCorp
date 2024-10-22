@@ -86,7 +86,7 @@ text = "Night Shift at Slime Corp"
 [node name="Fields" type="VBoxContainer" parent="Pages/StartPage/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 0
 alignment = 1
 

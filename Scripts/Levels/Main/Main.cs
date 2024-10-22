@@ -14,7 +14,7 @@ public partial class Main : Node3D
 
     [ExportCategory("Creature")]
     [Export] private CreatureNeeds creatureNeeds = null;
-    [Export] private AudioStreamPlayer3D creatureAudioBedNode = null;
+    [Export] private Creature creatureNode = null;
 
     [ExportCategory("Creature Need Resources")]
     [Export] private DailyNeedResource[] dailyNeedResources = null;
@@ -35,8 +35,9 @@ public partial class Main : Node3D
     [Export] private CollisionShape3D creatureCurtainCollisionNode = null;
     [Export] private AudioStreamPlayer monsterAppearsStingerNode = null;
 
-    [ExportCategory("Debug UI")]
+    [ExportCategory("Debug UI & Pause Menu")]
     [Export] private DebugUI debugUI = null;
+    [Export] private PauseMenu pauseMenuNode = null;
 
     [ExportCategory("Current Day")]
     [Export] private int currentDayIndex = 1;
@@ -108,6 +109,14 @@ public partial class Main : Node3D
         globalSignals.OnPlayerFailureState -= HandlePlayerFailureState;
         globalSignals.OnPlayerWinState -= HandlePlayerWinState;
         globalSignals.OnCreatureWinState -= HandleCreatureWinState;
+    }
+
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (Input.IsActionJustPressed(GlobalConstants.INPUT_UI_CANCEL))
+        {
+            pauseMenuNode.TogglePauseMenu(true);
+        }
     }
 
     private void HandleBlackScreenDisappeared()
@@ -250,7 +259,7 @@ public partial class Main : Node3D
             creatureCurtainMeshNode.Visible = false;
             creatureCurtainCollisionNode.Disabled = true;
             monsterAppearsStingerNode.Play(1.50f);
-            creatureAudioBedNode.Play();
+            creatureNode.ActivateCreatureAudioBed();
             hasRevealedCreature = true;
         }
         else

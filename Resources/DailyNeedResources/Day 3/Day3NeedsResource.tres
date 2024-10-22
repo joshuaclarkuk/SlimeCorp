@@ -9,7 +9,7 @@ script = ExtResource("1_s75du")
 TitleToDisplay = "Day 3
 Obfuscation"
 MinutesInDay = 8
-SlimeCollectionTarget = 300.0
+SlimeCollectionTarget = 350.0
 HungerDepletionRate = 0.7
 HappinessDepletionRate = 0.6
 CleanlinessDepletionRate = 0.6

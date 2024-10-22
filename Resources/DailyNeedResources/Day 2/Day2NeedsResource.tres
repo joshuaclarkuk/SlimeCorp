@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=3 format=3 uid="uid://w47tw0ikkabw"]
+[gd_resource type="Resource" script_class="DailyNeedResource" load_steps=4 format=3 uid="uid://w47tw0ikkabw"]
 
+[ext_resource type="Resource" uid="uid://caj0avsq7ml23" path="res://Resources/EmailItemResources/Day 2/EIR2_1.tres" id="1_gwpl6"]
 [ext_resource type="Script" path="res://Scripts/Levels/Main/DailyNeedResource.cs" id="3_pqyyb"]
 [ext_resource type="Resource" uid="uid://3flflpbhhvpf" path="res://Resources/ToDoResources/Day 2/TDR2_1.tres" id="4_24f8b"]
 
@@ -19,5 +20,5 @@ MaxCleanlinessReplenishment = 25.0
 MaxWasteProductToAdd = 2.0
 MaxAngerToAdd = 3.0
 ToDoItemResource = Array[Object]([ExtResource("4_24f8b")])
-EmailItemResources = null
+EmailItemResources = Array[Object]([ExtResource("1_gwpl6")])
 NewsItemResources = null

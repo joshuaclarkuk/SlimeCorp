@@ -18,6 +18,7 @@ public class GlobalConstants
     public const string INPUT_UI_LEFT = "UILeft";
     public const string INPUT_UI_RIGHT = "UIRight";
     public const string INPUT_UI_ENTER = "UIEnter";
+    public const string INPUT_UI_CANCEL = "UICancel";
 
     public const string INPUT_NUM_0 = "Num0";
     public const string INPUT_NUM_1 = "Num1";

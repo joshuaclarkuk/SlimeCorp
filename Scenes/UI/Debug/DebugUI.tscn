@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg2l7oxrw1wlj"]
+[gd_scene load_steps=5 format=3 uid="uid://bg2l7oxrw1wlj"]
 
+[ext_resource type="Theme" uid="uid://be72paxtlt7bh" path="res://Themes/DebugUITheme.tres" id="1_72wws"]
 [ext_resource type="Script" path="res://Scripts/UI/Debug/DebugUI.cs" id="1_m6kf3"]
 [ext_resource type="PackedScene" uid="uid://bpxy4xuhf4j7f" path="res://Scenes/UI/Debug/FoodRequest.tscn" id="2_l5jpd"]
 [ext_resource type="PackedScene" uid="uid://dr5mbyn0i5622" path="res://Scenes/UI/Debug/AreaCleanRequest.tscn" id="3_q26yq"]
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_72wws")
 script = ExtResource("1_m6kf3")
 employeeNumberLabelNode = NodePath("DebugMenuContainer/EmployeeCodeContainer/EmployeeCodeValue")
 foodRequestContainerNode = NodePath("DebugMenuContainer/FoodRequestContainer")

@@ -1,9 +1,9 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bfwmmvq7todhb"]
 
-[ext_resource type="FontFile" uid="uid://cpiwn2w1jbiy6" path="res://Assets/Fonts/LexendPeta-Regular.ttf" id="1_y80jh"]
+[ext_resource type="FontFile" uid="uid://bbnlhq6st60nb" path="res://Assets/Fonts/Lexend-VariableFont_wght.ttf" id="1_1ahqp"]
 
 [resource]
-default_font = ExtResource("1_y80jh")
+default_font = ExtResource("1_1ahqp")
 default_font_size = 54
 HBoxContainer/constants/separation = 160
 Label/font_sizes/font_size = 32

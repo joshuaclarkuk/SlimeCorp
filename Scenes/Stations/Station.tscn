@@ -20,6 +20,7 @@ shape = SubResource("BoxShape3D_x2ag0")
 
 [node name="StationDebugLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0.5)
+visible = false
 text = "Test"
 
 [node name="StationControlInstructions" parent="." instance=ExtResource("1_obd28")]

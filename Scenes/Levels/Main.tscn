@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://6bsluq4t6i1h"]
+[gd_scene load_steps=105 format=3 uid="uid://6bsluq4t6i1h"]
 
 [ext_resource type="PackedScene" uid="uid://mt7rpxeo4hf" path="res://Scenes/Levels/BaseLevel.tscn" id="1_6dq5d"]
 [ext_resource type="Resource" uid="uid://c2f0qfsd0q0jl" path="res://Resources/DailyNeedResources/Day0DummyNeedsResource.tres" id="2_dt6g4"]
@@ -53,10 +53,10 @@
 [ext_resource type="PackedScene" uid="uid://ov4cjhhfxc74" path="res://Scenes/Interactables/RotatingDoor.tscn" id="43_p7imb"]
 [ext_resource type="PackedScene" uid="uid://bsntbl8rgj0ts" path="res://Scenes/Interactables/SlidingDoor.tscn" id="45_p2dxe"]
 [ext_resource type="PackedScene" uid="uid://ckk0fssse8rjf" path="res://Scenes/Creature/Creature.tscn" id="48_c4qed"]
-[ext_resource type="AudioStream" uid="uid://1k4nc3vmqxbg" path="res://Assets/Audio/Ambience/Creature/monster.ogg" id="50_kvn04"]
 [ext_resource type="AudioStream" uid="uid://cudd3vnglndbn" path="res://Assets/Audio/Music/Main/bg_track_main.ogg" id="50_nnnhx"]
 [ext_resource type="AudioStream" uid="uid://10i32nn0l0a5" path="res://Assets/Audio/Music/Main/monster appears.ogg" id="51_w6a0l"]
 [ext_resource type="AudioStream" uid="uid://c3akqvqsc011g" path="res://Assets/Audio/Music/Main/new day.ogg" id="52_xqpyt"]
+[ext_resource type="PackedScene" uid="uid://12bclbi6y7d6" path="res://Scenes/UI/PauseMenu/PauseMenu.tscn" id="58_70xdp"]
 
 [sub_resource type="Environment" id="Environment_861r3"]
 background_mode = 1
@@ -149,6 +149,15 @@ size = Vector3(30, 1, 39)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dgo4w"]
 size = Vector3(1, 3, 1.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmt6p"]
+size = Vector3(10, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ica1"]
+size = Vector3(10.2, 3, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wpjmw"]
+size = Vector3(9.4, 3, 1.2)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnv84"]
 size = Vector3(0.6, 3, 1.2)
 
@@ -221,14 +230,14 @@ size = Vector3(1.4, 4, 0.5)
 [sub_resource type="ViewportTexture" id="ViewportTexture_w0js7"]
 viewport_path = NodePath("Environment/Objects/CreatureNeedsScreen/CreatureNeedsViewport")
 
-[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "newDayAudioNode", "creatureNeeds", "creatureAudioBedNode", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "monsterAppearsStingerNode", "debugUI") instance=ExtResource("1_6dq5d")]
+[node name="Main" node_paths=PackedStringArray("playerStartNode", "introCreditsNode", "blackScreenNode", "titleCardNode", "newDayAudioNode", "creatureNeeds", "creatureNode", "spyEmailTimerNode", "stationsHeaderNode", "nonDiegeticMusicNode", "lightingHeaderNode", "creatureCurtainMeshNode", "creatureCurtainCollisionNode", "monsterAppearsStingerNode", "debugUI", "pauseMenuNode") instance=ExtResource("1_6dq5d")]
 playerStartNode = NodePath("PlayerStart")
 introCreditsNode = NodePath("IntroCredits")
 blackScreenNode = NodePath("BlackScreen")
 titleCardNode = NodePath("TitleCard")
 newDayAudioNode = NodePath("WorldAudio/Non-Diegetic/NewDayNode")
 creatureNeeds = NodePath("CreatureNeeds")
-creatureAudioBedNode = NodePath("WorldAudio/Diegetic/Creature/CreatureAudioBed")
+creatureNode = NodePath("Environment/Animated monster")
 dailyNeedResources = Array[Object]([ExtResource("2_dt6g4"), ExtResource("3_mujvi"), ExtResource("4_drkrt"), ExtResource("4_rx313"), ExtResource("5_w5mc5"), ExtResource("6_fybs3")])
 spyEmailTimerNode = NodePath("SpyEmailTimer")
 spyEmailItemResources = Array[Object]([ExtResource("8_uag8f"), ExtResource("8_uag8f"), ExtResource("9_v10n3"), ExtResource("10_wdimg"), ExtResource("11_q0khq"), ExtResource("12_3gogr")])
@@ -239,7 +248,7 @@ creatureCurtainMeshNode = NodePath("Environment/LevelMesh/CreatureCurtain")
 creatureCurtainCollisionNode = NodePath("Environment/LevelMesh/CreatureCurtain/StaticBody3D/CollisionShape3D")
 monsterAppearsStingerNode = NodePath("WorldAudio/Non-Diegetic/MonsterAppearsStinger")
 debugUI = NodePath("DebugUI")
-currentDayIndex = 5
+pauseMenuNode = NodePath("PauseMenu")
 
 [node name="DirectionalLight3D" parent="." index="0"]
 visible = false
@@ -1156,18 +1165,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, 1)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/PillarCollision3" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_dgo4w")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0)
+shape = SubResource("BoxShape3D_fmt6p")
 
 [node name="PillarCollision4" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.1, -4.7)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/PillarCollision4" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_dgo4w")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0)
+shape = SubResource("BoxShape3D_6ica1")
 
-[node name="PillarCollision5" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="5"]
+[node name="PillarCollision11" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.6, -0.1, -6.8)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/PillarCollision11" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 1, 0)
+shape = SubResource("BoxShape3D_wpjmw")
+
+[node name="PillarCollision5" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.1, -4.7)
 collision_mask = 0
 
@@ -1175,7 +1192,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision6" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="6"]
+[node name="PillarCollision6" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.1, -4.7)
 collision_mask = 0
 
@@ -1183,7 +1200,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_dgo4w")
 
-[node name="PillarCollision7" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="7"]
+[node name="PillarCollision7" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -10.4)
 collision_mask = 0
 
@@ -1191,7 +1208,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_mnv84")
 
-[node name="PillarCollision8" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="8"]
+[node name="PillarCollision8" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 7.2)
 collision_mask = 0
 
@@ -1199,7 +1216,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_mnv84")
 
-[node name="PillarCollision9" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="9"]
+[node name="PillarCollision9" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, 3.9)
 collision_mask = 0
 
@@ -1207,7 +1224,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_gi2tj")
 
-[node name="PillarCollision10" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="10"]
+[node name="PillarCollision10" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, -0.1, -7.1)
 collision_mask = 0
 
@@ -1215,111 +1232,111 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 0)
 shape = SubResource("BoxShape3D_gi2tj")
 
-[node name="LandingCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="11"]
+[node name="LandingCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/LandingCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 shape = SubResource("BoxShape3D_d1hf1")
 
-[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="12"]
+[node name="StairCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="13"]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -3.4, 0, -2)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/StairCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0500002, 0, 0.15)
 shape = SubResource("BoxShape3D_8xaal")
 
-[node name="RailingCollision1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="13"]
+[node name="RailingCollision1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, -8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/RailingCollision1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_2s83a")
 
-[node name="RailingCollision2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="14"]
+[node name="RailingCollision2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 2, 6.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/RailingCollision2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 shape = SubResource("BoxShape3D_2s83a")
 
-[node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="15"]
+[node name="WallCollisionNorth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, -13.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/WallCollisionNorth1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionNorth2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="16"]
+[node name="WallCollisionNorth2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -13.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/WallCollisionNorth2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="17"]
+[node name="WallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0.5, 10.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/WallCollisionSouth1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionSouth2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="18"]
+[node name="WallCollisionSouth2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 10.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/WallCollisionSouth2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="StorageWallCollisionEast" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="19"]
+[node name="StorageWallCollisionEast" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="20"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.6, 0.5, 17.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/StorageWallCollisionEast" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
 shape = SubResource("BoxShape3D_eddos")
 
-[node name="StorageWallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="20"]
+[node name="StorageWallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="21"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8, 0.5, 17.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/StorageWallCollisionWest1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
 shape = SubResource("BoxShape3D_eddos")
 
-[node name="StorageWallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="21"]
+[node name="StorageWallCollisionSouth1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="22"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.8, 0.5, 24.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/StorageWallCollisionSouth1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.25)
 shape = SubResource("BoxShape3D_migoq")
 
-[node name="WallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="22"]
+[node name="WallCollisionWest1" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="23"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, -8.6)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/WallCollisionWest1" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="WallCollisionWest2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="23"]
+[node name="WallCollisionWest2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="24"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24, 0.5, 5.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/WallCollisionWest2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_2uhm1")
 
-[node name="EyeWallCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="24"]
+[node name="EyeWallCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -1.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/EyeWallCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1, 0)
 shape = SubResource("BoxShape3D_0orqy")
 
-[node name="OldSecRoomWallCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="25"]
+[node name="OldSecRoomWallCollision" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 2, 5.8)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/OldSecRoomWallCollision" index="0"]
 shape = SubResource("BoxShape3D_77uio")
 
-[node name="OldSecRoomWallCollision2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="26"]
+[node name="OldSecRoomWallCollision2" type="StaticBody3D" parent="Environment/LevelCollision/Main" index="27"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.4, 2, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/LevelCollision/Main/OldSecRoomWallCollision2" index="0"]
@@ -1605,12 +1622,6 @@ omni_range = 22.279
 
 [node name="MainKillLightsEvent" parent="Events" index="0" instance=ExtResource("12_stswd")]
 
-[node name="Creature" type="Node3D" parent="WorldAudio/Diegetic" index="0"]
-
-[node name="CreatureAudioBed" type="AudioStreamPlayer3D" parent="WorldAudio/Diegetic/Creature" index="0"]
-stream = ExtResource("50_kvn04")
-max_distance = 20.0
-
 [node name="Music" parent="WorldAudio/Non-Diegetic" index="0"]
 stream = ExtResource("50_nnnhx")
 
@@ -1654,3 +1665,5 @@ visible = false
 
 [node name="SpyEmailTimer" type="Timer" parent="." index="14"]
 one_shot = true
+
+[node name="PauseMenu" parent="." index="15" instance=ExtResource("58_70xdp")]

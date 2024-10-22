@@ -8,7 +8,7 @@ script = ExtResource("1_4y4jw")
 TitleToDisplay = "Day 2
 Corrosion"
 MinutesInDay = 8
-SlimeCollectionTarget = 450.0
+SlimeCollectionTarget = 400.0
 HungerDepletionRate = 0.8
 HappinessDepletionRate = 0.8
 CleanlinessDepletionRate = 0.6

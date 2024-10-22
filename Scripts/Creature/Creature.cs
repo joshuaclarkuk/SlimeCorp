@@ -6,6 +6,7 @@ public partial class Creature : Node3D
     [ExportCategory("Required Nodes")]
     [Export] private MeshInstance3D eyeMeshNode = null;
     [Export] private AnimationPlayer animPlayerNode = null;
+    [Export] private AudioStreamPlayer3D creatureAudioBedNode = null;
 
     private Player playerNode = null;
 
@@ -15,8 +16,8 @@ public partial class Creature : Node3D
         animPlayerNode.Play("Armature|Look", -1, 0.2f, false);
     }
 
-    //public override void _Process(double delta)
-    //{
-    //    eyeMeshNode.LookAt(playerNode.GlobalPosition);
-    //}
+    public void ActivateCreatureAudioBed()
+    {
+        creatureAudioBedNode.Play();
+    }
 }
