@@ -10,7 +10,9 @@ warningSoundNode = NodePath("WarningSound")
 
 [node name="WarningLight" type="SpotLight3D" parent="."]
 light_color = Color(1, 0.00392157, 0, 1)
-spot_range = 14.0
+light_energy = 3.0
+spot_range = 30.0
+spot_angle = 75.0
 
 [node name="WarningSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_o01fm")

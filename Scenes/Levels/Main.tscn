@@ -1556,7 +1556,7 @@ size = Vector2i(1024, 1024)
 [node name="CreatureNeedsDisplay" parent="Environment/Objects/CreatureNeedsScreen2/CreatureNeedsViewport" index="0" instance=ExtResource("3_qt08h")]
 
 [node name="WarningSiren" parent="Environment/Objects" index="3" instance=ExtResource("16_u8xjs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6, 10, -1.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6, 7.6, -1.9)
 
 [node name="FeedingRequestBoard" parent="Environment/Objects" index="4" instance=ExtResource("31_5uaei")]
 transform = Transform3D(2.26494e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, 2.26494e-08, -8, 2, -6)
